@@ -3,5 +3,45 @@
   
   
   
+  <entry>
+    <title>vim配置与hexo搭建</title>
+    <link href="/2023/09/09/vim%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8Ahexo%E6%90%AD%E5%BB%BA/"/>
+    <url>/2023/09/09/vim%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8Ahexo%E6%90%AD%E5%BB%BA/</url>
+    
+    <content type="html"><![CDATA[<p>仅做个人记录</p><h1 id="vim配置"><a href="#vim配置" class="headerlink" title="vim配置"></a>vim配置</h1><p>此处直接使用的是wsl ubuntu22.04 自带的vim</p><h2 id="配置按键映射"><a href="#配置按键映射" class="headerlink" title="配置按键映射"></a>配置按键映射</h2><pre><code class="hljs">    inoremap jk &lt;Esc&gt;    inoremap &#39; &#39;&#39;&lt;ESC&gt;i    inoremap &quot; &quot;&quot;&lt;ESC&gt;i    inoremap () ()&lt;ESC&gt;    inoremap [ []&lt;ESC&gt;    inoremap &#123; &#123;&#125;&lt;ESC&gt;i    nnoremap o o&lt;ESC&gt;</code></pre><h2 id="安装vundle插件管理"><a href="#安装vundle插件管理" class="headerlink" title="安装vundle插件管理"></a>安装vundle插件管理</h2><p>将vundle插件clone到指定位置</p><pre><code class="hljs">    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim</code></pre><p>在.vimrc文件中加入</p><pre><code class="hljs">    &quot;这是vundle所需要的配置文件    &quot;--------------------------    set nocompatible        filetype off    &quot; 设置Vundle管理vim插件 set the runtime path to include Vundle and initialize     set rtp+=~/.vim/bundle/Vundle.vim    call vundle#begin()    &quot; 安装的vim插件写在下面        &quot; 安装的vim插件写在上面    call vundle#end()     &quot; required    filetype plugin on    &quot; required</code></pre><p>安装插件，输入对应的地址或者名称</p><pre><code class="hljs">    Plugin &#39;Valloric/YouCompleteMe&#39; &quot;YCM&quot;    Plugin &#39;VundleVim/Vundle.vim&#39;   &quot; let Vundle manage Vundle, required    Plugin &#39;scrooloose/nerdtree&#39; &quot;nerdtree&quot;    Plugin &#39;tpope/vim-surround&#39; &quot;自动环绕&quot;    Plugin &#39;jiangmiao/auto-pairs&#39; &quot;括号补全&quot;    Plugin &#39;https://gitee.com/linuor/gruvbox.git&#39; &quot;gruvbox主题&quot;    Plugin &#39;https://gitee.com/then_then/markdown-preview.nvim.git&#39; &quot;markdown预览&quot;</code></pre><p>进入vim，命令模式执行 </p><pre><code class="hljs">    ：PluginInstall</code></pre><p>其中YCM耗时较长，且需要进一步配置（运行YCM文件目录下的 install.py文件（同样时间较长））</p><p>配置各个插件</p><pre><code class="hljs">    &quot;这是markdwon预览的配置    let g:mkdp_path_to_chrome = &#39;/mnt/c/ProgramData/Microsoft/Windows/Start Menu/Programs/Microsoft Edge.lnk&#39;    &quot; 设置 chrome 浏览器的路径（或是启动 chrome（或其他现代浏览器）的命令）    let g:mkdp_auto_start = 0    &quot; 设置为 1 可以在打开 markdown 文件的时候自动打开浏览器预览，只在打开    &quot; markdown 文件的时候打开一次    let g:mkdp_auto_open = 1    &quot; 设置为 1 在编辑 markdown 的时候检查预览窗口是否已经打开，否则自动打开预    &quot;     let g:mkdp_auto_close = 1    &quot; 在切换 buffer 的时候自动关闭预览窗口，设置为 0 则在切换 buffer 的时候不    &quot; 自动关闭预览窗口    let g:mkdp_refresh_slow = 0    &quot; 设置为 1 则只有在保存文件，或退出插入模式的时候更新预览，默认为 0，实时    &quot; 更新预览    let g:mkdp_command_for_global = 0    &quot; 设置为 1 则所有文件都可以使用 MarkdownPreview 进行预览，默认只有 markdown    let g:mkdp_echo_preview_url = 1    &quot;这是Nerdtree相关配置文件    &quot;------------------------    autocmd vimenter * NERDTree  &quot;自动开启Nerdtree    let g:NERDTreeWinSize = 35    &quot;开启nerdtree快捷键    map &lt;F3&gt; :NERDTree&lt;CR&gt;    let NERDTreeShowBookmarks=1  &quot; 开启Nerdtree时自动显示Bookmarks    &quot;打开vim时如果没有文件自动打开NERDTree    autocmd vimenter * if !argc()|NERDTree|endif    &quot;当NERDTree为剩下的唯一窗口时自动关闭    autocmd bufenter * if (winnr(&quot;$&quot;) == 1 &amp;&amp; exists(&quot;b:NERDTree&quot;) &amp;&amp; b:NERDTree.isTabTree()) | q | endif    &quot;设置树的显示图标    let g:NERDTreeDirArrowExpandable = &#39;▸&#39;      let g:NERDTreeDirArrowCollapsible = &#39;▾&#39;     let g:NERDTreeShowLineNumbers=1  &quot; 是否显示行号    &quot; 在终端启动vim时，共享NERDTree    let g:nerdtree_tabs_open_on_console_startup=1    &quot; 忽略一下文件的显示    let NERDTreeIgnore=[&#39;\.pyc&#39;,&#39;\~$&#39;,&#39;\.swp&#39;]    let g:NERDTreeGitStatusIndicatorMapCustom = &#123;                    \ &#39;Modified&#39;  :&#39;✹&#39;,                    \ &#39;Staged&#39;    :&#39;✚&#39;,                    \ &#39;Untracked&#39; :&#39;✭&#39;,                    \ &#39;Renamed&#39;   :&#39;➜&#39;,                    \ &#39;Unmerged&#39;  :&#39;═&#39;,                    \ &#39;Deleted&#39;   :&#39;✖&#39;,                    \ &#39;Dirty&#39;     :&#39;✗&#39;,                    \ &#39;Ignored&#39;   :&#39;☒&#39;,                    \ &#39;Clean&#39;     :&#39;✔︎&#39;,                    \ &#39;Unknown&#39;   :&#39;?&#39;,                    \ &#125;</code></pre><p>配置不同模式下的光标</p><pre><code class="hljs">    let &amp;t_SI = &quot;\&lt;Esc&gt;[6 q&quot;    let &amp;t_SR = &quot;\&lt;Esc&gt;[4 q&quot;    let &amp;t_EI = &quot;\&lt;Esc&gt;[2 q&quot;</code></pre><p>启用主题</p><pre><code class="hljs">    set bg=dark                     &quot;设置背景为黑色    colorscheme gruvbox             &quot;设置主题为 gruvbox    set guioptions=                 &quot;去掉两边的scrollbar    set guifont=Monaco:h17          &quot;设置字体和字的大小</code></pre><p>其他配置       </p><pre><code class="hljs">    &quot;&quot;自动开启语法高亮&quot;    syntax enable    &quot;设置字体&quot;    &quot;set guifont=dejaVu\ Sans\ MONO\ 10    set guifont=Courier_New:h10:cANSI    &quot;设置主题样式&quot;    set bg=dark                     &quot;设置背景为黑色    colorscheme gruvbox             &quot;设置主题为 gruvbox    set guioptions=                 &quot;去掉两边的scrollbar    set guifont=Monaco:h17          &quot;设置字体和字的大小    &quot;高亮显示当前行&quot;    set cursorline    hi cursorline guibg=#00ff00    hi CursorColumn guibg=#00ff00    &quot;使用空格来替换Tab&quot;    set expandtab    &quot;设置所有的Tab和缩进为4个空格&quot;    set tabstop=4    &quot;设定&lt;&lt;和&gt;&gt;命令移动时的宽度为4&quot;    set shiftwidth=4    &quot;使得按退格键时可以一次删除4个空格&quot;    set softtabstop=4    set smarttab    &quot;缩进，自动缩进（继承前一行的缩进）&quot;    &quot;set autoindent 命令打开自动缩进，是下面配置的缩写    &quot;可使用autoindent命令的简写，即“:set ai”和“:set noai”    &quot;还可以使用“:set ai sw=4”在一个命令中打开缩进并设置缩进级别    set ai    set cindent    &quot;智能缩进&quot;    set si    &quot;自动换行”    set wrap    &quot;设置软宽度&quot;    set sw=4    &quot;行内替换&quot;    set gdefault    &quot;显示标尺&quot;    set ruler    &quot;设置命令行的高度&quot;    set cmdheight=1    &quot;显示行数&quot;    set nu    &quot;不要图形按钮&quot;    set go=    &quot;设置魔术&quot;    set magic    &quot;关闭遇到错误时的声音提示&quot;    &quot;关闭错误信息响铃&quot;    set noerrorbells    &quot;关闭使用可视响铃代替呼叫&quot;    set novisualbell    &quot;高亮显示匹配的括号([&#123;和&#125;])&quot;    set showmatch    &quot;匹配括号高亮的时间（单位是十分之一秒）&quot;    set mat=2    &quot;搜索逐字符高亮&quot;    set hlsearch    set incsearch    &quot;搜索时不区分大小写&quot;    &quot;还可以使用简写（“:set ic”和“:set noic”）&quot;    set ignorecase    &quot;用浅色高亮显示当前行&quot;    autocmd InsertLeave * se nocul    autocmd InsertEnter * se cul    &quot;输入的命令显示出来，看的清楚&quot;    set showcmd    &quot;设置编码&quot;    set encoding=utf-8    set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936    &quot;设置文件编码&quot;    set fileencodings=utf-8    &quot;设置终端编码&quot;    set termencoding=utf-8    &quot;设置语言编码&quot;    set langmenu=zh_CN.UTF-8    set helplang=cn    &quot;在处理未保存或只读文件的时候，弹出确认&quot;    set confirm    &quot;隐藏工具栏&quot;    set guioptions-=T    &quot;隐藏菜单栏&quot;    set guioptions-=m    &quot;显示状态栏（默认值为1，表示无法显示状态栏）&quot;    set laststatus=2    &quot;状态行显示的内容&quot;    set statusline=%F%m%r%h%w\ [FORMAT=%&#123;&amp;ff&#125;]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %&#123;strftime(\&quot;%d/%m/%y\ -\ %H:%M\&quot;)&#125;    &quot;设置背景颜色&quot;    set background=dark    &quot;共享剪切板&quot;    set clipboard+=unnamed    &quot;从不备份&quot;    set nobackup    set noswapfile    &quot;自动保存&quot;    set autowrite    &quot;关闭vi兼容模式&quot;    set nocompatible    &quot;设置历史记录步数&quot;    set history=1000    &quot;激活鼠标的使用&quot;    set mouse=a    set selection=exclusive    set selectmode=mouse,key</code></pre><h1 id="hexo搭建"><a href="#hexo搭建" class="headerlink" title="hexo搭建"></a>hexo搭建</h1><p>创建github库以username.github.io命名，设置好权限</p><p>安装nodejs和hexo和npm</p><pre><code class="hljs">    sudo npm install hexo-cli -g</code></pre><p>使用</p><p>创建blog文件夹</p><pre><code class="hljs">    hexo init</code></pre><p>生成</p><p>配置_config.yml文件</p><p>操作</p><pre><code class="hljs">    hexo clean    hexo g</code></pre><p>部署</p><pre><code class="hljs">    hexo d</code></pre><p>本地查看 </p><pre><code class="hljs">    hexo s</code></pre><p>可以将相关主题clone到themes文件加从而完成主题切换</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>tools</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>hexo</tag>
+      
+      <tag>vim</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>hello</title>
+    <link href="/2023/09/09/hello/"/>
+    <url>/2023/09/09/hello/</url>
+    
+    <content type="html"><![CDATA[<p>hello world</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
   
 </search>
