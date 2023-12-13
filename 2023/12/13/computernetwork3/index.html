@@ -1,0 +1,1230 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/nerv.jpeg">
+  <link rel="icon" href="/img/nerv.jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="PV">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="网络层简介网络层向上提供简单灵活的，无连接的，尽最大努力的的数据报服务 datagram 数据报 网际协议IP网际协议IP Kahn-Cerx协议 IP协议配套协议 ARP(address Resolution) ICMP(Internet Control Message Protocol) IGMP(Internet Group Management Protocol) RARP(Reverse">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Computernetwork3_networklayer">
+<meta property="og:url" content="https://perticevassly.github.io/project/2023/12/13/computernetwork3/index.html">
+<meta property="og:site_name" content="PV&#39;s Blog">
+<meta property="og:description" content="网络层简介网络层向上提供简单灵活的，无连接的，尽最大努力的的数据报服务 datagram 数据报 网际协议IP网际协议IP Kahn-Cerx协议 IP协议配套协议 ARP(address Resolution) ICMP(Internet Control Message Protocol) IGMP(Internet Group Management Protocol) RARP(Reverse">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-11.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-1.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-2.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-12.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-13.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-14.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-3.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-15.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-16.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-18.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-17.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-19.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-4.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-20.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-21.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-22.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-23.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-24.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-9.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-6.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-7.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-1.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-8.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-26.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-10.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-27.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-28.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-30.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-29.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/3-31.png">
+<meta property="article:published_time" content="2023-12-13T12:24:19.000Z">
+<meta property="article:modified_time" content="2023-12-13T12:27:35.938Z">
+<meta property="article:author" content="PV">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://perticevassly.github.io/img/computernetwork/3-11.png">
+  
+  
+  
+  <title>Computernetwork3_networklayer - PV&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"perticevassly.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/eva.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Computernetwork3_networklayer"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-12-13 20:24" pubdate>
+          2023年12月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          16k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          136 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Computernetwork3_networklayer</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="网络层简介"><a href="#网络层简介" class="headerlink" title="网络层简介"></a>网络层简介</h1><p>网络层向上提供简单灵活的，无连接的，尽最大努力的的数据报服务</p>
+<p><strong>datagram 数据报</strong></p>
+<h1 id="网际协议IP"><a href="#网际协议IP" class="headerlink" title="网际协议IP"></a>网际协议IP</h1><p><strong>网际协议IP Kahn-Cerx协议</strong></p>
+<p><strong>IP协议配套协议</strong></p>
+<p><strong>ARP(address Resolution)</strong></p>
+<p><strong>ICMP(Internet Control Message Protocol)</strong></p>
+<p><strong>IGMP(Internet Group Management Protocol)</strong></p>
+<p><strong>RARP(Reverse Address Resolution Protocol)</strong></p>
+<p><img src="/../img/computernetwork/3-11.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>一些中间设备</strong></p>
+<p>物理层使用的中间设备叫做<strong>转发器(repeater)</strong></p>
+<p>数据链路层使用的中间设备叫做<strong>网桥或者桥接器(bridge)</strong></p>
+<p>网络层使用的中间设备叫做<strong>路由器(router)</strong></p>
+<p>网络层以上使用的中间商设备叫做<strong>网关(gateway)</strong></p>
+<p>由于参与互联的计算机网络都使用相同的网际协议IP（Internet Protocol）因此可以把互联以后的计算机网络看成是一个虚拟互联网络。</p>
+<h2 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h2><p>基本划分以及历史发展</p>
+<p>IP地址现在由互联网名字和数字分配机构ICANN(Internent Corporation for Assigned Names and Numbers)进行分配。</p>
+<p>其地址的编址方案经过了三个历史阶段：</p>
+<p><strong>1，分类的IP地址</strong></p>
+<p><strong>2，子网的划分</strong></p>
+<p><strong>3，构成超网</strong></p>
+<h3 id="分类的IP地址"><a href="#分类的IP地址" class="headerlink" title="分类的IP地址"></a>分类的IP地址</h3><p>分成两个字段net-id标志主机或者路由器连接到的网络，此号在整个互联网内都是唯一的</p>
+<p>主机号host-id标志此主机或者是路由器，在其所在的网络里必须时唯一的.</p>
+<p>由此可见一个IP地址在整个互联网范围内都是唯一的。</p>
+<p><img src="/../img/computernetwork/3-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>网络号本身占有8 16 24 位，但是其开头几位是固定的了，否则计算机无法确认所给的地址是哪一类地址。</p>
+<p>其中ABC都是单播地址用于一对一通信</p>
+<p>D类地址用于多播</p>
+<p>E类地址保留位以后使用</p>
+<p><strong>点分十进制：</strong></p>
+<p>将32位分割位8位然后用对应的十进制代替0-255</p>
+<p><strong>网络号与主机号</strong></p>
+<p>对于每个网络号，如果整个网络字段全为0是个保留地址，意思是本网络(形式上是一个A类地址的形式)；</p>
+<p>网络号为127（01111111）（形式上是一个A类地址的形式）表示本地软件的回环测试（loopback set）</p>
+<p>对于全为0的主机号码实际上表示的时一个网络地址，该主机所连接的到的网络地址(分配给网络地址)</p>
+<p>对于全为1的主机号码实际上表示的时该网络上的所有主机</p>
+<p>注意对于整个IP地址空间一共有2^32的地址</p>
+<p>对于B类网络，由于其开头是10，首先网络字段全为0已经不可能（也意味着本网络只可能是A类）而127的回环地址又是属于A地址，所以网络号不存在减2的问题，但是实际上B类网络字段为10000000 0000000 （128.0）  也是不分配的。</p>
+<p>实际上B类可以指派的网络号有2^14 - 1,主机号2^16-2</p>
+<p>同理C类的无法表示出本网络以及回环地址，但是1100000 00000000 00000000 （192.0.0）也是不分配的</p>
+<p>实际上C类可以指派的网络号由2^21 - 1,主机号2^8-2</p>
+<p><img src="/../img/computernetwork/3-2.png" srcset="/img/loading.gif" lazyload> </p>
+<ol>
+<li><p>IP地址管理机构在分配IP地址只分配网络号，而剩下的由得到网络号的单位来自行分配。</p>
+</li>
+<li><p>路由器仅仅根据目的主机所连接的网络号来转发分组而不考虑目的主机号，减小了路由表的储存空间以及查找路由表的时间</p>
+</li>
+<li><p>IP地址是标志一台主机和一条链路的接口的。</p>
+</li>
+<li><p>如果两个router仅仅只有一条线连接，可以不为这样一个比较小的网络分配IP，可视为无编号网络或者是无名网络(unumbered network)(anonymous network)</p>
+</li>
+</ol>
+<p><img src="/../img/computernetwork/3-12.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Private-address-Space"><a href="#Private-address-Space" class="headerlink" title="Private address Space"></a>Private address Space</h2><p>10.0.0.0 - 10.255.255.255</p>
+<p>172.16.0.0 - 172.31.255.255</p>
+<p>192.168.0.0 - 192.168.255.255</p>
+<p>There are certain IP address ranges reserved for private IP addressing schemes.</p>
+<p>数据报中的源地址和目的地址是不变的，路由器的地址并不在其中</p>
+<h2 id="IP-地址与硬件地址"><a href="#IP-地址与硬件地址" class="headerlink" title="IP 地址与硬件地址"></a>IP 地址与硬件地址</h2><p><img src="/../img/computernetwork/3-13.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/computernetwork/3-14.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li><p>IP抽象层只能看到IP数据报</p>
+</li>
+<li><p>路由器可以看到IP地址但是路由器仅仅是根据IP地址选择合适的转发路径，具体选择转发路径的方式就是选择不同的端口以及相对应的MAC地址进行再次封装</p>
+</li>
+<li><p>在局域网的链路层只能看见MAC帧</p>
+</li>
+<li><p>IP屏蔽了一些下层的复杂的细节</p>
+</li>
+</ol>
+<h2 id="ARP"><a href="#ARP" class="headerlink" title="ARP"></a>ARP</h2><p>每台主机上都有一个ARP Cache里面有本局域网上的各个主机和路由器的IP地址到硬件地址的映射表，如果A要向某台主机B发送IP数据报，则在ARP Cache 中寻找对应的MAC地址，写入MAC帧。</p>
+<p>如果找到了，封装mac帧，发送。</p>
+<p>如果没找到则A就运行ARP协议</p>
+<p>1）A发送一个ARP请求分组</p>
+<p>注意ARP请求分组是广播而ARP响应是单播的</p>
+<p>为了提高效率，在ARP请求中也会有主机A的MAC信息，B可以在收到请求后吧A的映射也写到自己的ARP Cache中</p>
+<p>2）如果B在收到这个请求分组后发现自己的IP和要查询的IP相同，那么就收下（在自己的Cache中存储A的映射）,然后发送ARP响应分组。给出自己的IP地址以及硬件地址。由于B已经知道了A的MAC地址和IP地址的映射，因此ARP响应分组是普通的单播。</p>
+<p>4）A收到响应分组以后就在ARP告诉缓存中写u人主机B的IP地址到硬件地址的映射。</p>
+<p>ARP中的每一段映射都有生存周期，如果出现硬件更换的情况生存周期可以确保A能重新发送请求获得正确的映射（但是错误发送的IP报文回不来了）</p>
+<p>注意：以上协议只能发生在同一局域网中，如果目标主机在另外的局域网中，那么主机只需要知道此网络的router的ip和mac的映射关系（这也可以解释为什么路由器在网络层应为其必须要去除mac帧的头然后读取ip信息然后才能转发）</p>
+<h2 id="IP数据报的格式"><a href="#IP数据报的格式" class="headerlink" title="IP数据报的格式"></a>IP数据报的格式</h2><p><img src="/../img/computernetwork/3-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>一个IP数据报由首部和数据两个部分组成。首部包括20byte的固定长度和可选字段。</p>
+<ol>
+<li>版本（4bit）</li>
+</ol>
+<p>IP协议版本</p>
+<ol start="2">
+<li>首部长度（4bit）。</li>
+</ol>
+<p>首部长度的单位是32bit（4byte）由于固定部分是20字节所以其最小值是5 0101，最长是 15 1111 表示首部长为6obyte </p>
+<p>如果首部长度不是4字节的整数倍，则必须填充以满足。</p>
+<ol start="3">
+<li>区分服务（8bit）</li>
+</ol>
+<p>只有在使用区分服务的时候，这个字段才有作用，但是一般都不使用。</p>
+<ol start="4">
+<li>总长度（16bit）</li>
+</ol>
+<p>总长度的单位是字节。最大可以表示的数据报有2^16 - 1&#x3D;65535byte.</p>
+<p>数据报文最大（首部和数据之和的长度）受制于一个数据帧的数字字段的最大长度（最大传送单元MTU Maximum Transfer Unit）所以一个IP数据报的总长度一定不能超过MTU，否则必须进行分片处理</p>
+<p>为了统一规定IP协议规定互联网中的所有主机和路由器必须能够接受长度不超过576字节的数据包 512 + 60（最长的IP数据报首部）+ 4字节的富余量，如果实际传输的数据大于此值，那么首先要检查目的主机以及路由器能否处理，否则就需要分片</p>
+<p>如果有分片，，那么总长度是指的是各个分片的总长度（说明分片的时候要修改）</p>
+<ol start="5">
+<li>标识：（identification）(16bit<br>)</li>
+</ol>
+<p>每产生一个数据报计数器就+1并且将此值付给标识字段。标识没有序号意义，仅仅只是作为是否同属一个原来的数据报在分片的标志。</p>
+<ol start="6">
+<li>标志：(flag)（3bit）</li>
+</ol>
+<p>目前只有两位有意义</p>
+<p>MF（more fragment）最低位，表示后面还有分片，否则表示这就是最后一个分片</p>
+<p>DF(dont fragment)意思是不能分片，只有DF &#x3D; 0 的时候才允许分片。</p>
+<ol start="7">
+<li>片位移（13bit）：单位为8byte，指出某片在原分组中的相对位置。这个偏移是在最原始的IP数据报中偏移而不是相对偏移。</li>
+</ol>
+<p>分片过程中标识不需要修改，但是总长度，MF位，DF位，片位移都需要进行相应的修改。</p>
+<ol start="8">
+<li>生存时间：TTL（Time to live）（8bit）</li>
+</ol>
+<p>目前是作为跳数限制占8位最多255，每次经过一个路由器的时候就-1，当等于0则丢弃</p>
+<ol start="9">
+<li>协议（8bit）</li>
+</ol>
+<p>此数据包携带的数据是哪种协议以便于上交给哪个协议进行处理</p>
+<ol start="10">
+<li>首部检验和（16bit）</li>
+</ol>
+<p>只检验首部而不检验数据以减小计算量数据报每经过一个路由器，路由器都要重新计算一下首部检验和（首部可能有字段发生变化）</p>
+<p>如何计算？</p>
+<p>先把首部划分为16bit的字段，把校验和字段置为0。应为首部一定事宜4byte为单位的，因此一定可以完整划分。</p>
+<p>将各个16bit按照反码算数运算相加，将得到的值取反码写入检验和字段。接收方收到数据报后将首部所有字段再用反码算数运算计算一遍最后取发反码，若没有差错则和为0</p>
+<ol start="11">
+<li><p>源地址（32bit）</p>
+</li>
+<li><p>目的地址（32bit）</p>
+</li>
+</ol>
+<p>可变部分：</p>
+<p>主要用于支持排错测量以及安全等等措施。</p>
+<h2 id="IP分组的转发"><a href="#IP分组的转发" class="headerlink" title="IP分组的转发"></a>IP分组的转发</h2><p>一个实际的路由表可能还会有其他信息，比如标记参数使用情况等等。</p>
+<p><img src="/../img/computernetwork/3-15.png" srcset="/img/loading.gif" lazyload></p>
+<p>特定主机路由：针对特定的目的主机指明一个路由。</p>
+<p>默认路由：</p>
+<p>分组转发算法：</p>
+<ol>
+<li><p>从数据报的首部提取目的主机的IP地址D，得出目的网络地址位N</p>
+</li>
+<li><p>如果N就是此路由器直接相连的某个网络地址则直接交付，否则继续</p>
+</li>
+<li><p>如果路由表中有目的地址的D的特定主机路由，则交给指定的下一跳，否则继续</p>
+</li>
+<li><p>如果路由表中有达到网络N的路由，则把数据报传送给下一跳路由器。否则继续</p>
+</li>
+<li><p>如何没有则交给默认路由器</p>
+</li>
+<li><p>如果连默认路由器都没有，则报告转发出错</p>
+</li>
+</ol>
+<h1 id="划分子网与构造超网"><a href="#划分子网与构造超网" class="headerlink" title="划分子网与构造超网"></a>划分子网与构造超网</h1><p>划分子网的方法是从主机号借用若干位作为子网号（sub-netid）</p>
+<p>发送给某一网络的数据报照常，但是路由器收到数据报进行交付的时候根据子网交付</p>
+<p>子网在拓扑结构上已经实际上是一个网络了，应为他实际上已经连接的是路由器的不同端口了</p>
+<p><img src="/../img/computernetwork/3-16.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>子网掩码</strong></p>
+<p>如果一个网络没有划分子网则其子网掩码中的1的位置和IP地址中的网络号字段（net-id）刚好一一对应</p>
+<p>所以在配置路由器的时候在配置某一个端口的ip的同时也要配置其对应的子网掩码</p>
+<p>注意：一但划分了子网，那么发送者应该是要知道这种划分的，原来的网络就不存在了，存在的只有各个子网，这些子网对外显现出为一个网络。</p>
+<p>若subnet-id有nbit则一共有2^n的情况，除去全为0和全为1的情况，就可以得出表中的子网数。</p>
+<p><img src="/../img/computernetwork/3-18.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/computernetwork/3-17.png" srcset="/img/loading.gif" lazyload></p>
+<p>子网号不能位全0或者全1但是随着CIDR的出现，这种方式在某些情况下也是支持的</p>
+<h2 id="转发算法相应的改动"><a href="#转发算法相应的改动" class="headerlink" title="转发算法相应的改动"></a>转发算法相应的改动</h2><p>如果有子网，则转发算法也要修改</p>
+<p>在判断是否直接交付时，此时连接路由器各个端口的已经不再是传统分类上的网络，而可能是子网，所以在判断网络时要将D与子网掩码AND然后判断</p>
+<p>只有直接交付的情况下才能看到子网的具体划分，其余情况都是默认掩码，按照网络号（这与后面的路由表的生成有关系）</p>
+<h2 id="CIDR-无分类编址"><a href="#CIDR-无分类编址" class="headerlink" title="CIDR 无分类编址"></a>CIDR 无分类编址</h2><p>CIDR将网络前缀都相同的连续IP组成一个CIDR地址块，在此情况下CIDR使的子网掩码就是一连串网络前缀的1</p>
+<p>地址表示中全0和全1的主机号依然保留做特殊用途。</p>
+<p>利用超网的划分可以实现地址聚合。</p>
+<p><strong>最长前缀匹配</strong></p>
+<p><img src="/../img/computernetwork/3-19.png" srcset="/img/loading.gif" lazyload></p>
+<p>采用地址聚合时一般是不会出现多个匹配的情况的，但是实际路由设置过程中可能出现非聚合的情况</p>
+<p>如果出现多个匹配则选择最长的前缀匹配。</p>
+<p>一种快速查找方法，首先将每一个网络号的唯一前缀求出来，唯一前缀要是最小的能够唯一表示的前缀字段</p>
+<p>首先利用二分查找找出和最小前缀匹配的项目，但是这只是一个充分条件，在找到叶节点以后，在与子网掩码AND具体判断到底是不是正确的网络号</p>
+<p>还有更进一步的压缩技术等等</p>
+<h2 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h2><p><img src="/../img/computernetwork/3-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>实际上就是一种控制意义的IP数据报</p>
+<p>有两种类型：</p>
+<p>ICMP差错报文和ICMP询问报文</p>
+<p><img src="/../img/computernetwork/3-20.png" srcset="/img/loading.gif" lazyload></p>
+<p>ICMP的前4个字节是统一的格式，共有三个字段：类型，代码和检验和。接着4个字节与ICMP的类型有关，最后是数据字段，长度取决于ICMP类型。</p>
+<p><strong>差错报文类型：</strong></p>
+<ol>
+<li><p>终点不可到达:路由器或者主机不能交付数据报就向源点发送终点不可到达报文。</p>
+</li>
+<li><p>时间超过：路由器收到生存时间为0的数据报，再丢弃数据报外，还要向源点发送时间超过报文。</p>
+</li>
+<li><p>参数问题：当路由器或者目的主机收到的数据报的首部中的字段的值不正确，就丢弃该数据报，并且向源点发送参数问题报文</p>
+</li>
+<li><p>改变路由（重定向）：路由器把改变路由报文发送给主机，让主机知道下一次应该法数据报发送给更好的路由器</p>
+</li>
+</ol>
+<p><em>主机也有一个路由表。出于效率的考虑，这些主机不和连接在网络上的路由器定期交换路由信息。一般都在路由表中设置一个默认路由器的IP地址。</em></p>
+<p>所有ICMP的差错报告报文中的数字字段都具有相同的格式。把收到的需要进行差错报告的IP数据报的首部和数据字段的前8个字节提取出来作为ICMP报文的数据字段。在加上ICMP报文的前8个字节。其中IP数据报的前八个字节是得到了运输层的端口号（TCP和UDP）</p>
+<p><img src="/../img/computernetwork/3-21.png" srcset="/img/loading.gif" lazyload></p>
+<p>以下情况不发送差错报文</p>
+<ul>
+<li><p>ICMP差错报文的差错不发送差错报文</p>
+</li>
+<li><p>第一个分片的数据报片的所有后续数据报片</p>
+</li>
+<li><p>多播地址的数据报</p>
+</li>
+<li><p>特殊地址（如127.0.0.0或者0.0.0.0）</p>
+</li>
+</ul>
+<p><strong>询问报文类型：</strong></p>
+<ol>
+<li>回送请求或者回答</li>
+</ol>
+<p>ICMP 回送请求报文是由主机或者路由器向一个特定的目的主机发出的询问。收到此报文的主机必须给ICMP发送回送回答报文。</p>
+<ol start="2">
+<li>时间戳请求或者回答</li>
+</ol>
+<p>请某台主机或者路由器回答当前的日期和时间。回答报文中有一个32bit的字段。</p>
+<h2 id="ping（Packet-Internet-Group）"><a href="#ping（Packet-Internet-Group）" class="headerlink" title="ping（Packet Internet Group）"></a>ping（Packet Internet Group）</h2><p>tracerout指令</p>
+<h1 id="路由选择协议"><a href="#路由选择协议" class="headerlink" title="路由选择协议"></a>路由选择协议</h1><p>理想的路由算法：</p>
+<ul>
+<li><p>算法必须是正确的和完整的</p>
+</li>
+<li><p>算法在计算上应该简答</p>
+</li>
+<li><p>算法能适应通信量和网络拓扑的变化</p>
+</li>
+<li><p>算法应该具有稳定性</p>
+</li>
+<li><p>算法应该是公平的</p>
+</li>
+<li><p>算法应该是最佳的</p>
+</li>
+</ul>
+<p>静态路由选择策略（人工配置每一条路由）</p>
+<p>动态路由选择（自适应路由选择）</p>
+<h3 id="AS（autonomous-system）（自洽系统）"><a href="#AS（autonomous-system）（自洽系统）" class="headerlink" title="AS（autonomous system）（自洽系统）"></a>AS（autonomous system）（自洽系统）</h3><p>在单一技术管理下的一组路由器，这些路由器使用一种自洽系统内部的路由选择协议和共同的度量。一个AS对于其他AS表现出的是一个单一的和一致的路由选择策略。</p>
+<p>互联网将路由选择协议划分为两大类</p>
+<ul>
+<li><strong>内部网关协议IGP（Interior Gateway Protocol)</strong></li>
+</ul>
+<p>内部的路由选择协议和外部其他自洽系统的选择无关，有多种RIP OSPF  </p>
+<ul>
+<li><strong>外部网关协议EGP （Externel Gateway Protocol）</strong></li>
+</ul>
+<p>如果源主机和目的主机位于不同的自洽系统中，需要通过不同的路由协议转到另外一个自洽系统,目前使用BGP.</p>
+<p>自洽系统之间的路由选择叫做域间路由选择（interdomain routing）</p>
+<p>内部叫做 域内路由选择（intradomain routing）</p>
+<p><img src="/../img/computernetwork/3-22.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="RIP"><a href="#RIP" class="headerlink" title="RIP"></a>RIP</h3><h4 id="RIP-History"><a href="#RIP-History" class="headerlink" title="RIP History"></a>RIP History</h4><p>RIP v1 is considered an interior gateway protocol that is classful</p>
+<ul>
+<li><p>RIP v1 is a distance vector protocol that broadcasts its entire routing table to each neighbour router at predetermined itervals. The default interval is 30 seconds.</p>
+</li>
+<li><p>RIP used hop count as a metric with 15 as the maximum number of hops</p>
+</li>
+</ul>
+<p>RIP v1 is capable of load balancing over as many as six equal-cost paths, with four paths as the default.</p>
+<p>等价路径是指在路由网络中，到达目的地的多条路径具有相同的代价或距离。RIP v1 可以在这些等价路径上进行负载均衡，确保流量在这些路径之间分布均匀。</p>
+<p>RIP was originally specified in RFC 1058</p>
+<p>it has the following limitations</p>
+<ol>
+<li><p>it doesn’t send subnet mask information in its updates</p>
+</li>
+<li><p>It sends updates as broadcasts on 255.255.255.255</p>
+</li>
+<li><p>It doesn’t support authentication</p>
+</li>
+<li><p>It doesn’t able to support VLSM(可变长度子网掩码) or Classless Interdomain Routing(CIDR)</p>
+</li>
+</ol>
+<h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><p>The <code>router rip</code> command selects RIP as the routing protocol.</p>
+<p>The network command assigns a NIC-based network address（特定网络接口卡相关联的网络地址） to which a router will be directly connected.</p>
+<h4 id="RIP-v2"><a href="#RIP-v2" class="headerlink" title="RIP v2"></a>RIP v2</h4><p>RIP v2 is an improved version of RIP v1 and shares the following features:</p>
+<ul>
+<li><p>It is a distance vector protocol that uses a hop count metric.</p>
+</li>
+<li><p>It uses holddown timers to prevent routing loops&#x3D;default is 180 seconds.</p>
+</li>
+<li><p>It uses split horizon to prevent routing loops.</p>
+</li>
+</ul>
+<p>“Split horizon” 是一种路由算法中的策略，旨在防止路由环路的发生。它规定了当路由器向邻居广播更新信息时，不应将包含该更新信息的路由条目发送给它学到这个信息的邻居。这就是说，如果路由器A向邻居B报告了某个目的地的路由信息，A就不会再从B那里接收关于这个目的地的路由信息。</p>
+<p>A 中含有到达NET1的路由表项：NET1 直接交付，A转发给 B， B学到了此路由表 NET1 A。随后C与A的连接断开，但是A又收到了B的路由称中含有NET1 B，此时A已经删除了自己到达NET1的路由表项，因此又把NET1 B放入自己的路由表中，循环产生。</p>
+<p>一般也可以使用带毒性的水平分割（split-horizon with poisoned reverse），B回发送给A的表项中条数被设置为16跳，即永远不可到达，因此A不可能将其放入自己的路由表中。</p>
+<ul>
+<li>It uses 16 hops as a metric for infinite distance</li>
+</ul>
+<h4 id="Compare-RIPV1-AND-RIPV2"><a href="#Compare-RIPV1-AND-RIPV2" class="headerlink" title="Compare RIPV1 AND RIPV2"></a>Compare RIPV1 AND RIPV2</h4><p><img src="/../img/computernetwork/3-23.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="code-1"><a href="#code-1" class="headerlink" title="code"></a>code</h4><p>The router command starts the routing process</p>
+<p>The network commands causes the implementation of the following three functions:</p>
+<ul>
+<li>The routing updates are multicast out an interface</li>
+</ul>
+<p>RIP v2 使用组播（multicast）的方式发送路由更新。这意味着当路由器向网络中的其他路由器发送更新时，它将使用组播地址来传递这些信息，而不是向每个单独的路由器发送独立的更新。</p>
+<ul>
+<li>The routing updates are processed if they enter that same interface</li>
+</ul>
+<p>路由器接收到的路由更新只有在它们进入相同的接口时才会被处理。这是为了防止由于路由更新通过其他接口进入而引起的不必要的处理和信息循环。</p>
+<ul>
+<li>The subnet that is directly connected to that interface is advertised</li>
+</ul>
+<p>直接连接到路由器的子网将被广告（advertised）。这意味着路由器将告知其他路由器它所直接连接的网络的可达性信息。这是 RIP v2 的一种基本行为，确保网络中的其他路由器了解到这些直接连接的子网。</p>
+<h4 id="Verifying-RIP-v2"><a href="#Verifying-RIP-v2" class="headerlink" title="Verifying RIP v2"></a>Verifying RIP v2</h4><ul>
+<li><p>Router# show ip protocols </p>
+</li>
+<li><ul>
+<li>Verifying the RIP Configuration</li>
+</ul>
+</li>
+<li><p>Router# show ip route</p>
+</li>
+<li><ul>
+<li>Displaying the IP Routing Table</li>
+</ul>
+</li>
+</ul>
+<p>Troubleshooting RIP v2</p>
+<ul>
+<li>Router# debug ip rip</li>
+</ul>
+<p><img src="/../img/computernetwork/3-24.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><ul>
+<li>display RIP routing updates sent and received.</li>
+</ul>
+</li>
+<li><p>Router# undebug all </p>
+</li>
+<li><ul>
+<li>turn of al the debugging</li>
+</ul>
+</li>
+</ul>
+<h2 id="diferences-of-v1-and-v2"><a href="#diferences-of-v1-and-v2" class="headerlink" title="diferences of v1 and v2"></a>diferences of v1 and v2</h2><p><img src="/../img/computernetwork/3-9.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h4><p>基于距离向量的路由选择协议，要求每一个路由器都必须维护从他自己到其他每一个目的网络的距离的记录.</p>
+<p>RIP使用“跳数”（hop count）记录距离。</p>
+<p>RIP 跳数最大位16(15)，超过则认为不可达。</p>
+<p>RIP不能再两个网络之间同时使用多条路由。RIP会选择一条具有有最少路由器的路由（哪怕存在更低时延的路由）</p>
+<p><strong>如何交换信息</strong></p>
+<ul>
+<li><p>仅仅和相邻的路由器交换信息</p>
+</li>
+<li><p>交换的信息是当前本路由器知道的所有信息，即自己的现在路由表,“我到本自治系统中所有网络的最短距离，以及到每个网络应该经过的下一跳路由器”</p>
+</li>
+<li><p>按照固定的时间间隔交换路由信息</p>
+</li>
+</ul>
+<p>PS：事实上也就意味着路由表中最主要的信息就是到某个网络的距离以及经过下一跳的地址。路由表更新的原则就是找到每个目的网络的最短距离，又称之为距离向量算法</p>
+<p><strong>距离向量算法</strong></p>
+<p>假设发送过来的路由表格式有：</p>
+<ol>
+<li><p>对于地址为X的相邻路由发送的报文，修改所有项目，把下一跳字段中的地址都作为X，并且把距离+1，即目的网络N， 距离d+1，下一跳路由器X。</p>
+</li>
+<li><p>如果路由表中没有N，则加入</p>
+</li>
+</ol>
+<p>如果路由表中有N，否则查看此项目下一跳地址</p>
+<p>如果下一跳地址是X，则更新</p>
+<p>如果下一跳地址不是X，则比较距离，如果新项目距离更小则替换，如果项目距离更大则不替换。</p>
+<ol start="3">
+<li>如果三分钟还没有收到相邻路由表的更新路由表，则把此相邻路由器记为不可到达，设置为16</li>
+</ol>
+<p><strong>Bellman-ford 算法</strong></p>
+<p>对于一个有向图G（V,E）Bellman-ford算法可以给出对于源点s到其他各个点的最短路径。</p>
+<p>算法思路。</p>
+<p>set every vertice in a tag d(v) , default is inf except the source vertice. then check every edge e_i &lt;v_i,v_j&gt; if d(v_j) &gt; w(v_i,v_j) + d(v_i) then change the d(v_j) into w(v_i, v_j) + d(v_i). Do the loop for every vertice and after |v| - 1 loop all the vertice get the d(v) which is the min weighted path. </p>
+<p>RIP协议也是封装在IP数据报内部的</p>
+<h3 id="RIP协议的报文格式"><a href="#RIP协议的报文格式" class="headerlink" title="RIP协议的报文格式"></a>RIP协议的报文格式</h3><p><img src="/../img/computernetwork/3-6.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意RIP协议使用UDP传输</p>
+<p>首部四个字节，分为命令，版本，以及一段0，</p>
+<p>命令字段指明此报文的意义，比如1请求路由信息<br>2表示对请求路由信息的响应或者未被请求而发出的路由更新报文</p>
+<p>路由部分中地址标识符字段用来标志所使用的地址协议如果是IP就令这个字段为2（说明也可以支持非TCP&#x2F;IP协议）</p>
+<p>路由标记填入自洽系统号（ASN Autonomous System Number）（有可能收到其他ASN的信息）</p>
+<p>RIP报文的最大长度：4字节首部+20 * 25字节的路由信息</p>
+<p>也可以使用鉴别功能此时将地址族标识设为全1，路由标记写入鉴别的类型</p>
+<p>ASN是一个16位的号码 由IANA分配</p>
+<p><img src="/../img/computernetwork/3-7.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>性质</strong>：</p>
+<p>好消息传播的快，坏消息传播的慢</p>
+<h3 id="OSPF"><a href="#OSPF" class="headerlink" title="OSPF"></a>OSPF</h3><p>Open Shortest Path First (OSPF) is a link-state routing protocol based on open standards</p>
+<p>It is described in several standards of the Internet Engineering Task Force (IETF)</p>
+<p>OSPF is becoming the preferred IGP protocol when compared with RIPv1 and RIPv2 because it is scalable</p>
+<h4 id="Routing-Information"><a href="#Routing-Information" class="headerlink" title="Routing Information"></a>Routing Information</h4><p>The state of link is description of an interface and the relationship to its neighbouring routers</p>
+<p>The collections of link-states forms a link-state database, sometimes called a topological database</p>
+<p>Routers apply the Dijkstra shortest path first(SPF) algorithm to build the SPF tree, with themselves as the root.</p>
+<p>Router calculate the best paths through SPF tree, then best paths are selected and placed in the routing table</p>
+<p>开放最短路径有限（Open Short Path First）</p>
+<p>使用了Dijstra提出的最短路径算法SPF</p>
+<p><strong>Dijkstra SPF 算法</strong></p>
+<p>set a source vertice</p>
+<p>set a path_len array d[]</p>
+<p>set a visited array visted[]</p>
+<p>set a pre array[]</p>
+<p>at the beginning d[s] &#x3D; 0 d[else] &#x3D; inf all the vertice is unvisited.</p>
+<ol>
+<li><p>in all unvisited vertice find the min path_len one v_j. set it as visited.</p>
+</li>
+<li><p>check all the connected and not visited vertice v_i if d[v_j] + w(v_j,v_i) &lt; d[v_i] update d[v_i] and set the pre of v_i as v_j;</p>
+</li>
+</ol>
+<p>go back to 1 untill all the vertice is visited.</p>
+<p><strong>proof</strong></p>
+<p>for s-&gt; v if all the vertice between s -&gt; v is in S then the min v is dist[v] becaue eevry d[v] is inf so dist[v] if not update must come from v_n and which mean v_n have been visted. If there is a path s -&gt; v has a v_m not in the S, but s -&gt; v is the min, then pick s -&gt; v_m &lt; s -&gt; v_k v_k is the vertice before v, but when we pick v_k v_k is the min unvisited vertice and there is a paradox</p>
+<p>特征：使用分布式的链路状态协议（link state protocol）</p>
+<ol>
+<li><p>用洪泛法（flooding）向所有路由器发送信息</p>
+</li>
+<li><p>发送的信息就是本路由器和相邻的所有路由器的链路状态 包括和哪些路由器相连以及该链路的度量（metric）</p>
+</li>
+<li><p>只有当链路发生变化的时候路由器才向所有路由器洪泛法发送信息，而RIP是定期交换信息</p>
+</li>
+</ol>
+<p>最后全网范围内都有一个同步的链路数据库，包括所有路由器相互连接的情况，然后依据这个数据库构建自己的路由表Dijkstra最短路径路由算法</p>
+<p>特点：更新过程收敛的块</p>
+<p>为了降低洪泛法的消耗</p>
+<p>可以将一个自洽系统划分位若干个更小的范围（area）每个区域都有一个32bit的区域标识符每一个区域的路由器只知道本区域的完整网络拓扑。在上层的区域叫做主干区域（backbone）规定其标识符为0.0.0.0，其他区域的来的信息都有区域边界路由器进行概括。所有主干区域内的路由器叫做主干路由器。与其他自治系统交换路由信息的路由器叫做自治边界路由器</p>
+<p><img src="/../img/computernetwork/3-1.png" srcset="/img/loading.gif" lazyload>     </p>
+<p>OSPF不使用UDP而是直接使用IP数据报传送</p>
+<p><img src="/../img/computernetwork/3-8.png" srcset="/img/loading.gif" lazyload></p>
+<p>支持：</p>
+<ol>
+<li><p>为不同的业务设定不同的代价，从而得到不同的路由</p>
+</li>
+<li><p>如果某个目的网络有多条相同的代价，负载平衡</p>
+</li>
+<li><p>OSPF支持可变长的子网划分和无分类的CIDR</p>
+</li>
+<li><p>每一个链路状态都带上一个32位的序号，链路序号的增长速率不得超过5秒钟1次</p>
+</li>
+</ol>
+<h4 id="OSPF五种分组分类"><a href="#OSPF五种分组分类" class="headerlink" title="OSPF五种分组分类"></a>OSPF五种分组分类</h4><ol>
+<li><strong>问候（hello)</strong></li>
+</ol>
+<p>发现维持相邻的站的可达性</p>
+<ol start="2">
+<li><strong>数据库描述分组（data description）</strong></li>
+</ol>
+<p>向临站给出自己的链路状态数据库中的所有的链路状态项目和摘要信息</p>
+<p>3.<strong>链路状态请求（Link State Request</strong></p>
+<p>向对方请求发送某些立澜路状态项目的详细信息</p>
+<p>4.<strong>链路状态更新（Link State Update)</strong></p>
+<p>用洪泛法对全网更新链路状态</p>
+<p>5.<strong>链路状态确认（Link State Acknowledgment)</strong></p>
+<p>两个相邻路由器每10s要交换依次问候分组，明确哪些相邻的路由器是可达的</p>
+<p><img src="/../img/computernetwork/3-26.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="Difference-of-OSPF-and-RIP"><a href="#Difference-of-OSPF-and-RIP" class="headerlink" title="Difference of OSPF and RIP"></a>Difference of OSPF and RIP</h4><p><img src="/../img/computernetwork/3-10.png" srcset="/img/loading.gif" lazyload></p>
+<p>OSPF Features</p>
+<p>OSPF overcomes these limitations</p>
+<p>more robust and more scalable</p>
+<p>large OSPF network use a hierarchical design</p>
+<h4 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h4><p><strong>Link</strong> is a physical connection between two network devices</p>
+<p><strong>Link-State</strong> of a link between two routers, including information about a router’s interface and its relationship to neighbouring routers</p>
+<p><strong>cost</strong>: The value assigned to a link. Rather than hops, link-state protocols assign a cost to a link, which is based on the bandwidth of the link</p>
+<p><strong>Area</strong>: a collection of networks&#x2F;routers having the same area ID Each router within an area has the same link-state information.</p>
+<p><strong>Neighbourship Database</strong>: A listing of all the neighbours to which a router has established a bi-directional communication(双向通信)</p>
+<p><strong>Topology Database</strong>: A list of information about all other routers in the internetwork. It shows the internetwork topology.</p>
+<p><strong>Routing Table</strong>: Sometimes known as the forwarding database The routing table each router is unique.</p>
+<p><strong>Designated Router</strong>(DR): One router on an OSPF multiaccess network that is elected to represent all the routers in that network</p>
+<p><strong>Backup Designated Router(BDR)</strong></p>
+<p>A standby router that becomes the DR, if the original DR fails.</p>
+<p><strong>Area</strong>: Areas are defined with a 32 bits number. It can be either in IP format or single decimal value. Area 0 or Area 0.0.0.0</p>
+<p><strong>Area 0</strong>:A single area whose area number is 0</p>
+<p>OSPF uses a 2 level hierarchical model</p>
+<p>In multi-area OSPF networks, all areas are required to connected to area 0</p>
+<p><img src="/../img/computernetwork/3-27.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="OSPF-Operations"><a href="#OSPF-Operations" class="headerlink" title="OSPF Operations"></a>OSPF Operations</h4><p>OSPF use neighbour adjacencies to gain full knowledge of the network.</p>
+<p>OSPF operation include five steps</p>
+<p><strong>1. set up the adjacency relationships</strong></p>
+<p>Router send hello packet at an interval. If a neighbour founded: Add the neighbour to the neighbourship database</p>
+<p>Discover the network type</p>
+<p>If a multi-access network, enter the DR&#x2F;BDR election process and enter Step2</p>
+<p>Discover the network type. If point-to-point or point-to-multipoint, no DR&#x2F;BDR is elected and skip Step 2</p>
+<p>If the DR&#x2F;BDR fields in the hello packet’s header is already occupied, no DR&#x2F;BDR election occurs and skip step2</p>
+<p><strong>2. elect DR and BDR (if needed)</strong></p>
+<p>If no other router online, the router becomes the DR. The next router to “come up” will be BDR</p>
+<p>If multiple routers(two or more) come online simultaneously, then…</p>
+<p>The router with the highest priority becomes DR (Priority of zero means “never DR”)(If there is a tie, then the router with the highest router ID become DR) (Router ID is the highest loopback or interface IP address)</p>
+<p>Router with second highest priority or router ID beocmes BDR</p>
+<p>BDR becomes DR if the DR fails</p>
+<p>However If A new OSPF router joins the network with a higher priority or router ID the current DR and BDR do not change</p>
+<p>It would become the new BDR only if the current DR failed or become the new DR only if the current DR and BDR failed</p>
+<p><strong>3. Discover the routes</strong></p>
+<p>Previously explained in the ExStart to Full State </p>
+<p>Routers determine “master&#x2F;slave” relationship</p>
+<p>DR&#x2F;BDR in multiaccess networks exchange LSAs and all DR routers send the DR&#x2F;BDR their Type 2 DBDS</p>
+<p><strong>4. Choose appropriate routes</strong></p>
+<p><strong>5. Maintain the route information</strong></p>
+<p>The regular exchange of hellos is the mechanism OSPF uses to detect a new neighbour or a downed neighbour.</p>
+<p>OSPF has seven states.</p>
+<p>Init, 2Way, Ex Start, Exchange, Loading, Full</p>
+<h4 id="OSPF-NetWork-Types"><a href="#OSPF-NetWork-Types" class="headerlink" title="OSPF NetWork Types"></a>OSPF NetWork Types</h4><ul>
+<li><p>Broadcast multi-access, such as Ethernet</p>
+</li>
+<li><p>Point-to-Point networks</p>
+</li>
+<li><p>Nonbroadcast multi-access(NBMA)</p>
+</li>
+</ul>
+<p>only Broadcast mutiaccess and nonbroadcast multiaccess should elect DR</p>
+<h4 id="DR-amp-BDR"><a href="#DR-amp-BDR" class="headerlink" title="DR &amp; BDR"></a>DR &amp; BDR</h4><p>each router then forms adjacency with DR and BDR</p>
+<p>The DR sends link-state information to all other routers on the segment using the multicast address of 224.0.0.5 for all OSPF routers</p>
+<p>to ensure that DR&#x2F;BDR see the link states all routers send on the segment, the multicast address for all DR&#x2F;BDRs 224.0.0.6 is used.</p>
+<h4 id="OSPF-Packets"><a href="#OSPF-Packets" class="headerlink" title="OSPF Packets"></a>OSPF Packets</h4><p><em>Header</em></p>
+<p><img src="/../img/computernetwork/3-28.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/computernetwork/3-30.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>Hello</strong> Hello</p>
+<p>when a router starts an OSPF routing process on an interface, it sends a hello packet and continues to send hello at regular intervals</p>
+<p>The rule that govern the exchange of OSPF hello packets are called the Hello protocol</p>
+<p>Hello are sent every 10 seconds by default on broadcast nulti-access and point-to-point networks, such as Frame Relay, the default time is 30 seconds.</p>
+<p><strong>Database Description</strong> DBD</p>
+<p><strong>Link-State Request</strong> LSR</p>
+<p><strong>Link-State Update</strong> LSU</p>
+<p><strong>Link-State Acknowledgement</strong> LSAck</p>
+<h4 id="Which-Router-will-be-DR"><a href="#Which-Router-will-be-DR" class="headerlink" title="Which Router will be DR?"></a>Which Router will be DR?</h4><p>Priority + Router ID the biggest is DR the second biggest is BDR</p>
+<p>Priority:1-255 Default &#x3D; 1;</p>
+<p>Router ID:</p>
+<ul>
+<li><p>A loopback IP address</p>
+</li>
+<li><p>If the absence of loopback IP address, the highest-value address interface IP</p>
+</li>
+<li><p>If the interface goes down, the router must re-estabishing adjacency and readvertising LSA</p>
+</li>
+</ul>
+<p><img src="/../img/computernetwork/3-29.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="code-2"><a href="#code-2" class="headerlink" title="code"></a>code</h4><p><code>router ospf process-id</code></p>
+<p><code>network address wildcard-mask area area-id</code></p>
+<p>在子网掩码中，将掩码的一位设成1表示IP地址对应的位属于网络地址部分。相反，在访问列表中将通配符掩码中的一位设成1表示I P地址中对应的位既可以是1又可以是0。有时，可将其称作“无关”位，因为路由器在判断是否匹配时并不关心它们。掩码位设成0则表示IP地址中相对应的位必须精确匹配。</p>
+<p>to add stability to OSPF router ID</p>
+<p><code>interface loopback number</code></p>
+<p><code>ip address address subnet-mask</code></p>
+<p>here the loopback interface must be configured before the OSPF process start</p>
+<p><code>ip ospf priority number</code></p>
+<p>number 0-255 default is 1</p>
+<p>A 0 priority indicates an interface cannot be elected as DR or BDR</p>
+<p><code>show ip ospf [interface type number]</code></p>
+<h4 id="cost-of-ospf"><a href="#cost-of-ospf" class="headerlink" title="cost of ospf"></a>cost of ospf</h4><p>it is a 16bit number 1-65535</p>
+<p>Formula COST &#x3D; 100000000&#x2F;Bandwidth</p>
+<p>All interfaces connected to the same link must agree on the cost of that link. Otherwise, the link will be considered down.</p>
+<p><code>Router(config-if)# ip ospf cost number</code></p>
+<p><code>Router(config-if)# bandwidth number</code></p>
+<h4 id="timers"><a href="#timers" class="headerlink" title="timers"></a>timers</h4><p>All the routers in an OSPF area must agree on the same hello interval and the same dead intervals</p>
+<p><code>Router(config-if)# ip ospf hello-interval seconds</code></p>
+<p><code>Router(config-if)# ip ospf dead-interval seconds</code></p>
+<h2 id="BGP"><a href="#BGP" class="headerlink" title="BGP"></a>BGP</h2><p>互联网规模太大，自洽系统AS之间的路由选择非常困难</p>
+<p>自洽系统AS之间路由选择必须考虑有关策略</p>
+<p><strong>BGP发言人</strong></p>
+<p>每一个自治系统的管理员选择至少一个路由器作为该自治系统的“BGP发言人”</p>
+<p>BGP发言人之间使用TCP连接建立BGP共享路由信息</p>
+<p>所以每一个BGP发言人除了要运行BGP协议以外，还必须运行该内部网关协议比如OSPF RIP</p>
+<p><img src="/../img/computernetwork/3-31.png" srcset="/img/loading.gif" lazyload></p>
+<p>BGP刚刚运行的时候BGP相邻的站交换整个BGP路由表，以后只更新有变化的部分</p>
+<p>报文：</p>
+<ol>
+<li><p>OPEN</p>
+</li>
+<li><p>UPDATE</p>
+</li>
+<li><p>KEPPALIVE</p>
+</li>
+<li><p>NOTIFICATION</p>
+</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/computernetwork/" class="category-chain-item">computernetwork</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Computernetwork3_networklayer</div>
+      <div>https://perticevassly.github.io/project/2023/12/13/computernetwork3/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>PV</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年12月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/09/19/computernetwork1/" title="Computernetwork1_Summary">
+                        <span class="hidden-mobile">Computernetwork1_Summary</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
