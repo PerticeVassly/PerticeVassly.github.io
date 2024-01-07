@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Demand15_stakeholderanalysis</title>
+    <link href="/2024/01/07/demand15/"/>
+    <url>/2024/01/07/demand15/</url>
+    
+    <content type="html"><![CDATA[<h1 id="什么是涉众"><a href="#什么是涉众" class="headerlink" title="什么是涉众"></a>什么是涉众</h1><p>两种类型</p><p>人脑外知识：问题域内的科学规律</p><p>人脑内知识：困难，有很多问题</p><ul><li><p>如何寻找有效的人</p></li><li><p>如何和他们进行交流</p></li><li><p>通过与人交流补充对于客观的问题域的认知，了解软件用户诉求的主观目标</p></li></ul><p><strong>涉众是所有能够影响软件系统的实现，或者会被实现后软件系统所影响的，关键的人和团体（stakeholder）</strong></p><p>涉众分析围绕一个组织的各个部门内的员工所负责的业务展开</p><p>此类涉众分析的难度随着组织机构的复杂性和不确定性的增长而增加</p><p><img src="/../img/demand/15-1.png"></p><h2 id="涉众识别的基本原则"><a href="#涉众识别的基本原则" class="headerlink" title="涉众识别的基本原则"></a>涉众识别的基本原则</h2><p>涉众类别需要细分，发现所有的类别</p><ul><li>每一类涉众的所有成员都能够一直，稳定的从相同的立场，相同的视角来看待相同的软件系统</li></ul><p>发现比较关键的涉众：</p><ul><li>如果互动以及其关注点属于项目的目标与范围，那么涉众就属于关键涉众</li></ul><p>涉众群体不是固定不变的，需要持续维护</p><h2 id="识别涉众的方法"><a href="#识别涉众的方法" class="headerlink" title="识别涉众的方法"></a>识别涉众的方法</h2><p><strong>简单方法：线膨胀后收缩（Expand -&gt;Shrink）</strong></p><ul><li>尽可能列出涉众后尝试合并，易用但是可能有遗漏</li></ul><p><strong>经典方法：涉众网络</strong></p><ul><li><p>从最容易发现的涉众（客户，管理者，投资人）出发</p></li><li><p>与初始涉众一起“膨胀-收缩”，集体确定关键涉众列表，再请列表中的型代表加入讨论，指导列表稳定</p></li></ul><p><strong>经验方法：检查列表（Checklist）</strong></p><h3 id="利用主体依赖模型（ADM）分析涉众互动-识别关键涉众类别"><a href="#利用主体依赖模型（ADM）分析涉众互动-识别关键涉众类别" class="headerlink" title="利用主体依赖模型（ADM）分析涉众互动,识别关键涉众类别"></a>利用主体依赖模型（ADM）分析涉众互动,识别关键涉众类别</h3><p>目标依赖</p><p>软目标依赖</p><p>任务依赖</p><p>资源依赖</p><h2 id="涉众描述"><a href="#涉众描述" class="headerlink" title="涉众描述"></a>涉众描述</h2><p>1，根据软件系统的功能前景寻找涉众</p><p>2，从涉众对象那里获得需求</p><p>3，分析涉众的输赢条件，试试共赢策略</p><p>4，涉众对于系统的影响力：了解涉众实现，监控和评估软件系统的能力，分析涉众的力量和影响范围；了解涉众实现，监控和评估软件系统的意愿，即分析涉众的关注点和兴趣取向</p><p>5，了解涉众的个人和工作特征，以便在涉众固定的情况下对软件系统的功能进行合理的恶整理</p><h3 id="涉众的简单描述"><a href="#涉众的简单描述" class="headerlink" title="涉众的简单描述"></a>涉众的简单描述</h3><p>个人特征</p><p>工作特征</p><p>地理和社会特征</p><h3 id="涉众深度信息描述"><a href="#涉众深度信息描述" class="headerlink" title="涉众深度信息描述"></a>涉众深度信息描述</h3><p>对项目关注点和新区所在，态度是反对还是赞同</p><p>对项目的期望，成为项目赢家的条件</p><p>对可能受到的项目的影响，影响的具体内容以及影响程度</p><p>可以对项目影响，力量的施加点以及其强度</p><h2 id="涉众评估"><a href="#涉众评估" class="headerlink" title="涉众评估"></a>涉众评估</h2><p><img src="/../img/demand/15-8.png"></p><h3 id="优先级评估-Power-Interest"><a href="#优先级评估-Power-Interest" class="headerlink" title="优先级评估(Power-Interest)"></a>优先级评估(Power-Interest)</h3><p>涉众并不是完全平等的有些涉众比其他涉众更加重要</p><p>优先考虑涉众的基本特征，尤其是（涉众所完成的）任务特征 </p><h3 id="风险评估-Power-Attitude"><a href="#风险评估-Power-Attitude" class="headerlink" title="风险评估(Power-Attitude)"></a>风险评估(Power-Attitude)</h3><h3 id="共赢分析"><a href="#共赢分析" class="headerlink" title="共赢分析"></a>共赢分析</h3><p>Stakeholder&#x2F;Issue</p><p><img src="/../img/demand/15-7.png"></p><p>列出系统所有涉众类别，明确他们的兴趣和对系统的期望</p><p>从涉众门的兴趣和期望中发现背后涉及的共同问题</p><p>建立涉众类别的问题的关联，如果某个涉众类别对于一个Issue存在兴趣那么该涉众类别就和这个Issue存在关联关系</p><p>对于每一个Stakeholder-Issue关系，标明该关系上面所被给予的期望</p><p><strong>如果某个关系所给予的期望与项目的业务需求无法保持一致，那么其关联的涉众在该Issue上与项目整体目标存在冲突</strong></p><p><strong>如果Stakeholder&#x2F;Issue关系图中某个Issue所关联的不同关系标识有互相冲突的期望，那么就意味着它所关联的涉众在该Issue上存在需求冲突</strong></p><p>分析各冲突方成为项目赢家的条件 </p><p>适当的调整, 化解冲突 </p><p>分析项目在该Issue上的目标、约束和可选方案，并提供给冲突方进行权衡，促进他们之间协商解决 </p><h1 id="涉众代表选择"><a href="#涉众代表选择" class="headerlink" title="涉众代表选择"></a>涉众代表选择</h1><p>（1）代表采样</p><p>完整采样：每种涉众类别都有自己的代表</p><p>态度积极：愿意提供帮助</p><p>数量适中：</p><p>比例恰当</p><p>（2）用户替代源，因为业务关系和用户频繁接触的人，能够代替他们发表看法</p><h1 id="明确参与策略"><a href="#明确参与策略" class="headerlink" title="明确参与策略"></a>明确参与策略</h1><p>建立和用户的直接联系</p><p>用户参与软件系统开发的整个过程</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>demand</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Demand20_demandanalysis,specification,verificationandadministration</title>
     <link href="/2024/01/07/demand20/"/>
     <url>/2024/01/07/demand20/</url>

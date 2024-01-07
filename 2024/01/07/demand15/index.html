@@ -1,0 +1,709 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/nerv.jpeg">
+  <link rel="icon" href="/img/nerv.jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="PV">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="什么是涉众两种类型 人脑外知识：问题域内的科学规律 人脑内知识：困难，有很多问题  如何寻找有效的人  如何和他们进行交流  通过与人交流补充对于客观的问题域的认知，了解软件用户诉求的主观目标   涉众是所有能够影响软件系统的实现，或者会被实现后软件系统所影响的，关键的人和团体（stakeholder） 涉众分析围绕一个组织的各个部门内的员工所负责的业务展开 此类涉众分析的难度随着组织机构的复杂性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Demand15_stakeholderanalysis">
+<meta property="og:url" content="https://perticevassly.github.io/project/2024/01/07/demand15/index.html">
+<meta property="og:site_name" content="PV&#39;s Blog">
+<meta property="og:description" content="什么是涉众两种类型 人脑外知识：问题域内的科学规律 人脑内知识：困难，有很多问题  如何寻找有效的人  如何和他们进行交流  通过与人交流补充对于客观的问题域的认知，了解软件用户诉求的主观目标   涉众是所有能够影响软件系统的实现，或者会被实现后软件系统所影响的，关键的人和团体（stakeholder） 涉众分析围绕一个组织的各个部门内的员工所负责的业务展开 此类涉众分析的难度随着组织机构的复杂性">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://perticevassly.github.io/img/demand/15-1.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/demand/15-8.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/demand/15-7.png">
+<meta property="article:published_time" content="2024-01-07T08:17:00.000Z">
+<meta property="article:modified_time" content="2024-01-07T08:18:34.137Z">
+<meta property="article:author" content="PV">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://perticevassly.github.io/img/demand/15-1.png">
+  
+  
+  
+  <title>Demand15_stakeholderanalysis - PV&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"perticevassly.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/eva.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Demand15_stakeholderanalysis"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-07 16:17" pubdate>
+          2024年1月7日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Demand15_stakeholderanalysis</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="什么是涉众"><a href="#什么是涉众" class="headerlink" title="什么是涉众"></a>什么是涉众</h1><p>两种类型</p>
+<p>人脑外知识：问题域内的科学规律</p>
+<p>人脑内知识：困难，有很多问题</p>
+<ul>
+<li><p>如何寻找有效的人</p>
+</li>
+<li><p>如何和他们进行交流</p>
+</li>
+<li><p>通过与人交流补充对于客观的问题域的认知，了解软件用户诉求的主观目标</p>
+</li>
+</ul>
+<p><strong>涉众是所有能够影响软件系统的实现，或者会被实现后软件系统所影响的，关键的人和团体（stakeholder）</strong></p>
+<p>涉众分析围绕一个组织的各个部门内的员工所负责的业务展开</p>
+<p>此类涉众分析的难度随着组织机构的复杂性和不确定性的增长而增加</p>
+<p><img src="/../img/demand/15-1.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="涉众识别的基本原则"><a href="#涉众识别的基本原则" class="headerlink" title="涉众识别的基本原则"></a>涉众识别的基本原则</h2><p>涉众类别需要细分，发现所有的类别</p>
+<ul>
+<li>每一类涉众的所有成员都能够一直，稳定的从相同的立场，相同的视角来看待相同的软件系统</li>
+</ul>
+<p>发现比较关键的涉众：</p>
+<ul>
+<li>如果互动以及其关注点属于项目的目标与范围，那么涉众就属于关键涉众</li>
+</ul>
+<p>涉众群体不是固定不变的，需要持续维护</p>
+<h2 id="识别涉众的方法"><a href="#识别涉众的方法" class="headerlink" title="识别涉众的方法"></a>识别涉众的方法</h2><p><strong>简单方法：线膨胀后收缩（Expand -&gt;Shrink）</strong></p>
+<ul>
+<li>尽可能列出涉众后尝试合并，易用但是可能有遗漏</li>
+</ul>
+<p><strong>经典方法：涉众网络</strong></p>
+<ul>
+<li><p>从最容易发现的涉众（客户，管理者，投资人）出发</p>
+</li>
+<li><p>与初始涉众一起“膨胀-收缩”，集体确定关键涉众列表，再请列表中的型代表加入讨论，指导列表稳定</p>
+</li>
+</ul>
+<p><strong>经验方法：检查列表（Checklist）</strong></p>
+<h3 id="利用主体依赖模型（ADM）分析涉众互动-识别关键涉众类别"><a href="#利用主体依赖模型（ADM）分析涉众互动-识别关键涉众类别" class="headerlink" title="利用主体依赖模型（ADM）分析涉众互动,识别关键涉众类别"></a>利用主体依赖模型（ADM）分析涉众互动,识别关键涉众类别</h3><p>目标依赖</p>
+<p>软目标依赖</p>
+<p>任务依赖</p>
+<p>资源依赖</p>
+<h2 id="涉众描述"><a href="#涉众描述" class="headerlink" title="涉众描述"></a>涉众描述</h2><p>1，根据软件系统的功能前景寻找涉众</p>
+<p>2，从涉众对象那里获得需求</p>
+<p>3，分析涉众的输赢条件，试试共赢策略</p>
+<p>4，涉众对于系统的影响力：了解涉众实现，监控和评估软件系统的能力，分析涉众的力量和影响范围；了解涉众实现，监控和评估软件系统的意愿，即分析涉众的关注点和兴趣取向</p>
+<p>5，了解涉众的个人和工作特征，以便在涉众固定的情况下对软件系统的功能进行合理的恶整理</p>
+<h3 id="涉众的简单描述"><a href="#涉众的简单描述" class="headerlink" title="涉众的简单描述"></a>涉众的简单描述</h3><p>个人特征</p>
+<p>工作特征</p>
+<p>地理和社会特征</p>
+<h3 id="涉众深度信息描述"><a href="#涉众深度信息描述" class="headerlink" title="涉众深度信息描述"></a>涉众深度信息描述</h3><p>对项目关注点和新区所在，态度是反对还是赞同</p>
+<p>对项目的期望，成为项目赢家的条件</p>
+<p>对可能受到的项目的影响，影响的具体内容以及影响程度</p>
+<p>可以对项目影响，力量的施加点以及其强度</p>
+<h2 id="涉众评估"><a href="#涉众评估" class="headerlink" title="涉众评估"></a>涉众评估</h2><p><img src="/../img/demand/15-8.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="优先级评估-Power-Interest"><a href="#优先级评估-Power-Interest" class="headerlink" title="优先级评估(Power-Interest)"></a>优先级评估(Power-Interest)</h3><p>涉众并不是完全平等的有些涉众比其他涉众更加重要</p>
+<p>优先考虑涉众的基本特征，尤其是（涉众所完成的）任务特征 </p>
+<h3 id="风险评估-Power-Attitude"><a href="#风险评估-Power-Attitude" class="headerlink" title="风险评估(Power-Attitude)"></a>风险评估(Power-Attitude)</h3><h3 id="共赢分析"><a href="#共赢分析" class="headerlink" title="共赢分析"></a>共赢分析</h3><p>Stakeholder&#x2F;Issue</p>
+<p><img src="/../img/demand/15-7.png" srcset="/img/loading.gif" lazyload></p>
+<p>列出系统所有涉众类别，明确他们的兴趣和对系统的期望</p>
+<p>从涉众门的兴趣和期望中发现背后涉及的共同问题</p>
+<p>建立涉众类别的问题的关联，如果某个涉众类别对于一个Issue存在兴趣那么该涉众类别就和这个Issue存在关联关系</p>
+<p>对于每一个Stakeholder-Issue关系，标明该关系上面所被给予的期望</p>
+<p><strong>如果某个关系所给予的期望与项目的业务需求无法保持一致，那么其关联的涉众在该Issue上与项目整体目标存在冲突</strong></p>
+<p><strong>如果Stakeholder&#x2F;Issue关系图中某个Issue所关联的不同关系标识有互相冲突的期望，那么就意味着它所关联的涉众在该Issue上存在需求冲突</strong></p>
+<p>分析各冲突方成为项目赢家的条件 </p>
+<p>适当的调整, 化解冲突 </p>
+<p>分析项目在该Issue上的目标、约束和可选方案，并提供给冲突方进行权衡，促进他们之间协商解决 </p>
+<h1 id="涉众代表选择"><a href="#涉众代表选择" class="headerlink" title="涉众代表选择"></a>涉众代表选择</h1><p>（1）代表采样</p>
+<p>完整采样：每种涉众类别都有自己的代表</p>
+<p>态度积极：愿意提供帮助</p>
+<p>数量适中：</p>
+<p>比例恰当</p>
+<p>（2）用户替代源，因为业务关系和用户频繁接触的人，能够代替他们发表看法</p>
+<h1 id="明确参与策略"><a href="#明确参与策略" class="headerlink" title="明确参与策略"></a>明确参与策略</h1><p>建立和用户的直接联系</p>
+<p>用户参与软件系统开发的整个过程</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/demand/" class="category-chain-item">demand</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Demand15_stakeholderanalysis</div>
+      <div>https://perticevassly.github.io/project/2024/01/07/demand15/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>PV</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/01/07/demand20/" title="Demand20_demandanalysis,specification,verificationandadministration">
+                        <span class="hidden-mobile">Demand20_demandanalysis,specification,verificationandadministration</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
