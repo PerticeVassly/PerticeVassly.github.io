@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Compileprinciple1_Summary</title>
+    <link href="/2024/01/25/compileprinciple1/"/>
+    <url>/2024/01/25/compileprinciple1/</url>
+    
+    <content type="html"><![CDATA[<h1 id="1-1-语言处理器"><a href="#1-1-语言处理器" class="headerlink" title="1.1 语言处理器"></a>1.1 语言处理器</h1><p>编译器：一个编译器就是一个程序，将某一个语言编写的程序翻译为一个等价的用另外一个语言编写的程序。</p><p>解释器（Interpreter）：直接利用用户提供的输入执行源程序中的指定的操作。</p><p>预处理器（preprocessor）：把源程序聚合在一起</p><p>汇编器（assembler）：负责将汇编语言转化为可重定位的机器代码</p><h1 id="1-2-编译器的结构"><a href="#1-2-编译器的结构" class="headerlink" title="1.2 编译器的结构"></a>1.2 编译器的结构</h1><p>分析部分（analysis）将源程序分割成为若干组成要素，并且在若干组成要素之上加上语法结构。然后它使用这个结构来创建该源程序的一个中间表示。如果分析部分检查出源程序没有感召正确的语法构成，或者予以不一致，它就要提供信息使得用户能够做出改正。</p><p>综合部分（synthesis）部分根据中间表示和符号表中的信息来构造用户期待的目标程序。分析部分被称之为编译器的前端（front end）综合部分称之为后端（back end）</p><p>一种更加详细的分析。</p><p><img src="/../img/compileprinciple/1-1.png"></p><h2 id="1-2-1-词法分析-lexical-analysis）-scanning"><a href="#1-2-1-词法分析-lexical-analysis）-scanning" class="headerlink" title="1.2.1 词法分析(lexical analysis）(scanning)"></a>1.2.1 词法分析(lexical analysis）(scanning)</h2><p>读取输入组成源程序的字符流，并且将他们组成有意义的词素（lexeme）序列，对于每一个词素，词法分析器产生单元（token）作为输出。</p><p>&lt;token-name,attribute-value&gt;</p><p>token-name:是一个语法分析步骤使用的抽象符号。</p><p>attribute-value:指向符号表中关于这个词法单元的条目。</p><h2 id="1-2-2-语法分析（syntax-analysis）解析（parsing）"><a href="#1-2-2-语法分析（syntax-analysis）解析（parsing）" class="headerlink" title="1.2.2 语法分析（syntax analysis）解析（parsing）"></a>1.2.2 语法分析（syntax analysis）解析（parsing）</h2><p>一种常见的方式是语法树（syntax tree）。</p><p>编译器的后续步骤是使用这个语法结构来帮助分析源程序，并且生成目标程序。</p><h2 id="1-2-3-语义分析（semantic-analyzer）"><a href="#1-2-3-语义分析（semantic-analyzer）" class="headerlink" title="1.2.3 语义分析（semantic analyzer）"></a>1.2.3 语义分析（semantic analyzer）</h2><p>使用语法树和符号表中的信息来检查源程序是否和语言定义的语义一致。同时收集信息，并且把这些信息存放在语法树或者符号表中，以便随后的中间代码生成过程中使用。</p><p>其中的重要部分是类型检查（type checking）</p><p>程序涉及语言可能允许一些自动的类型转换（coercion）</p><h2 id="1-2-4-中间代码生成"><a href="#1-2-4-中间代码生成" class="headerlink" title="1.2.4 中间代码生成"></a>1.2.4 中间代码生成</h2><p>三地址代码（three-address-code）</p><h2 id="1-2-5-代码优化"><a href="#1-2-5-代码优化" class="headerlink" title="1.2.5 代码优化"></a>1.2.5 代码优化</h2><p>机器无关的代码优化步骤试图改进中间代码，以便生成更好的目标代码。</p><h2 id="1-2-6-代码生成"><a href="#1-2-6-代码生成" class="headerlink" title="1.2.6 代码生成"></a>1.2.6 代码生成</h2><h2 id="1-2-7-符号表管理"><a href="#1-2-7-符号表管理" class="headerlink" title="1.2.7 符号表管理"></a>1.2.7 符号表管理</h2><p>符号表数据结构为每一个变量名字创建了一个记录条目，记录的字段就是名字的各个属性。</p><h2 id="1-2-8-将多个步骤合成趟"><a href="#1-2-8-将多个步骤合成趟" class="headerlink" title="1.2.8 将多个步骤合成趟"></a>1.2.8 将多个步骤合成趟</h2><p>多个步骤可以合成一趟（pass）。比如词法分析，语法分析，语义分析，以及中间代码的生成可以被组合在一起成为一趟。代码优化可以作为一个可选的趟。一个为特定目标机生成代码的后端趟。</p><h2 id="1-2-9-编译器构造工具"><a href="#1-2-9-编译器构造工具" class="headerlink" title="1.2.9 编译器构造工具"></a>1.2.9 编译器构造工具</h2><h1 id="1-3-程序设计语言的发展历程"><a href="#1-3-程序设计语言的发展历程" class="headerlink" title="1.3 程序设计语言的发展历程"></a>1.3 程序设计语言的发展历程</h1><p>一些语言的分类：</p><p>强制式（imperative）；</p><p>声明式（declarative）：</p><h1 id="1-6-静态和动态"><a href="#1-6-静态和动态" class="headerlink" title="1.6 静态和动态"></a>1.6 静态和动态</h1><h2 id="1-6-1-静态和动态"><a href="#1-6-1-静态和动态" class="headerlink" title="1.6.1 静态和动态"></a>1.6.1 静态和动态</h2><p>如果一个语言使用的策略支持编译器静态决定某个问题，那么我们说这个语言使用了一个静态（static）策略，或者说这个问题可以再编译时刻（compile time）内决定。另一方面，一个只允许再运行程序的时候做出决定的策略被称之为动态策略（dynamic policy）或者被认定为需要在运行时刻（run time）做出决定。</p><p>环境（environment）是一个名字到储存位置的映射。</p><p>状态（state）是一个内存位置到它们值的映射。</p><p>一个递归过程中的局部标识符将在不同的时刻指向不同的储存位置。</p><h2 id="1-6-6-参数传递机制"><a href="#1-6-6-参数传递机制" class="headerlink" title="1.6.6 参数传递机制"></a>1.6.6 参数传递机制</h2><p>值调用：</p><p>在Java使用值调用，但是如果传入的是一个对象，Java实际传入的是这个对象的指针。那么对于这个对象的操作是可以改变这个对象的值的。Java实际的机理是值调用，但是在表现形式（针对对象）上就好像是引用调用一样。</p><p>引用调用：</p><p>实在参数的地址作为相应的形式参数的值被传递给调用者。在被调用者的代码中使用形式参数的时候，实现的方法就是遵循着这个指针找到那个原始的内存位置做修改。</p><p>但是如果实在参数是一个表达式（右值），那么这样的回溯是不能成功的。</p><p>名调用：</p><h2 id="1-6-7-别名"><a href="#1-6-7-别名" class="headerlink" title="1.6.7 别名"></a>1.6.7 别名</h2><p>…</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>compileprinciple</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Computercomposition5_InputOutput</title>
     <link href="/2024/01/09/computercomposition5/"/>
     <url>/2024/01/09/computercomposition5/</url>
