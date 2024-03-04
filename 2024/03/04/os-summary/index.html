@@ -16,23 +16,27 @@
   <meta name="author" content="PV">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.1 语言处理器编译器：一个编译器就是一个程序，将某一个语言编写的程序翻译为一个等价的用另外一个语言编写的程序。 解释器（Interpreter）：直接利用用户提供的输入执行源程序中的指定的操作。 预处理器（preprocessor）：把源程序聚合在一起 汇编器（assembler）：负责将汇编语言转化为可重定位的机器代码 1.2 编译器的结构分析部分（analysis）将源程序分割成为若干组成">
+    <meta name="description" content="计算机系统计算机系统概览电子数字计算机是一种能够自行按照已经设定的程序进行数据处理的电子设备 冯诺依曼结构。。。 计算机系统的组成计算机系统：包括硬件子系统和软件子系统 硬件：借助电磁光机械等等原理构成的各种物理部件的有机组合，是系统工作的实体 软件：各种程序和文件，用于指挥计算机系统按照指定的要求进行协同工作，包括系统软件，支撑软件和应用软件。关键系统软件是：操作系统和语言处理程序 计算机系统的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Compileprinciple1_Summary">
-<meta property="og:url" content="https://perticevassly.github.io/project/2024/01/25/compileprinciple1/index.html">
+<meta property="og:title" content="os-summary">
+<meta property="og:url" content="https://perticevassly.github.io/project/2024/03/04/os-summary/index.html">
 <meta property="og:site_name" content="PV&#39;s Blog">
-<meta property="og:description" content="1.1 语言处理器编译器：一个编译器就是一个程序，将某一个语言编写的程序翻译为一个等价的用另外一个语言编写的程序。 解释器（Interpreter）：直接利用用户提供的输入执行源程序中的指定的操作。 预处理器（preprocessor）：把源程序聚合在一起 汇编器（assembler）：负责将汇编语言转化为可重定位的机器代码 1.2 编译器的结构分析部分（analysis）将源程序分割成为若干组成">
+<meta property="og:description" content="计算机系统计算机系统概览电子数字计算机是一种能够自行按照已经设定的程序进行数据处理的电子设备 冯诺依曼结构。。。 计算机系统的组成计算机系统：包括硬件子系统和软件子系统 硬件：借助电磁光机械等等原理构成的各种物理部件的有机组合，是系统工作的实体 软件：各种程序和文件，用于指挥计算机系统按照指定的要求进行协同工作，包括系统软件，支撑软件和应用软件。关键系统软件是：操作系统和语言处理程序 计算机系统的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://perticevassly.github.io/img/compileprinciple/1-1.png">
-<meta property="article:published_time" content="2024-01-24T20:53:00.000Z">
-<meta property="article:modified_time" content="2024-01-24T20:53:34.186Z">
+<meta property="og:image" content="https://perticevassly.github.io/img/os/1-1.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/os/1-2.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/os/1-3.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/os/1-4.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/os/1-5.png">
+<meta property="article:published_time" content="2024-03-04T03:04:00.000Z">
+<meta property="article:modified_time" content="2024-03-04T03:05:59.240Z">
 <meta property="article:author" content="PV">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://perticevassly.github.io/img/compileprinciple/1-1.png">
+<meta name="twitter:image" content="https://perticevassly.github.io/img/os/1-1.png">
   
   
   
-  <title>Compileprinciple1_Summary - PV&#39;s Blog</title>
+  <title>os-summary - PV&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Compileprinciple1_Summary"></span>
+            <span id="subtitle" data-typed-text="os-summary"></span>
           
         </div>
 
@@ -209,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-25 04:53" pubdate>
-          2024年1月25日 凌晨
+        <time datetime="2024-03-04 11:04" pubdate>
+          2024年3月4日 上午
         </time>
       </span>
     
@@ -221,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          2.1k 字
         
       </span>
     
@@ -232,7 +236,7 @@
         
         
         
-          14 分钟
+          18 分钟
         
       </span>
     
@@ -269,46 +273,116 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Compileprinciple1_Summary</h1>
+            <h1 id="seo-header">os-summary</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="1-1-语言处理器"><a href="#1-1-语言处理器" class="headerlink" title="1.1 语言处理器"></a>1.1 语言处理器</h1><p>编译器：一个编译器就是一个程序，将某一个语言编写的程序翻译为一个等价的用另外一个语言编写的程序。</p>
-<p>解释器（Interpreter）：直接利用用户提供的输入执行源程序中的指定的操作。</p>
-<p>预处理器（preprocessor）：把源程序聚合在一起</p>
-<p>汇编器（assembler）：负责将汇编语言转化为可重定位的机器代码</p>
-<h1 id="1-2-编译器的结构"><a href="#1-2-编译器的结构" class="headerlink" title="1.2 编译器的结构"></a>1.2 编译器的结构</h1><p>分析部分（analysis）将源程序分割成为若干组成要素，并且在若干组成要素之上加上语法结构。然后它使用这个结构来创建该源程序的一个中间表示。如果分析部分检查出源程序没有感召正确的语法构成，或者予以不一致，它就要提供信息使得用户能够做出改正。</p>
-<p>综合部分（synthesis）部分根据中间表示和符号表中的信息来构造用户期待的目标程序。分析部分被称之为编译器的前端（front end）综合部分称之为后端（back end）</p>
-<p>一种更加详细的分析。</p>
-<p><img src="/../img/compileprinciple/1-1.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="1-2-1-词法分析-lexical-analysis）-scanning"><a href="#1-2-1-词法分析-lexical-analysis）-scanning" class="headerlink" title="1.2.1 词法分析(lexical analysis）(scanning)"></a>1.2.1 词法分析(lexical analysis）(scanning)</h2><p>读取输入组成源程序的字符流，并且将他们组成有意义的词素（lexeme）序列，对于每一个词素，词法分析器产生单元（token）作为输出。</p>
-<p>&lt;token-name,attribute-value&gt;</p>
-<p>token-name:是一个语法分析步骤使用的抽象符号。</p>
-<p>attribute-value:指向符号表中关于这个词法单元的条目。</p>
-<h2 id="1-2-2-语法分析（syntax-analysis）解析（parsing）"><a href="#1-2-2-语法分析（syntax-analysis）解析（parsing）" class="headerlink" title="1.2.2 语法分析（syntax analysis）解析（parsing）"></a>1.2.2 语法分析（syntax analysis）解析（parsing）</h2><p>一种常见的方式是语法树（syntax tree）。</p>
-<p>编译器的后续步骤是使用这个语法结构来帮助分析源程序，并且生成目标程序。</p>
-<h2 id="1-2-3-语义分析（semantic-analyzer）"><a href="#1-2-3-语义分析（semantic-analyzer）" class="headerlink" title="1.2.3 语义分析（semantic analyzer）"></a>1.2.3 语义分析（semantic analyzer）</h2><p>使用语法树和符号表中的信息来检查源程序是否和语言定义的语义一致。同时收集信息，并且把这些信息存放在语法树或者符号表中，以便随后的中间代码生成过程中使用。</p>
-<p>其中的重要部分是类型检查（type checking）</p>
-<p>程序涉及语言可能允许一些自动的类型转换（coercion）</p>
-<h2 id="1-2-4-中间代码生成"><a href="#1-2-4-中间代码生成" class="headerlink" title="1.2.4 中间代码生成"></a>1.2.4 中间代码生成</h2><p>三地址代码（three-address-code）</p>
-<h2 id="1-2-5-代码优化"><a href="#1-2-5-代码优化" class="headerlink" title="1.2.5 代码优化"></a>1.2.5 代码优化</h2><p>机器无关的代码优化步骤试图改进中间代码，以便生成更好的目标代码。</p>
-<h2 id="1-2-6-代码生成"><a href="#1-2-6-代码生成" class="headerlink" title="1.2.6 代码生成"></a>1.2.6 代码生成</h2><h2 id="1-2-7-符号表管理"><a href="#1-2-7-符号表管理" class="headerlink" title="1.2.7 符号表管理"></a>1.2.7 符号表管理</h2><p>符号表数据结构为每一个变量名字创建了一个记录条目，记录的字段就是名字的各个属性。</p>
-<h2 id="1-2-8-将多个步骤合成趟"><a href="#1-2-8-将多个步骤合成趟" class="headerlink" title="1.2.8 将多个步骤合成趟"></a>1.2.8 将多个步骤合成趟</h2><p>多个步骤可以合成一趟（pass）。比如词法分析，语法分析，语义分析，以及中间代码的生成可以被组合在一起成为一趟。代码优化可以作为一个可选的趟。一个为特定目标机生成代码的后端趟。</p>
-<h2 id="1-2-9-编译器构造工具"><a href="#1-2-9-编译器构造工具" class="headerlink" title="1.2.9 编译器构造工具"></a>1.2.9 编译器构造工具</h2><h1 id="1-3-程序设计语言的发展历程"><a href="#1-3-程序设计语言的发展历程" class="headerlink" title="1.3 程序设计语言的发展历程"></a>1.3 程序设计语言的发展历程</h1><p>一些语言的分类：</p>
-<p>强制式（imperative）；</p>
-<p>声明式（declarative）：</p>
-<h1 id="1-6-静态和动态"><a href="#1-6-静态和动态" class="headerlink" title="1.6 静态和动态"></a>1.6 静态和动态</h1><h2 id="1-6-1-静态和动态"><a href="#1-6-1-静态和动态" class="headerlink" title="1.6.1 静态和动态"></a>1.6.1 静态和动态</h2><p>如果一个语言使用的策略支持编译器静态决定某个问题，那么我们说这个语言使用了一个静态（static）策略，或者说这个问题可以再编译时刻（compile time）内决定。另一方面，一个只允许再运行程序的时候做出决定的策略被称之为动态策略（dynamic policy）或者被认定为需要在运行时刻（run time）做出决定。</p>
-<p>环境（environment）是一个名字到储存位置的映射。</p>
-<p>状态（state）是一个内存位置到它们值的映射。</p>
-<p>一个递归过程中的局部标识符将在不同的时刻指向不同的储存位置。</p>
-<h2 id="1-6-6-参数传递机制"><a href="#1-6-6-参数传递机制" class="headerlink" title="1.6.6 参数传递机制"></a>1.6.6 参数传递机制</h2><p>值调用：</p>
-<p>在Java使用值调用，但是如果传入的是一个对象，Java实际传入的是这个对象的指针。那么对于这个对象的操作是可以改变这个对象的值的。Java实际的机理是值调用，但是在表现形式（针对对象）上就好像是引用调用一样。</p>
-<p>引用调用：</p>
-<p>实在参数的地址作为相应的形式参数的值被传递给调用者。在被调用者的代码中使用形式参数的时候，实现的方法就是遵循着这个指针找到那个原始的内存位置做修改。</p>
-<p>但是如果实在参数是一个表达式（右值），那么这样的回溯是不能成功的。</p>
-<p>名调用：</p>
-<h2 id="1-6-7-别名"><a href="#1-6-7-别名" class="headerlink" title="1.6.7 别名"></a>1.6.7 别名</h2><p>…</p>
+                <h1 id="计算机系统"><a href="#计算机系统" class="headerlink" title="计算机系统"></a>计算机系统</h1><h2 id="计算机系统概览"><a href="#计算机系统概览" class="headerlink" title="计算机系统概览"></a>计算机系统概览</h2><h3 id="电子数字计算机"><a href="#电子数字计算机" class="headerlink" title="电子数字计算机"></a>电子数字计算机</h3><p>是一种能够自行按照已经设定的程序进行数据处理的电子设备</p>
+<h3 id="冯诺依曼结构"><a href="#冯诺依曼结构" class="headerlink" title="冯诺依曼结构"></a>冯诺依曼结构</h3><p>。。。</p>
+<h3 id="计算机系统的组成"><a href="#计算机系统的组成" class="headerlink" title="计算机系统的组成"></a>计算机系统的组成</h3><p>计算机系统：包括<strong>硬件子系统</strong>和<strong>软件子系统</strong></p>
+<p>硬件：借助电磁光机械等等原理构成的各种物理部件的有机组合，是系统工作的实体</p>
+<p>软件：各种程序和文件，用于指挥计算机系统按照指定的要求进行协同工作，包括系统软件，支撑软件和应用软件。关键系统软件是：操作系统和语言处理程序</p>
+<h3 id="计算机系统的用户视图"><a href="#计算机系统的用户视图" class="headerlink" title="计算机系统的用户视图"></a>计算机系统的用户视图</h3><p><img src="/../img/os/1-1.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="计算机硬件系统"><a href="#计算机硬件系统" class="headerlink" title="计算机硬件系统"></a>计算机硬件系统</h2><h3 id="计算机硬件系统的组成"><a href="#计算机硬件系统的组成" class="headerlink" title="计算机硬件系统的组成"></a>计算机硬件系统的组成</h3><p>中央处理器：运算单元，控制单元</p>
+<p>主存储器</p>
+<p>外围设备：输入输出设备，存储设备，网络通信设备。</p>
+<p>总线</p>
+<h3 id="存储程序计算机体系结构上的主要特点"><a href="#存储程序计算机体系结构上的主要特点" class="headerlink" title="存储程序计算机体系结构上的主要特点"></a>存储程序计算机体系结构上的主要特点</h3><p>以运算单元为中心，控制流由指令流产生</p>
+<p>采用存储程序原理，面向主存组织数据流</p>
+<p>主存按照地址访问，线性编址的空间</p>
+<p>指令指令由操作码和地址码组成</p>
+<p>数据以二进制编码</p>
+<h3 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h3><p>时传输各类通信信号的线路</p>
+<p>按照所传输的信息的组成分为控制线，数据线，地址线。</p>
+<p>总线的类型：内部总线：用于cpu芯片内部连接各个元件。系统总线：用于连接cpu存储器和各种io模块等等部件。通信总线：用于计算机之间的通信</p>
+<p><img src="/../img/os/1-2.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="中央处理器"><a href="#中央处理器" class="headerlink" title="中央处理器"></a>中央处理器</h3><p>包括：</p>
+<p>运算逻辑部件</p>
+<p>寄存器部件</p>
+<p>控制部件</p>
+<h3 id="IO控制方式"><a href="#IO控制方式" class="headerlink" title="IO控制方式"></a>IO控制方式</h3><p>轮询：</p>
+<p>中断：</p>
+<p>DMA：</p>
+<h2 id="计算机软件系统"><a href="#计算机软件系统" class="headerlink" title="计算机软件系统"></a>计算机软件系统</h2><h3 id="计算机软件系统的组成"><a href="#计算机软件系统的组成" class="headerlink" title="计算机软件系统的组成"></a>计算机软件系统的组成</h3><p>系统软件：操作系统，实用程序，语言处理程序，数据库管理系统</p>
+<p>支撑软件：接口软件，工具软件，环境数据库</p>
+<p>应用软件</p>
+<h2 id="计算机操作技术的发展"><a href="#计算机操作技术的发展" class="headerlink" title="计算机操作技术的发展"></a>计算机操作技术的发展</h2><p>。。。</p>
+<h2 id="计算机操作系统"><a href="#计算机操作系统" class="headerlink" title="计算机操作系统"></a>计算机操作系统</h2><p>OS是计算机系统最基础的系统软件，管理软硬件资源、控制程序执行，改善人机界面，合理组织计算机工作流程，为用户使用计算机提供良好运行环境</p>
+<p>操作系统是方便用户、管理和控制计算机软硬件资源的系统程序集合，在整个计算机系统中具有承上启下的地位</p>
+<p>从用户角度看，OS管理计算机系统的各种资源，扩充硬件的功能，控制程序的执行</p>
+<p>从人机交互看，OS是用户与机器的接口，提供良好的人机界面，方便用户使用计算机</p>
+<p>从系统结构看，OS是一个大型软件系统，其功能复杂，体系庞大，采用层次式、模块化的程序结构</p>
+<h3 id="操作系统的组成"><a href="#操作系统的组成" class="headerlink" title="操作系统的组成"></a>操作系统的组成</h3><p>进程调度子系统</p>
+<p>进程通信子系统</p>
+<p>内存管理子系统</p>
+<p>设备管理子系统</p>
+<p>文件管理子系统</p>
+<p>网络通信子系统</p>
+<p>作业控制子系统</p>
+<h3 id="操作系统的类型"><a href="#操作系统的类型" class="headerlink" title="操作系统的类型"></a>操作系统的类型</h3><p><strong>从操作的方式来看：</strong></p>
+<p>多道批处理系统，脱机控制方式</p>
+<p>分时操作系统,交互式控制方式</p>
+<p>实时操作系统</p>
+<p><strong>操作系统的应用领域分类：</strong></p>
+<p>服务器操作系统</p>
+<p>并行操作系统</p>
+<p>网络操作系统</p>
+<p>分布式操作系统</p>
+<p>个人机操作系统</p>
+<p>手机操作系统</p>
+<p>嵌入式操作系统</p>
+<p>传感器操作系统</p>
+<h1 id="深入观察操作系统"><a href="#深入观察操作系统" class="headerlink" title="深入观察操作系统"></a>深入观察操作系统</h1><h2 id="资源管理的视角"><a href="#资源管理的视角" class="headerlink" title="资源管理的视角"></a>资源管理的视角</h2><h3 id="屏蔽资源使用的底层细节"><a href="#屏蔽资源使用的底层细节" class="headerlink" title="屏蔽资源使用的底层细节"></a>屏蔽资源使用的底层细节</h3><p>驱动程序：最底层的，直接控制和监视各个硬件（文件）资源的部分</p>
+<h3 id="资源的共享方式"><a href="#资源的共享方式" class="headerlink" title="资源的共享方式"></a>资源的共享方式</h3><p>独占使用</p>
+<p>并发使用</p>
+<h3 id="资源分类策略"><a href="#资源分类策略" class="headerlink" title="资源分类策略"></a>资源分类策略</h3><p>静态分配方式：进程运行前一次拿到全部资源</p>
+<p>动态分配方式：</p>
+<p>资源抢占方式：被抢夺资源的进程需要回滚执行</p>
+<h2 id="控制程序执行的视角"><a href="#控制程序执行的视角" class="headerlink" title="控制程序执行的视角"></a>控制程序执行的视角</h2><h3 id="多道程序设计的特点"><a href="#多道程序设计的特点" class="headerlink" title="多道程序设计的特点"></a>多道程序设计的特点</h3><p>cpu与外部设备充分并行</p>
+<p>外部设备之间充分并行</p>
+<p>发挥cpu的使用效率</p>
+<p>提高单位时间的算题量</p>
+<p>但是单道程序的运算时间会增加</p>
+<h3 id="多道程序系统实现"><a href="#多道程序系统实现" class="headerlink" title="多道程序系统实现"></a>多道程序系统实现</h3><p>为进入内存执行的程序建立管理实体：进程</p>
+<p>os应该能够管理与控制进程程序的执行</p>
+<p>os协调管理各类资源在进程间的使用：</p>
+<p>处理器的管理和调度</p>
+<p>主存储器的管理和调度</p>
+<p>其他资源的管理和调度</p>
+<h2 id="操作控制计算机的视角"><a href="#操作控制计算机的视角" class="headerlink" title="操作控制计算机的视角"></a>操作控制计算机的视角</h2><h3 id="计算机系统操作方式"><a href="#计算机系统操作方式" class="headerlink" title="计算机系统操作方式"></a>计算机系统操作方式</h3><p>OS规定了合理操作计算机的工作流程</p>
+<p>OS的操作接口——系统程序</p>
+<p>OS提供给用户的功能级接口，为用户提供的解决操作计算机和计算共性问题的所有服务的集合</p>
+<p>OS的两类作业级接口</p>
+<p>脱机作业控制方式：作业控制语言</p>
+<p>联机作业控制方式：操作控制命令</p>
+<h3 id="脱机作业控制方式"><a href="#脱机作业控制方式" class="headerlink" title="脱机作业控制方式"></a>脱机作业控制方式</h3><p>os：提供作业说明语言</p>
+<p>用户：编写作业说明书，确定作业加工控制步骤并与程序数据一并提交</p>
+<p>操作员：通过控制台输入作业</p>
+<p>OS：通过作业控制程序自动控制作业的执行</p>
+<h3 id="联机作业："><a href="#联机作业：" class="headerlink" title="联机作业："></a>联机作业：</h3><p>计算机：提供终端（键盘&#x2F;显示器）</p>
+<p>用户：登录系统</p>
+<p>OS：提供命令解释程序</p>
+<p>用户：联机输入操作控制命令，直接控制作业步的执行</p>
+<h3 id="命令解释程序"><a href="#命令解释程序" class="headerlink" title="命令解释程序"></a>命令解释程序</h3><p>命令解释程序：接受和执行一条用户提出的对作业的加工处理命令</p>
+<p>当一个新的批作业被启动，或新的交互型用户登录进系统时，系统就自动地执行命令解释程序，负责读入控制卡或命令行，作出相应解释，并予以执行</p>
+<p>会话语言：可编程的命令解释程序</p>
+<p>图形化的命令控制方式</p>
+<p>多通道交互的命令控制方式</p>
+<p>OS启动命令解释程序，输出命令提示符，等待键盘中断、鼠标点击、多通道识别</p>
+<p>每当用户输入一条命令(暂存在命令缓冲区)并按回车换行时，申请中断</p>
+<p>CPU响应后，将控制权交给命令解释程序，接着读入命令缓冲区内容，分析命令、接受参数，执行处理代码</p>
+<h3 id="前台命令和后台命令"><a href="#前台命令和后台命令" class="headerlink" title="前台命令和后台命令"></a>前台命令和后台命令</h3><p>前台命令执行结束后，再次输出命令提示符，等待下一条命令</p>
+<p>后台命令处理启动后，即可接收下条命令</p>
+<h2 id="人机交互的视角"><a href="#人机交互的视角" class="headerlink" title="人机交互的视角"></a>人机交互的视角</h2><p>。。。</p>
+<h2 id="程序接口的视角"><a href="#程序接口的视角" class="headerlink" title="程序接口的视角"></a>程序接口的视角</h2><p>操作系统的程序接口：操作系统为程序运行扩充的编程接口</p>
+<p>系统调用：操作系统实现的完成某种特定功能的过程；为所有运行程序提供访问操作系统的接口</p>
+<h3 id="系统调用的实现机制"><a href="#系统调用的实现机制" class="headerlink" title="系统调用的实现机制"></a>系统调用的实现机制</h3><p>陷入处理机制：计算机系统中控制和实现系统调用的机制</p>
+<p>陷入指令：也称访管指令，或异常中断指令，计算机系统为实现系统调用而引起处理器中断的指令</p>
+<p>每个系统调用都事先规定了编号，并在约定寄存器中规定了传递给内部处理程序的参数</p>
+<p><img src="/../img/os/1-3.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="系统结构的视角"><a href="#系统结构的视角" class="headerlink" title="系统结构的视角"></a>系统结构的视角</h2><p><img src="/../img/os/1-4.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/os/1-5.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -327,7 +401,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/compileprinciple/" class="category-chain-item">compileprinciple</a>
+  <a href="/categories/os/" class="category-chain-item">os</a>
   
   
 
@@ -347,8 +421,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Compileprinciple1_Summary</div>
-      <div>https://perticevassly.github.io/project/2024/01/25/compileprinciple1/</div>
+      <div>os-summary</div>
+      <div>https://perticevassly.github.io/project/2024/03/04/os-summary/</div>
     </div>
     <div class="license-meta">
       
@@ -360,7 +434,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月25日</div>
+          <div>2024年3月4日</div>
         </div>
       
       
@@ -392,18 +466,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/02/seac2-0/" title="seac2_foundation">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">seac2_foundation</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/09/computercomposition5/" title="Computercomposition5_InputOutput">
-                        <span class="hidden-mobile">Computercomposition5_InputOutput</span>
+                      <a href="/2024/03/02/seac2-0/" title="seac2_foundation">
+                        <span class="hidden-mobile">seac2_foundation</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

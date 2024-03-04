@@ -16,23 +16,24 @@
   <meta name="author" content="PV">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.1 语言处理器编译器：一个编译器就是一个程序，将某一个语言编写的程序翻译为一个等价的用另外一个语言编写的程序。 解释器（Interpreter）：直接利用用户提供的输入执行源程序中的指定的操作。 预处理器（preprocessor）：把源程序聚合在一起 汇编器（assembler）：负责将汇编语言转化为可重定位的机器代码 1.2 编译器的结构分析部分（analysis）将源程序分割成为若干组成">
+    <meta name="description" content="软件的特性软件与现实世界关系更加密切对于需求的规格化更加困难。 软件比精简容桂修改的多，并且不需要昂贵的生产线复制产品 软件没有损耗 软件不可见 What is a software - summarysoftware is independent of hardware software is a tool software &#x3D; programs + documents + data">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Compileprinciple1_Summary">
-<meta property="og:url" content="https://perticevassly.github.io/project/2024/01/25/compileprinciple1/index.html">
+<meta property="og:title" content="seac2_foundation">
+<meta property="og:url" content="https://perticevassly.github.io/project/2024/03/02/seac2-0/index.html">
 <meta property="og:site_name" content="PV&#39;s Blog">
-<meta property="og:description" content="1.1 语言处理器编译器：一个编译器就是一个程序，将某一个语言编写的程序翻译为一个等价的用另外一个语言编写的程序。 解释器（Interpreter）：直接利用用户提供的输入执行源程序中的指定的操作。 预处理器（preprocessor）：把源程序聚合在一起 汇编器（assembler）：负责将汇编语言转化为可重定位的机器代码 1.2 编译器的结构分析部分（analysis）将源程序分割成为若干组成">
+<meta property="og:description" content="软件的特性软件与现实世界关系更加密切对于需求的规格化更加困难。 软件比精简容桂修改的多，并且不需要昂贵的生产线复制产品 软件没有损耗 软件不可见 What is a software - summarysoftware is independent of hardware software is a tool software &#x3D; programs + documents + data">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://perticevassly.github.io/img/compileprinciple/1-1.png">
-<meta property="article:published_time" content="2024-01-24T20:53:00.000Z">
-<meta property="article:modified_time" content="2024-01-24T20:53:34.186Z">
+<meta property="og:image" content="https://perticevassly.github.io/img/seac2/1-1.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/seac2/1-2.png">
+<meta property="article:published_time" content="2024-03-02T12:58:00.000Z">
+<meta property="article:modified_time" content="2024-03-02T12:59:22.542Z">
 <meta property="article:author" content="PV">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://perticevassly.github.io/img/compileprinciple/1-1.png">
+<meta name="twitter:image" content="https://perticevassly.github.io/img/seac2/1-1.png">
   
   
   
-  <title>Compileprinciple1_Summary - PV&#39;s Blog</title>
+  <title>seac2_foundation - PV&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Compileprinciple1_Summary"></span>
+            <span id="subtitle" data-typed-text="seac2_foundation"></span>
           
         </div>
 
@@ -209,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-25 04:53" pubdate>
-          2024年1月25日 凌晨
+        <time datetime="2024-03-02 20:58" pubdate>
+          2024年3月2日 晚上
         </time>
       </span>
     
@@ -221,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          2.1k 字
         
       </span>
     
@@ -232,7 +233,7 @@
         
         
         
-          14 分钟
+          18 分钟
         
       </span>
     
@@ -269,46 +270,58 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Compileprinciple1_Summary</h1>
+            <h1 id="seo-header">seac2_foundation</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="1-1-语言处理器"><a href="#1-1-语言处理器" class="headerlink" title="1.1 语言处理器"></a>1.1 语言处理器</h1><p>编译器：一个编译器就是一个程序，将某一个语言编写的程序翻译为一个等价的用另外一个语言编写的程序。</p>
-<p>解释器（Interpreter）：直接利用用户提供的输入执行源程序中的指定的操作。</p>
-<p>预处理器（preprocessor）：把源程序聚合在一起</p>
-<p>汇编器（assembler）：负责将汇编语言转化为可重定位的机器代码</p>
-<h1 id="1-2-编译器的结构"><a href="#1-2-编译器的结构" class="headerlink" title="1.2 编译器的结构"></a>1.2 编译器的结构</h1><p>分析部分（analysis）将源程序分割成为若干组成要素，并且在若干组成要素之上加上语法结构。然后它使用这个结构来创建该源程序的一个中间表示。如果分析部分检查出源程序没有感召正确的语法构成，或者予以不一致，它就要提供信息使得用户能够做出改正。</p>
-<p>综合部分（synthesis）部分根据中间表示和符号表中的信息来构造用户期待的目标程序。分析部分被称之为编译器的前端（front end）综合部分称之为后端（back end）</p>
-<p>一种更加详细的分析。</p>
-<p><img src="/../img/compileprinciple/1-1.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="1-2-1-词法分析-lexical-analysis）-scanning"><a href="#1-2-1-词法分析-lexical-analysis）-scanning" class="headerlink" title="1.2.1 词法分析(lexical analysis）(scanning)"></a>1.2.1 词法分析(lexical analysis）(scanning)</h2><p>读取输入组成源程序的字符流，并且将他们组成有意义的词素（lexeme）序列，对于每一个词素，词法分析器产生单元（token）作为输出。</p>
-<p>&lt;token-name,attribute-value&gt;</p>
-<p>token-name:是一个语法分析步骤使用的抽象符号。</p>
-<p>attribute-value:指向符号表中关于这个词法单元的条目。</p>
-<h2 id="1-2-2-语法分析（syntax-analysis）解析（parsing）"><a href="#1-2-2-语法分析（syntax-analysis）解析（parsing）" class="headerlink" title="1.2.2 语法分析（syntax analysis）解析（parsing）"></a>1.2.2 语法分析（syntax analysis）解析（parsing）</h2><p>一种常见的方式是语法树（syntax tree）。</p>
-<p>编译器的后续步骤是使用这个语法结构来帮助分析源程序，并且生成目标程序。</p>
-<h2 id="1-2-3-语义分析（semantic-analyzer）"><a href="#1-2-3-语义分析（semantic-analyzer）" class="headerlink" title="1.2.3 语义分析（semantic analyzer）"></a>1.2.3 语义分析（semantic analyzer）</h2><p>使用语法树和符号表中的信息来检查源程序是否和语言定义的语义一致。同时收集信息，并且把这些信息存放在语法树或者符号表中，以便随后的中间代码生成过程中使用。</p>
-<p>其中的重要部分是类型检查（type checking）</p>
-<p>程序涉及语言可能允许一些自动的类型转换（coercion）</p>
-<h2 id="1-2-4-中间代码生成"><a href="#1-2-4-中间代码生成" class="headerlink" title="1.2.4 中间代码生成"></a>1.2.4 中间代码生成</h2><p>三地址代码（three-address-code）</p>
-<h2 id="1-2-5-代码优化"><a href="#1-2-5-代码优化" class="headerlink" title="1.2.5 代码优化"></a>1.2.5 代码优化</h2><p>机器无关的代码优化步骤试图改进中间代码，以便生成更好的目标代码。</p>
-<h2 id="1-2-6-代码生成"><a href="#1-2-6-代码生成" class="headerlink" title="1.2.6 代码生成"></a>1.2.6 代码生成</h2><h2 id="1-2-7-符号表管理"><a href="#1-2-7-符号表管理" class="headerlink" title="1.2.7 符号表管理"></a>1.2.7 符号表管理</h2><p>符号表数据结构为每一个变量名字创建了一个记录条目，记录的字段就是名字的各个属性。</p>
-<h2 id="1-2-8-将多个步骤合成趟"><a href="#1-2-8-将多个步骤合成趟" class="headerlink" title="1.2.8 将多个步骤合成趟"></a>1.2.8 将多个步骤合成趟</h2><p>多个步骤可以合成一趟（pass）。比如词法分析，语法分析，语义分析，以及中间代码的生成可以被组合在一起成为一趟。代码优化可以作为一个可选的趟。一个为特定目标机生成代码的后端趟。</p>
-<h2 id="1-2-9-编译器构造工具"><a href="#1-2-9-编译器构造工具" class="headerlink" title="1.2.9 编译器构造工具"></a>1.2.9 编译器构造工具</h2><h1 id="1-3-程序设计语言的发展历程"><a href="#1-3-程序设计语言的发展历程" class="headerlink" title="1.3 程序设计语言的发展历程"></a>1.3 程序设计语言的发展历程</h1><p>一些语言的分类：</p>
-<p>强制式（imperative）；</p>
-<p>声明式（declarative）：</p>
-<h1 id="1-6-静态和动态"><a href="#1-6-静态和动态" class="headerlink" title="1.6 静态和动态"></a>1.6 静态和动态</h1><h2 id="1-6-1-静态和动态"><a href="#1-6-1-静态和动态" class="headerlink" title="1.6.1 静态和动态"></a>1.6.1 静态和动态</h2><p>如果一个语言使用的策略支持编译器静态决定某个问题，那么我们说这个语言使用了一个静态（static）策略，或者说这个问题可以再编译时刻（compile time）内决定。另一方面，一个只允许再运行程序的时候做出决定的策略被称之为动态策略（dynamic policy）或者被认定为需要在运行时刻（run time）做出决定。</p>
-<p>环境（environment）是一个名字到储存位置的映射。</p>
-<p>状态（state）是一个内存位置到它们值的映射。</p>
-<p>一个递归过程中的局部标识符将在不同的时刻指向不同的储存位置。</p>
-<h2 id="1-6-6-参数传递机制"><a href="#1-6-6-参数传递机制" class="headerlink" title="1.6.6 参数传递机制"></a>1.6.6 参数传递机制</h2><p>值调用：</p>
-<p>在Java使用值调用，但是如果传入的是一个对象，Java实际传入的是这个对象的指针。那么对于这个对象的操作是可以改变这个对象的值的。Java实际的机理是值调用，但是在表现形式（针对对象）上就好像是引用调用一样。</p>
-<p>引用调用：</p>
-<p>实在参数的地址作为相应的形式参数的值被传递给调用者。在被调用者的代码中使用形式参数的时候，实现的方法就是遵循着这个指针找到那个原始的内存位置做修改。</p>
-<p>但是如果实在参数是一个表达式（右值），那么这样的回溯是不能成功的。</p>
-<p>名调用：</p>
-<h2 id="1-6-7-别名"><a href="#1-6-7-别名" class="headerlink" title="1.6.7 别名"></a>1.6.7 别名</h2><p>…</p>
+                <h2 id="软件的特性"><a href="#软件的特性" class="headerlink" title="软件的特性"></a>软件的特性</h2><p>软件与现实世界关系更加密切对于需求的规格化更加困难。</p>
+<p>软件比精简容桂修改的多，并且不需要昂贵的生产线复制产品</p>
+<p>软件没有损耗</p>
+<p>软件不可见</p>
+<h2 id="What-is-a-software-summary"><a href="#What-is-a-software-summary" class="headerlink" title="What is a software - summary"></a>What is a software - summary</h2><p>software is independent of hardware</p>
+<p>software is a tool</p>
+<p>software &#x3D; programs + documents + data + knowledge</p>
+<p>software developement is much more complicated than programing</p>
+<p>application software originate from the reality and reversely improve the reality</p>
+<h2 id="What-is-a-software-engineering"><a href="#What-is-a-software-engineering" class="headerlink" title="What is a software engineering?"></a>What is a software engineering?</h2><p>(1) The application of a systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software; that is the application of engineering to software.</p>
+<p>(2) The study of approaches as in (1)</p>
+<h2 id="Engineering"><a href="#Engineering" class="headerlink" title="Engineering"></a>Engineering</h2><p>The creative application of scientific principles to design or develop structures, machines, apparatus, or manufacturing processes, or works utilizing them singly or in combination; or to construct or operate the same with full cognizance of their design; or to forecast their behavior under specific operating conditions; all as respects an intended function, economics of operation or safety to life and property.</p>
+<h2 id="Engineer"><a href="#Engineer" class="headerlink" title="Engineer"></a>Engineer</h2><p>⼯程师通过⼀系列的讨论决策，仔细评估项⽬的可选活动，并在每个决策点选择⼀种在当前环境中适合当前任务的⽅法进⾏⼯作。可以通过对成本和收益进⾏折衷分析调整相应策略。</p>
+<p>⼯程师需要对某些对象进⾏度量，有时需要定量的⼯作；他们要校准和确认度量⽅法，并根据经验和实验数据进⾏估算。</p>
+<p>软件⼯程师强调项⽬设计过程的纪律性，这是团队⾼效⼯作的条件。</p>
+<p>⼯程师可胜任研究、开发、设计、⽣产、测试、构造、操作、管理，以及销售、咨询和培训等多种⻆⾊。</p>
+<p>⼯程师们需要在某些过程中使⽤⼯具，选择和使⽤合适的⼯具是⼯程的关键要素。</p>
+<p>⼯程师们通过专业协会发展和确认原理、标准和最佳实践⽅法，并提⾼个⼈能⼒。</p>
+<p>⼯程师们能够重⽤设计和设计制品。</p>
+<p><img src="/../img/seac2/1-1.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="prospectsi"><a href="#prospectsi" class="headerlink" title="prospectsi"></a>prospectsi</h2><p>具有解决实际问题的动机：</p>
+<p>⼯程学解决实际问题，⽽这些问题来源于⼯程领域之外的⼈——消费者。</p>
+<p>应⽤科学知识指导⼯程活动：</p>
+<p>⼯程学不依赖于个⼈的技能，⽽是强调以科学知识为指导，按照特定⽅法与技术，进⾏规律性的设计、分析等活动，实现⼯程活动的可学习性和可重复性。</p>
+<p>以成本效益⽐有效为基本条件：</p>
+<p>⼯程学不单单只是解决问题，它要有效利⽤所有资源，⾄少成本要低于效益，即成本效益⽐有效。</p>
+<p>构建机器或事物：</p>
+<p>⼯程学强调构建实物⼯具，例如机器、事物等，并利⽤实物⼯具来解决问题。</p>
+<p>以服务⼈类为最终⽬的：</p>
+<p>⼯程学考虑的不是单个客户的需要，⽽是要运⽤技术和经验实现全社会的进步。</p>
+<h2 id="软件开发活动"><a href="#软件开发活动" class="headerlink" title="软件开发活动"></a>软件开发活动</h2><p><img src="/../img/seac2/1-2.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="角色分工"><a href="#角色分工" class="headerlink" title="角色分工"></a>角色分工</h2><p><strong>程序员：</strong></p>
+<p>承担软件构造任务。程序员与软件设计师通常是同⼀批⼈，也是根据其所分配到的任务开展⼯作。</p>
+<p><strong>⼈机交互设计师：</strong></p>
+<p>承担⼈机交互设计任务。⼈机交互设计师与软件设计师可以是同⼀批⼈，也可以是不同⼈员。在有多个⼩组的软件⼯程团队中，可以有⼀个单独的⼈机交互设计师⼩组，也可以将⼈机交互设计师分配到各个⼩组。</p>
+<p><strong>软件测试⼈员：</strong></p>
+<p>承担软件测试任务。软件测试⼈员通常需要独⽴于其他的开发⼈员⻆⾊。⼀个团队可能有⼀个或多个测试⼩组。⼀个⼩组可能有⼀个或多个软件测试⼈员。</p>
+<p><strong>项⽬管理⼈员：</strong></p>
+<p>负责计划、组织、领导、协调和控制软件开发的各项⼯作。相⽐于传统意义上的管理者，他们不完全是监控者和控制者，更多得是协调者。通常⼀个<br>团队只有⼀个项⽬管理⼈员。</p>
+<p><strong>软件配置管理⼈员：</strong></p>
+<p>管理软件开发中产⽣的各种制品，具体⼯作是对重要制品进⾏标识、变更控制、状态报告等。通常⼀个团队只有⼀个软件配置管理⼈员。</p>
+<p><strong>质量保障⼈员：</strong></p>
+<p>在⽣产过程中监督和控制软件产品质量的⼈员。通常⼀个团队有⼀个质量保障⼩组，由⼀个或多个⼈员组成。</p>
+<p><strong>培训和⽀持⼈员：</strong></p>
+<p>负责软件移交与维护任务。他们可以是其他开发⼈员的⼀部分，也可以是独⽴的⼈员。</p>
+<p><strong>⽂档编写⼈员：</strong></p>
+<p>专⻔负责写作软件开发各种⽂档的⼈员。他们的存在是为了充分利⽤部分宝贵的⼈⼒资源（例如需求⼯程师和软件体系结构师），让这些⼈⼒资源从繁杂的⽂档化⼯作中解放出来。</p>
 
                 
               </div>
@@ -327,7 +340,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/compileprinciple/" class="category-chain-item">compileprinciple</a>
+  <a href="/categories/seac2/" class="category-chain-item">seac2</a>
   
   
 
@@ -347,8 +360,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Compileprinciple1_Summary</div>
-      <div>https://perticevassly.github.io/project/2024/01/25/compileprinciple1/</div>
+      <div>seac2_foundation</div>
+      <div>https://perticevassly.github.io/project/2024/03/02/seac2-0/</div>
     </div>
     <div class="license-meta">
       
@@ -360,7 +373,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月25日</div>
+          <div>2024年3月2日</div>
         </div>
       
       
@@ -392,9 +405,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/02/seac2-0/" title="seac2_foundation">
+                      <a href="/2024/03/04/os-summary/" title="os-summary">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">seac2_foundation</span>
+                        <span class="hidden-mobile">os-summary</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -402,8 +415,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/09/computercomposition5/" title="Computercomposition5_InputOutput">
-                        <span class="hidden-mobile">Computercomposition5_InputOutput</span>
+                      <a href="/2024/01/25/compileprinciple1/" title="Compileprinciple1_Summary">
+                        <span class="hidden-mobile">Compileprinciple1_Summary</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
