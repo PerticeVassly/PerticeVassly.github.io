@@ -23,21 +23,21 @@
 <meta property="og:site_name" content="PV&#39;s Blog">
 <meta property="og:description" content="词法分析器的作用读入源程序的输入字符，将其组成词素，生成并且输出一个词法单元序列，每个词法单元对应一个词素 识别出词法单元以外还会完成一些不需要要生成词法单元的简单处理，删除注释，将多个连续的空白字符压缩为一个字符  词法分析的相关概念词素(lexeme) 源程序中的字符序列，和某类词法单元的木哦是匹配被词法分析器识别为该词法的那元的实例 词法单元(token) &lt;Token-name&amp;gt">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://perticevassly.github.io/.../img/compiler/2-1.png">
-<meta property="og:image" content="https://perticevassly.github.io/.../img/compiler/2-2.png">
-<meta property="og:image" content="https://perticevassly.github.io/.../img/compiler/2-3.png">
-<meta property="og:image" content="https://perticevassly.github.io/.../img/compiler/2-4.png">
-<meta property="og:image" content="https://perticevassly.github.io/.../img/compiler/2-5.png">
-<meta property="og:image" content="https://perticevassly.github.io/.../img/compiler/2-6.png">
-<meta property="og:image" content="https://perticevassly.github.io/.../img/compiler/2-7.png">
-<meta property="og:image" content="https://perticevassly.github.io/.../img/compiler/2-8.png">
-<meta property="og:image" content="https://perticevassly.github.io/.../img/compiler/2-9.png">
-<meta property="og:image" content="https://perticevassly.github.io/.../img/compiler/2-10.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/compiler/2-1.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/compiler/2-2.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/compiler/2-3.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/compiler/2-4.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/compiler/2-5.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/compiler/2-6.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/compiler/2-7.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/compiler/2-8.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/compiler/2-9.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/compiler/2-10.png">
 <meta property="article:published_time" content="2024-03-08T03:24:00.000Z">
-<meta property="article:modified_time" content="2024-03-08T03:45:08.742Z">
+<meta property="article:modified_time" content="2024-03-08T03:57:22.563Z">
 <meta property="article:author" content="PV">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://perticevassly.github.io/.../img/compiler/2-1.png">
+<meta name="twitter:image" content="https://perticevassly.github.io/img/compiler/2-1.png">
   
   
   
@@ -285,7 +285,7 @@
                 
                 <h1 id="词法分析器的作用"><a href="#词法分析器的作用" class="headerlink" title="词法分析器的作用"></a>词法分析器的作用</h1><p>读入源程序的输入字符，将其组成词素，生成并且输出一个词法单元序列，每个词法单元对应一个词素</p>
 <p>识别出词法单元以外还会完成一些不需要要生成词法单元的简单处理，删除注释，将多个连续的空白字符压缩为一个字符</p>
-<p><img src="/.../img/compiler/2-1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/compiler/2-1.png" srcset="/img/loading.gif" lazyload></p>
 <h1 id="词法分析的相关概念"><a href="#词法分析的相关概念" class="headerlink" title="词法分析的相关概念"></a>词法分析的相关概念</h1><p>词素(lexeme)</p>
 <p>源程序中的字符序列，和某类词法单元的木哦是匹配被词法分析器识别为该词法的那元的实例</p>
 <p>词法单元(token)</p>
@@ -309,7 +309,7 @@
 <p>$L \cup M &#x3D; {s | s 属于 L或者s属于M}$</p>
 <p>$LM &#x3D; {st|s属于L且t属于M}$</p>
 <p>L的Kleene闭包 </p>
-<p>$L^* &#x3D; \cup_{i&#x3D;0}^\infty L^i$</p>
+<p>$L^{*} &#x3D; \cup_{i&#x3D;0}^\infty L^i$</p>
 <p>L的正闭包</p>
 <p>$L^+ &#x3D; \cup_{i&#x3D;1}^\infty L^i$</p>
 <p>以上LM都是字母表</p>
@@ -319,7 +319,7 @@
 <p>归纳步骤</p>
 <p>$选择：(r) | (s), L((r)|(s)) &#x3D; L(r) \cup L(s)$</p>
 <p>$连接：(r)(s), L((r)(s)) &#x3D; L(r) L(s)$</p>
-<p>$闭包：(r)^*, L((r)^*) &#x3D; L((r))^*$</p>
+<p>$闭包：(r)^{*}, L((r)^{*}) &#x3D; L((r))^{*}$</p>
 <p>$括号：(r),L((r)) &#x3D;L(r)$</p>
 <p>如果没有符号运算的优先级为 * &gt; 连接 &gt; |</p>
 <h2 id="正则表达式的性质"><a href="#正则表达式的性质" class="headerlink" title="正则表达式的性质"></a>正则表达式的性质</h2><p>等价性</p>
@@ -329,8 +329,8 @@
 <p>$r(st) &#x3D; (rs)t$</p>
 <p>$r(s|t) &#x3D; rs|rt (s|t)r &#x3D;sr |tr$</p>
 <p>$\epsilon r &#x3D; r\epsilon &#x3D; r$</p>
-<p>$r^* &#x3D; (r|epsilon)^*$</p>
-<p>$r^{**} &#x3D; r^{*}$</p>
+<p>$r^{*} &#x3D; (r|epsilon)^{*}$</p>
+<p>$r^{* *} &#x3D; r^{*}$</p>
 <h2 id="正则定义？？"><a href="#正则定义？？" class="headerlink" title="正则定义？？"></a>正则定义？？</h2><p>对于正则表达式命名使其表示简洁</p>
 <p>$<br>d_1 -&gt; r_1  \<br>d_2 -&gt; r_2 \<br>d_3 -&gt; r_3 \<br>…\<br>d_n -&gt; r_n \<br>$</p>
 <p>各个$d_i$不在字母表$\sum$中且名字都不同</p>
@@ -361,19 +361,19 @@
 <p>转换函数(transition function)对于每个状态和$\sum \cup { \epsilon}$中的符号给出后继状态</p>
 <p>一个状态$S_0$被指定为开始状态&#x2F;初始状态</p>
 <p>$S$的一个子集$F$被指定为接受状态</p>
-<p><img src="/.../img/compiler/2-2.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/.../img/compiler/2-3.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/compiler/2-2.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/compiler/2-3.png" srcset="/img/loading.gif" lazyload></p>
 <p>一个NFA接受输入字符串x，当且精当对应的转换图中存在一条从开始状态到某个接受状态的路径，使得该路径中各个边上的标号组成符号x</p>
 <h2 id="自动机与语言"><a href="#自动机与语言" class="headerlink" title="自动机与语言"></a>自动机与语言</h2><p>由一个NFA A定义(接受) 的语言是从开始状态到某个接受状态的所有路径上的符号串集合，称为L(A)</p>
 <h2 id="NFA转换成DFA-子集构造法"><a href="#NFA转换成DFA-子集构造法" class="headerlink" title="NFA转换成DFA-子集构造法"></a>NFA转换成DFA-子集构造法</h2><p>$D$的开始状态是$\epsilon -closure(s_0)$ $D$的接受状态时所有至少包含了$N$的一个接收状态的状态集合</p>
-<p><img src="/.../img/compiler/2-4.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/.../img/compiler/2-5.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/.../img/compiler/2-6.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/compiler/2-4.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/compiler/2-5.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/compiler/2-6.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="如何将正则表达式转化为NFA"><a href="#如何将正则表达式转化为NFA" class="headerlink" title="如何将正则表达式转化为NFA"></a>如何将正则表达式转化为NFA</h2><p>基本情况+归纳得到</p>
-<p><img src="/.../img/compiler/2-7.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/.../img/compiler/2-8.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/.../img/compiler/2-9.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/.../img/compiler/2-10.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/compiler/2-7.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/compiler/2-8.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/compiler/2-9.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/compiler/2-10.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="DFA的化简"><a href="#DFA的化简" class="headerlink" title="DFA的化简"></a>DFA的化简</h2><p>将一个DFA的状态机划分为多各组，（组之间的状态不可区分）然后将每个组中的状态合并成状态最少的DFA的一个状态</p>
 <p>可区分</p>
 <p>如果分别中s和t除法，沿着标号为x的路径到达的两个状态只有一个时接受状态，则成为x区分状态s和t</p>
