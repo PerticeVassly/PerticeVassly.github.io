@@ -16,19 +16,19 @@
   <meta name="author" content="PV">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Router BasicsInternal Components RAMTemporary storage for router configuration files RAM content is lost on power down or restart Stores:routing tables,ARP cache Fast switching cache, Packet buffering">
+    <meta name="description" content="Router Basics Internal Components  RAM Temporary storage for router configuration files RAM content is lost on power down or restart Stores:routing tables,ARP cache Fast switching cache, Packet buffer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Computernetwork6_devices">
 <meta property="og:url" content="https://perticevassly.github.io/project/2024/01/05/computernetwork6/index.html">
 <meta property="og:site_name" content="PV&#39;s Blog">
-<meta property="og:description" content="Router BasicsInternal Components RAMTemporary storage for router configuration files RAM content is lost on power down or restart Stores:routing tables,ARP cache Fast switching cache, Packet buffering">
+<meta property="og:description" content="Router Basics Internal Components  RAM Temporary storage for router configuration files RAM content is lost on power down or restart Stores:routing tables,ARP cache Fast switching cache, Packet buffer">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/6-1.png">
+<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/6-1.png">
 <meta property="article:published_time" content="2024-01-05T14:22:01.000Z">
 <meta property="article:modified_time" content="2024-01-05T14:25:49.680Z">
 <meta property="article:author" content="PV">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://perticevassly.github.io/img/computernetwork/6-1.png">
+<meta name="twitter:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/6-1.png">
   
   
   
@@ -43,6 +43,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -274,53 +276,70 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Router-Basics"><a href="#Router-Basics" class="headerlink" title="Router Basics"></a>Router Basics</h1><h2 id="Internal-Components"><a href="#Internal-Components" class="headerlink" title="Internal Components"></a>Internal Components</h2><p><img src="/../img/computernetwork/6-1.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="RAM"><a href="#RAM" class="headerlink" title="RAM"></a>RAM</h3><p>Temporary storage for router configuration files</p>
+                <h1>Router Basics</h1>
+<h2 id="Internal-Components">Internal Components</h2>
+<p><img src="../img/computernetwork/6-1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="RAM">RAM</h3>
+<p>Temporary storage for router configuration files</p>
 <p>RAM content is lost on power down or restart</p>
 <p>Stores:routing tables,ARP cache Fast switching cache, Packet buffering, Packet hold queues</p>
-<h3 id="NRAM"><a href="#NRAM" class="headerlink" title="NRAM"></a>NRAM</h3><p>Non-volatile RAM</p>
-<p>Stores backup&#x2F;startup configuration files</p>
+<h3 id="NRAM">NRAM</h3>
+<p>Non-volatile RAM</p>
+<p>Stores backup/startup configuration files</p>
 <p>Content is not lost when router is powered down or restarted</p>
-<h3 id="Flash"><a href="#Flash" class="headerlink" title="Flash"></a>Flash</h3><p>EEPROM(Electronically Erasable Programmable Read-Only Memory)</p>
+<h3 id="Flash">Flash</h3>
+<p>EEPROM(Electronically Erasable Programmable Read-Only Memory)</p>
 <p>Holds the Cisco IOS (Internet Operating System)</p>
 <p>Allows updating of software without replacing the Flash chip</p>
 <p>Multiple versions of IOS can be stored</p>
 <p>Retained on power down</p>
-<h3 id="ROM"><a href="#ROM" class="headerlink" title="ROM"></a>ROM</h3><p>Contains POST(Power On Self Test)</p>
+<h3 id="ROM">ROM</h3>
+<p>Contains POST(Power On Self Test)</p>
 <p>A bootstrap program(loads the Cisco IOS)</p>
 <p>And operating system software</p>
 <ul>
-<li><p>Backup trimmed down version of the IOS</p>
+<li>
+<p>Backup trimmed down version of the IOS</p>
 </li>
-<li><p>Upgrades require installing new chip set</p>
+<li>
+<p>Upgrades require installing new chip set</p>
 </li>
 </ul>
-<h3 id="Interfaces"><a href="#Interfaces" class="headerlink" title="Interfaces"></a>Interfaces</h3><p>Network connections through which packets enter and exit the router</p>
+<h3 id="Interfaces">Interfaces</h3>
+<p>Network connections through which packets enter and exit the router</p>
 <p>Attached to the motherboard or as separate modules</p>
-<h1 id="Router-Startup-procedure"><a href="#Router-Startup-procedure" class="headerlink" title="Router Startup procedure"></a>Router Startup procedure</h1><ol>
-<li><p>Perform a power-up self test:During this self test, the router executes diagnostics from rom on all hardware modules</p>
+<h1>Router Startup procedure</h1>
+<ol>
+<li>
+<p>Perform a power-up self test:During this self test, the router executes diagnostics from rom on all hardware modules</p>
 </li>
-<li><p>Verify the basic operations of CPU memory and network interface ports</p>
+<li>
+<p>Verify the basic operations of CPU memory and network interface ports</p>
 </li>
-<li><p>Software initialization</p>
+<li>
+<p>Software initialization</p>
 </li>
 </ol>
-<h2 id="process"><a href="#process" class="headerlink" title="process"></a>process</h2><p>step1: The generic bootstrap loader in ROM executes on the CPU card</p>
+<h2 id="process">process</h2>
+<p>step1: The generic bootstrap loader in ROM executes on the CPU card</p>
 <p>step2:The IOS can be found in one of several places. The location is disclosed in the boot field of the configuration register</p>
 <p>step3: The operating system image is loaded</p>
 <p>step4:The configuration file saved in NVRAM is loaed into main memory and executed one line at a time</p>
 <p>step5: If no valid configuration file in NVRAM the executes a question-driven initial configuration routine referred to as the system configuration dialog also called the setup mode</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">show ip route<br>show <span class="hljs-keyword">interface</span><br><span class="hljs-symbol">show</span> <span class="hljs-symbol">ip</span> <span class="hljs-symbol">int</span> <span class="hljs-symbol">brief</span><br></code></pre></td></tr></table></figure>
-
-<h1 id="Routing"><a href="#Routing" class="headerlink" title="Routing"></a>Routing</h1><p>A router generally relays a packet from one data link to another, using two basic functions, a path determination function and a switching function</p>
+<h1>Routing</h1>
+<p>A router generally relays a packet from one data link to another, using two basic functions, a path determination function and a switching function</p>
 <p>The switching function allows a router to accept a packet on one interface and forward it through a second interface</p>
 <p>The path determination function enables the router to select the most approppriate interface for forwardingj</p>
 <p>The router uses the network portion of the address to make path selections to pass the packet to the next router</p>
 <p>The node portion of the address is used by the router directly connected to destination network to deliver the packet to the correct host</p>
-<h2 id="Static-and-Dynamic-Route"><a href="#Static-and-Dynamic-Route" class="headerlink" title="Static and Dynamic Route"></a>Static and Dynamic Route</h2><h2 id="Administrative-Distance"><a href="#Administrative-Distance" class="headerlink" title="Administrative Distance"></a>Administrative Distance</h2><p>The administrative distance is a rating of the trustworthiness of a routing information source expressed as a numeric value from 0 to 255</p>
+<h2 id="Static-and-Dynamic-Route">Static and Dynamic Route</h2>
+<h2 id="Administrative-Distance">Administrative Distance</h2>
+<p>The administrative distance is a rating of the trustworthiness of a routing information source expressed as a numeric value from 0 to 255</p>
 <p>The higher the number the lower the trustworthiness rating</p>
 <p>So the administrative distance of static routes is often low (1 is default)</p>
-<h1 id="Routing-configuration"><a href="#Routing-configuration" class="headerlink" title="Routing configuration"></a>Routing configuration</h1>
+<h1>Routing configuration</h1>
+
                 
               </div>
             
@@ -471,6 +490,11 @@
 
 
   
+
+
+  
+  
+
 
 
 

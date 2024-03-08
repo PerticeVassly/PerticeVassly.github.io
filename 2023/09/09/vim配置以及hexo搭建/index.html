@@ -16,12 +16,12 @@
   <meta name="author" content="PV">
   <meta name="keywords" content="">
   
-    <meta name="description" content="仅做个人记录 vim配置此处直接使用的是wsl ubuntu22.04 自带的vim 配置按键映射    inoremap jk &lt;Esc&gt;     inoremap &#39; &#39;&#39;&lt;ESC&gt;i     inoremap &quot; &quot;&quot;&lt;ESC&gt;i     inoremap () ()&lt;ESC&gt;     in">
+    <meta name="description" content="仅做个人记录 vim配置 此处直接使用的是wsl ubuntu22.04 自带的vim 配置按键映射     inoremap jk &lt;Esc&gt;     inoremap &#39; &#39;&#39;&lt;ESC&gt;i     inoremap &quot; &quot;&quot;&lt;ESC&gt;i     inoremap () ()&lt;ESC&gt;     inoremap [ [">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vim配置与hexo搭建">
 <meta property="og:url" content="https://perticevassly.github.io/project/2023/09/09/vim%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8Ahexo%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="PV&#39;s Blog">
-<meta property="og:description" content="仅做个人记录 vim配置此处直接使用的是wsl ubuntu22.04 自带的vim 配置按键映射    inoremap jk &lt;Esc&gt;     inoremap &#39; &#39;&#39;&lt;ESC&gt;i     inoremap &quot; &quot;&quot;&lt;ESC&gt;i     inoremap () ()&lt;ESC&gt;     in">
+<meta property="og:description" content="仅做个人记录 vim配置 此处直接使用的是wsl ubuntu22.04 自带的vim 配置按键映射     inoremap jk &lt;Esc&gt;     inoremap &#39; &#39;&#39;&lt;ESC&gt;i     inoremap &quot; &quot;&quot;&lt;ESC&gt;i     inoremap () ()&lt;ESC&gt;     inoremap [ [">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-09T07:24:19.000Z">
 <meta property="article:modified_time" content="2023-09-09T15:04:17.015Z">
@@ -43,6 +43,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -221,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.5k 字
+          5.2k 字
         
       </span>
     
@@ -232,7 +234,7 @@
         
         
         
-          46 分钟
+          44 分钟
         
       </span>
     
@@ -275,16 +277,19 @@
               <div class="markdown-body">
                 
                 <p>仅做个人记录</p>
-<h1 id="vim配置"><a href="#vim配置" class="headerlink" title="vim配置"></a>vim配置</h1><p>此处直接使用的是wsl ubuntu22.04 自带的vim</p>
-<h2 id="配置按键映射"><a href="#配置按键映射" class="headerlink" title="配置按键映射"></a>配置按键映射</h2><pre><code class="hljs">    inoremap jk &lt;Esc&gt;
-    inoremap &#39; &#39;&#39;&lt;ESC&gt;i
+<h1>vim配置</h1>
+<p>此处直接使用的是wsl ubuntu22.04 自带的vim</p>
+<h2 id="配置按键映射">配置按键映射</h2>
+<pre><code class="hljs">    inoremap jk &lt;Esc&gt;
+    inoremap ' ''&lt;ESC&gt;i
     inoremap &quot; &quot;&quot;&lt;ESC&gt;i
     inoremap () ()&lt;ESC&gt;
     inoremap [ []&lt;ESC&gt;
     inoremap &#123; &#123;&#125;&lt;ESC&gt;i
     nnoremap o o&lt;ESC&gt;
 </code></pre>
-<h2 id="安装vundle插件管理"><a href="#安装vundle插件管理" class="headerlink" title="安装vundle插件管理"></a>安装vundle插件管理</h2><p>将vundle插件clone到指定位置</p>
+<h2 id="安装vundle插件管理">安装vundle插件管理</h2>
+<p>将vundle插件clone到指定位置</p>
 <pre><code class="hljs">    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 </code></pre>
 <p>在.vimrc文件中加入</p>
@@ -304,22 +309,22 @@
     filetype plugin on    &quot; required
 </code></pre>
 <p>安装插件，输入对应的地址或者名称</p>
-<pre><code class="hljs">    Plugin &#39;Valloric/YouCompleteMe&#39; &quot;YCM&quot;
-    Plugin &#39;VundleVim/Vundle.vim&#39;   &quot; let Vundle manage Vundle, required
-    Plugin &#39;scrooloose/nerdtree&#39; &quot;nerdtree&quot;
-    Plugin &#39;tpope/vim-surround&#39; &quot;自动环绕&quot;
-    Plugin &#39;jiangmiao/auto-pairs&#39; &quot;括号补全&quot;
-    Plugin &#39;https://gitee.com/linuor/gruvbox.git&#39; &quot;gruvbox主题&quot;
-    Plugin &#39;https://gitee.com/then_then/markdown-preview.nvim.git&#39; &quot;markdown预览&quot;
+<pre><code class="hljs">    Plugin 'Valloric/YouCompleteMe' &quot;YCM&quot;
+    Plugin 'VundleVim/Vundle.vim'   &quot; let Vundle manage Vundle, required
+    Plugin 'scrooloose/nerdtree' &quot;nerdtree&quot;
+    Plugin 'tpope/vim-surround' &quot;自动环绕&quot;
+    Plugin 'jiangmiao/auto-pairs' &quot;括号补全&quot;
+    Plugin 'https://gitee.com/linuor/gruvbox.git' &quot;gruvbox主题&quot;
+    Plugin 'https://gitee.com/then_then/markdown-preview.nvim.git' &quot;markdown预览&quot;
 </code></pre>
-<p>进入vim，命令模式执行 </p>
+<p>进入vim，命令模式执行</p>
 <pre><code class="hljs">    ：PluginInstall
 </code></pre>
 <p>其中YCM耗时较长，且需要进一步配置（运行YCM文件目录下的 install.py文件（同样时间较长））</p>
 <p>配置各个插件</p>
 <pre><code class="hljs">    &quot;这是markdwon预览的配置
 
-    let g:mkdp_path_to_chrome = &#39;/mnt/c/ProgramData/Microsoft/Windows/Start Menu/Programs/Microsoft Edge.lnk&#39;
+    let g:mkdp_path_to_chrome = '/mnt/c/ProgramData/Microsoft/Windows/Start Menu/Programs/Microsoft Edge.lnk'
     &quot; 设置 chrome 浏览器的路径（或是启动 chrome（或其他现代浏览器）的命令）
 
     let g:mkdp_auto_start = 0
@@ -359,26 +364,26 @@
     autocmd bufenter * if (winnr(&quot;$&quot;) == 1 &amp;&amp; exists(&quot;b:NERDTree&quot;) &amp;&amp; b:NERDTree.isTabTree()) | q | endif
 
     &quot;设置树的显示图标
-    let g:NERDTreeDirArrowExpandable = &#39;▸&#39;  
-    let g:NERDTreeDirArrowCollapsible = &#39;▾&#39; 
+    let g:NERDTreeDirArrowExpandable = '▸'  
+    let g:NERDTreeDirArrowCollapsible = '▾' 
     let g:NERDTreeShowLineNumbers=1  &quot; 是否显示行号
 
     &quot; 在终端启动vim时，共享NERDTree
     let g:nerdtree_tabs_open_on_console_startup=1
 
     &quot; 忽略一下文件的显示
-    let NERDTreeIgnore=[&#39;\.pyc&#39;,&#39;\~$&#39;,&#39;\.swp&#39;]
+    let NERDTreeIgnore=['\.pyc','\~$','\.swp']
     let g:NERDTreeGitStatusIndicatorMapCustom = &#123;
-                    \ &#39;Modified&#39;  :&#39;✹&#39;,
-                    \ &#39;Staged&#39;    :&#39;✚&#39;,
-                    \ &#39;Untracked&#39; :&#39;✭&#39;,
-                    \ &#39;Renamed&#39;   :&#39;➜&#39;,
-                    \ &#39;Unmerged&#39;  :&#39;═&#39;,
-                    \ &#39;Deleted&#39;   :&#39;✖&#39;,
-                    \ &#39;Dirty&#39;     :&#39;✗&#39;,
-                    \ &#39;Ignored&#39;   :&#39;☒&#39;,
-                    \ &#39;Clean&#39;     :&#39;✔︎&#39;,
-                    \ &#39;Unknown&#39;   :&#39;?&#39;,
+                    \ 'Modified'  :'✹',
+                    \ 'Staged'    :'✚',
+                    \ 'Untracked' :'✭',
+                    \ 'Renamed'   :'➜',
+                    \ 'Unmerged'  :'═',
+                    \ 'Deleted'   :'✖',
+                    \ 'Dirty'     :'✗',
+                    \ 'Ignored'   :'☒',
+                    \ 'Clean'     :'✔︎',
+                    \ 'Unknown'   :'?',
                     \ &#125;
 </code></pre>
 <p>配置不同模式下的光标</p>
@@ -392,7 +397,7 @@
     set guioptions=                 &quot;去掉两边的scrollbar
     set guifont=Monaco:h17          &quot;设置字体和字的大小
 </code></pre>
-<p>其他配置       </p>
+<p>其他配置</p>
 <pre><code class="hljs">    &quot;&quot;自动开启语法高亮&quot;
     syntax enable
 
@@ -541,7 +546,8 @@
     set selection=exclusive
     set selectmode=mouse,key
 </code></pre>
-<h1 id="hexo搭建"><a href="#hexo搭建" class="headerlink" title="hexo搭建"></a>hexo搭建</h1><p>创建github库以username.github.io命名，设置好权限</p>
+<h1>hexo搭建</h1>
+<p>创建github库以username.github.io命名，设置好权限</p>
 <p>安装nodejs和hexo和npm</p>
 <pre><code class="hljs">    sudo npm install hexo-cli -g
 </code></pre>
@@ -558,7 +564,7 @@
 <p>部署</p>
 <pre><code class="hljs">    hexo d
 </code></pre>
-<p>本地查看 </p>
+<p>本地查看</p>
 <pre><code class="hljs">    hexo s
 </code></pre>
 <p>可以将相关主题clone到themes文件加从而完成主题切换</p>
@@ -722,6 +728,11 @@
 
 
   
+
+
+  
+  
+
 
 
 
