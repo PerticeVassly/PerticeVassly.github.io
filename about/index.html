@@ -13,24 +13,24 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="PV">
+  <meta name="author" content="eqSun">
   <meta name="keywords" content="">
   
     <meta name="description" content="A blog for recording my daily life and learning notes. If there is any infringement, this site will delete the content.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="关于">
 <meta property="og:url" content="https://perticevassly.github.io/project/about/index.html">
-<meta property="og:site_name" content="PV&#39;s Blog">
+<meta property="og:site_name" content="eqSun&#39;s Blog">
 <meta property="og:description" content="A blog for recording my daily life and learning notes. If there is any infringement, this site will delete the content.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-05T03:31:47.000Z">
 <meta property="article:modified_time" content="2024-01-07T08:51:02.871Z">
-<meta property="article:author" content="PV">
+<meta property="article:author" content="eqSun">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>关于 - PV&#39;s Blog</title>
+  <title>关于 - eqSun&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -41,8 +41,6 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -317,6 +315,7 @@
 
 
 
+
               </div>
             </div>
           </div>
@@ -468,6 +467,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

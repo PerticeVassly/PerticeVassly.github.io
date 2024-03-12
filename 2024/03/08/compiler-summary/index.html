@@ -13,26 +13,26 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="PV">
+  <meta name="author" content="eqSun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="什么是编译器 一个编译器就是一个程序，读入以某一种语言编写的程序，并且把该程序翻译为一个等价的用另外一种语言编写的程序 编译器的结构 分析部分(Analysis) 源程序 - 语法结构 - 中间表示 搜集源程序中的相关信息放入符号表 分析，定位程序中可能存在的错误信息 又称之为编译器的前端，是与机器无关的部分 综合部分(Synthesis) 根据符号表和中间表示狗仔目标程序 又称为编译器的后端(b">
+    <meta name="description" content="什么是编译器一个编译器就是一个程序，读入以某一种语言编写的程序，并且把该程序翻译为一个等价的用另外一种语言编写的程序 编译器的结构分析部分(Analysis) 源程序 - 语法结构 - 中间表示 搜集源程序中的相关信息放入符号表 分析，定位程序中可能存在的错误信息 又称之为编译器的前端，是与机器无关的部分 综合部分(Synthesis) 根据符号表和中间表示狗仔目标程序 又称为编译器的后端(bac">
 <meta property="og:type" content="article">
 <meta property="og:title" content="compiler-summary">
 <meta property="og:url" content="https://perticevassly.github.io/project/2024/03/08/compiler-summary/index.html">
-<meta property="og:site_name" content="PV&#39;s Blog">
-<meta property="og:description" content="什么是编译器 一个编译器就是一个程序，读入以某一种语言编写的程序，并且把该程序翻译为一个等价的用另外一种语言编写的程序 编译器的结构 分析部分(Analysis) 源程序 - 语法结构 - 中间表示 搜集源程序中的相关信息放入符号表 分析，定位程序中可能存在的错误信息 又称之为编译器的前端，是与机器无关的部分 综合部分(Synthesis) 根据符号表和中间表示狗仔目标程序 又称为编译器的后端(b">
+<meta property="og:site_name" content="eqSun&#39;s Blog">
+<meta property="og:description" content="什么是编译器一个编译器就是一个程序，读入以某一种语言编写的程序，并且把该程序翻译为一个等价的用另外一种语言编写的程序 编译器的结构分析部分(Analysis) 源程序 - 语法结构 - 中间表示 搜集源程序中的相关信息放入符号表 分析，定位程序中可能存在的错误信息 又称之为编译器的前端，是与机器无关的部分 综合部分(Synthesis) 根据符号表和中间表示狗仔目标程序 又称为编译器的后端(bac">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/03/08/img/compiler/1-2.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/compiler/1-2.png">
 <meta property="article:published_time" content="2024-03-08T03:22:00.000Z">
-<meta property="article:modified_time" content="2024-03-08T03:29:14.311Z">
-<meta property="article:author" content="PV">
+<meta property="article:modified_time" content="2024-03-12T12:05:30.676Z">
+<meta property="article:author" content="eqSun">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://perticevassly.github.io/project/2024/03/08/img/compiler/1-2.png">
+<meta name="twitter:image" content="https://perticevassly.github.io/img/compiler/1-2.png">
   
   
   
-  <title>compiler-summary - PV&#39;s Blog</title>
+  <title>compiler-summary - eqSun&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -43,8 +43,6 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -223,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          529 字
+          534 字
         
       </span>
     
@@ -276,10 +274,8 @@
             
               <div class="markdown-body">
                 
-                <h1>什么是编译器</h1>
-<p>一个编译器就是一个程序，读入以某一种语言编写的程序，并且把该程序翻译为一个等价的用另外一种语言编写的程序</p>
-<h1>编译器的结构</h1>
-<p>分析部分(Analysis)</p>
+                <h1 id="什么是编译器"><a href="#什么是编译器" class="headerlink" title="什么是编译器"></a>什么是编译器</h1><p>一个编译器就是一个程序，读入以某一种语言编写的程序，并且把该程序翻译为一个等价的用另外一种语言编写的程序</p>
+<h1 id="编译器的结构"><a href="#编译器的结构" class="headerlink" title="编译器的结构"></a>编译器的结构</h1><p>分析部分(Analysis)</p>
 <p>源程序 - 语法结构 - 中间表示</p>
 <p>搜集源程序中的相关信息放入符号表</p>
 <p>分析，定位程序中可能存在的错误信息</p>
@@ -287,25 +283,19 @@
 <p>综合部分(Synthesis)</p>
 <p>根据符号表和中间表示狗仔目标程序</p>
 <p>又称为编译器的后端(back end)是与机器相关的部分</p>
-<p><img src="../img/compiler/1-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="词法分析-lexical-analysis-scanning">词法分析(lexical analysis scanning)</h2>
-<p>读入源程序的字符流，输出有意义的词素(lexeme)</p>
+<p><img src="/../img/compiler/1-2.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="词法分析-lexical-analysis-scanning"><a href="#词法分析-lexical-analysis-scanning" class="headerlink" title="词法分析(lexical analysis scanning)"></a>词法分析(lexical analysis scanning)</h2><p>读入源程序的字符流，输出有意义的词素(lexeme)</p>
 <p>基于词素产生词法单元&lt;token-name,attribute-value&gt;</p>
 <p>token-name由语法分析步骤使用</p>
-<p>attribute-value指向相应的符号表条目，由语义分析/代码生成步骤使用</p>
-<h2 id="语法分析-syntax-analysis">语法分析(syntax analysis)</h2>
-<p>根据词法单元的第一个分量来创造树形图中间表示形式。通常是语法树</p>
+<p>attribute-value指向相应的符号表条目，由语义分析&#x2F;代码生成步骤使用</p>
+<h2 id="语法分析-syntax-analysis"><a href="#语法分析-syntax-analysis" class="headerlink" title="语法分析(syntax analysis)"></a>语法分析(syntax analysis)</h2><p>根据词法单元的第一个分量来创造树形图中间表示形式。通常是语法树</p>
 <p>指出了词法单元流的语法结构</p>
-<h2 id="语义分析">语义分析</h2>
-<p>使用语法树和符号表中的信息，检查源程序是否满足语言定义的语义约束</p>
+<h2 id="语义分析"><a href="#语义分析" class="headerlink" title="语义分析"></a>语义分析</h2><p>使用语法树和符号表中的信息，检查源程序是否满足语言定义的语义约束</p>
 <p>收集类型信息用于代码生成</p>
 <p>类型检查和类型转换</p>
-<h2 id="中间代码生成">中间代码生成</h2>
-<p>生成类似于机器语言的中间表示</p>
-<h2 id="代码优化">代码优化</h2>
-<p>改进中间代码</p>
-<h2 id="代码生成">代码生成</h2>
-<p>把中间表示形式映射到目标语言</p>
+<h2 id="中间代码生成"><a href="#中间代码生成" class="headerlink" title="中间代码生成"></a>中间代码生成</h2><p>生成类似于机器语言的中间表示</p>
+<h2 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h2><p>改进中间代码</p>
+<h2 id="代码生成"><a href="#代码生成" class="headerlink" title="代码生成"></a>代码生成</h2><p>把中间表示形式映射到目标语言</p>
 
                 
               </div>
@@ -351,7 +341,7 @@
       
         <div class="license-meta-item">
           <div>作者</div>
-          <div>PV</div>
+          <div>eqSun</div>
         </div>
       
       
@@ -461,6 +451,7 @@
 
   
   
+
 
 
 
@@ -655,6 +646,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

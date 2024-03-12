@@ -13,58 +13,58 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="PV">
+  <meta name="author" content="eqSun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="简介 数据链路层使用的信道主要有 （1）点对点信道：一对一点对点的通信方式。 （2）广播信道：这种信道使用一对多的广播通信方式，过程比较复杂，需要专用的共享信道协议来调节这些主机的数据发送 使用点对点信道的数据链路层 **链路（link）**是从一个结点到相邻结点的一段物理线路而中间没有任何的交换结点 数据链路（data link）当在一条线路上传输数据的时候，除了必须要有一条物理线路以外，还必须">
+    <meta name="description" content="简介数据链路层使用的信道主要有 （1）点对点信道：一对一点对点的通信方式。 （2）广播信道：这种信道使用一对多的广播通信方式，过程比较复杂，需要专用的共享信道协议来调节这些主机的数据发送 使用点对点信道的数据链路层链路（link）是从一个结点到相邻结点的一段物理线路而中间没有任何的交换结点 数据链路（data link）当在一条线路上传输数据的时候，除了必须要有一条物理线路以外，还必须要有一些必要">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Computernetwork2_datalinklayer">
 <meta property="og:url" content="https://perticevassly.github.io/project/2024/01/05/computernetwork2/index.html">
-<meta property="og:site_name" content="PV&#39;s Blog">
-<meta property="og:description" content="简介 数据链路层使用的信道主要有 （1）点对点信道：一对一点对点的通信方式。 （2）广播信道：这种信道使用一对多的广播通信方式，过程比较复杂，需要专用的共享信道协议来调节这些主机的数据发送 使用点对点信道的数据链路层 **链路（link）**是从一个结点到相邻结点的一段物理线路而中间没有任何的交换结点 数据链路（data link）当在一条线路上传输数据的时候，除了必须要有一条物理线路以外，还必须">
+<meta property="og:site_name" content="eqSun&#39;s Blog">
+<meta property="og:description" content="简介数据链路层使用的信道主要有 （1）点对点信道：一对一点对点的通信方式。 （2）广播信道：这种信道使用一对多的广播通信方式，过程比较复杂，需要专用的共享信道协议来调节这些主机的数据发送 使用点对点信道的数据链路层链路（link）是从一个结点到相邻结点的一段物理线路而中间没有任何的交换结点 数据链路（data link）当在一条线路上传输数据的时候，除了必须要有一条物理线路以外，还必须要有一些必要">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-26.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-27.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-28.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-29.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-30.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-31.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-17.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-18.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-32.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-19.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-20.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-21.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-22.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-23.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-24.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-33.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-25.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-1.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-2.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-3.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-4.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-5.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-6.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-7.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-9.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-8.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-10.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-11.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-12.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-13.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-14.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-15.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-16.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-26.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-27.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-28.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-29.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-30.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-31.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-17.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-18.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-32.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-19.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-20.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-21.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-22.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-23.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-24.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-33.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-25.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-1.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-2.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-3.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-4.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-5.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-6.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-7.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-9.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-8.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-10.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-11.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-12.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-13.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-14.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-15.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/2-16.png">
 <meta property="article:published_time" content="2024-01-05T03:40:11.000Z">
-<meta property="article:modified_time" content="2024-01-05T03:43:17.022Z">
-<meta property="article:author" content="PV">
+<meta property="article:modified_time" content="2024-03-12T12:05:30.718Z">
+<meta property="article:author" content="eqSun">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/2-26.png">
+<meta name="twitter:image" content="https://perticevassly.github.io/img/computernetwork/2-26.png">
   
   
   
-  <title>Computernetwork2_datalinklayer - PV&#39;s Blog</title>
+  <title>Computernetwork2_datalinklayer - eqSun&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -75,8 +75,6 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -308,58 +306,49 @@
             
               <div class="markdown-body">
                 
-                <h1>简介</h1>
-<p>数据链路层使用的信道主要有</p>
+                <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>数据链路层使用的信道主要有</p>
 <p><strong>（1）点对点信道</strong>：一对一点对点的通信方式。</p>
 <p><strong>（2）广播信道</strong>：这种信道使用一对多的广播通信方式，过程比较复杂，需要专用的共享信道协议来调节这些主机的数据发送</p>
-<h1>使用点对点信道的数据链路层</h1>
-<p>**链路（link）**是从一个结点到相邻结点的一段物理线路而中间没有任何的交换结点</p>
-<p><strong>数据链路（data link）<strong>当在一条线路上传输数据的时候，除了必须要有一条物理线路以外，还必须要有一些必要的通信协议来控制哲学数据的传输。把实现这些协议的硬件和软件加到链路上就构成了数据链路。目前一般使用</strong>网络适配器</strong>来实现这些协议</p>
+<h1 id="使用点对点信道的数据链路层"><a href="#使用点对点信道的数据链路层" class="headerlink" title="使用点对点信道的数据链路层"></a>使用点对点信道的数据链路层</h1><p><strong>链路（link）</strong>是从一个结点到相邻结点的一段物理线路而中间没有任何的交换结点</p>
+<p><strong>数据链路（data link）</strong>当在一条线路上传输数据的时候，除了必须要有一条物理线路以外，还必须要有一些必要的通信协议来控制哲学数据的传输。把实现这些协议的硬件和软件加到链路上就构成了数据链路。目前一般使用<strong>网络适配器</strong>来实现这些协议</p>
 <p>点对点星岛的数据链路层在进行通信的时候的主要步骤：</p>
 <p>（1）结点A的数据链路层把网络层交下来的IP数据报添加首部和尾部封装成帧。</p>
 <p>（2）结点A把封装好的帧发送给结点B的数据链路层</p>
 <p>（3）若结点B的数据链路层收到的帧没有差错，那么从收到的帧中提取出IP报文交付上面的网络层，否则丢弃。</p>
-<h2 id="三个基本问题">三个基本问题</h2>
-<p><strong>（1）封装成帧（framing）</strong></p>
+<h2 id="三个基本问题"><a href="#三个基本问题" class="headerlink" title="三个基本问题"></a>三个基本问题</h2><p><strong>（1）封装成帧（framing）</strong></p>
 <p>接收端在收到物理层上交的比特流以后，就能够根据首部和尾部的标记，从收到的比特流中识别帧的开始和结束。即<strong>帧界定</strong>。同时首部和尾部也包含了一些控制信息。</p>
 <p>每一种链路层协议都规定了所能传送的帧的数据部分长度上线——最大传送单元*<strong>MTU（Maximum Transfer Unit）</strong>(<em>ps:这里说的是数据部分长度上线</em>)</p>
 <p>当数据是可以答应的ASCII文本文件的时候，帧的界定可以使用特殊的<strong>帧界定符</strong>。</p>
-<p>控制字符**SOH（Start Of Header）**放在一个帧的最前面，表示帧的首部的开始；**EOT（End Of Transmission）**表示帧的结束，放在帧的最后面</p>
+<p>控制字符<strong>SOH（Start Of Header）</strong>放在一个帧的最前面，表示帧的首部的开始；<strong>EOT（End Of Transmission）</strong>表示帧的结束，放在帧的最后面</p>
 <p><strong>（2）透明传输</strong></p>
 <p>帧传输的数据中的任何8bit的组合一定不能和帧控制字符一样。</p>
 <p>如果传输的是文本组成的帧，这种情况显然是不可能的。</p>
 <p>但是其余情况可能会有该问题。</p>
-<p>解决方案：在数据部分中冲突的SOH和EOT前插入一个转义字符<strong>ESC</strong>，接收端在把数据送往网络层之前删除这个转义字符.如果出现转义字符本身的冲突，也插入一个转义字符。这种方法叫做<strong>字节填充（byte stuffing）<strong>or</strong>字符填充（character stuffing）</strong></p>
+<p>解决方案：在数据部分中冲突的SOH和EOT前插入一个转义字符<strong>ESC</strong>，接收端在把数据送往网络层之前删除这个转义字符.如果出现转义字符本身的冲突，也插入一个转义字符。这种方法叫做<strong>字节填充（byte stuffing）</strong>or<strong>字符填充（character stuffing）</strong></p>
 <p><strong>（3）差错检测</strong></p>
 <p><strong>CRC(Cyclic Redundancy Check)</strong></p>
 <p>process</p>
-<p>首先把数据划分为组，假定每组k个bit，现在假定带传送的数据M = 101001（k=6）CRC就是在后面添加供差错检测用的nbit冗余码,然后作为n+kbit一起发送出去</p>
+<p>首先把数据划分为组，假定每组k个bit，现在假定带传送的数据M &#x3D; 101001（k&#x3D;6）CRC就是在后面添加供差错检测用的nbit冗余码,然后作为n+kbit一起发送出去</p>
 <p>先将M左移nbit右边补0，然后除以一个两边实现商量好的n+1bit的数P，显然得到了一个nbit的余数，那么就把这个余数作为冗余的nbit拼接在M后面然后作为k+nbit发送过于，这个为了检验错误而存在冗余码有时也叫做帧检验序列<strong>FCS（Frame Check Sequence）</strong>(<em>ps:不一定要是由CRC方法得出的</em>)</p>
 <p>显然接收方对其除以P的时候得到的结果一定是0</p>
 <p><em>上述措施并不能保证数据链路层的数据传输是可靠的，但是当前网络信道传输质量较高，这样做可以提高通信效率，因此使用广泛</em></p>
-<h1>点对点协议PPP</h1>
-<p>通信质量较差的时代，在数据链路层使用可靠传输协议是一种好方法,于是其使用高级数据链路控制<strong>HDLC(High-level Data Link Control)</strong>。目前我们使用更加简单的<strong>PPP（Point-to-Point Protocol）</strong></p>
-<p><img src="../img/computernetwork/2-26.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="点对点协议PPP"><a href="#点对点协议PPP" class="headerlink" title="点对点协议PPP"></a>点对点协议PPP</h1><p>通信质量较差的时代，在数据链路层使用可靠传输协议是一种好方法,于是其使用高级数据链路控制<strong>HDLC(High-level Data Link Control)<strong>。目前我们使用更加简单的</strong>PPP（Point-to-Point Protocol）</strong></p>
+<p><img src="/../img/computernetwork/2-26.png" srcset="/img/loading.gif" lazyload></p>
 <p>PPP协议满足的要求</p>
 <p>（1）简单（2）分装成帧（3）透明性（4）多种网络层协议（5）多种类型的链路（6）差错检测（7）检测链接状态（8）最大传送单元（9）网络层地址协商（10）数据压缩协商</p>
 <p>PPP协议的组成</p>
 <p>（1）将一个IP数据报文封装到串行链路的方法（2）一个用来建立，配置和测试数据链路连接的链路控制协议<strong>LCP（Link Control Protocol）</strong>（3）一套网络控制协议<strong>NCP（Network Control Protocol）</strong></p>
-<h2 id="PPP协议的帧格式">PPP协议的帧格式</h2>
-<h3 id="各个字段的意义">各个字段的意义</h3>
-<p><img src="../img/computernetwork/2-27.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>首部的第一个字段和尾部的第二个字段都是标志字段 **F（Flag）**规定为0x7E 即 01111110，作用为帧界定符号，两个相邻的帧之间只需要一个帧界定符号。</p>
+<h2 id="PPP协议的帧格式"><a href="#PPP协议的帧格式" class="headerlink" title="PPP协议的帧格式"></a>PPP协议的帧格式</h2><h3 id="各个字段的意义"><a href="#各个字段的意义" class="headerlink" title="各个字段的意义"></a>各个字段的意义</h3><p><img src="/../img/computernetwork/2-27.png" srcset="/img/loading.gif" lazyload></p>
+<p>首部的第一个字段和尾部的第二个字段都是标志字段 <strong>F（Flag）</strong>规定为0x7E 即 01111110，作用为帧界定符号，两个相邻的帧之间只需要一个帧界定符号。</p>
 <p>首部中的地址字段A规定为0xFF，控制字段规定为0x03，这两个字段没有意义，只是做此规定</p>
 <p>首部的第四个字段是2byte的协议字段，如0x0021的时候就是IP报文 0xC021的时候就是LCP的数据</p>
 <p>信息字段的长度是任意的要与MTU相符合，默认不超过1400字节</p>
 <p>尾部第一个字段是2byte的FCS</p>
-<h3 id="字节填充">字节填充</h3>
-<p>转义字符定义为0x7D</p>
+<h3 id="字节填充"><a href="#字节填充" class="headerlink" title="字节填充"></a>字节填充</h3><p>转义字符定义为0x7D</p>
 <p>0x7E -&gt; 0x7D 0x7E</p>
 <p>0x7D -&gt; 0x7D 0x5D</p>
-<h3 id="零比特填充">零比特填充</h3>
-<p>首先利用硬件等等处理信息字段，只要发现有5个连续的1，就立即填入一个0，接收方再对其进行还原，就可以避免冲突。</p>
-<h2 id="PPP协议的工作状态">PPP协议的工作状态</h2>
-<p><img src="../img/computernetwork/2-28.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="零比特填充"><a href="#零比特填充" class="headerlink" title="零比特填充"></a>零比特填充</h3><p>首先利用硬件等等处理信息字段，只要发现有5个连续的1，就立即填入一个0，接收方再对其进行还原，就可以避免冲突。</p>
+<h2 id="PPP协议的工作状态"><a href="#PPP协议的工作状态" class="headerlink" title="PPP协议的工作状态"></a>PPP协议的工作状态</h2><p><img src="/../img/computernetwork/2-28.png" srcset="/img/loading.gif" lazyload></p>
 <p>用户个人向ISP发送一系列链路控制协议LCP分组，这些分组的响应决定了用户将要使用的一些参数。然后网络控制协议NCP给新接入的用户个人电脑分配一个临时的IP地址。</p>
 <p>具体过程：</p>
 <p>PPP链路处于<strong>链路静止（Link Dead）</strong> 状态。当用户个人佃农通过调制解调器呼叫路由器后PPP进入链路建立 <strong>（Link Establish）</strong> 状态，LCP连接建立</p>
@@ -372,9 +361,7 @@
 <p>此阶段只允许传送LCP分组，鉴别协议分组以及检测链路质量的分组，此时可以采用口令鉴别协议 <strong>PAP（Password Authentication Protocol）</strong> 或者 <strong>口令握手鉴别协议CHAP（Challenge-HandShake Authentication Protocol）。</strong> 鉴别失败转入链路终止状态，否则进入<strong>网络层协议状态（Network-layer Protocol）</strong>(<em>ps:这使得PPP两端的网络层运行不同的网络协议但是仍然可以使用同一个PPP协议进行通信</em>)</p>
 <p>网络层配置完毕后链路就进入数据通信的 <strong>链路打开（Link Open）</strong> 状态，此时PPP端点仍然可以发送LCP分组 <strong>回送请求（Echo-Request）</strong> 和<strong>回送回答分组LCP（Echo-Reply）</strong> 检查链路状态</p>
 <p>当然链路出现故障也会回到链路终止状态。</p>
-<h1>使用广播信道的数据链路层</h1>
-<h2 id="局域网的数据链路层">局域网的数据链路层</h2>
-<p>（1）具有广播功能，一个站点可以方便的访问全网</p>
+<h1 id="使用广播信道的数据链路层"><a href="#使用广播信道的数据链路层" class="headerlink" title="使用广播信道的数据链路层"></a>使用广播信道的数据链路层</h1><h2 id="局域网的数据链路层"><a href="#局域网的数据链路层" class="headerlink" title="局域网的数据链路层"></a>局域网的数据链路层</h2><p>（1）具有广播功能，一个站点可以方便的访问全网</p>
 <p>（2）便于系统的扩展和逐渐演变，各个设备的位置可以灵活调整</p>
 <p>（3）提高可靠性，可用性，生存性</p>
 <p>分类：星形网，环形网，总线网</p>
@@ -383,80 +370,62 @@
 <p>（2）动态媒体接入控制，又称之为多点接入（multiple access）</p>
 <p>又可以继续分类</p>
 <ul>
-<li>
-<p>随机接入（需要碰撞处理）</p>
+<li><p>随机接入（需要碰撞处理）</p>
 </li>
-<li>
-<p>受控接入（比如轮询）</p>
+<li><p>受控接入（比如轮询）</p>
 </li>
 </ul>
-<h3 id="以太网的标准">以太网的标准</h3>
-<p>为了使得数据链路层能够适应多种局域网标准，我们把局域网的数据 链路层拆分为两个子层 <strong>逻辑控制LLC（Logical Link Protocol）</strong> 和 <strong>MAC（Medium Access Control）</strong></p>
+<h3 id="以太网的标准"><a href="#以太网的标准" class="headerlink" title="以太网的标准"></a>以太网的标准</h3><p>为了使得数据链路层能够适应多种局域网标准，我们把局域网的数据 链路层拆分为两个子层 <strong>逻辑控制LLC（Logical Link Protocol）</strong> 和 <strong>MAC（Medium Access Control）</strong></p>
 <p>当前LLC基本被废弃</p>
-<h2 id="CSMA-CD协议">CSMA/CD协议</h2>
-<p>由于总线上只要有一台计算机再发送数据，总线的传输资源就会被占用，因此再同一实践只能允许有一台计算机发送数据。</p>
-<p>CSMA/CD 载波监听多点接入/碰撞检测 <strong>（Carrier Sense Multiple Access with Collision Detection）</strong></p>
+<h2 id="CSMA-CD协议"><a href="#CSMA-CD协议" class="headerlink" title="CSMA&#x2F;CD协议"></a>CSMA&#x2F;CD协议</h2><p>由于总线上只要有一台计算机再发送数据，总线的传输资源就会被占用，因此再同一实践只能允许有一台计算机发送数据。</p>
+<p>CSMA&#x2F;CD 载波监听多点接入&#x2F;碰撞检测 <strong>（Carrier Sense Multiple Access with Collision Detection）</strong></p>
 <p>多点接入：说明是总线网络</p>
 <p>载波监听：利用电子技术不断检测信道上有没有计算机再发送</p>
 <p>碰撞检测：适配器边发送数据边检测信道上的型号电压的变化情况一确定是否有其他站在发送数据。</p>
 <p>显然A在发送数据以后，最迟要2t的时间才能知道自己发送的数据又没有和其他人发生碰撞。首先在t之后各个站点都已经知道了A在发送数据，不会再发送了，但是t之前有可能有人在发送，这时候这个发送的冲突数据一定会在2t以内到达A。</p>
-<p>显然使用CSMA/CD协议的时候一个站不可能同时进行发送和接受（不然就变成碰撞了）所以CSMA/CD的以太网不可能进行全双工通信，只能进行双向交替通信。</p>
-<p>我们将以太网的往返时间2称之为 <strong>争用期（contention period）</strong>  又称之为 <strong>碰撞窗口（collision window）</strong></p>
+<p>显然使用CSMA&#x2F;CD协议的时候一个站不可能同时进行发送和接受（不然就变成碰撞了）所以CSMA&#x2F;CD的以太网不可能进行全双工通信，只能进行双向交替通信。</p>
+<p>我们将以太网的往返时间2称之为 <strong>争用期（contention period）</strong>  又称之为 <strong>碰撞窗口（collision window）</strong> </p>
 <p><strong>截断二进制指数退避（truncated binary exponential backoff）</strong></p>
 <p>令K为重传次数和10取小</p>
 <p>从0-2^k - 1中去一个数字r</p>
 <p>重传要退后时间就是r倍的争用期。即检测到发生碰撞以后立即停止发送数据（接着执行认为干扰。。。）再接着就等待退避算法的时间完成后再次检测信道。</p>
 <p>重传次数达到16次的时候向上层报告表示连续冲突，丢弃该帧。</p>
-<p>每个帧的CSMA/CD算法都是无记忆的。</p>
+<p>每个帧的CSMA&#x2F;CD算法都是无记忆的。</p>
 <p>但是这是建立在发送帧需要很长时间的，如果发送的帧时间很短，甚至短于2t，那么A可能提前进入监测状态，此时他认为自己已经没有发送任务，收到碰撞信息视而不见。</p>
 <p>因此如果发送的数据过小，就必须进行数据填充，使其发送时间大于一个争用期51.2mius 即不小于64字节。因此凡是长度小于64byte的帧一律算作无效帧</p>
 <p>以太网规定了帧间最小间隔9.6mius，使得甘冈接受数据帧的站的接受缓存来得及清理。</p>
 <p><strong>强化碰撞</strong> 当发送数据的站一旦发现碰撞，就停止发送数据，还要再继续发送32bit或者28bit的人为干扰型号。</p>
-<h2 id="集线器的星形拓扑">集线器的星形拓扑</h2>
-<p>表面上课使用集线器的局域网在物理上是一个星型网但是集线器使用电子器件模拟电缆工作，逻辑上仍然是一个总线网络，还是使用CSMA/CD协议。</p>
+<h2 id="集线器的星形拓扑"><a href="#集线器的星形拓扑" class="headerlink" title="集线器的星形拓扑"></a>集线器的星形拓扑</h2><p>表面上课使用集线器的局域网在物理上是一个星型网但是集线器使用电子器件模拟电缆工作，逻辑上仍然是一个总线网络，还是使用CSMA&#x2F;CD协议。</p>
 <p>一个集线器更像一个多接口的转发器</p>
 <p>集线器工作在物理层，每个接口仅仅转发bit，不进行碰撞检测</p>
-<h2 id="信道利用率">信道利用率</h2>
-<p><img src="../img/computernetwork/2-29.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>here we define <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mfrac><mi>t</mi><msub><mi>T</mi><mn>0</mn></msub></mfrac></mrow><annotation encoding="application/x-tex">a = \frac{t}{T_0}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2697em;vertical-align:-0.4451em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8246em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3173em;"><span style="top:-2.357em;margin-left:-0.1389em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4451em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
-<h2 id="以太网MAC层">以太网MAC层</h2>
-<p>IEEE 802为局域网规定了一种48bit的的全球地址固化在适配器的ROM中</p>
+<h2 id="信道利用率"><a href="#信道利用率" class="headerlink" title="信道利用率"></a>信道利用率</h2><p><img src="/../img/computernetwork/2-29.png" srcset="/img/loading.gif" lazyload></p>
+<p>here we define $a &#x3D; \frac{t}{T_0}$</p>
+<h2 id="以太网MAC层"><a href="#以太网MAC层" class="headerlink" title="以太网MAC层"></a>以太网MAC层</h2><p>IEEE 802为局域网规定了一种48bit的的全球地址固化在适配器的ROM中</p>
 <p>适配器具有过滤的功能，其没收到一个MAC帧就先用硬件检查其目的地址，如果是发往本站的，就手下，否则丢弃，其主要包括：</p>
 <p>（1）单播(unicast)</p>
 <p>（2）广播(broadcast)</p>
 <p>（3）多播(multicast)</p>
-<h3 id="MAC帧的格式">MAC帧的格式</h3>
-<p><img src="../img/computernetwork/2-30.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="MAC帧的格式"><a href="#MAC帧的格式" class="headerlink" title="MAC帧的格式"></a>MAC帧的格式</h3><p><img src="/../img/computernetwork/2-30.png" srcset="/img/loading.gif" lazyload></p>
 <p>目的地址和源地址</p>
 <p>类型字段标志商议层使用的是什么协议（也有一些协版本是指明了数据的长度），最后还有4byte的FCS</p>
 <p>由于以太网使用曼彻斯特编码，所以其很容易知道一个帧的结束</p>
-<p>显然由于CSMA/CD的要求，MAC帧的数据部分一定要在46-1500之间，因此有可能需要填充数据部分。这主要依靠的是上一层报文中的“总长度字段”例如IP报文中的总长度字段，IP报文会将多余的填充字段去掉。</p>
+<p>显然由于CSMA&#x2F;CD的要求，MAC帧的数据部分一定要在46-1500之间，因此有可能需要填充数据部分。这主要依靠的是上一层报文中的“总长度字段”例如IP报文中的总长度字段，IP报文会将多余的填充字段去掉。</p>
 <p>从MAC子层再次向下传输到物理层的时候还要再帧前面叫上8byte，包含7byte的 <strong>同步码（1010101010.。。。）</strong> 和1byte的 <strong>帧开始界定符</strong> 10101011，(都属于MAC帧的一部分)FCS不包括前同步符和帧开始界定符号。</p>
 <p>以太网上的帧的传输是一定由间隙的，但是PPP上却是可能连续传输的。</p>
-<h3 id="MAC-address">MAC address</h3>
-<p>The first 6 hexadecimal digits (from left to right), which the IEEE<br>
-administers, identify the manufacturer or vendor and comprise the Organizational Unique Identifier (OUI).</p>
-<p>The remaining 6 hex digits comprise the interface serial<br>
-number, administered by specific vendor</p>
+<h3 id="MAC-address"><a href="#MAC-address" class="headerlink" title="MAC address"></a>MAC address</h3><p>The first 6 hexadecimal digits (from left to right), which the IEEE<br>administers, identify the manufacturer or vendor and comprise the Organizational Unique Identifier (OUI). </p>
+<p>The remaining 6 hex digits comprise the interface serial<br>number, administered by specific vendor</p>
 <p>Broadcast</p>
-<p>The destination MAC all 1’s</p>
-<h1>扩展的以太网</h1>
-<h2 id="物理层扩展">物理层扩展</h2>
-<h2 id="数据链路层扩展">数据链路层扩展</h2>
-<p>通过自动学习算啊发建立一个帧交换表</p>
+<p>The destination MAC all 1’s </p>
+<h1 id="扩展的以太网"><a href="#扩展的以太网" class="headerlink" title="扩展的以太网"></a>扩展的以太网</h1><h2 id="物理层扩展"><a href="#物理层扩展" class="headerlink" title="物理层扩展"></a>物理层扩展</h2><h2 id="数据链路层扩展"><a href="#数据链路层扩展" class="headerlink" title="数据链路层扩展"></a>数据链路层扩展</h2><p>通过自动学习算啊发建立一个帧交换表</p>
 <p>其表项有生命周期</p>
 <p>由来源学习对应的端口，不知道目标端口就像所有端口转发。</p>
 <p>有时候为了增加网络的可靠性，会增加一些冗余的链路，这样自学习就可能导致不停兜圈子，于是需要一个生成树协议STP（见下面的论述）</p>
-<h1>WANs</h1>
-<p>虚拟局域网协议允许在以太网的帧格式中插入一个4byte的表示符，记为 <strong>VLAN标记（tag）</strong></p>
-<p><img src="../img/computernetwork/2-31.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="WAN-Technology-Devices">WAN Technology &amp; Devices</h2>
-<h3 id="WAN-Services">WAN Services</h3>
-<p>A WAN is the communications network that connects LANs through a WAN Service Provider</p>
+<h1 id="WANs"><a href="#WANs" class="headerlink" title="WANs"></a>WANs</h1><p>虚拟局域网协议允许在以太网的帧格式中插入一个4byte的表示符，记为 <strong>VLAN标记（tag）</strong> </p>
+<p><img src="/../img/computernetwork/2-31.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="WAN-Technology-Devices"><a href="#WAN-Technology-Devices" class="headerlink" title="WAN Technology &amp; Devices"></a>WAN Technology &amp; Devices</h2><h3 id="WAN-Services"><a href="#WAN-Services" class="headerlink" title="WAN Services"></a>WAN Services</h3><p>A WAN is the communications network that connects LANs through a WAN Service Provider</p>
 <p>WANs operate at the first three layers of the OSI, but focus mainly on the physical and datalinks</p>
-<p><img src="../img/computernetwork/2-17.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="WAN-Virtual-Circuits">WAN Virtual Circuits</h3>
-<p><strong>Switched Virtual Circuits (SVCs)</strong> are WAN paths to the destination established and terminated on demand</p>
+<p><img src="/../img/computernetwork/2-17.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="WAN-Virtual-Circuits"><a href="#WAN-Virtual-Circuits" class="headerlink" title="WAN Virtual Circuits"></a>WAN Virtual Circuits</h3><p><strong>Switched Virtual Circuits (SVCs)</strong> are WAN paths to the destination established and terminated on demand</p>
 <p>Three phases:</p>
 <p><strong>Circuit establishment: creates the virtual circuit</strong></p>
 <p><strong>Data transfer-sending and receiving user data</strong></p>
@@ -466,178 +435,132 @@ number, administered by specific vendor</p>
 <p><strong>Permanent Virtual Circuits (PVCs)</strong> are permanently established circuits with one mode:data transfer</p>
 <p>x.25 and Frame Relay use PVCs</p>
 <p>Decreased use of bandwidth but increased cost</p>
-<h3 id="WAN-Devices">WAN Devices</h3>
-<p>Inorder to connect to a leassed line the customer must have</p>
+<h3 id="WAN-Devices"><a href="#WAN-Devices" class="headerlink" title="WAN Devices"></a>WAN Devices</h3><p>Inorder to connect to a leassed line the customer must have</p>
 <ul>
-<li>
-<p>Access to the service provider’s circuit</p>
+<li><p>Access to the service provider’s circuit</p>
 </li>
-<li>
-<p>An appropriate router port available</p>
+<li><p>An appropriate router port available</p>
 </li>
-<li>
-<p>A CSU/DSU, modem ISDN Termianl Adapter,etc</p>
+<li><p>A CSU&#x2F;DSU, modem ISDN Termianl Adapter,etc</p>
 </li>
 </ul>
-<h3 id="Modems">Modems</h3>
-<p><strong>Also called CSU/DSUs (channel service units/digital service units)</strong></p>
+<h3 id="Modems"><a href="#Modems" class="headerlink" title="Modems"></a>Modems</h3><p><strong>Also called CSU&#x2F;DSUs (channel service units&#x2F;digital service units)</strong></p>
 <p>Interface with voice-grade connection in order to convert analog signal to digital</p>
-<h2 id="WAN-The-OSI-Model">WAN &amp; The OSI Model</h2>
-<h3 id="WAN-Standards">WAN Standards</h3>
-<p><img src="../img/computernetwork/2-18.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="WAN-The-OSI-Model"><a href="#WAN-The-OSI-Model" class="headerlink" title="WAN &amp; The OSI Model"></a>WAN &amp; The OSI Model</h2><h3 id="WAN-Standards"><a href="#WAN-Standards" class="headerlink" title="WAN Standards"></a>WAN Standards</h3><p><img src="/../img/computernetwork/2-18.png" srcset="/img/loading.gif" lazyload></p>
 <p>physical layer:</p>
 <p>protocols that describe how to provide electrical mechanical operational and functional connections for WAN services</p>
 <p>These services are most often obtained from WAN service providers, alternate carriers post-telephone, and telegraph agencies</p>
 <p>Descibles the interface between the <strong>data terminal equipment(DTE)</strong> and the <strong>data circuit-terminating equipment(DCE)</strong></p>
 <p>Typically the DCE is the service provider and the DTE is the attached device</p>
-<p>In this model, the services offered to the DTE are made available through a modem or a CSU/DSU</p>
+<p>In this model, the services offered to the DTE are made available through a modem or a CSU&#x2F;DSU</p>
 <p>Several physical layer standards specifying this interface between the DTE &amp; DCE are…</p>
 <ul>
-<li>EIA/TIA-232<br>
-…</li>
+<li>EIA&#x2F;TIA-232<br>…</li>
 </ul>
-<h3 id="WAN-Data-Link-Layer">WAN Data-Link Layer</h3>
-<p>WAN data link protocols describe how frames are carried between systems on a single data link</p>
+<h3 id="WAN-Data-Link-Layer"><a href="#WAN-Data-Link-Layer" class="headerlink" title="WAN Data-Link Layer"></a>WAN Data-Link Layer</h3><p>WAN data link protocols describe how frames are carried between systems on a single data link</p>
 <p>They include protocols designed to operate over dedicated point-to-point, multipoint, and multi-access switched services</p>
 <p>WAN standards are defined and managed bu a number of recongnized authorities, including the following agencies;ITU-T,ISO,IETF,&amp;EIA</p>
-<h3 id="Data-link-Encapsulations">Data-link Encapsulations</h3>
-<p>The WAN data link layers defines how data is encapsulated for transmission to remote sites</p>
+<h3 id="Data-link-Encapsulations"><a href="#Data-link-Encapsulations" class="headerlink" title="Data-link Encapsulations"></a>Data-link Encapsulations</h3><p>The WAN data link layers defines how data is encapsulated for transmission to remote sites</p>
 <ul>
-<li>
-<p><strong>Point-to-Point(PPP):</strong> developed by the IETF.PPP contains a protocol field to identify the network-layer protocol</p>
+<li><p><strong>Point-to-Point(PPP):</strong> developed by the IETF.PPP contains a protocol field to identify the network-layer protocol</p>
 </li>
-<li>
-<p>**High-Level Data Link Control (HDLC):**an ISO standard, HDLC not compatible between different vendors because of the way each vendor has chosen to implement it.HDLC support point-to-point/multipoint configurations</p>
+<li><p>**High-Level Data Link Control (HDLC):**an ISO standard, HDLC not compatible between different vendors because of the way each vendor has chosen to implement it.HDLC support point-to-point&#x2F;multipoint configurations</p>
 </li>
-<li>
-<p><strong>Frame Relay:</strong> uses simplified encapsulation with no error correction over high-quality digital facilities</p>
+<li><p><strong>Frame Relay:</strong> uses simplified encapsulation with no error correction over high-quality digital facilities</p>
 </li>
-<li>
-<p>**ISDN:**a set of digital services that services that transmits voice and data over existing phone lines</p>
+<li><p>**ISDN:**a set of digital services that services that transmits voice and data over existing phone lines</p>
 </li>
-<li>
-<p>**Link Access Procedure,Balanced(LAPB):**For packet-switched networks used to encapsulate packets at layer 2 of the X.25 stack.Provides reliability and flow control on a point-to-point basis</p>
+<li><p>**Link Access Procedure,Balanced(LAPB):**For packet-switched networks used to encapsulate packets at layer 2 of the X.25 stack.Provides reliability and flow control on a point-to-point basis</p>
 </li>
 </ul>
-<h2 id="WAN-Accessing-Methods">WAN Accessing Methods</h2>
-<p>The two most common point-to-point WAN encapsulation are HDLC and PPP</p>
+<h2 id="WAN-Accessing-Methods"><a href="#WAN-Accessing-Methods" class="headerlink" title="WAN Accessing Methods"></a>WAN Accessing Methods</h2><p>The two most common point-to-point WAN encapsulation are HDLC and PPP</p>
 <p>All the serial line encapsulation shared a common frame format, which has the following fields</p>
-<p><img src="../img/computernetwork/2-32.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/../img/computernetwork/2-32.png" srcset="/img/loading.gif" lazyload></p>
 <p>The choice of encapsulation protocol depends on the WAN technologyand the communicatioing equipment</p>
-<h3 id="PPP-and-HDLC">PPP and HDLC</h3>
-<p>PPP is  a standard serial-line encapsulation method</p>
+<h3 id="PPP-and-HDLC"><a href="#PPP-and-HDLC" class="headerlink" title="PPP and HDLC"></a>PPP and HDLC</h3><p>PPP is  a standard serial-line encapsulation method</p>
 <ul>
-<li>
-<p>Developed by IETF; replacing SLIP</p>
+<li><p>Developed by IETF; replacing SLIP </p>
 </li>
-<li>
-<p>Contains a field to identify the network layer protocol</p>
+<li><p>Contains a field to identify the network layer protocol</p>
 </li>
-<li>
-<p>PPP can check for link quality during connection establishment</p>
+<li><p>PPP can check for link quality during connection establishment</p>
 </li>
 </ul>
 <p>Provides authentication through <strong>Password Authentication Protocol(PAP)</strong> and <strong>Challenge Handshake Authentication Protocol(CHAP)</strong></p>
 <p>HDLC is Cisco’s default encapsulation for serial lines</p>
 <ul>
-<li>
-<p>No windowing or flow control</p>
+<li><p>No windowing or flow control</p>
 </li>
-<li>
-<p>A proprietary type code is inserted in the frame which means that HDLC framing is not interoperate with other vendors’s equipment</p>
+<li><p>A proprietary type code is inserted in the frame which means that HDLC framing is not interoperate with other vendors’s equipment</p>
 </li>
-<li>
-<p>Used when both ends of a dedicated-line connection are routers running Cisco IOS</p>
+<li><p>Used when both ends of a dedicated-line connection are routers running Cisco IOS</p>
 </li>
 </ul>
-<h3 id="PPP">PPP</h3>
-<p>The most widely used layer-2 protocol over serial links</p>
+<h3 id="PPP"><a href="#PPP" class="headerlink" title="PPP"></a>PPP</h3><p>The most widely used layer-2 protocol over serial links</p>
 <p>Developed from SLIP, which</p>
 <ul>
-<li>
-<p>Supports only IP protocol</p>
+<li><p>Supports only IP protocol</p>
 </li>
-<li>
-<p>Doesn’t support authentication</p>
+<li><p>Doesn’t support authentication</p>
 </li>
-<li>
-<p>Doesn’t support compression</p>
+<li><p>Doesn’t support compression</p>
 </li>
-<li>
-<p>Doesn’t support error detection</p>
+<li><p>Doesn’t support error detection</p>
 </li>
 </ul>
 <p>PPP offers the following features:</p>
 <ul>
-<li>
-<p>Network protocol multiplexing</p>
+<li><p>Network protocol multiplexing</p>
 </li>
-<li>
-<p>Dynamic assignement of IP addresses</p>
+<li><p>Dynamic assignement of IP addresses</p>
 </li>
-<li>
-<p>Authentication:PAP,CHAP Compression</p>
+<li><p>Authentication:PAP,CHAP Compression</p>
 </li>
-<li>
-<p>Compression</p>
+<li><p>Compression</p>
 </li>
 </ul>
 <p>use HDLC(IOS HDLC) as a basis to encapsulate layer 3 datagrams</p>
 <p>Implements <strong>LCP (link control protocol)</strong> for:</p>
 <ul>
-<li>
-<p>Connection establishment</p>
+<li><p>Connection establishment</p>
 </li>
-<li>
-<p>Connection configuration options</p>
+<li><p>Connection configuration options</p>
 </li>
-<li>
-<p>Link-quality testing</p>
+<li><p>Link-quality testing</p>
 </li>
 </ul>
 <p>Implements <strong>NCP (Network Control Protocol)</strong> to select and configure layer 3 protocol</p>
-<h3 id="PPP-frame-format">PPP frame format</h3>
-<p><img src="../img/computernetwork/2-19.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="PPP-session-establishment-termianation">PPP session establishment/termianation</h3>
-<p>To establish communication over a point-to-point link:PPP goes through four distinct phases:</p>
+<h3 id="PPP-frame-format"><a href="#PPP-frame-format" class="headerlink" title="PPP frame format"></a>PPP frame format</h3><p><img src="/../img/computernetwork/2-19.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="PPP-session-establishment-termianation"><a href="#PPP-session-establishment-termianation" class="headerlink" title="PPP session establishment&#x2F;termianation"></a>PPP session establishment&#x2F;termianation</h3><p>To establish communication over a point-to-point link:PPP goes through four distinct phases:</p>
 <ul>
-<li>
-<p>Link establishment and configuration negotiation(LCP)</p>
+<li><p>Link establishment and configuration negotiation(LCP)</p>
 </li>
-<li>
-<p>Link quality testing</p>
+<li><p>Link quality testing</p>
 </li>
-<li>
-<p>Network layer protocol configuration(NCP)</p>
+<li><p>Network layer protocol configuration(NCP)</p>
 </li>
-<li>
-<p>Link termination</p>
+<li><p>Link termination</p>
 </li>
 </ul>
-<h3 id="Phase1-link-establishment">Phase1. link establishment</h3>
-<p>Link establishment is the first phase before any network-layer datagrams can be exchanged</p>
+<h3 id="Phase1-link-establishment"><a href="#Phase1-link-establishment" class="headerlink" title="Phase1. link establishment"></a>Phase1. link establishment</h3><p>Link establishment is the first phase before any network-layer datagrams can be exchanged</p>
 <p>Each PPP device sends LCPs to open the connection</p>
 <p>LCP packets contain a configuration option field that allows devices to negotiate the use of options such as compression and authentication protocol etc</p>
 <p>If a configuration option is not included in an LCP packet the default value for that configuration option is assumed</p>
 <p>This phase is complete when a configuration acknowledge frames has been sent and received</p>
-<h3 id="Phase2-Link-quality-determination">Phase2. Link quality determination</h3>
-<p>LCP packets are sent and received to measure the error rate on the link if configured to do so</p>
+<h3 id="Phase2-Link-quality-determination"><a href="#Phase2-Link-quality-determination" class="headerlink" title="Phase2. Link quality determination"></a>Phase2. Link quality determination</h3><p>LCP packets are sent and received to measure the error rate on the link if configured to do so</p>
 <p>Authentication, if used, takes place before the network-layer protocol congfiguration phase begins</p>
 <p>LCP can delay transmission of network-layer protocol information until this phase is completed</p>
-<h3 id="Phase3-Network-layer-protocol-configuration">Phase3.Network layer protocol configuration</h3>
-<p>In this phase, the PPP devices send NCP packets to choose and configure one or more network-layer protocols(such as IP)</p>
+<h3 id="Phase3-Network-layer-protocol-configuration"><a href="#Phase3-Network-layer-protocol-configuration" class="headerlink" title="Phase3.Network layer protocol configuration"></a>Phase3.Network layer protocol configuration</h3><p>In this phase, the PPP devices send NCP packets to choose and configure one or more network-layer protocols(such as IP)</p>
 <p>When each of the chosen network-layer protocols has been configured, datagrams form each network-layer protocol can be sent over link</p>
-<h3 id="Phase4-Link-termination">Phase4. Link termination</h3>
-<p>LCP can terminate the link at any time</p>
+<h3 id="Phase4-Link-termination"><a href="#Phase4-Link-termination" class="headerlink" title="Phase4. Link termination"></a>Phase4. Link termination</h3><p>LCP can terminate the link at any time</p>
 <p>At the user request;</p>
 <p>Quality of the link;</p>
 <p>Timeout</p>
 <p>When LCP closes the link, it informs the network-layer protocols so that they can take appropriate action</p>
-<h3 id="PAP">PAP</h3>
-<p><img src="../img/computernetwork/2-20.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="PAP"><a href="#PAP" class="headerlink" title="PAP"></a>PAP</h3><p><img src="/../img/computernetwork/2-20.png" srcset="/img/loading.gif" lazyload></p>
 <p>The calling side of the link enter authentication information to help ensure that the user has the network administrator’s permission to make the call</p>
 <p>Remote node establishes its indentity, using a two-way handshake PAP</p>
-<p>Username/password pair is repeatedly sent by the remote node until authentication is acknowledged or the connection is terminated</p>
+<p>Username&#x2F;password pair is repeatedly sent by the remote node until authentication is acknowledged or the connection is terminated</p>
 <p>Passwords are sent across the link in <strong>clear text</strong></p>
 <p>Remote node is authenticated only once after the connection establishment phase</p>
 <p>Configuration of remote router</p>
@@ -647,79 +570,66 @@ number, administered by specific vendor</p>
 <p><code>Router(config)# ppp pap sent-username Router password ciscoA</code></p>
 <p><code>Router(config)# no shut</code></p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">Router</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#hostname</span> RTB<br><span class="hljs-function"><span class="hljs-title">RTB</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#username</span> RTA password CiscoA<br><span class="hljs-function"><span class="hljs-title">RTB</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#int</span> s0<br><span class="hljs-function"><span class="hljs-title">RTB</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#ip</span> <span class="hljs-selector-tag">address</span> <span class="hljs-number">192.168</span>.<span class="hljs-number">2.2</span> <span class="hljs-number">255.255</span>.<span class="hljs-number">255.0</span><br><span class="hljs-function"><span class="hljs-title">RTB</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#clock</span> rate <span class="hljs-number">56000</span><br><span class="hljs-function"><span class="hljs-title">RTB</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#encapsulation</span> ppp<br><span class="hljs-function"><span class="hljs-title">RTB</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#ppp</span> authentication pap<br><span class="hljs-function"><span class="hljs-title">RTB</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#no</span> shu<br></code></pre></td></tr></table></figure>
-<h3 id="CHAP">CHAP</h3>
-<p><img src="../img/computernetwork/2-21.png" srcset="/img/loading.gif" lazyload alt=""></p>
+
+<h3 id="CHAP"><a href="#CHAP" class="headerlink" title="CHAP"></a>CHAP</h3><p><img src="/../img/computernetwork/2-21.png" srcset="/img/loading.gif" lazyload></p>
 <p>The called party periodically verifies the calling side, using a <strong>three-way handshake</strong> CHAP protocol</p>
 <p>CHAP does not allow a caller to attempt authentication without a challenge(random number)</p>
-<p>The remote node responds with a value (encrypted value including: the received challenge, its username and its password)</p>
-<p>The host checks the response against its own value</p>
+<p>The remote node responds with a value (encrypted value including: the received challenge, its username and its password) </p>
+<p>The host checks the response against its own value </p>
 <ul>
-<li>
-<p>if the values match, the authentication is acknowledged</p>
+<li><p>if the values match, the authentication is acknowledged</p>
 </li>
-<li>
-<p>Otherwise, the connection is terminated</p>
+<li><p>Otherwise, the connection is terminated</p>
 </li>
 </ul>
-<p><img src="../img/computernetwork/2-22.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="../img/computernetwork/2-23.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/../img/computernetwork/2-22.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/computernetwork/2-23.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>code</strong></p>
 <p>Configuration of remote router</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">Router</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#hostname</span> RTA<br><span class="hljs-function"><span class="hljs-title">RTA</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#username</span> RTB password CiscoA<br><span class="hljs-function"><span class="hljs-title">RTA</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#int</span> s0<br><span class="hljs-function"><span class="hljs-title">RTA</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#ip</span> <span class="hljs-selector-tag">address</span> <span class="hljs-number">192.168</span>.<span class="hljs-number">2.1</span> <span class="hljs-number">255.255</span>.<span class="hljs-number">255.0</span><br><span class="hljs-function"><span class="hljs-title">RTA</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#encapsulation</span> ppp<br><span class="hljs-function"><span class="hljs-title">RTA</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#no</span> shu<br></code></pre></td></tr></table></figure>
+
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">Router</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#hostname</span> RTB<br><span class="hljs-function"><span class="hljs-title">RTB</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#username</span> RTA password CiscoA<br><span class="hljs-function"><span class="hljs-title">RTB</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#int</span> s0<br><span class="hljs-function"><span class="hljs-title">RTB</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#ip</span> <span class="hljs-selector-tag">address</span> <span class="hljs-number">192.168</span>.<span class="hljs-number">2.2</span> <span class="hljs-number">255.255</span>.<span class="hljs-number">255.0</span><br><span class="hljs-function"><span class="hljs-title">RTB</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#clock</span> rate <span class="hljs-number">56000</span><br><span class="hljs-function"><span class="hljs-title">RTB</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#encapsulation</span> ppp<br><span class="hljs-function"><span class="hljs-title">RTB</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#ppp</span> authentication chap<br><span class="hljs-function"><span class="hljs-title">RTB</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#no</span> shu<br></code></pre></td></tr></table></figure>
-<h3 id="ISDN">ISDN</h3>
-<p><strong>Integrated Services Digital Networks</strong> allow digital signals to be transmitted over exiting phone lines.</p>
+
+<h3 id="ISDN"><a href="#ISDN" class="headerlink" title="ISDN"></a>ISDN</h3><p><strong>Integrated Services Digital Networks</strong> allow digital signals to be transmitted over exiting phone lines.</p>
 <ul>
 <li>Provides connectivity for remote sites</li>
 </ul>
 <p>ISDN has the following benefits:</p>
 <ul>
-<li>
-<p>Can carry voice, video and data</p>
+<li><p>Can carry voice, video and data</p>
 </li>
-<li>
-<p>Faster call setup tahn modems using the out-of-band D (or Delta) channel</p>
+<li><p>Faster call setup tahn modems using the out-of-band D (or Delta) channel</p>
 </li>
-<li>
-<p>Offter faster data transfer using the B (or Barrier) channels at 64kps</p>
+<li><p>Offter faster data transfer using the B (or Barrier) channels at 64kps</p>
 </li>
 </ul>
-<h3 id="BRI-and-PRI">BRI and PRI</h3>
-<p>Therer are two ISDN services</p>
+<h3 id="BRI-and-PRI"><a href="#BRI-and-PRI" class="headerlink" title="BRI and PRI"></a>BRI and PRI</h3><p>Therer are two ISDN services</p>
 <ul>
-<li>
-<p><strong>BRI (Basic Rate Interface)</strong></p>
+<li><p><strong>BRI (Basic Rate Interface)</strong></p>
 </li>
-<li>
-<p><strong>PRI(Primary Rate Interface)</strong></p>
+<li><p><strong>PRI(Primary Rate Interface)</strong></p>
 </li>
 </ul>
 <p>The ISDN BRI service offers two B channels and one D channel</p>
-<p>ISDN BRI delivers a total bandwidth of a 144-kbps (2B + D == 144kps)<br>
-ne into three separate channels</p>
+<p>ISDN BRI delivers a total bandwidth of a 144-kbps (2B + D &#x3D;&#x3D; 144kps)<br>ne into three separate channels</p>
 <p>BRI B channel service operates at 64kbps and is meant to carry user data and voice traffic</p>
 <p>The third channel the D channel is a 16kbps signalling channell used to carry instructions that tell the telephone network how to handle each of the B channels</p>
-<p><img src="../img/computernetwork/2-24.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="Standard">Standard</h3>
-<p>ISDN utilizes a suite of ITU-T standards spanning the physical, data-link, and network layers of the OSI reference model</p>
+<p><img src="/../img/computernetwork/2-24.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Standard"><a href="#Standard" class="headerlink" title="Standard"></a>Standard</h3><p>ISDN utilizes a suite of ITU-T standards spanning the physical, data-link, and network layers of the OSI reference model</p>
 <p><em>Several encapsulation choices are available. The two most common encapsulations are PPP and HDLC</em></p>
 <p>ISDN defaults to HDLC However PPP is much more robust because it provides an excellent mechanism for authentication and negotiation of compatible link and protocol configuration</p>
 <p>ISDN interfaces allow only a single encapsulation type</p>
-<h3 id="xDSL">xDSL</h3>
-<p>使用数字技术对现有的模拟电话用户先进行改造，使其能够承载宽带业务</p>
+<h3 id="xDSL"><a href="#xDSL" class="headerlink" title="xDSL"></a>xDSL</h3><p>使用数字技术对现有的模拟电话用户先进行改造，使其能够承载宽带业务</p>
 <p>把0-4khz的低频谱段留给传统电话使用二八没有利用的高端频谱留给用户上网使用</p>
 <p>DSL：数字用户线（Digital Subscriber Line）</p>
 <p>x表示不同的宽带实现方案</p>
-<h3 id="xDSL-2">xDSL</h3>
-<p><strong>ADSL (Asymmetric Digital Subscriber Line)</strong>：非对称<br>
-数字用户线</p>
-<p>**HDSL (High speed DSL)：**高速数字用户线</p>
+<h3 id="xDSL-1"><a href="#xDSL-1" class="headerlink" title="xDSL"></a>xDSL</h3><p>**ADSL (Asymmetric Digital Subscriber Line)**：非对称<br>数字用户线</p>
+<p><strong>HDSL (High speed DSL)：</strong>高速数字用户线</p>
 <p><strong>SDSL (Single-line DSL)：</strong> 对线的数字用户线</p>
-<p>**VDSL (Very high speed DSL)：**甚高速数字用户线</p>
-<p>**IDSL ：**ISDN 用户线</p>
-<p>**RADSL (Rate-Adaptive DSL)：**速率自适应 DSL，是ADSL 的一个子集，可自动调节线路速率</p>
-<h3 id="ADSL">ADSL</h3>
-<p>ADSL的极限传输距离与数据率以及用户线的线径都有很大关系</p>
+<p><strong>VDSL (Very high speed DSL)：</strong>甚高速数字用户线</p>
+<p><strong>IDSL ：</strong>ISDN 用户线</p>
+<p><strong>RADSL (Rate-Adaptive DSL)：</strong>速率自适应 DSL，是ADSL 的一个子集，可自动调节线路速率</p>
+<h3 id="ADSL"><a href="#ADSL" class="headerlink" title="ADSL"></a>ADSL</h3><p>ADSL的极限传输距离与数据率以及用户线的线径都有很大关系</p>
 <p>上行和下行带宽不对称</p>
 <p>ADSL在用户线两端各自安装一个ADSL的调制解调器</p>
 <p><strong>DMT</strong></p>
@@ -728,118 +638,90 @@ ne into three separate channels</p>
 <p>相当于在一对数据线上使用许多小的调制解调器并行地传输数据</p>
 <p>由于用户线地具体条件相差很大，所以ADSL采用自适应地调制技术</p>
 <p>ADSL调制解调器检测可用地频率，各个子信道受到干扰地情况</p>
-<p><img src="../img/computernetwork/2-33.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="SONET">SONET</h3>
-<p>**同步光纤网（Synchronous Optical Network）**各级时钟都来自一个非常精确地主时钟</p>
+<p><img src="/../img/computernetwork/2-33.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="SONET"><a href="#SONET" class="headerlink" title="SONET"></a>SONET</h3><p><strong>同步光纤网（Synchronous Optical Network）</strong>各级时钟都来自一个非常精确地主时钟</p>
 <p>四个光接口层</p>
 <p>光子层（Photonic Layer）：处理跨越光缆地比特传送</p>
 <p>段层（Section Layer）：在光缆上传送地STS-N帧</p>
 <p>线路层（Line Layer）：负责路径层地同步和复用</p>
 <p>路径层（Path Layer）：处理路径端接受设备PTE之间业务传输</p>
-<h3 id="HFC（Hybrid-Fiber-Coax）">HFC（Hybrid Fiber Coax）</h3>
-<p><strong>光前同轴混合网（Hybrid Fiber Coax）</strong></p>
+<h3 id="HFC（Hybrid-Fiber-Coax）"><a href="#HFC（Hybrid-Fiber-Coax）" class="headerlink" title="HFC（Hybrid Fiber Coax）"></a>HFC（Hybrid Fiber Coax）</h3><p><strong>光前同轴混合网（Hybrid Fiber Coax）</strong></p>
 <p>HFC地主干线路采用光纤</p>
 <p>HFC网将CATV网中地通州电缆主干部分使用为光纤</p>
 <p>模拟光纤中使用AM技术</p>
 <p>模拟光纤从头端链接到fiber node即光纤分配结点（ODN）（Optical Distribution Node）</p>
-<p><img src="../img/computernetwork/2-25.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/../img/computernetwork/2-25.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>电缆调制解调器（Cable Modem</strong></p>
 <p>是为了HFC使用地调制解调器</p>
-<h3 id="FTTX">FTTX</h3>
-<p>Fiber to the x</p>
+<h3 id="FTTX"><a href="#FTTX" class="headerlink" title="FTTX"></a>FTTX</h3><p>Fiber to the x</p>
 <p>光签到户，大楼，路边</p>
-<h1>LAN Switching and VLAN</h1>
-<h2 id="Switching">Switching</h2>
-<p>Switch perform two basic functions: Building and maintaining switching tables based on MAC; Switching frames out the interface to the destination</p>
-<h3 id="Symmetric-Switching">Symmetric Switching</h3>
-<p>symmetric switching provides switched connections between prots with the same bandwidth</p>
+<h1 id="LAN-Switching-and-VLAN"><a href="#LAN-Switching-and-VLAN" class="headerlink" title="LAN Switching and VLAN"></a>LAN Switching and VLAN</h1><h2 id="Switching"><a href="#Switching" class="headerlink" title="Switching"></a>Switching</h2><p>Switch perform two basic functions: Building and maintaining switching tables based on MAC; Switching frames out the interface to the destination</p>
+<h3 id="Symmetric-Switching"><a href="#Symmetric-Switching" class="headerlink" title="Symmetric Switching"></a>Symmetric Switching</h3><p>symmetric switching provides switched connections between prots with the same bandwidth</p>
 <p>it can cause bottlenecks as users try to access servers on other segments</p>
-<h3 id="Asymmetric-Switching">Asymmetric Switching</h3>
-<p>asymmetric switching reduces the likelihood of a potential bottlenect at the server by attaching the segment with the server to a higher bandwidth port</p>
+<h3 id="Asymmetric-Switching"><a href="#Asymmetric-Switching" class="headerlink" title="Asymmetric Switching"></a>Asymmetric Switching</h3><p>asymmetric switching reduces the likelihood of a potential bottlenect at the server by attaching the segment with the server to a higher bandwidth port</p>
 <p>asymmetric switching reqiures memory buffering in the switch</p>
-<h3 id="Memory-Buffering">Memory Buffering</h3>
-<p>Area of memory in a switch where destination and transmission data are stored until it can be switched out the correct port</p>
+<h3 id="Memory-Buffering"><a href="#Memory-Buffering" class="headerlink" title="Memory Buffering"></a>Memory Buffering</h3><p>Area of memory in a switch where destination and transmission data are stored until it can be switched out the correct port</p>
 <ul>
-<li>
-<p>Port-based memory buffering: Packets are stored in a queue on each port possible for one packet to delay transmission of other packtets because of a busy destination port</p>
+<li><p>Port-based memory buffering: Packets are stored in a queue on each port possible for one packet to delay transmission of other packtets because of a busy destination port</p>
 </li>
-<li>
-<p>Shared memory buffering: common memory buffering shared bu all ports; allows packtest to be RX on one port and TX out another port without changing it to a different queue</p>
+<li><p>Shared memory buffering: common memory buffering shared bu all ports; allows packtest to be RX on one port and TX out another port without changing it to a different queue</p>
 </li>
 </ul>
-<h3 id="Switching-Methods">Switching Methods</h3>
-<ul>
-<li>
-<p>Store-and-Forward: The switch receives the entire frame calculating the CRC at the end, before sending it to the destination</p>
+<h3 id="Switching-Methods"><a href="#Switching-Methods" class="headerlink" title="Switching Methods"></a>Switching Methods</h3><ul>
+<li><p>Store-and-Forward: The switch receives the entire frame calculating the CRC at the end, before sending it to the destination</p>
 </li>
-<li>
-<p>Cut-through: A switch add latency. It can be reduced by using cut-through switching method; Fast forward switching --only checks the destination MAC before immediatley forwarding the frame; Fragment Free–read the first 64 bytes to reduce errors before forwarding the frame</p>
+<li><p>Cut-through: A switch add latency. It can be reduced by using cut-through switching method; Fast forward switching –only checks the destination MAC before immediatley forwarding the frame; Fragment Free–read the first 64 bytes to reduce errors before forwarding the frame</p>
 </li>
 </ul>
-<p><img src="../img/computernetwork/2-1.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="The-Spanning-Tree-Protocol">The Spanning-Tree Protocol</h2>
-<p>Loops may occur in a network for a variety of reasons:</p>
+<p><img src="/../img/computernetwork/2-1.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="The-Spanning-Tree-Protocol"><a href="#The-Spanning-Tree-Protocol" class="headerlink" title="The Spanning-Tree Protocol"></a>The Spanning-Tree Protocol</h2><p>Loops may occur in a network for a variety of reasons:</p>
 <p>Usually loops in networks are the result of a deliberate attempt to provide redundancy</p>
 <p>Can also occur by configuration error: Two primary reasons loops can be absolutely disastrous in a bridged network: broadcast loops and bridge-table corruption</p>
-<h3 id="L2-loops">L2 loops</h3>
-<p>Broadcasts and layer 2 loops can be a dangerous combination</p>
+<h3 id="L2-loops"><a href="#L2-loops" class="headerlink" title="L2 loops"></a>L2 loops</h3><p>Broadcasts and layer 2 loops can be a dangerous combination</p>
 <p>Ethernet frames have no TTL field</p>
 <p>After an Ethernet frame starts to loop, it will probably continue until someone shuts off one of the switches or break a link</p>
 <p>The switches will flip flop the bridging table entry for Host A (creating extremely high CPU utilization)</p>
-<p><img src="../img/computernetwork/2-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="Overview-of-STP">Overview of STP</h3>
-<p>Elements of the Spanning Tree Protocol</p>
-<p>Main function: allow redundant paths in a switched/bridged network without incurring latency frome the effects of the loops</p>
+<p><img src="/../img/computernetwork/2-2.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Overview-of-STP"><a href="#Overview-of-STP" class="headerlink" title="Overview of STP"></a>Overview of STP</h3><p>Elements of the Spanning Tree Protocol</p>
+<p>Main function: allow redundant paths in a switched&#x2F;bridged network without incurring latency frome the effects of the loops</p>
 <p>STP prevents loops by calculating a stable spanning-tree network topology</p>
 <p>Spanning-tree frames(called bridge protocol data units–BPDUS) are used to determine the spanning-tree topology</p>
-<h3 id="BPDUs">BPDUs</h3>
-<ul>
-<li>
-<p>STP establishes a root node, called the root bridge</p>
+<h3 id="BPDUs"><a href="#BPDUs" class="headerlink" title="BPDUs"></a>BPDUs</h3><ul>
+<li><p>STP establishes a root node, called the root bridge</p>
 </li>
-<li>
-<p>The resulting tree originates from the root bridge</p>
+<li><p>The resulting tree originates from the root bridge</p>
 </li>
-<li>
-<p>Redundant links that are not part of the shortest path tree are blocked</p>
+<li><p>Redundant links that are not part of the shortest path tree are blocked</p>
 </li>
-<li>
-<p>Data frames received on blocked links are dropped.</p>
+<li><p>Data frames received on blocked links are dropped.</p>
 </li>
-<li>
-<p>The message that a switch sends, allowing the formation a loop free logical topology, is BPDU</p>
+<li><p>The message that a switch sends, allowing the formation a loop free logical topology, is BPDU</p>
 </li>
 </ul>
-<p><img src="../img/computernetwork/2-3.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="../img/computernetwork/2-4.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="STP-Decision-Sequence">STP Decision Sequence</h3>
-<p>use the same four-step decision sequence:</p>
+<p><img src="/../img/computernetwork/2-3.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/computernetwork/2-4.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="STP-Decision-Sequence"><a href="#STP-Decision-Sequence" class="headerlink" title="STP Decision Sequence"></a>STP Decision Sequence</h3><p>use the same four-step decision sequence:</p>
 <p><strong>Lowest root BID</strong></p>
 <p><strong>Lowest path cost to root bridge</strong></p>
 <p><strong>Lowest sender BID</strong></p>
 <p><strong>Lowest port ID</strong></p>
-<h3 id="BID">BID</h3>
-<p>A Bridge ID 8 Bytes</p>
+<h3 id="BID"><a href="#BID" class="headerlink" title="BID"></a>BID</h3><p>A Bridge ID 8 Bytes</p>
 <p>The high-order BID subfield(2 bytes): bridge priority</p>
 <p>2^16 possible values 0 - 655535(default 32768) but typically expressed in a decimal format</p>
 <p>The low-order subfield(6 bytes): a MAC address assigned to the switch</p>
 <p>Expressed in hexadecimal format</p>
-<h3 id="electing-the-root-switch">electing the root switch</h3>
-<p><strong>The switches elect a single root switch by looking for the switch with lowest BID</strong></p>
+<h3 id="electing-the-root-switch"><a href="#electing-the-root-switch" class="headerlink" title="electing the root switch"></a>electing the root switch</h3><p><strong>The switches elect a single root switch by looking for the switch with lowest BID</strong></p>
 <p><strong>If all the switches are using the default bridge priority of 32768, the lowest MAC address serves as the tie-breaker</strong></p>
-<h3 id="STP-cost">STP cost</h3>
-<p><img src="../img/computernetwork/2-5.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="Five-STP-states">Five STP states</h3>
-<p>States are established by configuring each port according to policy</p>
+<h3 id="STP-cost"><a href="#STP-cost" class="headerlink" title="STP cost"></a>STP cost</h3><p><img src="/../img/computernetwork/2-5.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Five-STP-states"><a href="#Five-STP-states" class="headerlink" title="Five STP states"></a>Five STP states</h3><p>States are established by configuring each port according to policy</p>
 <p>Then STP modifies the states based on traffic patterns and potential loops</p>
 <p>The default order of STP states are:</p>
 <p><strong>Blocking-no frame forward, BPDUs heard</strong></p>
 <p><strong>Listening–no frame forward, listening for data</strong></p>
 <p><strong>Learning–no frame forwarded, learning addresses</strong></p>
-<p><strong>Forwarding-- frame forwarded, learning addresses</strong></p>
+<p><strong>Forwarding– frame forwarded, learning addresses</strong></p>
 <p><strong>Disabled–no frames forwarded, no BPDUs heard</strong></p>
-<h3 id="Initial-STP-Convergence">Initial STP Convergence</h3>
-<p>When the network first starts, all the bridges flood the network with a mix of BPDUs information</p>
+<h3 id="Initial-STP-Convergence"><a href="#Initial-STP-Convergence" class="headerlink" title="Initial STP Convergence"></a>Initial STP Convergence</h3><p>When the network first starts, all the bridges flood the network with a mix of BPDUs information</p>
 <p>Immediately, they apply the decision sequence allowing them to home in on the set of BPDUs that form a single spanning tree for the entire network</p>
 <p><strong>Step1:</strong> A single root bridge is elected to act as the central point of this network</p>
 <p>Announce itself as the root</p>
@@ -853,57 +735,48 @@ ne into three separate channels</p>
 <p>The root path cost is the cumulative cost of all links to the root bridge</p>
 <p><strong>Step3</strong>: Electing the designated ports: All the remaining bridges calculate a set of designated ports.</p>
 <p>Each segment has one designated port that both sends and receives traffic to and from that segment and the root bridge</p>
-<p>The bridge/switch containing the desigated port for a given segment is referred to as the designated bridge for that segemnt</p>
-<p>All the bridges/switches will block the non-designed ports on them</p>
-<h2 id="VLAN">VLAN</h2>
-<p>In a typical shared LAN</p>
+<p>The bridge&#x2F;switch containing the desigated port for a given segment is referred to as the designated bridge for that segemnt</p>
+<p>All the bridges&#x2F;switches will block the non-designed ports on them</p>
+<h2 id="VLAN"><a href="#VLAN" class="headerlink" title="VLAN"></a>VLAN</h2><p>In a typical shared LAN</p>
 <p>Users are grouped physically based on the hub they are plugged into</p>
 <p>Routers segment the LAN and provide broadcast firewalls</p>
 <p>In VLANS</p>
 <p>you can group users logically by function, department or application in use</p>
 <p>configuration is done through proprietary software</p>
-<h3 id="VLANS">VLANS</h3>
-<p>vlan</p>
+<h3 id="VLANS"><a href="#VLANS" class="headerlink" title="VLANS"></a>VLANS</h3><p>vlan</p>
 <p>work at layer 2 &amp; 3</p>
 <p>control network broadcasts</p>
 <p>allow users to be assigned by net admin</p>
 <p>provide tighter network security</p>
-<p><img src="../img/computernetwork/2-6.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="Characteristics">Characteristics</h3>
-<p>A logical grouping of networks devices or users that are not restricted to a physical switch segment</p>
+<p><img src="/../img/computernetwork/2-6.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Characteristics"><a href="#Characteristics" class="headerlink" title="Characteristics"></a>Characteristics</h3><p>A logical grouping of networks devices or users that are not restricted to a physical switch segment</p>
 <p>The devices or users in a VLAN can be grouped by function, department, application and so on, regardless of their physical segment location</p>
 <p>A VLAN creates a single broadcast domain that is not restricted tp a physical segment and is treated like a subnet</p>
 <p>VLAN setup is done in the switch by the network administrator using the vendor’s software.</p>
-<h3 id="Grouping-users">Grouping users</h3>
-<p>VLAN can logically segment users into different subnets(broadcast domains)</p>
+<h3 id="Grouping-users"><a href="#Grouping-users" class="headerlink" title="Grouping users"></a>Grouping users</h3><p>VLAN can logically segment users into different subnets(broadcast domains)</p>
 <p>Broadcast frames are only switched between ports on the switch or switches with the same VLAN ID.</p>
 <p>Users can be logically group via software based on:</p>
 <p><strong>port number</strong></p>
 <p><strong>MAC address</strong></p>
 <p><strong>protocol being used</strong></p>
 <p><strong>application being used</strong></p>
-<h3 id="VLANS-Across-the-Backbone">VLANS Across the Backbone</h3>
-<p>VLAN configuration needs to support backbone transport of data between interconnected routers and switches</p>
+<h3 id="VLANS-Across-the-Backbone"><a href="#VLANS-Across-the-Backbone" class="headerlink" title="VLANS Across the Backbone"></a>VLANS Across the Backbone</h3><p>VLAN configuration needs to support backbone transport of data between interconnected routers and switches</p>
 <p>The backbone is the area used for interVlan communication</p>
 <p>The backbone should be high-speed links, typically 100Mbps or greater</p>
-<h3 id="Router’s-role-in-a-VLAN">Router’s role in a VLAN</h3>
-<p>A router provides connection between different VLANSjok</p>
+<h3 id="Router’s-role-in-a-VLAN"><a href="#Router’s-role-in-a-VLAN" class="headerlink" title="Router’s role in a VLAN"></a>Router’s role in a VLAN</h3><p>A router provides connection between different VLANSjok</p>
 <p>For example, you have VLAN1 and VLAN2</p>
 <p>Within the switch, users one separate VLANs cannot talk to each other(benefit of a VLAN)</p>
 <p>However, users on VLAN1 can email users on VLAN2 but they need a router to do it</p>
-<h3 id="How-frames-are-used-in-a-vlan">How frames are used in a vlan</h3>
-<p>Switches amke filtering and forwarding decisions based on datat in the frame</p>
+<h3 id="How-frames-are-used-in-a-vlan"><a href="#How-frames-are-used-in-a-vlan" class="headerlink" title="How frames are used in a vlan"></a>How frames are used in a vlan</h3><p>Switches amke filtering and forwarding decisions based on datat in the frame</p>
 <p>There are two techniques used</p>
 <ul>
-<li>
-<p>Frame filtering: examines particular information about each frame MAC address or layer 3 protocol type</p>
+<li><p>Frame filtering: examines particular information about each frame MAC address or layer 3 protocol type</p>
 </li>
-<li>
-<p>Frame tagging: places a unique identifier in the header of each frame as it is forwarded throughout the network backhone</p>
+<li><p>Frame tagging: places a unique identifier in the header of each frame as it is forwarded throughout the network backhone</p>
 </li>
 </ul>
 <p><strong>Frame fitering</strong></p>
-<p><img src="../img/computernetwork/2-7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/../img/computernetwork/2-7.png" srcset="/img/loading.gif" lazyload></p>
 <p>A filtering table is developed for each switch. Switches shared address table information. Table entries are compared with the frames. Switch takes appropriate action</p>
 <p><strong>Frame Tagging</strong></p>
 <p>Frame tagging implementation process:</p>
@@ -913,66 +786,60 @@ ne into three separate channels</p>
 <p>Frame tagging functions at layer 2 and requires little processing or administrative overhead</p>
 <p>IEEE standard, insert a label of VLAN to the header to identifythe VLAN belonging to(Frame Tagging)</p>
 <p>ISL Cisco propriety ISL add a header of 26 bytes in front of the data frame and appends a CRC 4 bytes at the end</p>
-<h3 id="Ports-VLANS-and-Broadcasts">Ports VLANS and Broadcasts</h3>
-<p>Method for implementing VLANs</p>
-<p><strong>Static</strong></p>
+<h3 id="Ports-VLANS-and-Broadcasts"><a href="#Ports-VLANS-and-Broadcasts" class="headerlink" title="Ports VLANS and Broadcasts"></a>Ports VLANS and Broadcasts</h3><p>Method for implementing VLANs </p>
+<p><strong>Static</strong> </p>
 <p><strong>Dynamic</strong>*</p>
 <p>Each switched port can be assigned to a VLAN which ensures ports that do not share the same VLAN do not share broadcasts and ensures ports that do share the same VLAN will share broadcasts</p>
-<h3 id="Static-VLANs">Static VLANs</h3>
-<p>Defined</p>
+<h3 id="Static-VLANs"><a href="#Static-VLANs" class="headerlink" title="Static VLANs"></a>Static VLANs</h3><p>Defined</p>
 <p>Static VLANs are when ports on a switch are administratively assigned to a VLAN</p>
 <p>Benefits</p>
 <p>secure easy to configure and monitor</p>
 <p>works well in networks where moves are controlled</p>
-<h3 id="Dynamic-VLANs">Dynamic VLANs</h3>
-<p>When a station is initially connected to an unassigned port, the switch checks an entry in the table and dynamically configures the port with the right VLAN</p>
+<h3 id="Dynamic-VLANs"><a href="#Dynamic-VLANs" class="headerlink" title="Dynamic VLANs"></a>Dynamic VLANs</h3><p>When a station is initially connected to an unassigned port, the switch checks an entry in the table and dynamically configures the port with the right VLAN</p>
 <p>Benefits</p>
 <p>less administration (more upfront) when users are added or move</p>
 <p>centralized notification of unauthorized user</p>
-<p><img src="../img/computernetwork/2-9.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="../img/computernetwork/2-8.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="../img/computernetwork/2-10.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="Port-Centric-VLANs">Port-Centric VLANs</h3>
-<p><img src="../img/computernetwork/2-11.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/../img/computernetwork/2-9.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/computernetwork/2-8.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/computernetwork/2-10.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Port-Centric-VLANs"><a href="#Port-Centric-VLANs" class="headerlink" title="Port-Centric VLANs"></a>Port-Centric VLANs</h3><p><img src="/../img/computernetwork/2-11.png" srcset="/img/loading.gif" lazyload></p>
 <p>All nodes in the same VLAN are attached to the same router interface</p>
 <p>Makes management easier because…</p>
 <p>Users are assigned by router port</p>
 <p>Vlan are easy to admin</p>
 <p>provides increased security</p>
 <p>packets do not “leak” into other domains</p>
-<h3 id="Access-and-Trunk-links">Access and Trunk links</h3>
-<p><img src="../img/computernetwork/2-12.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Access-and-Trunk-links"><a href="#Access-and-Trunk-links" class="headerlink" title="Access and Trunk links"></a>Access and Trunk links</h3><p><img src="/../img/computernetwork/2-12.png" srcset="/img/loading.gif" lazyload></p>
 <p>Access link is a link on the switch that is a member of only one VLAN</p>
 <p>This VLAN is referred to as the native VLAN of the port</p>
 <p>Any device that is attached to the port is completely unaware that a VLAN exists.</p>
-<h3 id="Trunk-Links">Trunk Links</h3>
-<p>A trunk link is capable of supporting multiple VLANs</p>
+<h3 id="Trunk-Links"><a href="#Trunk-Links" class="headerlink" title="Trunk Links"></a>Trunk Links</h3><p>A trunk link is capable of supporting multiple VLANs</p>
 <p>Trunk links are typically used to connect switches to other switches or routers</p>
 <p>Switches support trunk links on both FastEthernet and Gigabit Ethernet ports</p>
 <p>Access and trunk links exist too</p>
-<p><img src="../img/computernetwork/2-13.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/../img/computernetwork/2-13.png" srcset="/img/loading.gif" lazyload></p>
 <p>A trunk is a point to point link that supports several VLANs</p>
 <p>A trunk is to saves ports when creating a link between two devices implementing VLANs</p>
-<p>A trunk link does not belong to a specific VLAN</p>
+<p>A trunk link does not belong to a specific VLAN </p>
 <p>Acts as a conduit for VLANs between switches and routers</p>
 <p>The trunk link can be configured to transport all VLANs or to transport a limited number of VLANs</p>
 <p>A trunk link may however a native VLAN</p>
 <p>The native VLAN of the trunk is the VLAN that the trunk uses if the trunk link fails for any reason</p>
-<h3 id="code">code</h3>
-<p>The following guidelines must be followed when configuring VLANs on Cisco 29xx switches</p>
+<h3 id="code"><a href="#code" class="headerlink" title="code"></a>code</h3><p>The following guidelines must be followed when configuring VLANs on Cisco 29xx switches</p>
 <p>The maximum number of VLANs is switch dependent</p>
 <p>VLAN 1  is one of the factory-default VLANs</p>
 <p>VLAN 1 is the default Ethernet VLAN</p>
 <p>Cisco Discovery Protocol and VLAN Trunking Protocol advertisements are sent on VLAN 1</p>
 <p>The Catalyst 29xx IP address is in the VLAN 1 broadcast domain by default</p>
 <figure class="highlight hsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs hsp"><span class="hljs-keyword">Switch</span><span class="hljs-meta"># vlan database</span><br><span class="hljs-keyword">Switch</span>(vlan)<span class="hljs-meta"># vlan vlan_number</span><br><span class="hljs-keyword">Switch</span>(vlan)<span class="hljs-meta"># exit</span><br>\<br><span class="hljs-keyword">Switch</span>(config)<span class="hljs-meta"># interface fastethernet <span class="hljs-number">0</span>/<span class="hljs-number">9</span></span><br><span class="hljs-keyword">Switch</span>(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta"># switchport access vlan vlan number</span><br><br><span class="hljs-keyword">Switch</span><span class="hljs-meta"># show vlan [vlanid]</span><br><span class="hljs-keyword">Switch</span><span class="hljs-meta"># no vlan vlanid</span><br><span class="hljs-comment">//when a vlan is deteted any ports assigned to that VLAN become inactive. The ports will, however, remain associated with the deleted VLAN until assigned to a new VLAN.</span><br></code></pre></td></tr></table></figure>
-<h3 id="Routing-between-VLANs">Routing between VLANs</h3>
-<p><img src="../img/computernetwork/2-14.png" srcset="/img/loading.gif" lazyload alt=""></p>
+
+<h3 id="Routing-between-VLANs"><a href="#Routing-between-VLANs" class="headerlink" title="Routing between VLANs"></a>Routing between VLANs</h3><p><img src="/../img/computernetwork/2-14.png" srcset="/img/loading.gif" lazyload></p>
 <p>Each VLAN has its own IP network or subnet</p>
-<p><img src="../img/computernetwork/2-15.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/../img/computernetwork/2-15.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>code:</strong></p>
 <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-constructor">Router(<span class="hljs-params">config</span>)</span># interface fastethernet port-number subinterface-number<br><br><span class="hljs-constructor">Router(<span class="hljs-params">config</span>-<span class="hljs-params">if</span>)</span>#encapsulation dot1q vlan-number<br><br><span class="hljs-constructor">Router(<span class="hljs-params">config</span>-<span class="hljs-params">if</span>)</span>#ip address ip-address subnet-mask<br><br></code></pre></td></tr></table></figure>
-<p><img src="../img/computernetwork/2-16.png" srcset="/img/loading.gif" lazyload alt=""></p>
+
+<p><img src="/../img/computernetwork/2-16.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -1018,7 +885,7 @@ ne into three separate channels</p>
       
         <div class="license-meta-item">
           <div>作者</div>
-          <div>PV</div>
+          <div>eqSun</div>
         </div>
       
       
@@ -1128,6 +995,7 @@ ne into three separate channels</p>
 
   
   
+
 
 
 
@@ -1322,6 +1190,49 @@ ne into three separate channels</p>
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

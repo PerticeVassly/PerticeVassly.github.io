@@ -13,31 +13,31 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="PV">
+  <meta name="author" content="eqSun">
   <meta name="keywords" content="">
   
     <meta name="description" content="无线网络常常简写为WLAN（Wireless Local Area Network） 便携站（portable station） 移动站（mobile station） 便携站在工作的时候是固定不变的而移动站点不仅能够移动而且还可以在移动的过程中通信 无线网络可以分为两大类。 一类是有固定基础设施的 一类是没有固定基础设施的 802.11标准 星形拓扑，其中心叫做接入点AP（Access Poin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Computernetwork7_wireless">
 <meta property="og:url" content="https://perticevassly.github.io/project/2024/01/05/computernetwork7/index.html">
-<meta property="og:site_name" content="PV&#39;s Blog">
+<meta property="og:site_name" content="eqSun&#39;s Blog">
 <meta property="og:description" content="无线网络常常简写为WLAN（Wireless Local Area Network） 便携站（portable station） 移动站（mobile station） 便携站在工作的时候是固定不变的而移动站点不仅能够移动而且还可以在移动的过程中通信 无线网络可以分为两大类。 一类是有固定基础设施的 一类是没有固定基础设施的 802.11标准 星形拓扑，其中心叫做接入点AP（Access Poin">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/9-1.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/9-2.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/9-3.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/9-4.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/9-5.png">
-<meta property="og:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/9-6.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/9-1.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/9-2.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/9-3.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/9-4.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/9-5.png">
+<meta property="og:image" content="https://perticevassly.github.io/img/computernetwork/9-6.png">
 <meta property="article:published_time" content="2024-01-05T14:22:02.000Z">
-<meta property="article:modified_time" content="2024-01-05T14:25:29.280Z">
-<meta property="article:author" content="PV">
+<meta property="article:modified_time" content="2024-03-12T12:05:30.771Z">
+<meta property="article:author" content="eqSun">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://perticevassly.github.io/project/2024/01/05/img/computernetwork/9-1.png">
+<meta name="twitter:image" content="https://perticevassly.github.io/img/computernetwork/9-1.png">
   
   
   
-  <title>Computernetwork7_wireless - PV&#39;s Blog</title>
+  <title>Computernetwork7_wireless - eqSun&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -48,8 +48,6 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -289,13 +287,13 @@
 <p>一类是有固定基础设施的</p>
 <p>一类是没有固定基础设施的</p>
 <p>802.11标准</p>
-<p>星形拓扑，其中心叫做接入点AP（Access Point）Mac层使用CSMA/CA协议</p>
+<p>星形拓扑，其中心叫做接入点AP（Access Point）Mac层使用CSMA&#x2F;CA协议</p>
 <p>凡是使用802.11协议的局域网都叫做WIFI（Wireless-Fidelity）</p>
 <p>在此标准下无线局域网的最小构件是基本服务集BSS（Basic Service Set）</p>
 <p>基站（base station）</p>
 <p>服务集标识符SSID（Service Set IDentifier）</p>
 <p>分配系统DS连接到另外一个基本服务集合从而得到一个扩展的服务集</p>
-<p><img src="../img/computernetwork/9-1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/../img/computernetwork/9-1.png" srcset="/img/loading.gif" lazyload></p>
 <p>一个移动站如果要加入到一个基本服务集BSS。就必须先选择一个接入点AP并且域这个接入点建立关联（association）</p>
 <p>只有关联的AP才可以向这个移动着含发送数据帧，而这个移动站也只有通过关联的AP才能向其他站点发送数据帧。</p>
 <p>在关联阶段过后，移动站点还要通过关联的AP向该子网发送DHCP发现报文以获取IP地址。这时，互联网中的其他部分就把这个移动站当成该AP子网里面的一台主机</p>
@@ -303,80 +301,62 @@
 <p>分离（dissociation）</p>
 <p>如何接入？</p>
 <ol>
-<li>
-<p>被动扫描： 移动站等待AP周期发出的信号标（beacon frame）</p>
+<li><p>被动扫描： 移动站等待AP周期发出的信号标（beacon frame）</p>
 </li>
-<li>
-<p>主动扫描： 探测请求帧（probe request frame），并等待探测响应帧（probe reponse frame）</p>
+<li><p>主动扫描： 探测请求帧（probe request frame），并等待探测响应帧（probe reponse frame）</p>
 </li>
 </ol>
 <p>热点，热区（hot spot）（hot zone）</p>
 <p>无固定基础设施的无线网络，自组网络（ad hocnetwork）</p>
 <p>exposed station problem</p>
 <p>MAC层中的协调功能（Coordination Function）</p>
-<p><img src="../img/computernetwork/9-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="CSMA-CA协议">CSMA/CA协议</h3>
-<p><img src="../img/computernetwork/9-3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/../img/computernetwork/9-2.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="CSMA-CA协议"><a href="#CSMA-CA协议" class="headerlink" title="CSMA&#x2F;CA协议"></a>CSMA&#x2F;CA协议</h3><p><img src="/../img/computernetwork/9-3.png" srcset="/img/loading.gif" lazyload></p>
 <p>802.11 标准设计了独特的MAC层。其通过协调功能（Coordination Function）确定在基本服务集BSS中的移动站</p>
 <p>802.11的MAC层包括两个子层</p>
 <ol>
-<li>
-<p>分布协调功能DCF（Distributed Coordination Function）。不采用任何中心控制，而是在每一个节点使用CSMA机制的分布式接入算法，让各个站争用信道获取发送全。</p>
+<li><p>分布协调功能DCF（Distributed Coordination Function）。不采用任何中心控制，而是在每一个节点使用CSMA机制的分布式接入算法，让各个站争用信道获取发送全。</p>
 </li>
-<li>
-<p>点协调功能PCF（Point Coordination Function）其中PCF是选项用接入点AP集中控制整个BSS内的活动</p>
+<li><p>点协调功能PCF（Point Coordination Function）其中PCF是选项用接入点AP集中控制整个BSS内的活动</p>
 </li>
 </ol>
 <p>为了避免碰撞，所有站在完成发送以后必须等待一段很短的时间才能继续发送下一帧。这一段时间叫做帧间间隔IFS(InterFrame Space)。</p>
 <ol>
-<li>
-<p>SIFS(短帧间间隔)</p>
+<li><p>SIFS(短帧间间隔)</p>
 </li>
-<li>
-<p>DIFS 分布协调功能帧间间隔</p>
+<li><p>DIFS 分布协调功能帧间间隔</p>
 </li>
 </ol>
 <p>首先检测信道强度，然后等待一定时间DIFS发送源在接收到以后等待SIFS以后发送ACK</p>
-<h3 id="虚拟载波监听（Virtual-Carrier-Sense）">虚拟载波监听（Virtual Carrier Sense）</h3>
-<p>源站要把它占用信道的时间告诉其他站，以减少可能的碰撞</p>
+<h3 id="虚拟载波监听（Virtual-Carrier-Sense）"><a href="#虚拟载波监听（Virtual-Carrier-Sense）" class="headerlink" title="虚拟载波监听（Virtual Carrier Sense）"></a>虚拟载波监听（Virtual Carrier Sense）</h3><p>源站要把它占用信道的时间告诉其他站，以减少可能的碰撞</p>
 <p>源站再其MAC帧首部中的第二个字段“持续时间”中，填入本帧结束以后还要占用信道多长时间。</p>
 <p>当一个站检测到正在信道中传送的MAC帧首部的“持续时间”字段的时候，就调整自己的网络分配向量NAV（Network Allocation Vector）</p>
 <p>当信道从繁忙转为空闲的时候，为了避免几个站同时发送数据，所有想要发送数据的站都要执行退避算法。</p>
 <p>802.11的退避算法是第i次退避就在2^(2 + i)个时隙中随机选择一个</p>
 <p>如果再退避计时器的过程中出现信道忙，则冻结信道，然后等待DIFS，后从剩余的时间重新开始倒计时</p>
-<h3 id="总结">总结</h3>
-<ol>
-<li>
-<p>当站点最初由数据要传输，而且检测到信道空闲再等待DIFS后，就发送整个数据帧</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li><p>当站点最初由数据要传输，而且检测到信道空闲再等待DIFS后，就发送整个数据帧</p>
 </li>
-<li>
-<p>否则执行退避算法。一旦检测到信道忙，就冻结退避计时器。只要信道空闲，退避计时器就进行倒计时</p>
+<li><p>否则执行退避算法。一旦检测到信道忙，就冻结退避计时器。只要信道空闲，退避计时器就进行倒计时</p>
 </li>
-<li>
-<p>当退避计时器时间减为0站点就发送整个的帧并且等待确认</p>
+<li><p>当退避计时器时间减为0站点就发送整个的帧并且等待确认</p>
 </li>
-<li>
-<p>若发送站接受到确认，就之傲已经发送的帧被目的站正确接收到了。若没有则要重传此帧，直到收到。</p>
+<li><p>若发送站接受到确认，就之傲已经发送的帧被目的站正确接收到了。若没有则要重传此帧，直到收到。</p>
 </li>
 </ol>
 <p>一个站要发送数据的时候只有在信道是空闲的，且这个数据帧是它想发送的第一个数据帧。</p>
-<h2 id="对信道进行预约">对信道进行预约</h2>
-<p>A在向B发送数据帧之前，首先发送一个短的控制帧叫做请求发送RTS（Request To Send）包括源地址，目的地址和这次通信（包括相应的确认帧所需要的时间）当然A在发送RTS之前也需要先监听信道。B正确收到RTS，则等待SIFS后就像A发送一个允许发送CTS(Clear To send)。随后A在收到CTS后，等待SIFS后，就发送数据帧，B收到正确的A的数据帧，在等待SIFS后，就向A发送确认帧ACK</p>
-<p><img src="../img/computernetwork/9-4.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="802-11的MAC帧">802.11的MAC帧</h3>
-<p>总共分为三种类型。控制帧，数据帧和管理帧</p>
-<p><img src="../img/computernetwork/9-5.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="../img/computernetwork/9-6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="对信道进行预约"><a href="#对信道进行预约" class="headerlink" title="对信道进行预约"></a>对信道进行预约</h2><p>A在向B发送数据帧之前，首先发送一个短的控制帧叫做请求发送RTS（Request To Send）包括源地址，目的地址和这次通信（包括相应的确认帧所需要的时间）当然A在发送RTS之前也需要先监听信道。B正确收到RTS，则等待SIFS后就像A发送一个允许发送CTS(Clear To send)。随后A在收到CTS后，等待SIFS后，就发送数据帧，B收到正确的A的数据帧，在等待SIFS后，就向A发送确认帧ACK</p>
+<p><img src="/../img/computernetwork/9-4.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="802-11的MAC帧"><a href="#802-11的MAC帧" class="headerlink" title="802.11的MAC帧"></a>802.11的MAC帧</h3><p>总共分为三种类型。控制帧，数据帧和管理帧</p>
+<p><img src="/../img/computernetwork/9-5.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/computernetwork/9-6.png" srcset="/img/loading.gif" lazyload></p>
 <p>具体的一些字段</p>
 <ol>
-<li>
-<p>序号控制字段16bit，分为序号子字段和分片字段4bit</p>
+<li><p>序号控制字段16bit，分为序号子字段和分片字段4bit</p>
 </li>
-<li>
-<p>持续期字段占16bit</p>
+<li><p>持续期字段占16bit</p>
 </li>
-<li>
-<p>帧控制字段：</p>
+<li><p>帧控制字段：</p>
 </li>
 </ol>
 <p>类型字段和子类型字段用来区分帧功能。更多分片字段置为1的时候说明这个帧术语一个帧的多个分片之一。</p>
@@ -425,7 +405,7 @@
       
         <div class="license-meta-item">
           <div>作者</div>
-          <div>PV</div>
+          <div>eqSun</div>
         </div>
       
       
@@ -535,6 +515,7 @@
 
   
   
+
 
 
 
@@ -729,6 +710,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
