@@ -689,5 +689,30 @@
   
   
   
+  <entry>
+    <title>kafka配置以及初步搭建</title>
+    <link href="/2014/05/08/kafka%E5%88%9D%E6%AD%A5%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E6%90%AD%E5%BB%BA/"/>
+    <url>/2014/05/08/kafka%E5%88%9D%E6%AD%A5%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E6%90%AD%E5%BB%BA/</url>
+    
+    <content type="html"><![CDATA[<p>kafka2.8.x以后已经不需要zookeeper作为管理器了，以下直接使用kraft代替zookeeper</p><p>系统：wsl2 ubuntu22.04</p><p>详细见：<a href="https://www.cnblogs.com/fanqisoft/p/18027195">https://www.cnblogs.com/fanqisoft/p/18027195</a></p><h3 id="step1-安装kafka"><a href="#step1-安装kafka" class="headerlink" title="step1: 安装kafka"></a>step1: 安装kafka</h3><h3 id="step2-配置文件"><a href="#step2-配置文件" class="headerlink" title="step2: 配置文件"></a>step2: 配置文件</h3><p>由于使用kraft,涉及到的配置文件在config&#x2F;kraft中，模板是server.properties</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs config"><br># 这个node扮演的角色<br>process.role<br><br># 整个集群中的唯一标识这个结点的ID<br>node.id: <br><br>controller.quorum.voter=2@192.168.58.130:9093,... <br><br># 用于代理之间通信的侦听器的名称(broker 服务协议别名)<br>inter.broker.listener.name=PLAINTEX<br><br><br># 名字+端口，标识node与外界交互的的端口，包含与客户端交互的端口和其他node(controller)交互的端口<br>listener=PLAINTEXT://your.host.name:9092 <br><br># 向客户端交互的端口<br>advertised.listeners=PLAINTEXT://192.168.58.130:9093...<br><br># controller 服务协议别名<br># 控制器使用的侦听器名称的逗号分隔列表<br># 如果`listener.security.protocol.map`中未设置显式映射，则默认使用PLAINTEXT协议<br># 如果在KRaft模式下运行，这是必需的。<br>controller.listener.names=CONTROLLER<br><br># 存储日志文件的目录的逗号分隔列表(kafka 数据存储目录)<br>log.dirs=/usr/kafka/kafka_2.13-3.6.1/datas<br><br></code></pre></td></tr></table></figure><h3 id="step3-初始化"><a href="#step3-初始化" class="headerlink" title="step3: 初始化"></a>step3: 初始化</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">bin/kafka-storage.sh <span class="hljs-built_in">random</span>-<span class="hljs-built_in">uuid</span><br></code></pre></td></tr></table></figure><h3 id="对于每一个node，执行"><a href="#对于每一个node，执行" class="headerlink" title="对于每一个node，执行"></a>对于每一个node，执行</h3><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">bin/kafka-<span class="hljs-keyword">storage</span>.sh <span class="hljs-keyword">format</span> -t <span class="hljs-type">uuid</span> -c \&lt;<span class="hljs-type">path</span>-<span class="hljs-keyword">to</span>-your-config\&gt;<br></code></pre></td></tr></table></figure><h3 id="step4-运行"><a href="#step4-运行" class="headerlink" title="step4: 运行"></a>step4: 运行</h3><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">bin/kafka-<span class="hljs-keyword">server</span>-<span class="hljs-keyword">start</span>.sh &lt;<span class="hljs-type">path</span>-<span class="hljs-keyword">to</span>-your-config&gt;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>kafka</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>kafka</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
   
 </search>
