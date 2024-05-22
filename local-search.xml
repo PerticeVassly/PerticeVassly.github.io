@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>加密传输和加密存储</title>
+    <link href="/2024/05/22/httpshttp/"/>
+    <url>/2024/05/22/httpshttp/</url>
+    
+    <content type="html"><![CDATA[<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://cloud.tencent.com/developer/article/1633071">https://cloud.tencent.com/developer/article/1633071</a></p><p><a href="https://blog.csdn.net/dreaming9420/article/details/123622811">https://blog.csdn.net/dreaming9420/article/details/123622811</a></p><h1 id="传输"><a href="#传输" class="headerlink" title="传输"></a>传输</h1><h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p>采用明文传输的形式，其中GET方法的请求参数会在URL中显示，留存在浏览器缓存中，容易被窃取。尽管post可以将参数放入请求体(body)中传输，但是由于没有直接采用加密，信息仍然可能被抓包后获取。</p><h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><p><strong>使用SSL&#x2F;TLS完成加密和验证。</strong></p><ol><li><p>客户端向服务器发送请求。</p></li><li><p>服务器受到请求后将自己的公钥Pub发送给客户端</p></li><li><p>客户端使用公钥加密一个随机key，发送给客户端，客户端解密后得到这个随机key（此随机key就作为一个对称密钥）</p></li><li><p>接下来服务器给客户端发送的信息全部都用这个key加密</p></li><li><p>客户端使用这个key解密，得到消息</p></li></ol><p>这样就实现了传输加密。</p><p><strong>ps:之所以使用对称加密（key加密解密）是从性能考虑的，两组非对称加密的耗时远大于对称加密。</strong></p><p><strong>http中间人攻击</strong></p><p>但是上述操作并不能确定接收到的公钥到底是不是真的由服务器发送过来的。</p><p>如果客户端收到了一个伪造的公钥（攻击者有自己的密钥）（攻击者截获真正的服务器公钥），就可以伪装成服务器与客户端通信，再伪装成客户端与服务器通信。（HTTP中间人）从而获取所有信息。</p><p>因此需要一种方法可以鉴别发送的公钥是可信的（鉴别其没有被修改）</p><p>解决方法是<strong>CA证书+数字签名。</strong></p><p>CA机构是公信机构，因此浏览器或者系统会内置其证书和公钥信息。</p><p>服务器再最开始的时候不在仅仅发送公钥，而是发送一个CA证书+数字签名。通过将CA证书（text部分）做Hash得到的值利用CA的私钥加密，可以得到一个数字签名。而客户端在拿到传输过来的证书和数字签名后，只需要对CA证书做相同Hash（方法一般在证书内已经指定了），再对数字签名用公钥解签，二者进行比对，就可以判断证书内容有没有被修改了。由于CA私钥是难以获取的，攻击者不可能为修改过的text的Hash，伪造一份加数字签名使其在被公钥解密后仍然保持原来的值。</p><p>所以计算机内的CA机构本身的证书以及其公钥是十分重要的。CA机构是以信任链的形式运行的，如果用户信任了有风险的CA（配置了新的根证书），或者CA机构的私钥泄露，皆会造成上述加密的失效。</p><h1 id="储存"><a href="#储存" class="headerlink" title="储存"></a>储存</h1><p>由于上述加密操作，以及在信道中间点进行窃听和截取的困难性，对于信源和信端的攻击往往收效更大。</p><h2 id="明文存储"><a href="#明文存储" class="headerlink" title="明文存储"></a>明文存储</h2><p>为了防止数据库被拖库后造成的信息泄露，隐私信息（密码）在数据库中一般不以明文存储。</p><h2 id="MD5或者其他Hash算法存储"><a href="#MD5或者其他Hash算法存储" class="headerlink" title="MD5或者其他Hash算法存储"></a>MD5或者其他Hash算法存储</h2><p>用户输入的密码进行MD5（举例）后发送给服务器，服务器进行比对。这样即使服务器数据泄露，攻击者也很难伪造出一个密码，使得其MD5加密后和服务器中储存的密码对应。</p><p>但是大多数人的密码是常见的排列组合，而常见的加密算法（如MD5）又是固定的，所以可以为一些常见密码组合构建一个彩虹表（rainbow table），从而通过数据库中的密码摘要直接对比得出原始密码，从而实现破解。由于彩虹表只要计算一次就可以反复使用，目前针对各类加密算法已经形成了大量的彩虹表（还在快速增加）这种加密方式安全性较低。</p><h2 id="加盐后Hash存储"><a href="#加盐后Hash存储" class="headerlink" title="加盐后Hash存储"></a>加盐后Hash存储</h2><p>在密码中中固定的位置插入特定的字符串，使其不再是人常用的组合，在进行Hash存储到数据库中，数据库同时存储salt的值和MD5值，攻击者同样难以针对MD5值伪造一个密码使其加盐之后能对应这个MD5值（更何况加盐的方式还是未知的）同时还使得彩虹表难以使用。</p><p>为了加盐的效果：salt要足够长且随机。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>cryptology</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>database-security.md</title>
     <link href="/2024/04/06/database-security/"/>
     <url>/2024/04/06/database-security/</url>
