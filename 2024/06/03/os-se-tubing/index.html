@@ -1,0 +1,739 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/nerv.jpeg">
+  <link rel="icon" href="/img/nerv.jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="eqSun">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基础知识定义管程是由于局部于自己的若干公共变量及其说明和所有访问这些公共变量的过程锁组成的软件模块 形式12345678910111213141516type 管程名称 &#x3D; monitor &amp;#123;    局部变量说明；    条件变量说明；    初始化语句；    define 管程内定义的，管程为可以调用的过程或者是函数名列表；    use 管程外定义的，管程内将调用的过程或者函数名列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="管程">
+<meta property="og:url" content="https://perticevassly.github.io/project/2024/06/03/os-se-tubing/index.html">
+<meta property="og:site_name" content="eqSun&#39;s Blog">
+<meta property="og:description" content="基础知识定义管程是由于局部于自己的若干公共变量及其说明和所有访问这些公共变量的过程锁组成的软件模块 形式12345678910111213141516type 管程名称 &#x3D; monitor &amp;#123;    局部变量说明；    条件变量说明；    初始化语句；    define 管程内定义的，管程为可以调用的过程或者是函数名列表；    use 管程外定义的，管程内将调用的过程或者函数名列">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-03T13:37:00.000Z">
+<meta property="article:modified_time" content="2024-06-03T13:38:09.690Z">
+<meta property="article:author" content="eqSun">
+<meta property="article:tag" content="os">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>管程 - eqSun&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"perticevassly.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/eva.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="管程"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-06-03 21:37" pubdate>
+          2024年6月3日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          45 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">管程</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>管程是由于局部于自己的若干公共变量及其说明和所有访问这些公共变量的过程锁组成的软件模块</p>
+<h2 id="形式"><a href="#形式" class="headerlink" title="形式"></a>形式</h2><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs smali">type 管程名称 =<span class="hljs-built_in"> monitor </span>&#123;<br>    局部变量说明；<br>    条件变量说明；<br>    初始化语句；<br>    define 管程内定义的，管程为可以调用的过程或者是函数名列表；<br>    use 管程外定义的，管程内将调用的过程或者函数名列表；<br>    过程名/函数名（形式参数表）&#123;<br>        &lt;过程/函数体&gt;；<br>    &#125;<br><br>    过程名/函数名(形式参数表) &#123;<br>        &lt;过程/函数体&gt;；<br>    &#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>条件变量：管程内数据结构，只有管程中才能被访问，对于管程内的所有的过程是全局的，只能通过两个原语操作。当进程无法运行时，用于阻塞进程的信号量</p>
+<p><code>wait()</code>: 阻塞调用进程并且释放管程，直到另外一个进程在该条件变量上执行<code>signal()</code>;当一个管程安福县无法继续执行时会在某些条件变量上执行<code>wait</code>，引起进程阻塞。</p>
+<p><code>signal():</code>如果存在其他进程由于对于条件变量执行<code>wait()</code>而被阻塞，就释放他；如果没有进程在等待，那么信号将不被保存；用于释放在条件变量上阻塞的进程。</p>
+<p>霍尔管程不要求<code>signal</code>操作时过程体的最后一个操作，且<code>wait</code>和<code>signal</code>操作可以被设计成可中断的过程</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p><code>mutex</code></p>
+<p>进程调用管程中的任何过程时，应该执行<code>P(mutex)</code>进程退出管程的时候，需要判断是否有<code>next</code>信号量在等待，如果有<code>(next_count &gt; 0)</code>则通过<code>V(next)</code>唤醒一个发出<code>signal</code>的进程，否则执行<code>V(mutex)</code>开放管程。</p>
+<p>为了让进程在等待资源的时候，其他进程也可以进入管程，所以在<code>wait</code>操作中也必须执行<code>V(mutex)</code>,否则会妨碍其他进程进入管程，导致无法释放资源</p>
+<p><code>next next-couns</code></p>
+<p><code>next</code>初值为<code>0</code>，发出<code>signal</code>操作的进程应该用<code>P(next)</code>阻塞自己，直到被释放的进程退出管程或者产生其他等待条件</p>
+<p>进程在退出管程的过程前，必须检查是否有别的进程在信号量next等待，如果有则用<code>V(next)</code>唤醒。</p>
+<p><code>x-sem x-count</code></p>
+<p><code>x-sem</code>: 申请的资源得不到满足的时候，执行<code>P(x-sem)</code> 释放资源的时候，需要直到是不是有其他的进程在等待资源，<code>x-count</code>记录等待资源的进程数量</p>
+<p>执行<code>signal</code>的时候，应该让等待资源的各个进程中的一个立即恢复执行，而不让其他进程抢先进入进程，<code>V(x-sem)</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">InterfaceModule</span>&#123;</span><br>    semaphore mutex;<br>    semaphore next;<br>    <span class="hljs-type">int</span> next_count;<br>&#125;;<br>mutex = <span class="hljs-number">1</span>;<br>next = <span class="hljs-number">0</span>;<br>next_count = <span class="hljs-number">0</span>;<br><br><br><span class="hljs-comment">//确保进入管程只有一个进程</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">enter</span><span class="hljs-params">(InterfaceModule &amp;IM)</span>&#123;<br>    P(IM.mutex); <br>&#125;<br><br><br><span class="hljs-comment">//如果当前管程有其他signal过的进程，则释放，否则开放管程</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">leave</span><span class="hljs-params">(Interface &amp;IM)</span>&#123;<br>    <span class="hljs-keyword">if</span>(IM.next_count &gt; <span class="hljs-number">0</span>)&#123;<br>        V(IM.next);<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        V(IM.mutex)<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//如果当前有其他signal过的进程，则释放，否则开放，判断为获取x资源阻塞自己</span><br><span class="hljs-type">void</span> wait(semaphore &amp;x_sem, <span class="hljs-type">int</span> &amp;x_count, InterfaceModule &amp;IM) &#123;<br>    x_count++;<br>    <span class="hljs-keyword">if</span>(IM.next_count &gt; <span class="hljs-number">0</span>)&#123;<br>        V(IM.next);<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        V(IM.mutex);<br>    &#125;<br>    P(x_sem);<br>    x_count--;<br>&#125;<br><br><span class="hljs-comment">//指明x资源已经可以被获取释放一个等待x资源的进程</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">signal</span><span class="hljs-params">(semaphore &amp;x_sem, <span class="hljs-type">int</span> &amp;x_count, InterfaceModule &amp;IM)</span>&#123;<br>    <span class="hljs-keyword">if</span>(x_count &gt; <span class="hljs-number">0</span>)&#123;<br>        IM.next_count++;<br>        V(x_sem);<br>        P(IM.next);<br>        IM.next_count--;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h1 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h1><h2 id="读者写者问题"><a href="#读者写者问题" class="headerlink" title="读者写者问题"></a>读者写者问题</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">start_read</span><span class="hljs-params">()</span>&#123;<br>    enter(IM);<br>        <span class="hljs-keyword">if</span>(wc &gt; <span class="hljs-number">0</span>) wait(R,R_count,IM); <span class="hljs-comment">// 如果有人在读，则无所谓，如果有人在写，则需要等待直到获取读信号量。</span><br>            rc++; <span class="hljs-comment">// 读数量增加</span><br>        signal(R,R_count,IM); <span class="hljs-comment">// 发出信号，如果有其他等待读信号的进程则唤醒</span><br>    leave(IM);<br>&#125;<br><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">start_write</span><span class="hljs-params">()</span>&#123;<br>    enter(IM);<br>        wc++; <span class="hljs-comment">// 写数量增加</span><br>        <span class="hljs-keyword">if</span>(rc &gt; <span class="hljs-number">0</span> || wc &gt; <span class="hljs-number">1</span>) wait(W,W_count,IM); <span class="hljs-comment">// 如果有人在读或者有其他人在写则等待一个读向量</span><br><br>    leave(IM);<br><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">end_read</span><span class="hljs-params">()</span>&#123;<br>    enter(IM);<br>        rc--; <span class="hljs-comment">//读数量减少</span><br>        <span class="hljs-keyword">if</span>(rc == <span class="hljs-number">0</span>)<br>            signal(W,W_count,IM); <span class="hljs-comment">//如果没有人读了，唤醒一个写信号量</span><br>    leave(IM);<br>&#125;<br><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">end_write</span><span class="hljs-params">()</span>&#123;<br>    enter(IM);<br>        wc--; <span class="hljs-comment">//写数量减少</span><br>        <span class="hljs-keyword">if</span>(wc &gt; <span class="hljs-number">0</span>) <br>            signal(W,W_count,IM); <span class="hljs-comment">//如果还有人在写，唤醒一个等待写的的进程</span><br>        <span class="hljs-keyword">else</span><br>            signal(R,R_count,IM); <span class="hljs-comment">//如果已经没有人在读则唤醒一个等待读的进程</span><br>    leave(IM);<br>&#125;<br><br>process <span class="hljs-title function_">P1</span><span class="hljs-params">()</span>&#123;<br>    read-write.start_read();<br>    &#123;<br>        read;<br>    &#125;<br>    read-write.end_read();<br>&#125;<br><br>process <span class="hljs-title function_">P2</span><span class="hljs-params">()</span>&#123;<br>    read-write.start_write();<br>    &#123;<br>        write;<br>    &#125;<br>    read-write.end_write();<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>之所以需要<code>wc</code>，<code>rc</code>时因为可能正在写的（包括被阻塞的以及正在并行写的）和正在等待的（被阻塞的）可能是不一样的。</p>
+<h2 id="哲学家就餐问题"><a href="#哲学家就餐问题" class="headerlink" title="哲学家就餐问题"></a>哲学家就餐问题</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> dining_philosophys = monitor&#123;<br>    <span class="hljs-keyword">enum</span> &#123;thinking, hungry,eating&#125; state[<span class="hljs-number">5</span>];<br>    semaphore self[<span class="hljs-number">5</span>];<br>    <span class="hljs-type">int</span> self_count[<span class="hljs-number">5</span>];    <br><br>    InterfaceModule IM;<br>    <span class="hljs-comment">//初始化全部thinking</span><br>    define pickup, putdown;<br>    use enter, leave, wait, signal;<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">pickup</span><span class="hljs-params">(<span class="hljs-type">int</span> i)</span>&#123;<br>    enter(IM);<br>        state[i] = hungry; <br>        test[i];<br>        <span class="hljs-keyword">if</span>(state[i] != eating)<br>            wait(self[i], self_count[i],IM);<br>    leave(IM);<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">putdown</span><span class="hljs-params">(<span class="hljs-type">int</span> i)</span>&#123;<br>    enter(IM);<br>        state[i] = thinking;<br>        test((i<span class="hljs-number">-1</span>) % <span class="hljs-number">5</span>);<br>        test((i+<span class="hljs-number">1</span>) % <span class="hljs-number">5</span>);<br>    leave(IM);<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">(<span class="hljs-type">int</span> k)</span>&#123;<br>    <span class="hljs-keyword">if</span>( (state[(k<span class="hljs-number">-1</span>) % <span class="hljs-number">5</span>] != eating) &amp;&amp; <br>        (state[k] == hungry) &amp;&amp; <br>        (state[(k+<span class="hljs-number">1</span>) % <span class="hljs-number">5</span>] != eating) )&#123;<br>            state[k] = eating;<br>            signal(self[k],self_count[k],IM);<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="生产者消费者问题"><a href="#生产者消费者问题" class="headerlink" title="生产者消费者问题"></a>生产者消费者问题</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs c">type producer_consumer = monitor&#123;<br>    item B[k];<br>    <span class="hljs-type">int</span> in, out;<br>    <span class="hljs-type">int</span> count;<br>    semaphore notfull, notempty;<br>    <span class="hljs-type">int</span> notfull_count, notempty_count;<br><br>    InterfaceModule IM;<br>    define append, take;<br>    use enter, leave, wait, signal;<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">append</span><span class="hljs-params">(item x)</span>&#123;<br>    enter(IM);<br>        <span class="hljs-keyword">if</span>(count == k)&#123;<br>            wait(notfull, notfull,count,IM) <span class="hljs-comment">//如果缓冲区已满，等待notfull信号量</span><br>            B[in] = x; <span class="hljs-comment">//运行到这一步说明缓冲区未满</span><br>            in = (in + <span class="hljs-number">1</span>) % k;<br>            count++;<br>        &#125;<br>        signal(notempty, notempty_count, IM); <span class="hljs-comment">//操作完了发出信号唤醒另外一个等待notempty的进程</span><br>    leave(IM);<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">take</span><span class="hljs-params">(item &amp;x)</span>&#123;<br>    enter(IM);<br>        <span class="hljs-keyword">if</span>(count == <span class="hljs-number">0</span>)<br>            wait(notempty, notempty_count, IM); <span class="hljs-comment">//缓冲区已经空，等待nottempy</span><br>        x = B[out];<br>        out = (out + <span class="hljs-number">1</span>) % k;<br>        count--;<br>        signal(notfull, notfull_count, IM); <span class="hljs-comment">//拿完一个绝对时不满的，唤醒一个等待notfull的进程。</span><br>    leave(IM);<br>&#125;<br><br>process <span class="hljs-title function_">producer_i</span><span class="hljs-params">()</span> &#123; <br>    item x;<br>    produce(x);<br>    producer_consumer.append(X);<br>&#125;<br><br>process <span class="hljs-title function_">consumer_j</span><span class="hljs-params">()</span>&#123;<br>    item x;<br>    producer_consumer.take(x);<br>    consume(X);<br>&#125;<br><br><span class="hljs-comment">//这样就吧原来需要在producer和consumer内部写的pv操作给封装了，对外代码更加可读</span><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="苹果橘子问题"><a href="#苹果橘子问题" class="headerlink" title="苹果橘子问题"></a>苹果橘子问题</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs c">type FMSD = MONITOR<br><span class="hljs-keyword">enum</span> FRUIT&#123;apple orange&#125; plate; <span class="hljs-type">bool</span> full;<br>semaphore SP,SS,SD; <br><span class="hljs-type">int</span> SP_count,SS,SD_count,SD_count;<br>full = <span class="hljs-literal">false</span>;<br>InterfaceModule IM;<br>DEFINE put.get;<br>USE enter, leave, wait, signal;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">put</span><span class="hljs-params">(FRUIT fruit)</span>&#123;<br>    apple or orange<br>    <span class="hljs-title function_">enter</span><span class="hljs-params">(IM)</span>;<br>        <span class="hljs-keyword">if</span>(full) <span class="hljs-comment">//如果盘子已经满了等待sp信号量</span><br>            wait(SP.SP_count,IM);<br>        full = <span class="hljs-literal">true</span>;<br>        plate = fruit;<br><br>        <span class="hljs-keyword">if</span>(fruit == orange)<br>            signal(SS,SS_count,IM); <span class="hljs-comment">//唤醒等待SS信号量的程序</span><br>        <span class="hljs-keyword">else</span><br>            signal(SD,SD_count,IM); <span class="hljs-comment">//唤醒等待SD信号量的程序 </span><br>    leave(IM);<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">get</span><span class="hljs-params">(FRUIT fruit, FRUIT &amp;x)</span>&#123;<br>    enter(IM);<br>        <span class="hljs-keyword">if</span>(!full || plate != fruit)&#123; <span class="hljs-comment">//没满或者水果不对</span><br>            <span class="hljs-keyword">if</span>(fruit == orange)<br>                wait(SS, SS_count, IM); <span class="hljs-comment">//等待对应的水果的信号量</span><br>            <span class="hljs-keyword">else</span> <br>                wait(SD, SD_count, IM);<br>        &#125;<br>        x = plate;<br>        full = <span class="hljs-literal">false</span>;<br>        signal(SP,SP_count, IM); <span class="hljs-comment">//唤醒所有等待sp的信号量</span><br>    leave(IM);<br>&#125;<br><br><br>process <span class="hljs-title function_">father</span><span class="hljs-params">()</span>&#123;<br>    &#123;准备好苹果&#125;；<br>    FMSD.put(apple);<br>&#125;<br><br>process <span class="hljs-title function_">mother</span><span class="hljs-params">()</span>&#123;<br>    &#123;准备好橘子&#125;；<br>    FMSD.put(orange);<br>&#125;<br><br>process <span class="hljs-title function_">son</span><span class="hljs-params">()</span>&#123;<br>    FMSD.get(orange, x);<br>    &#123;吃取到的橘子&#125;<br>&#125;<br><br>process <span class="hljs-title function_">daughter</span><span class="hljs-params">()</span>&#123;<br>    FMSD.get(apple, x);<br>    &#123;吃取到的苹果&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/os/" class="category-chain-item">os</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/os/" class="print-no-link">#os</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>管程</div>
+      <div>https://perticevassly.github.io/project/2024/06/03/os-se-tubing/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>eqSun</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年6月3日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/06/03/riscv-init/" title="在x86 wsl2-Ubuntu上运行risc-v代码.md">
+                        <span class="hidden-mobile">在x86 wsl2-Ubuntu上运行risc-v代码.md</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
