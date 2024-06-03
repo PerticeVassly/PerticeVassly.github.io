@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>在x86 wsl2-Ubuntu上运行risc-v代码.md</title>
+    <link href="/2024/06/03/riscv-init/"/>
+    <url>/2024/06/03/riscv-init/</url>
+    
+    <content type="html"><![CDATA[<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p><code>sudo apt update</code></p><p><code>sudo apt install autoconf automake autotools-dev curl python3 libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev</code></p><h3 id="安装riscv编译相关工具"><a href="#安装riscv编译相关工具" class="headerlink" title="安装riscv编译相关工具"></a>安装riscv编译相关工具</h3><p><code>git clone --recursive https://github.com/riscv/riscv-gnu-toolchain</code></p><p><code>cd riscv-gnu-toolchain</code></p><p><code>./configure --prefix=/opt/riscv</code></p><p><code>sudo make</code></p><h3 id="加入本地环境变量"><a href="#加入本地环境变量" class="headerlink" title="加入本地环境变量"></a>加入本地环境变量</h3><p><code>echo &#39;export PATH=$PATH:/opt/riscv/bin&#39; &gt;&gt; ~/.bashrc</code></p><p><code>source ~/.bashrc</code></p><h3 id="安装qemu"><a href="#安装qemu" class="headerlink" title="安装qemu"></a>安装qemu</h3><p><code>sudo apt install qemu-user~</code></p><p><code>sudo apt install qemu-user</code></p><h3 id="编译运行代码"><a href="#编译运行代码" class="headerlink" title="编译运行代码"></a>编译运行代码</h3><p><code>riscv64-unknown-elf-gcc -o hello hello.c</code></p><p><code>riscv64-unknown-elf-gcc -S hello.c -o hello.s</code></p><p><code>qemu-riscv64 ./hello</code></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>riscv</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>riscv</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>西方音乐通论复习</title>
     <link href="/2024/06/03/%E8%A5%BF%E6%96%B9%E9%9F%B3%E4%B9%90%E9%80%9A%E8%AE%BA%E5%A4%8D%E4%B9%A0/"/>
     <url>/2024/06/03/%E8%A5%BF%E6%96%B9%E9%9F%B3%E4%B9%90%E9%80%9A%E8%AE%BA%E5%A4%8D%E4%B9%A0/</url>
