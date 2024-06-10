@@ -4,6 +4,106 @@
   
   
   <entry>
+    <title>seac2-MaintenanceAndEvolution</title>
+    <link href="/2024/06/10/seac2-maintenanceandevolution/"/>
+    <url>/2024/06/10/seac2-maintenanceandevolution/</url>
+    
+    <content type="html"><![CDATA[<h1 id="软件维护的类型"><a href="#软件维护的类型" class="headerlink" title="软件维护的类型"></a>软件维护的类型</h1><h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><ol><li><p>用户问题发生了改变</p></li><li><p>环境发生了改变</p></li><li><p>软件产品中存在缺陷</p></li></ol><h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><ol><li><p>完善性维护(perfective): 为了满足用户新的需求,增加软件功能而进行的软件修改活动</p></li><li><p>适应性维护(adaptive):为了使软件能够适应新环境而进行的软件修改活动</p></li><li><p>修正性维护(corrective):为了排除软件产品中遗留缺陷而进行的软件修改活动</p></li><li><p>预防性维护(preventive):为了让软件在未来可维护提升可维护性的软件修改活动</p></li></ol><h1 id="软件维护的高代价性"><a href="#软件维护的高代价性" class="headerlink" title="软件维护的高代价性"></a>软件维护的高代价性</h1><ol><li><p>变更的频繁</p></li><li><p>维护的困难</p></li></ol><h1 id="开发可维护的软件"><a href="#开发可维护的软件" class="headerlink" title="开发可维护的软件"></a>开发可维护的软件</h1><ol><li><p>考虑软件的可变更性</p></li><li><p>为了降低维护困难而开发</p></li></ol><h1 id="软件维护过程与活动"><a href="#软件维护过程与活动" class="headerlink" title="软件维护过程与活动"></a>软件维护过程与活动</h1><p><img src="/./img/11-4.png"></p><ol><li>问题&#x2F;修改的标识,分类</li></ol><ol><li><p>用户,客户提出变更请求</p></li><li><p>维护人员为变更请求建立变更记录,赋予标识,进行变更分类,确定其优先级</p></li><li><p>初步评估变更的可能影响,并且依据此确定其是否接受该变更请求</p></li><li><p>如果决定执行变更,为其安排修改事件</p></li></ol><ol start="2"><li>分析</li></ol><p>为后续的修改确定一个基本的规划.包括(可行性分析)(详细分析)</p><ol start="3"><li><p>设计</p></li><li><p>实现</p></li><li><p>回归&#x2F;系统测试</p></li><li><p>验收测试</p></li><li><p>移交</p></li></ol><h1 id="软件演化"><a href="#软件演化" class="headerlink" title="软件演化"></a>软件演化</h1><p><img src="/./img/11-5.png"></p><p><img src="/./img/11-6.png"></p><p>初步开发的一个极其重要的工作是建立一个好的软件体系结构:要又好扩展性质(容纳后续的需求增量);具有好的可修改性(处理需求变更);比较坚实可靠,能在后续演化中保持稳定的表现</p><p>演化增量可能有:预先安排好的,需求变更产生的,修正缺陷,由于用户和开发者彼此熟悉新增的</p><h1 id="软件维护和演化的常见技术"><a href="#软件维护和演化的常见技术" class="headerlink" title="软件维护和演化的常见技术"></a>软件维护和演化的常见技术</h1><p>遗留软件: 如果遗留软件的成本效益比低于新开发的一个软件系统的成本效益比,而且其仍然具有较好的可维护性,则逆向工程继续维护一段事件;如果高于,则此遗留软件已经不具备可维护性,再工程</p><p>逆向工程</p><p>再工程:关注如何修改软件,一般在逆向工程之后</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>seac2</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>seac2</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>seac2-process</title>
+    <link href="/2024/06/10/seac2-process/"/>
+    <url>/2024/06/10/seac2-process/</url>
+    
+    <content type="html"><![CDATA[<h1 id="软件开发的典型阶段"><a href="#软件开发的典型阶段" class="headerlink" title="软件开发的典型阶段"></a>软件开发的典型阶段</h1><p>软件需求工程,软件设计,软件构造,软件测试,软件交互.软件维护</p><p><img src="/./img/11-15.png"></p><h2 id="软件需求工程"><a href="#软件需求工程" class="headerlink" title="软件需求工程"></a>软件需求工程</h2><p>包括需求开发(需求获取,需求分析,需求规格说明,需求验证),和需求管理(直到软件生命终结)</p><p>可以分为两个阶段:</p><ol><li><p>系统需求开发(整个系统的期望目标)</p></li><li><p>软件需求开发时以承载的系统需求为出发点,建立软件系统的解决方案</p></li></ol><h2 id="软件设计"><a href="#软件设计" class="headerlink" title="软件设计"></a>软件设计</h2><p>使用各种抽象的软件实体建立系统的结构,单间系统的实现框架.</p><p>可以分为软件体系结构设计(完成系统的高层设计),软件详细设计(高层的基础上,使用模块,过程,类等抽象实体完成各个子系统或者模块内部的细粒度设计,定义重要的过程,类方法,数据结构或者复杂算法)和人机交互(略)三个不同的子活动</p><h2 id="软件构造"><a href="#软件构造" class="headerlink" title="软件构造"></a>软件构造</h2><p>编程,集成,调试</p><h2 id="软件测试"><a href="#软件测试" class="headerlink" title="软件测试"></a>软件测试</h2><p>单元测试,集成测试</p><h2 id="软件交付"><a href="#软件交付" class="headerlink" title="软件交付"></a>软件交付</h2><p>安装,部署,用户培训,文档支持</p><h2 id="软件维护"><a href="#软件维护" class="headerlink" title="软件维护"></a>软件维护</h2><p>完善性维护,适应性维护,修正性维护,预防性维护</p><h1 id="软件生命周期模型"><a href="#软件生命周期模型" class="headerlink" title="软件生命周期模型"></a>软件生命周期模型</h1><p><img src="/./img/11-7.png"></p><h2 id="软件过程模型"><a href="#软件过程模型" class="headerlink" title="软件过程模型"></a>软件过程模型</h2><ul><li><p>系统需求开发之后,就可以开始软件体系结构设计和人机交互设计任务(实际上三者往往同时进行)</p></li><li><p>需求开发完成以后,测试人员就可以基于需求开始系统测试任务</p></li><li><p>软件体系结构设计的时候,需要对体系结构的核心部分进行一些详细设计与构造工作以建立一个可集成的体系结构原型</p></li><li><p>开始软件体系结构部分的集成测试计划</p></li><li><p>软件详细设计完成的时候,就可以一个模块不同设计元素之间的集成测试</p></li><li><p>软件构造的过程中,程序员根据项目需要,执行单元测试和集成测试</p></li><li><p>需求产生以后,需求管理任务开始执行,直到产品生命终结</p></li></ul><p><img src="/./img/11-8.png"></p><h2 id="构建-恢复模型"><a href="#构建-恢复模型" class="headerlink" title="构建-恢复模型"></a>构建-恢复模型</h2><p>开发人员依照个人能力和理解直接构造软件的第一个版本,然后修改代码修复缺陷</p><p>特点: 没有考虑最基本的生命周期,没有对需求真实性,设计结构质量,代码组织质量,质量保障等软件开打的复杂因素进行关注点分解主力,所以缺陷明显.但是再开发规模较小,质量要求不高的时候可行</p><h2 id="瀑布模型"><a href="#瀑布模型" class="headerlink" title="瀑布模型"></a>瀑布模型</h2><p><img src="/./img/11-9.png"></p><p>尽管瀑布模型的活动组织看起来是严格线性顺序关系,像瀑布流水逐级留下,但是事实上瀑布模型是允许出现活动的发现反复和迭代的.(严格线性顺序不是瀑布模型的主要特点),其重点在于每个活动的结果必须要进行验证,并且只有在经过验证之后才能作为后续开发活动的基础.</p><p>这使得其重视模型与文档(即文档驱动)</p><p>特点:相比较于构建恢复模型有了提高.指明了软件开发活动的清晰的阶段划分.但是仍然存在对文档期望过高,完全线性假设,客户用户参与不够,里程碑粒度过粗</p><h2 id="增量迭代模型"><a href="#增量迭代模型" class="headerlink" title="增量迭代模型"></a>增量迭代模型</h2><p><img src="/./img/11-10.png"></p><p>其需要在项目的早期确定项目的目标和范围,然后将后续开发活动组织为多个迭代,并行的瀑布式开发活动.</p><p>因此项目需求要比较成熟和稳定,不能出现太多的不确定性影响需求变更</p><p>每个迭代的增量相对独立</p><p>特点:可以实现并行开发,渐进交付,同时迭代开发也有更好的适用性<br>.但是新的构建逐步并入已有构建的的时候必须保证不破坏已有的构建,而且项目早期的前景以及范围的确定也又一定难度</p><h2 id="演化模型"><a href="#演化模型" class="headerlink" title="演化模型"></a>演化模型</h2><p>与增量迭代不同,适用于比较成熟,稳定的领域,而演化模型主要用在需求变更比较平凡或者不确定性比较多的领域.</p><p><img src="/./img/11-16.png"></p><p>在得到核心系统后,用户在使用中发现变更需求,澄清不确定需求.因此其每次迭代的需求不是独立的,其设计和实现工作也是在前导迭代基础上的修改和扩展.</p><p>特点:并行开发,渐进交付,迭代开发提高适用性(尤其是需求变更比较频繁的).但是无法在项目早期确定项目的范围,导致后续整体计划,进度调度等无法准确把我,而且也有新的迭代工作可能和原有设计和分析工作难以契合,最后编程简单的构建-修复模式.</p><h2 id="原型模型"><a href="#原型模型" class="headerlink" title="原型模型"></a>原型模型</h2><p>原型是一个系统,他内化(capture)了一个更迟的系统(later system)的本质特征.</p><p>原型产生于真正的产品构建之前.一种情况是他被扩展成为真正的产品,另一种情况是,他模拟真正的产品但是不会出现在真正的产品中,真正的产品中出现的是比原型质量更好的改进和替代</p><p>第一种原型:演化式原型</p><p>第二种原型:抛弃式原型</p><p>主要是为了解决需求的不确定性</p><p><img src="/./img/11-11.png"></p><p>特点:加强了和客户,用户的交流,使用于有大量不确定性的领域.但是自身的开发成本比较高,以及项目负责人不舍得抛弃原型,使得质量较差的代码进入了最终产品,导致了产品的低质量</p><h2 id="螺旋模型"><a href="#螺旋模型" class="headerlink" title="螺旋模型"></a>螺旋模型</h2><p>是风险驱动的:确定目标,解决方案和约束 -&gt; 评估方案, 发现风险-&gt;寻找风险解决方案-&gt;落实</p><p>尽早解决比较高的风险,如果有些问题是在无法解决,那么早发现比在项目结束以后再发现要好</p><p><img src="/./img/11-12.png"></p><p>特点:可以降低风险,但是要使用原型手段,以及模型过于复杂,不利于管理者组织</p><h2 id="Rational统一过程"><a href="#Rational统一过程" class="headerlink" title="Rational统一过程"></a>Rational统一过程</h2><p><img src="/./img/11-13.png"></p><p>相对比较重量级</p><h2 id="敏捷过程"><a href="#敏捷过程" class="headerlink" title="敏捷过程"></a>敏捷过程</h2><p>个体和互动高于流程和工具</p><p>工作的软件高于详尽的文档</p><p>客户合作高于合同谈判</p><p>响应变化高于遵循变化</p><p>eg:极限编程</p><p><img src="/./img/11-14.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>seac2</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>seac2</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>seac2-delivery</title>
+    <link href="/2024/06/09/seac2-delivery/"/>
+    <url>/2024/06/09/seac2-delivery/</url>
+    
+    <content type="html"><![CDATA[<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><p>软件交付标志着软件开发任务的结束和软件维护任务的开始</p><h1 id="安装和部署"><a href="#安装和部署" class="headerlink" title="安装和部署"></a>安装和部署</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol><li><p>确定安装环境</p></li><li><p>列举安装清单</p></li><li><p>设计和建立安装包</p></li><li><p>测试安装包</p></li></ol><h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>当软件产品比较复杂的时候,一个安装包无法完成软件的交付任务,此时可以使用另外一种交付方式:部署</p><p>由开发人员直接操纵软件产品的目标环境,使得其能在目标环境中正常运行</p><ol><li><p>确定部署环境</p></li><li><p>确定部署任务</p></li><li><p>完成部署准备</p></li></ol><h1 id="培训与文档支持"><a href="#培训与文档支持" class="headerlink" title="培训与文档支持"></a>培训与文档支持</h1><h2 id="文档支持"><a href="#文档支持" class="headerlink" title="文档支持"></a>文档支持</h2><ol><li>用户文档</li></ol><p>文档内容的组织应当支持其使用模式:常见的时制导模式和参考模式两种.</p><p>指导模式:根据用户的任务组织程序规程,相关的软件任务组织在相同的章节或者主题.</p><p>参考模式:方便访问独立的信息单元的方式组织内容</p><ol start="2"><li>系统管理员文档</li></ol><h1 id="项目评价"><a href="#项目评价" class="headerlink" title="项目评价"></a>项目评价</h1><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>项目评审</p><p>度量数据分析</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>seac2</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>seac2</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>seac2-test</title>
+    <link href="/2024/06/09/seac2-test/"/>
+    <url>/2024/06/09/seac2-test/</url>
+    
+    <content type="html"><![CDATA[<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><p>验证与确认通常被简称为V&amp;V</p><p><strong>验证: Verification:</strong> 检查开发者是否正确使用技术建立系统,确保系统能够在预期的环境中按照技术要求正确的运行.</p><p><strong>确认: Validation</strong> 检查开发者是否建立了正确的系统,确保最终的产品合规</p><p>两种主要手段:<strong>静态分析</strong>和 <strong>动态测试</strong></p><h3 id="静态分析"><a href="#静态分析" class="headerlink" title="静态分析"></a>静态分析</h3><p>在软件能够运行之前,依据开发文档,模型或者其他各种可用制品完成验证和确认任务的方法. 评审时最常用的静态分析手段</p><p><img src="/./img/11-1.png"></p><h3 id="动态测试"><a href="#动态测试" class="headerlink" title="动态测试"></a>动态测试</h3><p>考察软件运行时的表现,完成验证与确认任务的方法.(将系统质量保障完全依赖于软件测试不合理)</p><h1 id="软件测试的目标"><a href="#软件测试的目标" class="headerlink" title="软件测试的目标:"></a>软件测试的目标:</h1><ol><li><p>有效性测试</p></li><li><p>缺陷测试</p></li></ol><h1 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h1><p>主要包括: 输入数据,预期结果</p><h2 id="桩程序"><a href="#桩程序" class="headerlink" title="桩程序"></a>桩程序</h2><h2 id="缺陷-错误-失败"><a href="#缺陷-错误-失败" class="headerlink" title="缺陷,错误,失败"></a>缺陷,错误,失败</h2><p><strong>缺陷(defect&#x2F;fault):</strong> 系统代码中存在的不正确的地方</p><p><strong>错误(error):</strong> 系统执行到缺陷代码,就使得执行结果不符合预期而且无法预测,表现出来的不稳定状态就称之为错误.</p><p><strong>失败(failure):</strong> 错误使得软件的功能失效.</p><p>缺陷-&gt;错误-&gt;失败</p><h1 id="测试层次的划分"><a href="#测试层次的划分" class="headerlink" title="测试层次的划分"></a>测试层次的划分</h1><p><img src="/./img/11-18.png"></p><p><img src="/./img/11-2.png"></p><p><strong>单元测试:</strong></p><p><strong>集成测试:</strong> 大爆炸集成,增量集成</p><p><strong>系统测试</strong> 更关注不符合需求的缺陷和需求自身的内在缺陷.</p><h1 id="测试技术"><a href="#测试技术" class="headerlink" title="测试技术"></a>测试技术</h1><h2 id="测试用例的选择"><a href="#测试用例的选择" class="headerlink" title="测试用例的选择"></a>测试用例的选择</h2><p>测试的目标是发现尽可能多的缺陷,但是不要求发现所有的缺陷,因为测试是由代价的</p><h3 id="随机测试"><a href="#随机测试" class="headerlink" title="随机测试"></a>随机测试</h3><p>根据软件工程师的技能,直觉和对类似程序的经验,从所有可能的输入值中选择输入子集,建立测试用例</p><h3 id="黑盒测试"><a href="#黑盒测试" class="headerlink" title="黑盒测试"></a>黑盒测试</h3><p>完全基于输入和输出数据来判定测试对象的正确性</p><ol><li><strong>等价类划分:</strong> 把所有可能的输入程序,程序的输入域划分为若干部分(子集),然后从每一个子集中选取少数具有代表性的数据作为测试用例.</li></ol><p>等价类可以划分成两种不同的情况</p><p><strong>有效等价类:</strong> 对于程序的规格说明是合理的,有意义的输入数据构成的集合</p><p><strong>无效等价类:</strong> 与有效等价类的定义恰好相反</p><ol start="2"><li><p><strong>边界值分析</strong>: 是对等价类划分方法的补充(错误最容易发生在边界)</p></li><li><p><strong>决策表</strong>: 包括条件声明,行动声明,规则选项,行动选项</p></li></ol><p>如果一个测试对象的规格是复杂的逻辑判断,就可以为其建立决策表,并且根据决策表设计测试用例.</p><ol start="4"><li><strong>状态转换</strong>: 负责测试对象对于输入数据的反应是多样的,还需要自身的状态才能确定,所以要先为测试对象建立状态图,描述测试对象的状态集合,输入集合和输出,以状态图为基础,可以建立测试对象的状态转换表,每一行都被设计为测试用例.</li></ol><p><img src="/./img/11-19.png"></p><h3 id="白盒测试"><a href="#白盒测试" class="headerlink" title="白盒测试"></a>白盒测试</h3><p>方法:语句覆盖,路径覆盖,条件覆盖</p><p><strong>语句覆盖</strong>: 保证被测试对象的每一行程序代码都至少执行一次</p><p><strong>条件覆盖</strong>: 确保程序中每个判断的么个结果都至少满足一次</p><p><strong>路径覆盖</strong>: 确保程序中每条独立的执行路径都至少执行一次</p><h1 id="测试活动"><a href="#测试活动" class="headerlink" title="测试活动"></a>测试活动</h1><ol><li><p>测试计划</p></li><li><p>测试设计</p></li><li><p>测试执行</p></li><li><p>测试评价</p></li></ol><h1 id="测试度量"><a href="#测试度量" class="headerlink" title="测试度量"></a>测试度量</h1><p>缺陷数据和测试覆盖率是软件测试阶段的重要度量</p><p>测试覆盖有三种</p><p><img src="/./img/11-3.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>seac2</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>seac2</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>管程</title>
     <link href="/2024/06/03/os-se-tubing/"/>
     <url>/2024/06/03/os-se-tubing/</url>
