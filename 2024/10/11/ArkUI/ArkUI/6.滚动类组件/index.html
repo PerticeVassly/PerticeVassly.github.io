@@ -1,0 +1,833 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/nerv.jpeg">
+  <link rel="icon" href="/img/nerv.jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="eqSun">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="参考资料：https:&#x2F;&#x2F;www.arkui.club&#x2F;chapter6&#x2F; Scroll Scroller123interface ScrollInterface &amp;#123;  (scroller?: Scroller): ScrollAttribute;&amp;#125;  123456789Scroll() &amp;#123;      Text(&amp;#x27;Text1&amp;#x27;)        .f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6.滚动类组件">
+<meta property="og:url" content="https://perticevassly.github.io/project/2024/10/11/ArkUI/ArkUI/6.%E6%BB%9A%E5%8A%A8%E7%B1%BB%E7%BB%84%E4%BB%B6/index.html">
+<meta property="og:site_name" content="eqSun&#39;s Blog">
+<meta property="og:description" content="参考资料：https:&#x2F;&#x2F;www.arkui.club&#x2F;chapter6&#x2F; Scroll Scroller123interface ScrollInterface &amp;#123;  (scroller?: Scroller): ScrollAttribute;&amp;#125;  123456789Scroll() &amp;#123;      Text(&amp;#x27;Text1&amp;#x27;)        .f">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-11T02:00:06.000Z">
+<meta property="article:modified_time" content="2025-01-23T11:11:20.000Z">
+<meta property="article:author" content="eqSun">
+<meta property="article:tag" content="arkUI">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>6.滚动类组件 - eqSun&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"perticevassly.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/eva.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="6.滚动类组件"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-10-11 10:00" pubdate>
+          2024年10月11日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          17k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          138 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">6.滚动类组件</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>参考资料：<a target="_blank" rel="noopener" href="https://www.arkui.club/chapter6/">https://www.arkui.club/chapter6/</a></p>
+<h1 id="Scroll-Scroller"><a href="#Scroll-Scroller" class="headerlink" title="Scroll Scroller"></a>Scroll Scroller</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">ScrollInterface</span> &#123;<br>  (scroller?: <span class="hljs-title class_">Scroller</span>): <span class="hljs-title class_">ScrollAttribute</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-title class_">Scroll</span>() &#123;<br>      <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Text1&#x27;</span>)<br>        .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">26</span>)<br>        .<span class="hljs-title function_">size</span>(&#123;<span class="hljs-attr">width</span>: <span class="hljs-number">180</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">40</span>&#125;) <span class="hljs-comment">// 子组件的高度小于Scroll高度，不会触发滚动</span><br>        .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>    &#125;<br>    .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>    .<span class="hljs-title function_">height</span>(<span class="hljs-number">100</span>)<br>    .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Pink</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="Scroll属性"><a href="#Scroll属性" class="headerlink" title="Scroll属性"></a>Scroll属性</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ScrollAttribute</span>&lt;T&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title class_">CommonMethod</span>&lt;T&gt; &#123;<br>  <span class="hljs-title function_">scrollable</span>(<span class="hljs-attr">value</span>: <span class="hljs-title class_">ScrollDirection</span>): T;<br>  <span class="hljs-title function_">scrollBar</span>(<span class="hljs-attr">barState</span>: <span class="hljs-title class_">BarState</span>): T;<br>  <span class="hljs-title function_">scrollBarColor</span>(<span class="hljs-attr">color</span>: <span class="hljs-title class_">Color</span> | <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span>): T;<br>  <span class="hljs-title function_">scrollBarWidth</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span>): T;<br>  <span class="hljs-title function_">edgeEffect</span>(<span class="hljs-attr">edgeEffect</span>: <span class="hljs-title class_">EdgeEffect</span>): T;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>滚动方向</p>
+<p><code>scrollable</code>: <code>Horizontal</code> | <code>Vertical</code> | <code>None</code></p>
+<p>滚动条状态</p>
+<p><code>scrollBar</code>: <code>Off</code> | <code>On</code> | <code>Auto</code> </p>
+<p>设置滚动条的颜色和宽度</p>
+<p>scrollBarColor, scrollBarWidth</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ts">.<span class="hljs-title function_">scrollBarColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Green</span>)          <span class="hljs-comment">// 设置滚动条颜色</span><br>    .<span class="hljs-title function_">scrollBarWidth</span>(<span class="hljs-number">20</span>)    <br></code></pre></td></tr></table></figure>
+
+<h2 id="Scroll事件"><a href="#Scroll事件" class="headerlink" title="Scroll事件"></a>Scroll事件</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ScrollAttribute</span>&lt;T&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title class_">CommonMethod</span>&lt;T&gt; &#123;<br>  <span class="hljs-title function_">onScroll</span>(<span class="hljs-attr">event</span>: <span class="hljs-function">(<span class="hljs-params">xOffset: <span class="hljs-built_in">number</span>, yOffset: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-built_in">void</span>): T;<br>  <span class="hljs-title function_">onScrollEdge</span>(<span class="hljs-attr">event</span>: <span class="hljs-function">(<span class="hljs-params">side: Edge</span>) =&gt;</span> <span class="hljs-built_in">void</span>): T;<br>  <span class="hljs-title function_">onScrollEnd</span>(<span class="hljs-attr">event</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">void</span>): T;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="Scroller"><a href="#Scroller" class="headerlink" title="Scroller"></a>Scroller</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Scroller</span> &#123;<br>  <span class="hljs-title function_">scrollTo</span>(<span class="hljs-attr">value</span>: &#123;<br>    <span class="hljs-attr">xOffset</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span>, <span class="hljs-attr">yOffset</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span>, animation?: &#123; <span class="hljs-attr">duration</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">curve</span>: <span class="hljs-title class_">Curve</span> &#125;<br>  &#125;);<br>  <span class="hljs-title function_">scrollEdge</span>(<span class="hljs-attr">value</span>: <span class="hljs-title class_">Edge</span>);<br>  <span class="hljs-title function_">scrollPage</span>(<span class="hljs-attr">value</span>: &#123; <span class="hljs-attr">next</span>: <span class="hljs-built_in">boolean</span>, direction?: <span class="hljs-title class_">Axis</span> &#125;);<br>  <span class="hljs-title function_">currentOffset</span>();<br>  <span class="hljs-title function_">scrollToIndex</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>scrollTo</code>: 滚动到指定位置</p>
+<p><code>scrollEdge</code>: 滚动到边缘</p>
+<p><code>scrollPage</code>: 滚动一页</p>
+<p><code>currentOffset</code>: 获取当前滚动位置</p>
+<p><code>scrollToIndex</code>: 滚动到指定索引位置，目前只支持<code>List</code></p>
+<h2 id="完整例子"><a href="#完整例子" class="headerlink" title="完整例子"></a>完整例子</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-meta">@Entry</span> <span class="hljs-meta">@Component</span> struct <span class="hljs-title class_">ComponentTest</span> &#123;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-attr">scroller</span>: <span class="hljs-title class_">Scroller</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scroller</span>(); <span class="hljs-comment">// 创建一个滚动控制器</span><br>  <span class="hljs-keyword">private</span> <span class="hljs-attr">scrollDistance</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">private</span> <span class="hljs-attr">items</span>: <span class="hljs-built_in">number</span>[] = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>];<br><br>  <span class="hljs-title function_">build</span>(<span class="hljs-params"></span>) &#123;<br><br>    <span class="hljs-title class_">Column</span>() &#123;<br>      <span class="hljs-title class_">Scroll</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">scroller</span>) &#123;                  <span class="hljs-comment">// 绑定滚动控制器</span><br>        <span class="hljs-title class_">Column</span>() &#123;<br>          <span class="hljs-title class_">ForEach</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>, <span class="hljs-function">(<span class="hljs-params">item: <span class="hljs-built_in">number</span></span>) =&gt;</span> &#123;      <span class="hljs-comment">// ForEach语法循环创建子组件</span><br>            <span class="hljs-title class_">Text</span>(<span class="hljs-string">&quot;index: &quot;</span> + item)<br>              .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">26</span>)<br>              .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;90%&#x27;</span>)<br>              .<span class="hljs-title function_">height</span>(<span class="hljs-number">120</span>)<br>              .<span class="hljs-title function_">borderRadius</span>(<span class="hljs-number">10</span>)<br>              .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">White</span>)<br>              .<span class="hljs-title function_">margin</span>(&#123;<span class="hljs-attr">top</span>: <span class="hljs-number">10</span>&#125;)<br>          &#125;)<br>        &#125;<br>        .<span class="hljs-title function_">width</span>(<span class="hljs-string">&quot;100%&quot;</span>)<br>      &#125;<br>      .<span class="hljs-title function_">scrollable</span>(<span class="hljs-title class_">ScrollDirection</span>.<span class="hljs-property">Vertical</span>)    <span class="hljs-comment">// 设置竖直方向滚动</span><br>      .<span class="hljs-title function_">scrollBarColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Green</span>)             <span class="hljs-comment">// 设置滚动条颜色</span><br>      .<span class="hljs-title function_">scrollBarWidth</span>(<span class="hljs-number">20</span>)                      <span class="hljs-comment">// 设置滚动条宽度</span><br>      .<span class="hljs-title function_">scrollBar</span>(<span class="hljs-title class_">BarState</span>.<span class="hljs-property">On</span>)                  <span class="hljs-comment">// 设置滚动条永久显示</span><br>      .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>      .<span class="hljs-title function_">height</span>(<span class="hljs-number">220</span>)<br>      .<span class="hljs-title function_">padding</span>(&#123;<span class="hljs-attr">top</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">bottom</span>: <span class="hljs-number">10</span>&#125;)<br>      .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Pink</span>)<br><br>      <span class="hljs-title class_">Flex</span>(&#123;<span class="hljs-attr">direction</span>: <span class="hljs-title class_">FlexDirection</span>.<span class="hljs-property">Row</span>, <span class="hljs-attr">wrap</span>: <span class="hljs-title class_">FlexWrap</span>.<span class="hljs-property">NoWrap</span>, <span class="hljs-attr">justifyContent</span>: <span class="hljs-title class_">FlexAlign</span>.<span class="hljs-property">SpaceBetween</span>&#125;) &#123;<br>        <span class="hljs-title class_">Button</span>(<span class="hljs-string">&#x27;scrollTo&#x27;</span>)<br>          .<span class="hljs-title function_">onClick</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">scrollDistance</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">scrollDistance</span> == <span class="hljs-number">0</span> ? <span class="hljs-number">280</span> : <span class="hljs-number">0</span>;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">scroller</span>.<span class="hljs-title function_">scrollTo</span>(&#123;           <span class="hljs-comment">// 调用scrollTo滚动到具体位置</span><br>              <span class="hljs-attr">xOffset</span>: <span class="hljs-number">180</span>,                    <span class="hljs-comment">// 竖直方向滚动，该值不起作用</span><br>              <span class="hljs-attr">yOffset</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">scrollDistance</span>,    <span class="hljs-comment">// 滚动距离</span><br>              <span class="hljs-attr">animation</span>: &#123;                     <span class="hljs-comment">// 滚动动画</span><br>                <span class="hljs-attr">duration</span>: <span class="hljs-number">1500</span>,<br>                <span class="hljs-attr">curve</span>: <span class="hljs-title class_">Curve</span>.<span class="hljs-property">Smooth</span><br>              &#125;<br>            &#125;)<br>          &#125;)<br>        <span class="hljs-title class_">Button</span>(<span class="hljs-string">&#x27;scrollEdge&#x27;</span>)<br>          .<span class="hljs-title function_">onClick</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">scroller</span>.<span class="hljs-title function_">scrollEdge</span>(<span class="hljs-title class_">Edge</span>.<span class="hljs-property">End</span>) <span class="hljs-comment">// 滚动到底部</span><br>          &#125;)<br><br>        <span class="hljs-title class_">Button</span>(<span class="hljs-string">&#x27;scrollPage&#x27;</span>)<br>          .<span class="hljs-title function_">onClick</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">scroller</span>.<span class="hljs-title function_">scrollPage</span>(&#123;<br>              <span class="hljs-attr">next</span>: <span class="hljs-literal">true</span><br>            &#125;)<br>          &#125;)<br>      &#125;<br>      .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>      .<span class="hljs-title function_">margin</span>(&#123;<span class="hljs-attr">top</span>: <span class="hljs-number">10</span>&#125;)<br>    &#125;<br>    .<span class="hljs-title function_">alignItems</span>(<span class="hljs-title class_">HorizontalAlign</span>.<span class="hljs-property">Center</span>)<br>    .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>    .<span class="hljs-title function_">height</span>((<span class="hljs-string">&#x27;100%&#x27;</span>))<br>    .<span class="hljs-title function_">padding</span>(<span class="hljs-number">20</span>)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="List-ListItem"><a href="#List-ListItem" class="headerlink" title="List, ListItem"></a>List, ListItem</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">ListInterface</span> &#123;<br>  (value?: &#123; initialIndex?: <span class="hljs-built_in">number</span>; space?: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span>; scroller?: <span class="hljs-title class_">Scroller</span> &#125;): <span class="hljs-title class_">ListAttribute</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>initialIndex</code>: 第一次要加载数据时所显示的第一个组组件的下标</p>
+<p><code>space</code>：设置列表间的间隔距离</p>
+<p><code>scroller</code>：绑定滚动控制器</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-meta">@Entry</span> <span class="hljs-meta">@Component</span> struct <span class="hljs-title class_">ComponentTest</span> &#123;<br><br>  <span class="hljs-title function_">build</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title class_">Column</span>() &#123;<br>      <span class="hljs-title class_">List</span>(&#123;<span class="hljs-attr">space</span>: <span class="hljs-number">10</span>&#125;) &#123;                       <span class="hljs-comment">// 设置ListItem之间的间隔为10</span><br>        <span class="hljs-title class_">ListItem</span>() &#123;                            <span class="hljs-comment">// List的子组件只能是ListItem</span><br>          <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Text1&#x27;</span>)<br>            .<span class="hljs-title function_">size</span>(&#123;<span class="hljs-attr">width</span>: <span class="hljs-string">&#x27;100%&#x27;</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">60</span>&#125;)<br>            .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">26</span>)<br>            .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>        &#125;<br>        .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br><br>        <span class="hljs-title class_">ListItem</span>() &#123;                            <span class="hljs-comment">// List的子组件只能是ListItem</span><br>          <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Text2&#x27;</span>)<br>            .<span class="hljs-title function_">size</span>(&#123;<span class="hljs-attr">width</span>: <span class="hljs-string">&#x27;100%&#x27;</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">60</span>&#125;)<br>            .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">26</span>)<br>            .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>        &#125;<br>        .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br><br>        <span class="hljs-title class_">ListItem</span>() &#123;                            <span class="hljs-comment">// List的子组件只能是ListItem</span><br>          <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Text3&#x27;</span>)<br>            .<span class="hljs-title function_">size</span>(&#123;<span class="hljs-attr">width</span>: <span class="hljs-string">&#x27;100%&#x27;</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">60</span>&#125;)<br>            .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">26</span>)<br>            .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>        &#125;<br>        .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br><br>        <span class="hljs-title class_">ListItem</span>() &#123;                            <span class="hljs-comment">// List的子组件只能是ListItem</span><br>          <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Text4&#x27;</span>)<br>            .<span class="hljs-title function_">size</span>(&#123;<span class="hljs-attr">width</span>: <span class="hljs-string">&#x27;100%&#x27;</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">60</span>&#125;)<br>            .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">26</span>)<br>            .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>        &#125;<br>        .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br><br>        <span class="hljs-title class_">ListItem</span>() &#123;                            <span class="hljs-comment">// List的子组件只能是ListItem</span><br>          <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Text5&#x27;</span>)<br>            .<span class="hljs-title function_">size</span>(&#123;<span class="hljs-attr">width</span>: <span class="hljs-string">&#x27;100%&#x27;</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">60</span>&#125;)<br>            .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">26</span>)<br>            .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>        &#125;<br>        .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>      &#125;<br>      .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>      .<span class="hljs-title function_">height</span>(<span class="hljs-number">200</span>)<br>      .<span class="hljs-title function_">padding</span>(<span class="hljs-number">10</span>)<br>      .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Pink</span>)<br>    &#125;<br>    .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>    .<span class="hljs-title function_">height</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>List</code>相关属性</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ListAttribute</span>&lt;T&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title class_">CommonMethod</span>&lt;T&gt; &#123;<br>  <span class="hljs-title function_">listDirection</span>(<span class="hljs-attr">value</span>: <span class="hljs-title class_">Axis</span>): T;<br>  <span class="hljs-title function_">scrollBar</span>(<span class="hljs-attr">value</span>: <span class="hljs-title class_">BarState</span>): T;<br>  <span class="hljs-title function_">edgeEffect</span>(<span class="hljs-attr">value</span>: <span class="hljs-title class_">EdgeEffect</span>): T;<br>  <span class="hljs-title function_">divider</span>(<span class="hljs-attr">value</span>: &#123;<br>    <span class="hljs-attr">strokeWidth</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Resource</span>, color?: <span class="hljs-title class_">Color</span> | <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Resource</span>,<br>    startMargin?: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Resource</span>, endMargin?: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Resource</span><br>  &#125; | <span class="hljs-literal">null</span>): T;<br>  <span class="hljs-title function_">editMode</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">boolean</span>): T;<br>  <span class="hljs-title function_">cachedCount</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span>): T;<br>  <span class="hljs-title function_">chainAnimation</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">boolean</span>): T;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>listDirection:</code> 设置子组件的排列方向 <code>vertical</code> | <code>horizontal</code></p>
+<p><code>edgeEffect</code>：设置<code>List</code>滑动到边缘的滑动效果 <code>Spring</code> | <code>None</code></p>
+<p><code>divider</code>：设置分割线的样式 <code>strokeWidth</code> | <code>color</code> | <code>startMargin</code> | <code>endMargin</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// private items: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];</span><br><span class="hljs-title class_">List</span>() &#123;<span class="hljs-comment">// List默认竖直方向排列子组件</span><br>  <span class="hljs-title class_">ForEach</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>, <span class="hljs-function">(<span class="hljs-params">item: <span class="hljs-built_in">any</span>, index?: <span class="hljs-built_in">number</span></span>) =&gt;</span> &#123;<br>    <span class="hljs-title class_">ListItem</span>() &#123;<br>      <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Text: &#x27;</span> + item)<br>        .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">20</span>)<br>        .<span class="hljs-title function_">height</span>(<span class="hljs-number">40</span>)<br>        .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&quot;#aabbcc&quot;</span>)<br>        .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>    &#125;<br>  &#125;)<br>&#125;<br>.<span class="hljs-title function_">height</span>(<span class="hljs-number">120</span>)<br>.<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>.<span class="hljs-title function_">divider</span>(&#123;<br>  <span class="hljs-attr">strokeWidth</span>: <span class="hljs-number">4</span>,   <span class="hljs-comment">// 设置分割线宽度</span><br>  <span class="hljs-attr">color</span>: <span class="hljs-title class_">Color</span>.<span class="hljs-property">Pink</span> <span class="hljs-comment">// 设置分割线颜色</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="List事件"><a href="#List事件" class="headerlink" title="List事件"></a>List事件</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ListAttribute</span>&lt;T&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title class_">CommonMethod</span>&lt;T&gt; &#123;<br>  <span class="hljs-title function_">onScroll</span>(<span class="hljs-attr">event</span>: <span class="hljs-function">(<span class="hljs-params">scrollOffset: <span class="hljs-built_in">number</span>, scrollState: ScrollState</span>) =&gt;</span> <span class="hljs-built_in">void</span>): T;<br>  <span class="hljs-title function_">onScrollIndex</span>(<span class="hljs-attr">event</span>: <span class="hljs-function">(<span class="hljs-params">start: <span class="hljs-built_in">number</span>, end: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-built_in">void</span>): T;<br>  <span class="hljs-title function_">onReachStart</span>(<span class="hljs-attr">event</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">void</span>): T;<br>  <span class="hljs-title function_">onReachEnd</span>(<span class="hljs-attr">event</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">void</span>): T;<br>  <span class="hljs-title function_">onScrollStop</span>(<span class="hljs-attr">event</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">void</span>): T;<br>  <span class="hljs-title function_">onItemDelete</span>(<span class="hljs-attr">event</span>: <span class="hljs-function">(<span class="hljs-params">index: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-built_in">boolean</span>): T;<br>  <span class="hljs-title function_">onItemMove</span>(<span class="hljs-attr">event</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-keyword">from</span>: <span class="hljs-built_in">number</span>, to: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-built_in">boolean</span>): T;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>onItemDelete</code>: 列表项被删除时触发</p>
+<p><code>onScrollIndex</code>: 当前列表显示的起始位置和终止位置发生变化时触发该回调</p>
+<p><code>onReachStart</code>: 滚动到顶部触发</p>
+<p><code>onReachEnd</code>: 滚动到底部触发</p>
+<h2 id="ListItem"><a href="#ListItem" class="headerlink" title="ListItem"></a>ListItem</h2><p>ListItem 用来展示 List 的具体 item，它的宽度默认充满 List 的宽度，它必须配合 List 使用才有效果，定义如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">ListItemInterface</span> &#123;<br>  (value?: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">ListItemAttribute</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ListItemAttribute</span>&lt;T&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title class_">CommonMethod</span>&lt;T&gt; &#123;<br>  <span class="hljs-title function_">sticky</span>(<span class="hljs-attr">value</span>: <span class="hljs-title class_">Sticky</span>): T;<br>  <span class="hljs-title function_">editable</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">boolean</span> | <span class="hljs-title class_">EditMode</span>): T;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>属性介绍</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ListItemAttribute</span>&lt;T&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title class_">CommonMethod</span>&lt;T&gt; &#123;<br>  <span class="hljs-title function_">sticky</span>(<span class="hljs-attr">value</span>: <span class="hljs-title class_">Sticky</span>): T;<br>  <span class="hljs-title function_">editable</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">boolean</span> | <span class="hljs-title class_">EditMode</span>): T;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>sticky</code>: 吸顶效果 <code>None</code> | <code>Normal</code></p>
+<p><code>editable</code>: 是否可编辑</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-title class_">List</span>(&#123;<span class="hljs-attr">space</span>: <span class="hljs-number">10</span>&#125;) &#123;<br>  <span class="hljs-title class_">ListItem</span>() &#123;<br>    <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Text1&#x27;</span>)<br>      .<span class="hljs-title function_">size</span>(&#123;<span class="hljs-attr">width</span>: <span class="hljs-string">&#x27;100%&#x27;</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">60</span>&#125;)<br>      .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">26</span>)<br>      .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>  &#125;<br>  .<span class="hljs-title function_">sticky</span>(<span class="hljs-title class_">Sticky</span>.<span class="hljs-property">Normal</span>)<span class="hljs-comment">// 设置吸顶效果</span><br>  .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br><br>  <span class="hljs-title class_">ListItem</span>() &#123;<br>    <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Text2&#x27;</span>)<br>      .<span class="hljs-title function_">size</span>(&#123;<span class="hljs-attr">width</span>: <span class="hljs-string">&#x27;100%&#x27;</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">60</span>&#125;)<br>      .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">26</span>)<br>      .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>  &#125;<br>  .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br><br>  <span class="hljs-title class_">ListItem</span>() &#123;<br>    <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Text3&#x27;</span>)<br>      .<span class="hljs-title function_">size</span>(&#123;<span class="hljs-attr">width</span>: <span class="hljs-string">&#x27;100%&#x27;</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">60</span>&#125;)<br>      .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">26</span>)<br>      .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>  &#125;<br>  .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br><br>  <span class="hljs-title class_">ListItem</span>() &#123;<br>    <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Text4&#x27;</span>)<br>      .<span class="hljs-title function_">size</span>(&#123;<span class="hljs-attr">width</span>: <span class="hljs-string">&#x27;100%&#x27;</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">60</span>&#125;)<br>      .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">26</span>)<br>      .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>  &#125;<br>  .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br><br>  <span class="hljs-title class_">ListItem</span>() &#123;<br>    <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Text5&#x27;</span>)<br>      .<span class="hljs-title function_">size</span>(&#123;<span class="hljs-attr">width</span>: <span class="hljs-string">&#x27;100%&#x27;</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">60</span>&#125;)<br>      .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">26</span>)<br>      .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>  &#125;<br>  .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>&#125;<br>.<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>.<span class="hljs-title function_">height</span>(<span class="hljs-number">200</span>)<br>.<span class="hljs-title function_">padding</span>(<span class="hljs-number">10</span>)<br>.<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Pink</span>)<br></code></pre></td></tr></table></figure>
+
+<h1 id="Grid-GridItem"><a href="#Grid-GridItem" class="headerlink" title="Grid, GridItem"></a>Grid, GridItem</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">GridInterface</span> &#123;<br>  (scroller?: <span class="hljs-title class_">Scroller</span>): <span class="hljs-title class_">GridAttribute</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-meta">@Entry</span> <span class="hljs-meta">@Component</span> struct <span class="hljs-title class_">ComponentTest</span> &#123;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-attr">columns</span>: <span class="hljs-title class_">Array</span>&lt;<span class="hljs-title class_">String</span>&gt; = [<span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>, <span class="hljs-string">&quot;4&quot;</span>, <span class="hljs-string">&quot;5&quot;</span>, <span class="hljs-string">&quot;6&quot;</span>, <span class="hljs-string">&quot;7&quot;</span>, <span class="hljs-string">&quot;8&quot;</span>, <span class="hljs-string">&quot;9&quot;</span>, <span class="hljs-string">&quot;10&quot;</span>]<br><br>  <span class="hljs-title function_">build</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title class_">Column</span>() &#123;<br>      <span class="hljs-title class_">Grid</span>() &#123;<br>        <span class="hljs-title class_">ForEach</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">columns</span>, <span class="hljs-function">(<span class="hljs-params">item: <span class="hljs-built_in">String</span></span>) =&gt;</span> &#123; <span class="hljs-comment">// ForEach语法，循环创建GridItem</span><br>          <span class="hljs-title class_">GridItem</span>() &#123;                            <span class="hljs-comment">// 子组件只能是GirdItem</span><br>            <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Text: &#x27;</span> + item)<br>              .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">20</span>)<br>              .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>              .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>              .<span class="hljs-title function_">height</span>(<span class="hljs-number">70</span>)<br>          &#125;<br>        &#125;)<br>      &#125;<br>      .<span class="hljs-title function_">columnsTemplate</span>(<span class="hljs-string">&quot;1fr 1fr 1fr&quot;</span>)     <span class="hljs-comment">// 设置Grid为3列，并且均分</span><br>      .<span class="hljs-title function_">columnsGap</span>(<span class="hljs-number">10</span>)                     <span class="hljs-comment">// 设置列间距为10vp</span><br>      .<span class="hljs-title function_">rowsGap</span>(<span class="hljs-number">10</span>)                        <span class="hljs-comment">// 设置行间距为10vp</span><br>      .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>      .<span class="hljs-title function_">height</span>(<span class="hljs-number">170</span>)<br>      .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Pink</span>)<br>    &#125;<br>    .<span class="hljs-title function_">padding</span>(<span class="hljs-number">10</span>)<br>    .<span class="hljs-title function_">width</span>(<span class="hljs-string">&quot;100%&quot;</span>)<br>    .<span class="hljs-title function_">height</span>(<span class="hljs-string">&quot;100%&quot;</span>)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">GridAttribute</span>&lt;T&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title class_">CommonMethod</span>&lt;T&gt; &#123;<br>  <span class="hljs-title function_">columnsTemplate</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>): T;<br>  <span class="hljs-title function_">rowsTemplate</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>): T;<br>  <span class="hljs-title function_">columnsGap</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Resource</span>): T;<br>  <span class="hljs-title function_">rowsGap</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Resource</span>): T;<br>  <span class="hljs-title function_">cachedCount</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span>): T;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>columnsTemplate</code>: 设置列模板</p>
+<p><code>rowsTemplate</code>: 设置行模板</p>
+<p><code>1fr 1fr 1fr 1fr 1fr</code>：表示设置 <code>Grid</code> 为 5 列，并把 <code>Grid</code> 宽度均分为 5 份，每列宽度占用 1 份。</p>
+<p><code>1fr 2fr 3fr 1fr 1fr</code>：表示设置 <code>Grid</code> 为 8 列，并把 <code>Grid</code> 宽度均分为 8 份，第一列占用 1 份，第二列占用 2 份，第三列占用 3 份，后两列每列占 1 份。</p>
+<p><code>columnsGap</code>: 设置列间距</p>
+<p><code>rowsGap</code>: 设置行间距</p>
+<p><code>cachedCount</code>: 设置缓存数量</p>
+<h2 id="Grid事件"><a href="#Grid事件" class="headerlink" title="Grid事件"></a>Grid事件</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">GridAttribute</span>&lt;T&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title class_">CommonMethod</span>&lt;T&gt; &#123;<br>  <span class="hljs-title function_">onScrollIndex</span>(<span class="hljs-attr">event</span>: <span class="hljs-function">(<span class="hljs-params">first: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-built_in">void</span>): T;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>onScrollIndex</code>：当前列表显示的起始位置 <code>item</code> 发生变化时触发该回调。</p>
+<h2 id="GridItem"><a href="#GridItem" class="headerlink" title="GridItem"></a>GridItem</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">GridItemInterface</span> &#123;<br>  (): <span class="hljs-title class_">GridItemAttribute</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">GridItemAttribute</span>&lt;T&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title class_">CommonMethod</span>&lt;T&gt; &#123;<br>  <span class="hljs-title function_">rowStart</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span>): T;<br>  <span class="hljs-title function_">rowEnd</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span>): T;<br>  <span class="hljs-title function_">columnStart</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span>): T;<br>  <span class="hljs-title function_">columnEnd</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span>): T;<br>  <span class="hljs-title function_">forceRebuild</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">boolean</span>): T;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>RowStart</code>: 设置 <code>GridItem</code> 的起始行</p>
+<p><code>RowEnd</code>: 设置 <code>GridItem</code> 的结束行</p>
+<p><code>ColumnStart</code>: 设置 <code>GridItem</code> 的起始列</p>
+<p><code>ColumnEnd</code>: 设置 <code>GridItem</code> 的结束列</p>
+<p><code>forceRebuild</code>: 设置在触发组件<code>build</code>的时候是否重新创建词节点</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-meta">@Entry</span> <span class="hljs-meta">@Component</span> struct <span class="hljs-title class_">ComponentTest</span> &#123;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-attr">columns</span>: <span class="hljs-title class_">Array</span>&lt;<span class="hljs-title class_">String</span>&gt; = [<span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>, <span class="hljs-string">&quot;4&quot;</span>, <span class="hljs-string">&quot;5&quot;</span>, <span class="hljs-string">&quot;6&quot;</span>, <span class="hljs-string">&quot;7&quot;</span>, <span class="hljs-string">&quot;8&quot;</span>, <span class="hljs-string">&quot;9&quot;</span>, <span class="hljs-string">&quot;10&quot;</span>]<br><br>  <span class="hljs-title function_">build</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title class_">Column</span>() &#123;<br>      <span class="hljs-title class_">Grid</span>() &#123;<br>        <span class="hljs-title class_">ForEach</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">columns</span>, <span class="hljs-function">(<span class="hljs-params">item: <span class="hljs-built_in">String</span>, index: <span class="hljs-built_in">number</span></span>) =&gt;</span> &#123;<br>          <span class="hljs-title class_">GridItem</span>() &#123;<br>            <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Text: &#x27;</span> + item)<br>              .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">20</span>)<br>              .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>              .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>              .<span class="hljs-title function_">height</span>(<span class="hljs-number">70</span>)<br>          &#125;<br>          .<span class="hljs-title function_">columnStart</span>(index == <span class="hljs-number">0</span> ? <span class="hljs-number">0</span> : <span class="hljs-number">0</span>) <span class="hljs-comment">// 设置第一个Item布局从第一列开始</span><br>          .<span class="hljs-title function_">columnEnd</span>(index == <span class="hljs-number">0</span> ? <span class="hljs-number">2</span> : <span class="hljs-number">0</span>)   <span class="hljs-comment">// 设置第一个Item布局从第三列结束，也即是占满整行</span><br>        &#125;)<br>      &#125;<br>      .<span class="hljs-title function_">columnsTemplate</span>(<span class="hljs-string">&quot;1fr 1fr 1fr&quot;</span>)      <span class="hljs-comment">// 设置3列，每列均分</span><br>      .<span class="hljs-title function_">columnsGap</span>(<span class="hljs-number">10</span>)                      <span class="hljs-comment">// 设置列间距</span><br>      .<span class="hljs-title function_">rowsGap</span>(<span class="hljs-number">10</span>)                         <span class="hljs-comment">// 设置行间距</span><br>      .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>      .<span class="hljs-title function_">height</span>(<span class="hljs-number">170</span>)<br>      .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Pink</span>)<br>    &#125;<br>    .<span class="hljs-title function_">padding</span>(<span class="hljs-number">10</span>)<br>    .<span class="hljs-title function_">width</span>(<span class="hljs-string">&quot;100%&quot;</span>)<br>    .<span class="hljs-title function_">height</span>(<span class="hljs-string">&quot;100%&quot;</span>)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-meta">@Entry</span> <span class="hljs-meta">@Component</span> struct <span class="hljs-title class_">ComponentTest</span> &#123;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-attr">screenWidth</span>: <span class="hljs-built_in">number</span> = <span class="hljs-title function_">px2vp</span>(<span class="hljs-number">1080</span>); <span class="hljs-comment">// 屏幕宽度</span><br>  <span class="hljs-keyword">private</span> <span class="hljs-attr">rowSpace</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">10</span>;             <span class="hljs-comment">// 行间距</span><br>  <span class="hljs-keyword">private</span> <span class="hljs-attr">rowCount</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">5</span>;              <span class="hljs-comment">// 行数</span><br>  <span class="hljs-keyword">private</span> <span class="hljs-attr">columnSpace</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">15</span>;          <span class="hljs-comment">// 列间距</span><br>  <span class="hljs-keyword">private</span> <span class="hljs-attr">columnCount</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">4</span>;           <span class="hljs-comment">// 列数</span><br>  <span class="hljs-keyword">private</span> <span class="hljs-attr">itemSize</span>: <span class="hljs-built_in">number</span> = (<span class="hljs-variable language_">this</span>.<span class="hljs-property">screenWidth</span> - (<span class="hljs-variable language_">this</span>.<span class="hljs-property">columnSpace</span> * (<span class="hljs-variable language_">this</span>.<span class="hljs-property">columnCount</span> + <span class="hljs-number">1</span>))) / <span class="hljs-variable language_">this</span>.<span class="hljs-property">columnCount</span>;														 <span class="hljs-comment">// Item尺寸</span><br><br>  <span class="hljs-keyword">private</span> <span class="hljs-attr">items</span>: <span class="hljs-built_in">number</span>[] = [];<br><br>  <span class="hljs-title function_">build</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title class_">Column</span>() &#123;<br><br>      <span class="hljs-title class_">Text</span>()<br>        .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>        .<span class="hljs-title function_">height</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>        .<span class="hljs-title function_">layoutWeight</span>(<span class="hljs-number">1</span>)<br>        .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Pink</span>)<br><br>      <span class="hljs-title class_">Grid</span>() &#123;<br>        <span class="hljs-title class_">ForEach</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>, <span class="hljs-function">(<span class="hljs-params">item: <span class="hljs-built_in">String</span>, index: <span class="hljs-built_in">number</span></span>) =&gt;</span> &#123; <span class="hljs-comment">// ForEach语法</span><br>          <span class="hljs-title class_">GridItem</span>() &#123;<br>            <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Text:&#x27;</span> + index)<br>          &#125;<br>          .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>          .<span class="hljs-title function_">height</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>          .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#bbccdd&#x27;</span>)<br>          .<span class="hljs-title function_">rowStart</span>(index == <span class="hljs-number">15</span> ? <span class="hljs-number">3</span> : <span class="hljs-number">0</span>)       <span class="hljs-comment">// 第16个GridItem占用2行</span><br>          .<span class="hljs-title function_">rowEnd</span>(index == <span class="hljs-number">15</span> ? <span class="hljs-number">4</span> : <span class="hljs-number">0</span>)         <span class="hljs-comment">// 第16个GridItem占用2行</span><br>          .<span class="hljs-title function_">columnStart</span>(index == <span class="hljs-number">16</span> ? <span class="hljs-number">0</span> : <span class="hljs-number">0</span>)    <span class="hljs-comment">// 第17个GridItem占用2列</span><br>          .<span class="hljs-title function_">columnEnd</span>((index == <span class="hljs-number">16</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>))    <span class="hljs-comment">// 第17个GridItem占用2列</span><br>        &#125;)<br>      &#125;<br>      .<span class="hljs-title function_">padding</span>(&#123;<span class="hljs-attr">left</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">columnSpace</span>, <span class="hljs-attr">right</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">columnSpace</span>&#125;)<br>      .<span class="hljs-title function_">columnsTemplate</span>(<span class="hljs-string">&quot;1fr 1fr 1fr 1fr&quot;</span>)      <span class="hljs-comment">// Grid宽度均分成4份</span><br>      .<span class="hljs-title function_">rowsTemplate</span>(<span class="hljs-string">&quot;1fr 1fr 1fr 1fr 1fr&quot;</span>)     <span class="hljs-comment">// Grid高度均分成5份</span><br>      .<span class="hljs-title function_">rowsGap</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">rowSpace</span>)                  <span class="hljs-comment">// 设置行间距</span><br>      .<span class="hljs-title function_">columnsGap</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">columnSpace</span>)            <span class="hljs-comment">// 设置列间距</span><br>      .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>      .<span class="hljs-title function_">height</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">itemSize</span> * <span class="hljs-variable language_">this</span>.<span class="hljs-property">rowCount</span> + <span class="hljs-variable language_">this</span>.<span class="hljs-property">rowSpace</span> * (<span class="hljs-variable language_">this</span>.<span class="hljs-property">rowCount</span> - <span class="hljs-number">1</span>))<br>    &#125;<br>    .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>    .<span class="hljs-title function_">height</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>  &#125;<br><br>  <span class="hljs-title function_">aboutToAppear</span>(): <span class="hljs-built_in">void</span> &#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">18</span>; i++) &#123;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>[i] = i;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="Swiper"><a href="#Swiper" class="headerlink" title="Swiper"></a>Swiper</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">SwiperInterface</span> &#123;<br>  (controller?: <span class="hljs-title class_">SwiperController</span>): <span class="hljs-title class_">SwiperAttribute</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-meta">@Entry</span> <span class="hljs-meta">@Component</span> struct <span class="hljs-title class_">Index</span> &#123;<br><br>  <span class="hljs-title function_">build</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title class_">Column</span>() &#123;<br>      <span class="hljs-title class_">Swiper</span>() &#123;<br>        <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Page1&#x27;</span>)<br>          .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">20</span>)<br>          .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>        <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Page2&#x27;</span>)<br>          .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">20</span>)<br>          .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>        <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Page3&#x27;</span>)<br>          .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">20</span>)<br>          .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>      &#125;<br>      .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;90%&#x27;</span>)<br>      .<span class="hljs-title function_">height</span>(<span class="hljs-number">120</span>)<br>      .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Pink</span>)<br>    &#125;<br>    .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>    .<span class="hljs-title function_">height</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SwiperAttribute</span>&lt;T&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title class_">CommonMethod</span>&lt;T&gt; &#123;<br>  <span class="hljs-title function_">index</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span>): T;<br>  <span class="hljs-title function_">autoPlay</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">boolean</span>): T;<br>  <span class="hljs-title function_">interval</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span>): T;<br>  <span class="hljs-title function_">indicator</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">boolean</span>): T;<br>  <span class="hljs-title function_">loop</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">boolean</span>): T;<br>  <span class="hljs-title function_">duration</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span>): T;<br>  <span class="hljs-title function_">vertical</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">boolean</span>): T;<br>  <span class="hljs-title function_">itemSpace</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span>): T;<br>  <span class="hljs-title function_">displayMode</span>(<span class="hljs-attr">value</span>: <span class="hljs-title class_">SwiperDisplayMode</span>): T;<br>  <span class="hljs-title function_">onChange</span>(<span class="hljs-attr">event</span>: <span class="hljs-function">(<span class="hljs-params">index: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-built_in">void</span>): T;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>index</code>： 默认显示的页面，默认0</p>
+<p><code>autoPlay</code>： 是否自动播放</p>
+<p><code>interval</code>： 自动播放间隔时间</p>
+<p><code>indicator</code>： 是否显示导航点显示器</p>
+<p><code>loop</code>： 是否循环播放，默认开启</p>
+<p><code>duration</code>： 动画时长</p>
+<p><code>vertical</code>： 是否垂直滚动</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-meta">@Entry</span> <span class="hljs-meta">@Component</span> struct <span class="hljs-title class_">Index</span> &#123;<br><br>  <span class="hljs-title function_">build</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title class_">Column</span>() &#123;<br>      <span class="hljs-title class_">Swiper</span>() &#123;<br>        <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Page1&#x27;</span>)<br>          .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">20</span>)<br>          .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>        <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Page2&#x27;</span>)<br>          .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">20</span>)<br>          .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>        <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Page3&#x27;</span>)<br>          .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">20</span>)<br>          .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>      &#125;<br>      .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;90%&#x27;</span>)<br>      .<span class="hljs-title function_">height</span>(<span class="hljs-number">120</span>)<br>      .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Pink</span>)<br>      .<span class="hljs-title function_">index</span>(<span class="hljs-number">1</span>)                     <span class="hljs-comment">// 设置默认显示第二页</span><br>      .<span class="hljs-title function_">indicator</span>(<span class="hljs-literal">true</span>)              <span class="hljs-comment">// 设置显示导航指示器</span><br>      .<span class="hljs-title function_">vertical</span>(<span class="hljs-literal">true</span>)               <span class="hljs-comment">// 设置竖直翻页</span><br>      .<span class="hljs-title function_">loop</span>(<span class="hljs-literal">false</span>)                  <span class="hljs-comment">// 设置关闭循环翻页，当显示最后一页后首页时无法继续往下翻页</span><br>    &#125;<br>    .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>    .<span class="hljs-title function_">height</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="Swiper事件"><a href="#Swiper事件" class="headerlink" title="Swiper事件"></a>Swiper事件</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SwiperAttribute</span>&lt;T&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title class_">CommonMethod</span>&lt;T&gt; &#123;<br>  <span class="hljs-title function_">onChange</span>(<span class="hljs-attr">event</span>: <span class="hljs-function">(<span class="hljs-params">index: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-built_in">void</span>): T;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="SwiperController"><a href="#SwiperController" class="headerlink" title="SwiperController"></a>SwiperController</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SwiperController</span> &#123;<br>  <span class="hljs-title function_">showNext</span>();<br>  <span class="hljs-title function_">showPrevious</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-meta">@Entry</span> <span class="hljs-meta">@Component</span> struct <span class="hljs-title class_">ComponentTest</span> &#123;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-attr">controller</span>: <span class="hljs-title class_">SwiperController</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SwiperController</span>();<br><br>  <span class="hljs-title function_">build</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title class_">Column</span>() &#123;<br>      <span class="hljs-title class_">Swiper</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">controller</span>) &#123;      <span class="hljs-comment">// 绑定翻页控制器</span><br>        <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Page1&#x27;</span>)<br>          .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">20</span>)<br>          .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>        <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Page2&#x27;</span>)<br>          .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">20</span>)<br>          .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>        <span class="hljs-title class_">Text</span>(<span class="hljs-string">&#x27;Page3&#x27;</span>)<br>          .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">20</span>)<br>          .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>      &#125;<br>      .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;90%&#x27;</span>)<br>      .<span class="hljs-title function_">height</span>(<span class="hljs-number">120</span>)<br>      .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Pink</span>)<br>      .<span class="hljs-title function_">index</span>(<span class="hljs-number">1</span>)                      <span class="hljs-comment">// 默认显示第二页</span><br>      .<span class="hljs-title function_">indicator</span>(<span class="hljs-literal">true</span>)               <span class="hljs-comment">// 显示导航指示器</span><br><br>      <span class="hljs-title class_">Row</span>(&#123;<span class="hljs-attr">space</span>: <span class="hljs-number">20</span>&#125;) &#123;<br>        <span class="hljs-title class_">Button</span>(<span class="hljs-string">&#x27;上一页&#x27;</span>)<br>          .<span class="hljs-title function_">onClick</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">controller</span>.<span class="hljs-title function_">showPrevious</span>();<br>          &#125;)<br>        <span class="hljs-title class_">Button</span>(<span class="hljs-string">&#x27;下一页&#x27;</span>)<br>          .<span class="hljs-title function_">onClick</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">controller</span>.<span class="hljs-title function_">showNext</span>();<br>          &#125;)<br>      &#125;<br>      .<span class="hljs-title function_">margin</span>(&#123;<span class="hljs-attr">top</span>: <span class="hljs-number">10</span>&#125;)<br>    &#125;<br>    .<span class="hljs-title function_">alignItems</span>(<span class="hljs-title class_">HorizontalAlign</span>.<span class="hljs-property">Center</span>)<br>    .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>    .<span class="hljs-title function_">height</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>    .<span class="hljs-title function_">padding</span>(&#123; <span class="hljs-attr">left</span>: <span class="hljs-number">20</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">20</span>, <span class="hljs-attr">top</span>: <span class="hljs-number">10</span> &#125;)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="Refresh"><a href="#Refresh" class="headerlink" title="Refresh"></a>Refresh</h1><p>给需要下拉刷新的组件包上<code>Refresh</code>组件即可实现下拉刷新功能</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">RefreshInterface</span> &#123;<br>  (<span class="hljs-attr">value</span>: &#123; <span class="hljs-attr">refreshing</span>: <span class="hljs-built_in">boolean</span>; offset?: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span>; friction?: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> &#125;): <span class="hljs-title class_">RefreshAttribute</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-meta">@Entry</span> <span class="hljs-meta">@Component</span> struct <span class="hljs-title class_">Index</span> &#123;<br><br>  <span class="hljs-meta">@State</span> <span class="hljs-attr">refreshing</span>: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;<br><br>  <span class="hljs-title function_">build</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title class_">Column</span>(&#123;<span class="hljs-attr">space</span>: <span class="hljs-number">10</span>&#125;) &#123;<br>      <span class="hljs-title class_">Refresh</span>(&#123; <span class="hljs-attr">refreshing</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">refreshing</span> &#125;) &#123;<br>        <span class="hljs-title class_">Text</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">refreshing</span> ? <span class="hljs-string">&quot;Refreshing&quot;</span> : <span class="hljs-string">&quot;Refreshed&quot;</span>)<br>          .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>          .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">26</span>)<br>          .<span class="hljs-title function_">height</span>(<span class="hljs-number">100</span>)<br>          .<span class="hljs-title function_">textAlign</span>(<span class="hljs-title class_">TextAlign</span>.<span class="hljs-property">Center</span>)<br>          .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>      &#125;<br>      .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>      .<span class="hljs-title function_">height</span>(<span class="hljs-number">100</span>)<br>      <br>      <span class="hljs-title class_">Row</span>(&#123;<span class="hljs-attr">space</span>: <span class="hljs-number">10</span>&#125;) &#123;<br>        <span class="hljs-title class_">Button</span>(<span class="hljs-string">&#x27;Start&#x27;</span>)<br>          .<span class="hljs-title function_">onClick</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">refreshing</span> = <span class="hljs-literal">true</span>;<br>          &#125;)<br><br>        <span class="hljs-title class_">Button</span>(<span class="hljs-string">&#x27;Stop&#x27;</span>)<br>          .<span class="hljs-title function_">onClick</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">refreshing</span> = <span class="hljs-literal">false</span>;<br>          &#125;)<br>      &#125;<br>    &#125;<br>    .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>    .<span class="hljs-title function_">height</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">RefreshAttribute</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">CommonMethod</span>&lt;<span class="hljs-title class_">RefreshAttribute</span>&gt; &#123;<br>  <span class="hljs-title function_">onStateChange</span>(<span class="hljs-attr">callback</span>: <span class="hljs-function">(<span class="hljs-params">state: RefreshStatus</span>) =&gt;</span> <span class="hljs-built_in">void</span>): <span class="hljs-title class_">RefreshAttribute</span>;<br>  <span class="hljs-title function_">onRefreshing</span>(<span class="hljs-attr">callback</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">void</span>): <span class="hljs-title class_">RefreshAttribute</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>OnStateChange</code>: 刷新状态改变时触发 <code>Inactive</code> | <code>Drag</code> | <code>OverDrag</code> | <code>Refresh</code> | <code>Done</code></p>
+<p><code>OnRefreshing</code>: 组件进入<code>Refresh</code>状态对外的回调，一般在该回调用进行网络请求等等操作</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-meta">@Entry</span> <span class="hljs-meta">@Component</span> struct <span class="hljs-title class_">Index</span> &#123;<br><br>  <span class="hljs-meta">@State</span> <span class="hljs-attr">refreshing</span>: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;<br><br>  <span class="hljs-title function_">build</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title class_">Column</span>(&#123;<span class="hljs-attr">space</span>: <span class="hljs-number">10</span>&#125;) &#123;<br>      <span class="hljs-title class_">Refresh</span>(&#123; <span class="hljs-attr">refreshing</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">refreshing</span> &#125;) &#123;<br>        <span class="hljs-title class_">Text</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">refreshing</span> ? <span class="hljs-string">&quot;Refreshing&quot;</span> : <span class="hljs-string">&quot;Refreshed&quot;</span>)<br>          .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>          .<span class="hljs-title function_">fontSize</span>(<span class="hljs-number">26</span>)<br>          .<span class="hljs-title function_">height</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>          .<span class="hljs-title function_">textAlign</span>(<span class="hljs-title class_">TextAlign</span>.<span class="hljs-property">Center</span>)<br>          .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-string">&#x27;#aabbcc&#x27;</span>)<br>      &#125;<br>      .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>      .<span class="hljs-title function_">height</span>(<span class="hljs-number">100</span>)<br>      .<span class="hljs-title function_">onRefreshing</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">refreshing</span> = <span class="hljs-literal">true</span>;    <span class="hljs-comment">// 进入刷新状态</span><br>        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;         <span class="hljs-comment">// 模拟网络请求，3500毫秒后结束刷新</span><br>          <span class="hljs-variable language_">this</span>.<span class="hljs-property">refreshing</span> = <span class="hljs-literal">false</span>;<br>        &#125;, <span class="hljs-number">3500</span>)<br>      &#125;)<br>    &#125;<br>    .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>    .<span class="hljs-title function_">height</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/ArkUI/" class="category-chain-item">ArkUI</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/arkUI/" class="print-no-link">#arkUI</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>6.滚动类组件</div>
+      <div>https://perticevassly.github.io/project/2024/10/11/ArkUI/ArkUI/6.滚动类组件/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>eqSun</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年10月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/10/11/ArkUI/ArkUI/12.%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%92%8C%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/" title="12.文件操作和网络请求">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">12.文件操作和网络请求</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/10/11/ArkUI/ArkUI/2.OpenHarmony%E5%BA%94%E7%94%A8/" title="2.OpenHarmony应用">
+                        <span class="hidden-mobile">2.OpenHarmony应用</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
