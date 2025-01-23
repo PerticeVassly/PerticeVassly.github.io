@@ -16,22 +16,22 @@
   <meta name="author" content="eqSun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="kafka2.8.x以后已经不需要zookeeper作为管理器了，以下直接使用kraft代替zookeeper 系统：wsl2 ubuntu22.04 详细见：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;fanqisoft&#x2F;p&#x2F;18027195 step1: 安装kafkastep2: 配置文件由于使用kraft,涉及到的配置文件在config&#x2F;kraft中，模板是server.pr">
+    <meta name="description" content="ref: https:&#x2F;&#x2F;www.coursera.org&#x2F;learn&#x2F;algorithms-part1&#x2F;home&#x2F;module&#x2F;12 Java’s hash code conventionsall java classes inherit a method hashCode(), which returns a 32-bit int Requirement: if x.equals(y), th">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kafka配置以及初步搭建">
-<meta property="og:url" content="https://perticevassly.github.io/project/2014/05/08/kafka%E5%88%9D%E6%AD%A5%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:title" content="HashTable">
+<meta property="og:url" content="https://perticevassly.github.io/project/2025/01/23/AlgorithmsI/HashTable/index.html">
 <meta property="og:site_name" content="eqSun&#39;s Blog">
-<meta property="og:description" content="kafka2.8.x以后已经不需要zookeeper作为管理器了，以下直接使用kraft代替zookeeper 系统：wsl2 ubuntu22.04 详细见：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;fanqisoft&#x2F;p&#x2F;18027195 step1: 安装kafkastep2: 配置文件由于使用kraft,涉及到的配置文件在config&#x2F;kraft中，模板是server.pr">
+<meta property="og:description" content="ref: https:&#x2F;&#x2F;www.coursera.org&#x2F;learn&#x2F;algorithms-part1&#x2F;home&#x2F;module&#x2F;12 Java’s hash code conventionsall java classes inherit a method hashCode(), which returns a 32-bit int Requirement: if x.equals(y), th">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2014-05-08T11:45:00.000Z">
-<meta property="article:modified_time" content="2024-05-08T11:47:30.003Z">
+<meta property="article:published_time" content="2025-01-23T04:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-23T07:15:45.000Z">
 <meta property="article:author" content="eqSun">
-<meta property="article:tag" content="kafka">
+<meta property="article:tag" content="DataStructure">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>kafka配置以及初步搭建 - eqSun&#39;s Blog</title>
+  <title>HashTable - eqSun&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="kafka配置以及初步搭建"></span>
+            <span id="subtitle" data-typed-text="HashTable"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2014-05-08 19:45" pubdate>
-          2014年5月8日 晚上
+        <time datetime="2025-01-23 12:00" pubdate>
+          2025年1月23日 中午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          979 字
+          3.5k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          9 分钟
+          30 分钟
         
       </span>
     
@@ -268,22 +268,45 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">kafka配置以及初步搭建</h1>
+            <h1 id="seo-header">HashTable</h1>
             
             
               <div class="markdown-body">
                 
-                <p>kafka2.8.x以后已经不需要zookeeper作为管理器了，以下直接使用kraft代替zookeeper</p>
-<p>系统：wsl2 ubuntu22.04</p>
-<p>详细见：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/fanqisoft/p/18027195">https://www.cnblogs.com/fanqisoft/p/18027195</a></p>
-<h3 id="step1-安装kafka"><a href="#step1-安装kafka" class="headerlink" title="step1: 安装kafka"></a>step1: 安装kafka</h3><h3 id="step2-配置文件"><a href="#step2-配置文件" class="headerlink" title="step2: 配置文件"></a>step2: 配置文件</h3><p>由于使用kraft,涉及到的配置文件在config&#x2F;kraft中，模板是server.properties</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs config"><br># 这个node扮演的角色<br>process.role<br><br># 整个集群中的唯一标识这个结点的ID<br>node.id: <br><br>controller.quorum.voter=2@192.168.58.130:9093,... <br><br># 用于代理之间通信的侦听器的名称(broker 服务协议别名)<br>inter.broker.listener.name=PLAINTEX<br><br><br># 名字+端口，标识node与外界交互的的端口，包含与客户端交互的端口和其他node(controller)交互的端口<br>listener=PLAINTEXT://your.host.name:9092 <br><br># 向客户端交互的端口<br>advertised.listeners=PLAINTEXT://192.168.58.130:9093...<br><br># controller 服务协议别名<br># 控制器使用的侦听器名称的逗号分隔列表<br># 如果`listener.security.protocol.map`中未设置显式映射，则默认使用PLAINTEXT协议<br># 如果在KRaft模式下运行，这是必需的。<br>controller.listener.names=CONTROLLER<br><br># 存储日志文件的目录的逗号分隔列表(kafka 数据存储目录)<br>log.dirs=/usr/kafka/kafka_2.13-3.6.1/datas<br><br></code></pre></td></tr></table></figure>
+                <p>ref: <a target="_blank" rel="noopener" href="https://www.coursera.org/learn/algorithms-part1/home/module/12">https://www.coursera.org/learn/algorithms-part1/home/module/12</a></p>
+<h1 id="Java’s-hash-code-conventions"><a href="#Java’s-hash-code-conventions" class="headerlink" title="Java’s hash code conventions"></a>Java’s hash code conventions</h1><p>all java classes inherit a method hashCode(), which returns a 32-bit int</p>
+<p><strong>Requirement:</strong> if x.equals(y), then x.hashCode() &#x3D;&#x3D; y.hashCode()</p>
+<p><strong>High desirable:</strong> if !x.equals(y), then x.hashCode() !&#x3D; y.hashCode()</p>
+<p><strong>Default implementation:</strong> return a memory address of x</p>
+<h1 id="Java-library-implementations"><a href="#Java-library-implementations" class="headerlink" title="Java library implementations"></a>Java library implementations</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span>  <span class="hljs-keyword">class</span> <span class="hljs-title class_">Integer</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> value;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hashCode</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> value;<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> clas Boolean &#123;<br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">boolean</span> value;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hashCode</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">if</span> (value) <span class="hljs-keyword">return</span> <span class="hljs-number">1231</span>;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-number">1237</span>;<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Double</span> &#123;<br>  priavte <span class="hljs-keyword">final</span> <span class="hljs-type">double</span> value;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hashCode</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">bits</span> <span class="hljs-operator">=</span> Double.doubleToLongBits(value);<br>    <span class="hljs-keyword">return</span> (<span class="hljs-type">int</span>) (bits ^ (bits &gt;&gt;&gt; <span class="hljs-number">32</span>));<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// Horner&#x27;s method</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">String</span> &#123;<br>  priavte <span class="hljs-keyword">final</span> <span class="hljs-type">char</span>[] s;<br>  priavte <span class="hljs-type">int</span> <span class="hljs-variable">hash</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hashCode</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">h</span> <span class="hljs-operator">=</span> hash;<br>    <span class="hljs-keyword">if</span> (h != <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> h;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length; i++) &#123;<br>      hash = s[i] + (<span class="hljs-number">31</span> * hash);<br>    &#125;<br>    hash = h;<br>    <span class="hljs-keyword">return</span> hash;<br>  &#125;<br>&#125;<br><span class="hljs-comment">// cache the hash code and return it when called</span><br></code></pre></td></tr></table></figure>
 
-<h3 id="step3-初始化"><a href="#step3-初始化" class="headerlink" title="step3: 初始化"></a>step3: 初始化</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">bin/kafka-storage.sh <span class="hljs-built_in">random</span>-<span class="hljs-built_in">uuid</span><br></code></pre></td></tr></table></figure>
+<h1 id="HashCode-design"><a href="#HashCode-design" class="headerlink" title="HashCode design"></a>HashCode design</h1><p>Combine each significant field using $31x + y$ rule</p>
+<p>If field is a primitive type, use wrapper type <code>hashCode()</code></p>
+<p>if field is null, return <code>0</code></p>
+<p>if field is a reference type, use <code>hashCode()</code></p>
+<p>if field is an array, apply to each entry</p>
+<h1 id="Uniform-hashing-assumption"><a href="#Uniform-hashing-assumption" class="headerlink" title="Uniform hashing assumption"></a>Uniform hashing assumption</h1><p>Bins and balls: Throw balls uniformly at random into $M$ bins</p>
+<p>Birthday problem: Expect a collision after ~$\sqrt{\pi M &#x2F; 2}$</p>
+<p>Coupon collector: Expect to see every bin has &gt;&#x3D; 1 ball after ~$M lnM$</p>
+<p>Load balancing: Each bin has $\theta (\log N &#x2F; \log \log N)$ balls</p>
+<h1 id="Separate-chaining"><a href="#Separate-chaining" class="headerlink" title="Separate chaining"></a>Separate chaining</h1><p>use an array of $M &lt; N$ linked lists</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SeparateChainingHashST</span>&lt;Key, Value&gt; &#123;<br>  <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">M</span> <span class="hljs-operator">=</span> <span class="hljs-number">97</span>;<br>  <span class="hljs-keyword">private</span> Node[] st = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>[M];<br><br>  priate <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Node</span> &#123;<br>    <span class="hljs-keyword">private</span> Object key;<br>    <span class="hljs-keyword">private</span> Object val;<br>    <span class="hljs-keyword">private</span> Node next;<br>    ...<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> Value <span class="hljs-title function_">get</span><span class="hljs-params">(Key key)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> hash(key);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">Node</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> st[i]; x != <span class="hljs-literal">null</span>; x = x.next) &#123;<br>      <span class="hljs-keyword">if</span> (key.equals(x.key)) <span class="hljs-keyword">return</span> (Value) x.val;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">put</span><span class="hljs-params">(Key key, Value val)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> hash(key);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">Node</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> st[i]; x != <span class="hljs-literal">null</span>; x = x.next) &#123;<br>      <span class="hljs-keyword">if</span> (key.equals(x.key)) &#123;<br>        x.val = val;<br>        <span class="hljs-keyword">return</span>;<br>      &#125;<br>    &#125;<br>    st[i] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>(key, val, st[i]);<br>  &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
-<h3 id="对于每一个node，执行"><a href="#对于每一个node，执行" class="headerlink" title="对于每一个node，执行"></a>对于每一个node，执行</h3><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">bin/kafka-<span class="hljs-keyword">storage</span>.sh <span class="hljs-keyword">format</span> -t <span class="hljs-type">uuid</span> -c \&lt;<span class="hljs-type">path</span>-<span class="hljs-keyword">to</span>-your-config\&gt;<br></code></pre></td></tr></table></figure>
+<p>Proposition. Under uniform hashing assumption, prob. that the number of<br>keys in a list is within a constant factor of $N &#x2F; M$ is extremely close to 1.</p>
+<p>Typical choice: $M ~ N &#x2F; 5$ &#x3D;&gt; constant-time ops</p>
+<h1 id="linear-probing"><a href="#linear-probing" class="headerlink" title="linear probing"></a>linear probing</h1><p>When a new key collides, find next empty slot, and put it there</p>
+<p>Note: Array size M must be greater than number of key-value pairs $N$</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LinearProbingHashST</span>&lt;Key, Value&gt; &#123;<br>  <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">M</span> <span class="hljs-operator">=</span> <span class="hljs-number">30001</span>;<br>  <span class="hljs-keyword">private</span> Value[] vals = (Value[]) <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[M];<br>  <span class="hljs-keyword">private</span> Key[] keys = (Key[]) <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[M];<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hash</span><span class="hljs-params">(Key key)</span> &#123;<br>    <span class="hljs-keyword">return</span> (key.hashCode() &amp; <span class="hljs-number">0x7fffffff</span>) % M;<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">put</span><span class="hljs-params">(Key key, Value val)</span> &#123;<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">for</span> (i = hash(key); keys[i] != <span class="hljs-literal">null</span>; i = (i + <span class="hljs-number">1</span>) % M) &#123;<br>      <span class="hljs-keyword">if</span> (key.equals(keys[i])) &#123;<br>        vals[i] = val;<br>        <span class="hljs-keyword">return</span>;<br>      &#125;<br>    &#125;<br>    keys[i] = key;<br>    vals[i] = val;<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> Value <span class="hljs-title function_">get</span><span class="hljs-params">(Key key)</span> &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> hash(key); keys[i] != <span class="hljs-literal">null</span>; i = (i + <span class="hljs-number">1</span>) % M) &#123;<br>      <span class="hljs-keyword">if</span> (key.equals(keys[i])) <span class="hljs-keyword">return</span> vals[i];<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="step4-运行"><a href="#step4-运行" class="headerlink" title="step4: 运行"></a>step4: 运行</h3><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">bin/kafka-<span class="hljs-keyword">server</span>-<span class="hljs-keyword">start</span>.sh &lt;<span class="hljs-type">path</span>-<span class="hljs-keyword">to</span>-your-config&gt;<br></code></pre></td></tr></table></figure>
+<p>New Keys likely to hash into the middle of big clusters</p>
+<h2 id="Knuth’s-parking-problem"><a href="#Knuth’s-parking-problem" class="headerlink" title="Knuth’s parking problem"></a>Knuth’s parking problem</h2><p>What is the mean displacement of a car?</p>
+<p>With M&#x2F;2 cars, mean displacement is ~$3&#x2F;2$</p>
+<p>With M cars, mean displacement is ~$\sqrt{(\pi M &#x2F; 8)}$</p>
+<p>Under uniform hashing assumption, the average # of probes<br>in a linear probing hash table of size M that contains $N &#x3D; α M$ keys is:</p>
+<p>Search hit: ~$\frac{1}{2}(1 + \frac{1}{1 - α})$</p>
+<p>Search miss: ~$\frac{1}{2}(1 + \frac{1}{(1 - α)^2})$</p>
+<p>so typical choice is $α &#x3D; N &#x2F; M ~ 1&#x2F;2$</p>
+<p>then prob. of search hit is $3&#x2F;2$, and prob. of search miss is $5&#x2F;2$</p>
 
                 
               </div>
@@ -302,7 +325,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/kafka/" class="category-chain-item">kafka</a>
+  <a href="/categories/AlgorithmI/" class="category-chain-item">AlgorithmI</a>
   
   
 
@@ -317,7 +340,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/kafka/" class="print-no-link">#kafka</a>
+        <a href="/tags/DataStructure/" class="print-no-link">#DataStructure</a>
       
     </div>
   
@@ -329,8 +352,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>kafka配置以及初步搭建</div>
-      <div>https://perticevassly.github.io/project/2014/05/08/kafka初步配置以及搭建/</div>
+      <div>HashTable</div>
+      <div>https://perticevassly.github.io/project/2025/01/23/AlgorithmsI/HashTable/</div>
     </div>
     <div class="license-meta">
       
@@ -342,7 +365,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2014年5月8日</div>
+          <div>2025年1月23日</div>
         </div>
       
       
@@ -380,18 +403,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/11/ArkUI/ArkUI/4.%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/" title="基础组件">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">基础组件</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/1970/01/01/ArkUI/ArkUI/%E5%AE%B9%E5%99%A8%E7%B1%BB%E7%BB%84%E4%BB%B6/" title="">
-                        <span class="hidden-mobile"></span>
+                      <a href="/2025/01/09/embedded-system/%E5%A4%8D%E4%B9%A0/" title="嵌入式系统复习">
+                        <span class="hidden-mobile">嵌入式系统复习</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

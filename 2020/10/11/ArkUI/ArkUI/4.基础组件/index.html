@@ -16,22 +16,22 @@
   <meta name="author" content="eqSun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="kafka2.8.x以后已经不需要zookeeper作为管理器了，以下直接使用kraft代替zookeeper 系统：wsl2 ubuntu22.04 详细见：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;fanqisoft&#x2F;p&#x2F;18027195 step1: 安装kafkastep2: 配置文件由于使用kraft,涉及到的配置文件在config&#x2F;kraft中，模板是server.pr">
+    <meta name="description" content="参考资料：https:&#x2F;&#x2F;www.arkui.club&#x2F;chapter4&#x2F; 文本Text123interface TextInterface &amp;#123;  (content?: string | Resource): TextAttribute;&amp;#125;  1234567891011121314151617declare class TextAttribute extends CommonM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kafka配置以及初步搭建">
-<meta property="og:url" content="https://perticevassly.github.io/project/2014/05/08/kafka%E5%88%9D%E6%AD%A5%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:title" content="基础组件">
+<meta property="og:url" content="https://perticevassly.github.io/project/2020/10/11/ArkUI/ArkUI/4.%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/index.html">
 <meta property="og:site_name" content="eqSun&#39;s Blog">
-<meta property="og:description" content="kafka2.8.x以后已经不需要zookeeper作为管理器了，以下直接使用kraft代替zookeeper 系统：wsl2 ubuntu22.04 详细见：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;fanqisoft&#x2F;p&#x2F;18027195 step1: 安装kafkastep2: 配置文件由于使用kraft,涉及到的配置文件在config&#x2F;kraft中，模板是server.pr">
+<meta property="og:description" content="参考资料：https:&#x2F;&#x2F;www.arkui.club&#x2F;chapter4&#x2F; 文本Text123interface TextInterface &amp;#123;  (content?: string | Resource): TextAttribute;&amp;#125;  1234567891011121314151617declare class TextAttribute extends CommonM">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2014-05-08T11:45:00.000Z">
-<meta property="article:modified_time" content="2024-05-08T11:47:30.003Z">
+<meta property="article:published_time" content="2020-10-11T02:00:04.000Z">
+<meta property="article:modified_time" content="2025-01-16T03:31:07.000Z">
 <meta property="article:author" content="eqSun">
-<meta property="article:tag" content="kafka">
+<meta property="article:tag" content="ArkUI">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>kafka配置以及初步搭建 - eqSun&#39;s Blog</title>
+  <title>基础组件 - eqSun&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="kafka配置以及初步搭建"></span>
+            <span id="subtitle" data-typed-text="基础组件"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2014-05-08 19:45" pubdate>
-          2014年5月8日 晚上
+        <time datetime="2020-10-11 10:00" pubdate>
+          2020年10月11日 上午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          979 字
+          1.8k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          9 分钟
+          15 分钟
         
       </span>
     
@@ -268,23 +268,22 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">kafka配置以及初步搭建</h1>
+            <h1 id="seo-header">基础组件</h1>
             
             
               <div class="markdown-body">
                 
-                <p>kafka2.8.x以后已经不需要zookeeper作为管理器了，以下直接使用kraft代替zookeeper</p>
-<p>系统：wsl2 ubuntu22.04</p>
-<p>详细见：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/fanqisoft/p/18027195">https://www.cnblogs.com/fanqisoft/p/18027195</a></p>
-<h3 id="step1-安装kafka"><a href="#step1-安装kafka" class="headerlink" title="step1: 安装kafka"></a>step1: 安装kafka</h3><h3 id="step2-配置文件"><a href="#step2-配置文件" class="headerlink" title="step2: 配置文件"></a>step2: 配置文件</h3><p>由于使用kraft,涉及到的配置文件在config&#x2F;kraft中，模板是server.properties</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs config"><br># 这个node扮演的角色<br>process.role<br><br># 整个集群中的唯一标识这个结点的ID<br>node.id: <br><br>controller.quorum.voter=2@192.168.58.130:9093,... <br><br># 用于代理之间通信的侦听器的名称(broker 服务协议别名)<br>inter.broker.listener.name=PLAINTEX<br><br><br># 名字+端口，标识node与外界交互的的端口，包含与客户端交互的端口和其他node(controller)交互的端口<br>listener=PLAINTEXT://your.host.name:9092 <br><br># 向客户端交互的端口<br>advertised.listeners=PLAINTEXT://192.168.58.130:9093...<br><br># controller 服务协议别名<br># 控制器使用的侦听器名称的逗号分隔列表<br># 如果`listener.security.protocol.map`中未设置显式映射，则默认使用PLAINTEXT协议<br># 如果在KRaft模式下运行，这是必需的。<br>controller.listener.names=CONTROLLER<br><br># 存储日志文件的目录的逗号分隔列表(kafka 数据存储目录)<br>log.dirs=/usr/kafka/kafka_2.13-3.6.1/datas<br><br></code></pre></td></tr></table></figure>
+                <p>参考资料：<a target="_blank" rel="noopener" href="https://www.arkui.club/chapter4/">https://www.arkui.club/chapter4/</a></p>
+<h1 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h1><h2 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">TextInterface</span> &#123;<br>  (content?: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Resource</span>): <span class="hljs-title class_">TextAttribute</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="step3-初始化"><a href="#step3-初始化" class="headerlink" title="step3: 初始化"></a>step3: 初始化</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">bin/kafka-storage.sh <span class="hljs-built_in">random</span>-<span class="hljs-built_in">uuid</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TextAttribute</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">CommonMethod</span>&lt;<span class="hljs-title class_">TextAttribute</span>&gt; &#123;<br>  <span class="hljs-title function_">fontColor</span>(<span class="hljs-attr">value</span>: <span class="hljs-title class_">ResourceColor</span>): <span class="hljs-title class_">TextAttribute</span>;<br>  <span class="hljs-title function_">fontSize</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Resource</span>): <span class="hljs-title class_">TextAttribute</span>;<br>  <span class="hljs-title function_">minFontSize</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Resource</span>): <span class="hljs-title class_">TextAttribute</span>;<br>  <span class="hljs-title function_">maxFontSize</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Resource</span>): <span class="hljs-title class_">TextAttribute</span>;<br>  <span class="hljs-title function_">fontStyle</span>(<span class="hljs-attr">value</span>: <span class="hljs-title class_">FontStyle</span>): <span class="hljs-title class_">TextAttribute</span>;<br>  <span class="hljs-title function_">fontWeight</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span> | <span class="hljs-title class_">FontWeight</span> | <span class="hljs-built_in">string</span>): <span class="hljs-title class_">TextAttribute</span>;<br>  <span class="hljs-title function_">textAlign</span>(<span class="hljs-attr">value</span>: <span class="hljs-title class_">TextAlign</span>): <span class="hljs-title class_">TextAttribute</span>;<br>  <span class="hljs-title function_">lineHeight</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Resource</span>): <span class="hljs-title class_">TextAttribute</span>;<br>  <span class="hljs-title function_">textOverflow</span>(<span class="hljs-attr">value</span>: &#123; <span class="hljs-attr">overflow</span>: <span class="hljs-title class_">TextOverflow</span> &#125;): <span class="hljs-title class_">TextAttribute</span>;<br>  <span class="hljs-title function_">fontFamily</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Resource</span>): <span class="hljs-title class_">TextAttribute</span>;<br>  <span class="hljs-title function_">maxLines</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span>): <span class="hljs-title class_">TextAttribute</span>;<br>  <span class="hljs-title function_">decoration</span>(<span class="hljs-attr">value</span>: &#123; <span class="hljs-attr">type</span>: <span class="hljs-title class_">TextDecorationType</span>; color?: <span class="hljs-title class_">ResourceColor</span> &#125;): <span class="hljs-title class_">TextAttribute</span>;<br>  <span class="hljs-title function_">letterSpacing</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span>): <span class="hljs-title class_">TextAttribute</span>;<br>  <span class="hljs-title function_">textCase</span>(<span class="hljs-attr">value</span>: <span class="hljs-title class_">TextCase</span>): <span class="hljs-title class_">TextAttribute</span>;<br>  <span class="hljs-title function_">baselineOffset</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span>): <span class="hljs-title class_">TextAttribute</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="对于每一个node，执行"><a href="#对于每一个node，执行" class="headerlink" title="对于每一个node，执行"></a>对于每一个node，执行</h3><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">bin/kafka-<span class="hljs-keyword">storage</span>.sh <span class="hljs-keyword">format</span> -t <span class="hljs-type">uuid</span> -c \&lt;<span class="hljs-type">path</span>-<span class="hljs-keyword">to</span>-your-config\&gt;<br></code></pre></td></tr></table></figure>
+<p><code>textAlign</code>：设置文本的对其方式，对齐参考系是 <code>Text</code> 组件本身，只有 <code>Text</code> 组件本身的宽度大于文本内容长度， <code>textAlign</code> 属性才起作用， <code>TextAlign</code> 定义了以下 <code>3</code> 种类型：<code>start</code>、<code>center</code>、<code>end</code>。</p>
+<p><code>maxLines</code>、<code>textOverflow</code>：设置文本显示的最大行数和截取方式，默认折行显示不截取，如果设置了此参数，则文本最多显示到指定的行，如果有多余的文本，可以通过 <code>textOverflow</code> 来指定截取方式，本样例的截断方式是 <code>Ellipsis</code> ，它将截断后的文本用 “…” 表示。</p>
+<p><code>fontSize</code>、<code>fontColor</code>、<code>fontStyle</code>、 <code>fontWeight</code></p>
+<h2 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">ButtonInterface</span> &#123;<br>  (): <span class="hljs-title class_">ButtonAttribute</span>;<br>  (<span class="hljs-attr">options</span>: <span class="hljs-title class_">ButtonOptions</span>): <span class="hljs-title class_">ButtonAttribute</span>;<br>  (<span class="hljs-attr">label</span>: <span class="hljs-title class_">ResourceStr</span>, options?: <span class="hljs-title class_">ButtonOptions</span>): <span class="hljs-title class_">ButtonAttribute</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="step4-运行"><a href="#step4-运行" class="headerlink" title="step4: 运行"></a>step4: 运行</h3><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">bin/kafka-<span class="hljs-keyword">server</span>-<span class="hljs-keyword">start</span>.sh &lt;<span class="hljs-type">path</span>-<span class="hljs-keyword">to</span>-your-config&gt;<br></code></pre></td></tr></table></figure>
-
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-meta">@Entry</span> <span class="hljs-meta">@Component</span> struct <span class="hljs-title class_">Index</span> &#123;<br>  <span class="hljs-title function_">build</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title class_">Column</span>(&#123;<span class="hljs-attr">space</span>: <span class="hljs-number">10</span>&#125;) &#123;<br>      <span class="hljs-title class_">Row</span>(&#123;<span class="hljs-attr">space</span>: <span class="hljs-number">10</span>&#125;) &#123;<br>        <span class="hljs-title class_">Button</span>(<span class="hljs-string">&#x27;test&#x27;</span>)<br><br>        <span class="hljs-title class_">Button</span>(<span class="hljs-string">&#x27;test&#x27;</span>)<br>          .<span class="hljs-title function_">backgroundColor</span>(<span class="hljs-title class_">Color</span>.<span class="hljs-property">Pink</span>)<br>      &#125;<br>    &#125;<br>    .<span class="hljs-title function_">alignItems</span>(<span class="hljs-title class_">HorizontalAlign</span>.<span class="hljs-property">Start</span>)<br>    .<span class="hljs-title function_">width</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>    .<span class="hljs-title function_">height</span>(<span class="hljs-string">&#x27;100%&#x27;</span>)<br>    .<span class="hljs-title function_">padding</span>(<span class="hljs-number">10</span>)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -302,7 +301,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/kafka/" class="category-chain-item">kafka</a>
+  <a href="/categories/ArkUI/" class="category-chain-item">ArkUI</a>
   
   
 
@@ -317,7 +316,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/kafka/" class="print-no-link">#kafka</a>
+        <a href="/tags/ArkUI/" class="print-no-link">#ArkUI</a>
       
     </div>
   
@@ -329,8 +328,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>kafka配置以及初步搭建</div>
-      <div>https://perticevassly.github.io/project/2014/05/08/kafka初步配置以及搭建/</div>
+      <div>基础组件</div>
+      <div>https://perticevassly.github.io/project/2020/10/11/ArkUI/ArkUI/4.基础组件/</div>
     </div>
     <div class="license-meta">
       
@@ -342,7 +341,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2014年5月8日</div>
+          <div>2020年10月11日</div>
         </div>
       
       
@@ -380,9 +379,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/11/ArkUI/ArkUI/4.%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/" title="基础组件">
+                      <a href="/2023/09/09/hello/" title="hello">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">基础组件</span>
+                        <span class="hidden-mobile">hello</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -390,8 +389,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/1970/01/01/ArkUI/ArkUI/%E5%AE%B9%E5%99%A8%E7%B1%BB%E7%BB%84%E4%BB%B6/" title="">
-                        <span class="hidden-mobile"></span>
+                      <a href="/2014/05/08/kafka%E5%88%9D%E6%AD%A5%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E6%90%AD%E5%BB%BA/" title="kafka配置以及初步搭建">
+                        <span class="hidden-mobile">kafka配置以及初步搭建</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
