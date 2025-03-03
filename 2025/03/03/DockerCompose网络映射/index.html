@@ -16,23 +16,22 @@
   <meta name="author" content="eqSun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="ref: https:&#x2F;&#x2F;www.coursera.org&#x2F;learn&#x2F;algorithms-part2&#x2F;home&#x2F;module&#x2F;3 Digraph API1234567891011121314151617public class Digraph &amp;#123;  public Digraph(int V)  public void addEdge(int v, int w)   public It">
+    <meta name="description" content="docker容器自身有一个export的端口，负责与外部通信, 容器内部的应用监听这个端口。例如EXPOSE 8080 docker-compose可以用来自动进行容器编排。其原理是创建一个虚拟网络，为不同的docker容器分配不同的IP地址。同时docker-compose提供DNS服务，将容器的名字映射到容器的IP地址上。容器之间可以直接通过容器名字访问。 例如简单创建一个nginx容器，监听">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3.Digraph">
-<meta property="og:url" content="https://perticevassly.github.io/project/2025/01/25/AlgorithmsII/3.Digraph/index.html">
+<meta property="og:title" content="DockerCompose网络映射">
+<meta property="og:url" content="https://perticevassly.github.io/project/2025/03/03/DockerCompose%E7%BD%91%E7%BB%9C%E6%98%A0%E5%B0%84/index.html">
 <meta property="og:site_name" content="eqSun&#39;s Blog">
-<meta property="og:description" content="ref: https:&#x2F;&#x2F;www.coursera.org&#x2F;learn&#x2F;algorithms-part2&#x2F;home&#x2F;module&#x2F;3 Digraph API1234567891011121314151617public class Digraph &amp;#123;  public Digraph(int V)  public void addEdge(int v, int w)   public It">
+<meta property="og:description" content="docker容器自身有一个export的端口，负责与外部通信, 容器内部的应用监听这个端口。例如EXPOSE 8080 docker-compose可以用来自动进行容器编排。其原理是创建一个虚拟网络，为不同的docker容器分配不同的IP地址。同时docker-compose提供DNS服务，将容器的名字映射到容器的IP地址上。容器之间可以直接通过容器名字访问。 例如简单创建一个nginx容器，监听">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-25T12:39:00.000Z">
-<meta property="article:modified_time" content="2025-02-01T14:41:38.000Z">
+<meta property="article:published_time" content="2025-03-03T12:31:00.000Z">
+<meta property="article:modified_time" content="2025-03-03T09:47:48.447Z">
 <meta property="article:author" content="eqSun">
-<meta property="article:tag" content="dataStructure">
-<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>3.Digraph - eqSun&#39;s Blog</title>
+  <title>DockerCompose网络映射 - eqSun&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="3.Digraph"></span>
+            <span id="subtitle" data-typed-text="DockerCompose网络映射"></span>
           
         </div>
 
@@ -209,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-25 20:39" pubdate>
-          2025年1月25日 晚上
+        <time datetime="2025-03-03 20:31" pubdate>
+          2025年3月3日 晚上
         </time>
       </span>
     
@@ -221,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.8k 字
+          957 字
         
       </span>
     
@@ -232,7 +231,7 @@
         
         
         
-          24 分钟
+          8 分钟
         
       </span>
     
@@ -269,53 +268,26 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">3.Digraph</h1>
+            <h1 id="seo-header">DockerCompose网络映射</h1>
             
             
               <div class="markdown-body">
                 
-                <p>ref: <a target="_blank" rel="noopener" href="https://www.coursera.org/learn/algorithms-part2/home/module/3">https://www.coursera.org/learn/algorithms-part2/home/module/3</a></p>
-<h1 id="Digraph-API"><a href="#Digraph-API" class="headerlink" title="Digraph API"></a>Digraph API</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Digraph</span> &#123;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">Digraph</span><span class="hljs-params">(<span class="hljs-type">int</span> V)</span><br><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addEdge</span><span class="hljs-params">(<span class="hljs-type">int</span> v, <span class="hljs-type">int</span> w)</span> <br><br>  <span class="hljs-keyword">public</span> Iterable&lt;Integer&gt; <span class="hljs-title function_">adj</span><span class="hljs-params">(<span class="hljs-type">int</span> v)</span><br><br>  <span class="hljs-type">int</span> <span class="hljs-title function_">V</span><span class="hljs-params">()</span> <span class="hljs-comment">// number of vertices</span><br><br>  <span class="hljs-type">int</span> <span class="hljs-title function_">E</span><span class="hljs-params">()</span> <span class="hljs-comment">// number of edges</span><br><br>  Digraph <span class="hljs-title function_">reverse</span><span class="hljs-params">()</span> <span class="hljs-comment">// reverse of this digraph</span><br><br>  String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> <span class="hljs-comment">// string representation</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+                <p>docker容器自身有一个export的端口，负责与外部通信, 容器内部的应用监听这个端口。例如<code>EXPOSE 8080</code></p>
+<p>docker-compose可以用来自动进行容器编排。其原理是创建一个虚拟网络，为不同的docker容器分配不同的IP地址。同时docker-compose提供DNS服务，将容器的名字映射到容器的IP地址上。容器之间可以直接通过容器名字访问。</p>
+<p>例如简单创建一个nginx容器，监听80端口。</p>
+<p>使用<code>docker-compose.yml</code>文件进行配置</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3&#x27;</span><br><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">nginx1:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">nginx</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">nginx_8080</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;8081:80&quot;</span>  <span class="hljs-comment"># 绑定宿主机的 8081 端口到容器的 80 端口</span><br></code></pre></td></tr></table></figure>
 
-<h1 id="Digraph-Search"><a href="#Digraph-Search" class="headerlink" title="Digraph Search"></a>Digraph Search</h1><h2 id="Directed-depth-first-search"><a href="#Directed-depth-first-search" class="headerlink" title="Directed depth-first search"></a>Directed depth-first search</h2><p>Every undirected graph is a digraph </p>
-<p>DFS is a digraph algorithm</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DirectedDFS</span> &#123;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span>[] marked;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">DirectedDFS</span><span class="hljs-params">(Digraph G, <span class="hljs-type">int</span> s)</span> &#123;<br>    marked = <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[G.V()];<br>    dfs(G, s);<br>  &#125;<br><br>  priavte <span class="hljs-keyword">void</span> <span class="hljs-title function_">dfs</span><span class="hljs-params">(Digraph G, <span class="hljs-type">int</span> v)</span> &#123;<br>    marked[v] = <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> w : G.adj(v)) &#123;<br>      <span class="hljs-keyword">if</span> (!marked[w]) &#123;<br>        dfs(G, w);<br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>使用<code>docker-compose up -d</code>启动服务</p>
+<p>docker-compose在启动这个服务的同时将本地8081端口映射到docker容器ip, 因此宿主机可以通过<code>http://localhost:8081</code>访问nginx容器。</p>
+<p>docker-compose首先创建了一个虚拟网络。</p>
+<p>使用<code>ip a</code>查看虚拟网络，可以看到有一个<code>br-</code>开头的虚拟网络</p>
+<p>使用<code>sudo iptables -t nat -L -n -v</code>查看nat表，可以看到docker-compose创建了一个名为<code>DOCKER</code>的链，<code>pre-routing</code>和<code>output</code>将<code>target</code>设置为这个<code>DOCKER</code>链。<code>DOCKER</code>链指明了所有来源不是本地的数据包都会被重定向即<code>172.23.0.2:80</code>(我的机器)</p>
+<p>这就是为什么可以通过<code>localhost:8081</code>访问nginx容器的原因。事实上直接访问<code>172.23.0.2:80</code>也是可以的。</p>
+<p>可以通过<code>docker network ls</code> + <code>docker network inspect &lt;name&gt;</code>查看创建出的虚拟网络信息，包括子网、网关等信息，以及对应的docker容器的IP地址等信息。</p>
+<p>可以在docker容器内部运行<code>cat /etc/resolv</code> 可以看到<code>nameserver</code>指向了<code>127.0.0.11</code>，这实际上是docker-compose提供的DNS服务的代理，实际位置一般就是<code>docker-compose</code>创建的虚拟网络的网关地址。</p>
 
-<h2 id="Breadth-first-search"><a href="#Breadth-first-search" class="headerlink" title="Breadth-first search"></a>Breadth-first search</h2><p>same as above we can use BFS for digraphs</p>
-<h1 id="topological-sort"><a href="#topological-sort" class="headerlink" title="topological sort"></a>topological sort</h1><p>Given as et of tasks to be completed with precedence constraints in which order should we schedule the tasks?</p>
-<p>DAG : directed acyclic graph</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DepthFirstOrder</span> &#123;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span>[] marked;<br>  <span class="hljs-keyword">private</span> Stack&lt;Integer&gt; reversePost;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">DepthFirstOrder</span><span class="hljs-params">(Digraph G)</span> &#123;<br>    reversePost = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;Integer&gt;();<br>    marked = <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[G.V()];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">v</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; v &lt; G.V(); v++) &#123;<br>      <span class="hljs-keyword">if</span> (!marked[v]) dfs(G, v);<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">dfs</span><span class="hljs-params">(Digraph G, <span class="hljs-type">int</span> v)</span> &#123;<br>    marked[v] = <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> w : G.adj(v)) &#123;<br>      <span class="hljs-keyword">if</span> (!marked[w]) &#123;<br>        dfs(G, w);<br>      &#125;<br>    &#125;<br>    reversePost.push(v);<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> Iterable&lt;Integer&gt; <span class="hljs-title function_">reversePost</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> reversePost;<br>  &#125;<br>&#125; <br><br></code></pre></td></tr></table></figure>
-
-<p>Proposition: reverse postorder in a DAG is a topological order</p>
-<p>pf: Consider any edge v-&gt;w, when dfs(v) is callled</p>
-<ul>
-<li><p>Case 1: dfs(w) has already been called and return, then w is before v in reverse postorder</p>
-</li>
-<li><p>Case 2: dfs(w) has not been callled dfs(w) will be called directly or indirectly by dfs(v) and will finish before dfs(v) Thus w will be done before v</p>
-</li>
-<li><p>Case 3: dfs(w) has already been called but not return (CAN’T HAPPEN IN A DAG)</p>
-</li>
-</ul>
-<p>A digraph has a topological order iff no directed cycle</p>
-<h1 id="Strong-components"><a href="#Strong-components" class="headerlink" title="Strong components"></a>Strong components</h1><p>Def: vertices v and w are strongly connected if there is a directed path from v to w and a directed path from w to v</p>
-<p>Strong connectivity is an equivalence relation</p>
-<ul>
-<li><p>v is strongly connected to v</p>
-</li>
-<li><p>if v is strongly connected to w then w is strongly connected to v</p>
-</li>
-<li><p>if v is strongly connected to w and w is strongly connected to x then v is strongly connected to x</p>
-</li>
-</ul>
-<h2 id="Kosaraju-Sharir-algorithm"><a href="#Kosaraju-Sharir-algorithm" class="headerlink" title="Kosaraju-Sharir algorithm"></a>Kosaraju-Sharir algorithm</h2><p>Reverse graph: Strong components in G are the same as in G^R</p>
-<p>Kernel DAG: Contract each strong component into a single vertex</p>
-<ul>
-<li><p>Phase 1: run DFS on reverse graph to get reverse postorder</p>
-</li>
-<li><p>Phase 2: run DFS on original graph in reverse postorder</p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">KosarajuSharirSCC</span> &#123;<br>  <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span>[] marked;<br>  <span class="hljs-keyword">private</span> <span class="hljs-type">int</span>[] id;<br>  <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> count;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">KosarajuSharirSCC</span><span class="hljs-params">(Digraph G)</span> &#123;<br>    marked = <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[G.V()];<br>    id = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[G.V()];<br>    <span class="hljs-type">DepthFirstOrder</span> <span class="hljs-variable">order</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DepthFirstOrder</span>(G.reverse());<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> s : order.reversePost()) &#123;<br>      <span class="hljs-keyword">if</span> (!marked[s]) &#123;<br>        dfs(G, s);<br>        count++;<br>      &#125;<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">dfs</span><span class="hljs-params">(Digraph G, <span class="hljs-type">int</span> v)</span> &#123;<br>    marked[v] = <span class="hljs-literal">true</span>;<br>    id[v] = count;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> w : G.adj(v)) &#123;<br>      <span class="hljs-keyword">if</span> (!marked[w]) &#123;<br>        dfs(G, w);<br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -323,34 +295,11 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/AlgorithmII/" class="category-chain-item">AlgorithmII</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/dataStructure/" class="print-no-link">#dataStructure</a>
-      
-        <a href="/tags/algorithm/" class="print-no-link">#algorithm</a>
+        <a href="/tags/docker/" class="print-no-link">#docker</a>
       
     </div>
   
@@ -362,8 +311,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>3.Digraph</div>
-      <div>https://perticevassly.github.io/project/2025/01/25/AlgorithmsII/3.Digraph/</div>
+      <div>DockerCompose网络映射</div>
+      <div>https://perticevassly.github.io/project/2025/03/03/DockerCompose网络映射/</div>
     </div>
     <div class="license-meta">
       
@@ -375,7 +324,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月25日</div>
+          <div>2025年3月3日</div>
         </div>
       
       
@@ -413,18 +362,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/25/AlgorithmsII/4.MSTIntroduction/" title="4.MSTIntroduction">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">4.MSTIntroduction</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/24/AlgorithmsII/2.Graph/" title="2.Graph">
-                        <span class="hidden-mobile">2.Graph</span>
+                      <a href="/2025/03/02/OAuth2%E4%BB%8B%E7%BB%8D/" title="OAuth2介绍">
+                        <span class="hidden-mobile">OAuth2介绍</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
