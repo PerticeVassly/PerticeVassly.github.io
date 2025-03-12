@@ -24,7 +24,7 @@
 <meta property="og:description" content="参考资料https:&#x2F;&#x2F;cloud.tencent.com&#x2F;developer&#x2F;article&#x2F;1633071 https:&#x2F;&#x2F;blog.csdn.net&#x2F;dreaming9420&#x2F;article&#x2F;details&#x2F;123622811 传输HTTP采用明文传输的形式，其中GET方法的请求参数会在URL中显示，留存在浏览器缓存中，容易被窃取。尽管post可以将参数放入请求体(body)中传输，但是由于">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-22T08:17:00.000Z">
-<meta property="article:modified_time" content="2024-05-22T08:18:12.549Z">
+<meta property="article:modified_time" content="2025-03-10T15:36:36.768Z">
 <meta property="article:author" content="eqSun">
 <meta property="article:tag" content="cryptology">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          1.9k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          13 分钟
+          16 分钟
         
       </span>
     
@@ -299,6 +299,18 @@
 <p>CA机构是公信机构，因此浏览器或者系统会内置其证书和公钥信息。</p>
 <p>服务器再最开始的时候不在仅仅发送公钥，而是发送一个CA证书+数字签名。通过将CA证书（text部分）做Hash得到的值利用CA的私钥加密，可以得到一个数字签名。而客户端在拿到传输过来的证书和数字签名后，只需要对CA证书做相同Hash（方法一般在证书内已经指定了），再对数字签名用公钥解签，二者进行比对，就可以判断证书内容有没有被修改了。由于CA私钥是难以获取的，攻击者不可能为修改过的text的Hash，伪造一份加数字签名使其在被公钥解密后仍然保持原来的值。</p>
 <p>所以计算机内的CA机构本身的证书以及其公钥是十分重要的。CA机构是以信任链的形式运行的，如果用户信任了有风险的CA（配置了新的根证书），或者CA机构的私钥泄露，皆会造成上述加密的失效。</p>
+<p>但是这样会引申出两个问题。首先是用户如何获取CA的地址？一般是预装在系统和浏览器中。其次CA显然不可能为所有的网站都签发证书，此时其会授权中间CA为其进行签发，形成一个证书链。因此用户在收到证书后，如果显示是中间CA签发的证书，还需要再对这个中间CA自身的证书进行验证（检查其公钥是否经过了签发）</p>
+<p>完整示意图</p>
+<p>S -&gt; C: 自身公钥（Internal-CA签发）</p>
+<p>C 请求获取Internal-CA的公钥</p>
+<p>Internal-CA -&gt; C: Internal-CA的公钥（Root-CA签发）</p>
+<p>C 请求获取Root-CA的公钥</p>
+<p>Root-CA -&gt; C: Root-CA的公钥（内置在系统中）</p>
+<p>C 确认Root-CA的公钥</p>
+<p>C 确认Internal-CA的公钥</p>
+<p>C 确认S的公钥</p>
+<p>C -&gt; S: 用S的公钥加密的随机key</p>
+<p>S -&gt; C: 用随机key即为对称密钥加密<br>开始通信</p>
 <h1 id="储存"><a href="#储存" class="headerlink" title="储存"></a>储存</h1><p>由于上述加密操作，以及在信道中间点进行窃听和截取的困难性，对于信源和信端的攻击往往收效更大。</p>
 <h2 id="明文存储"><a href="#明文存储" class="headerlink" title="明文存储"></a>明文存储</h2><p>为了防止数据库被拖库后造成的信息泄露，隐私信息（密码）在数据库中一般不以明文存储。</p>
 <h2 id="MD5或者其他Hash算法存储"><a href="#MD5或者其他Hash算法存储" class="headerlink" title="MD5或者其他Hash算法存储"></a>MD5或者其他Hash算法存储</h2><p>用户输入的密码进行MD5（举例）后发送给服务器，服务器进行比对。这样即使服务器数据泄露，攻击者也很难伪造出一个密码，使得其MD5加密后和服务器中储存的密码对应。</p>

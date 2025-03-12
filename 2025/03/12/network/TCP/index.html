@@ -16,22 +16,22 @@
   <meta name="author" content="eqSun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="参考资料： leetcode-207 https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Topological_sorting Kahn’s algorithm123456789101112131415L ← Empty list that will contain the sorted elementsS ← Set of all nodes with no incoming edge">
+    <meta name="description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;cs-basics&#x2F;network&#x2F;tcp-connection-and-disconnection.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F">
 <meta property="og:type" content="article">
-<meta property="og:title" content="拓扑排序">
-<meta property="og:url" content="https://perticevassly.github.io/project/2025/03/10/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="TCP.md">
+<meta property="og:url" content="https://perticevassly.github.io/project/2025/03/12/network/TCP/index.html">
 <meta property="og:site_name" content="eqSun&#39;s Blog">
-<meta property="og:description" content="参考资料： leetcode-207 https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Topological_sorting Kahn’s algorithm123456789101112131415L ← Empty list that will contain the sorted elementsS ← Set of all nodes with no incoming edge">
+<meta property="og:description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;cs-basics&#x2F;network&#x2F;tcp-connection-and-disconnection.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-10T12:30:00.000Z">
-<meta property="article:modified_time" content="2025-03-10T07:16:35.698Z">
+<meta property="article:published_time" content="2025-03-12T09:36:00.000Z">
+<meta property="article:modified_time" content="2025-03-12T14:33:22.160Z">
 <meta property="article:author" content="eqSun">
-<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="network">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>拓扑排序 - eqSun&#39;s Blog</title>
+  <title>TCP.md - eqSun&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="拓扑排序"></span>
+            <span id="subtitle" data-typed-text="TCP.md"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-03-10 20:30" pubdate>
-          2025年3月10日 晚上
+        <time datetime="2025-03-12 17:36" pubdate>
+          2025年3月12日 下午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          2.3k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          11 分钟
+          20 分钟
         
       </span>
     
@@ -268,31 +268,80 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">拓扑排序</h1>
+            <h1 id="seo-header">TCP.md</h1>
             
             
               <div class="markdown-body">
                 
                 <p>参考资料：</p>
-<p>leetcode-207</p>
-<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Topological_sorting">https://en.wikipedia.org/wiki/Topological_sorting</a></p>
-<h1 id="Kahn’s-algorithm"><a href="#Kahn’s-algorithm" class="headerlink" title="Kahn’s algorithm"></a>Kahn’s algorithm</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">L ← Empty <span class="hljs-built_in">list</span> that will contain the <span class="hljs-built_in">sorted</span> elements<br>S ← <span class="hljs-type">Set</span> of <span class="hljs-built_in">all</span> nodes <span class="hljs-keyword">with</span> no incoming edge<br><br><span class="hljs-keyword">while</span> S <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> empty do<br>    remove a node n <span class="hljs-keyword">from</span> S<br>    add n to L<br>    <span class="hljs-keyword">for</span> each node m <span class="hljs-keyword">with</span> an edge e <span class="hljs-keyword">from</span> n to m do<br>        remove edge e <span class="hljs-keyword">from</span> the graph<br>        <span class="hljs-keyword">if</span> m has no other incoming edges then<br>            insert m into S<br><br><span class="hljs-keyword">if</span> graph has edges then<br>    <span class="hljs-keyword">return</span> error   (graph has at least one cycle)<br><span class="hljs-keyword">else</span> <br>    <span class="hljs-keyword">return</span> L   (a topologically <span class="hljs-built_in">sorted</span> order)<br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://javaguide.cn/cs-basics/network/tcp-connection-and-disconnection.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97">https://javaguide.cn/cs-basics/network/tcp-connection-and-disconnection.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/24853633/answer/115173386">https://www.zhihu.com/question/24853633/answer/115173386</a></p>
+<p><a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc793#autoid-19">https://datatracker.ietf.org/doc/html/rfc793#autoid-19</a></p>
+<h1 id="TCP-三次握手"><a href="#TCP-三次握手" class="headerlink" title="TCP 三次握手"></a>TCP 三次握手</h1><pre><code class=" mermaid">sequenceDiagram
+    participant Client
+    participant Server
+    Client-&gt;&gt;Server: SYN
+    Server-&gt;&gt;Client: SYN+ACK
+    Client-&gt;&gt;Server: ACK
+</code></pre>
 
-<h1 id="Kahn’s-algorithm-BFS"><a href="#Kahn’s-algorithm-BFS" class="headerlink" title="Kahn’s algorithm (BFS)"></a>Kahn’s algorithm (BFS)</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">L ← Empty <span class="hljs-built_in">list</span> that will contain the <span class="hljs-built_in">sorted</span> elements<br>S ← <span class="hljs-type">Set</span> of <span class="hljs-built_in">all</span> nodes <span class="hljs-keyword">with</span> no incoming edge<br><br><span class="hljs-keyword">while</span> S <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> empty do<br>    remove a node n <span class="hljs-keyword">from</span> S<br>    add n to L<br>    <span class="hljs-keyword">for</span> each node m <span class="hljs-keyword">with</span> an edge e <span class="hljs-keyword">from</span> n to m do<br>        remove edge e <span class="hljs-keyword">from</span> the graph<br>        <span class="hljs-keyword">if</span> m has no other incoming edges then<br>            insert m into S<br><br><span class="hljs-keyword">if</span> graph has edges then<br>    <span class="hljs-keyword">return</span> error   (graph has at least one cycle)<br><span class="hljs-keyword">else</span> <br>    <span class="hljs-keyword">return</span> L   (a topologically <span class="hljs-built_in">sorted</span> order)<br></code></pre></td></tr></table></figure>
-
-<p>解释：</p>
-<ul>
-<li>环的特点是没有入度为0的点，依据这个特点可以逐步剥离出环</li>
-</ul>
-<h1 id="Depth-First-Search"><a href="#Depth-First-Search" class="headerlink" title="Depth First Search"></a>Depth First Search</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">L ← Empty <span class="hljs-built_in">list</span> that will contain the <span class="hljs-built_in">sorted</span> elements<br>S ← <span class="hljs-type">Set</span> of <span class="hljs-built_in">all</span> nodes <span class="hljs-keyword">with</span> no incoming edge<br><br><span class="hljs-keyword">while</span> S <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> empty do<br>    remove a node n <span class="hljs-keyword">from</span> S<br>    add n to L<br>    <span class="hljs-keyword">for</span> each node m <span class="hljs-keyword">with</span> an edge e <span class="hljs-keyword">from</span> n to m do<br>        remove edge e <span class="hljs-keyword">from</span> the graph<br>        <span class="hljs-keyword">if</span> m has no other incoming edges then<br>            insert m into S<br><br><span class="hljs-keyword">if</span> graph has edges then<br>    <span class="hljs-keyword">return</span> error   (graph has at least one cycle)<br><span class="hljs-keyword">else</span> <br>    <span class="hljs-keyword">return</span> L   (a topologically <span class="hljs-built_in">sorted</span> order)<br></code></pre></td></tr></table></figure>
-
-<p>解释:</p>
-<ul>
-<li><p>当一个节点被标记为permanent的时候，所有依赖其的节点都已经被放入队列（也标记为permanent）且已经可以确保无环。此时所有经过此节点的路径都不会有环。</p>
+<p><strong>第一次握手</strong>：client发送带有SYN(SEQ&#x3D;x)的数据包到server，进入<strong>SYN_SEND</strong>状态，等待server确认</p>
+<p><em>意为client已做好准备连接，请求连接</em></p>
+<p><strong>第二次握手</strong>：server收到SYN包，确认client的SYN+ACK(SEQ&#x3D;y, ACK&#x3D;x+1)，自身进入<strong>SYN_RECV</strong>状态，client进入<strong>ESTABLISH</strong>状态</p>
+<p><em>意为server已经收到连接请求，并且做好连接准备</em></p>
+<p><em>ACK&#x3D;x+1意为针对第x个数据包的确认，即对SYN数据包的确认</em></p>
+<p><strong>第三次握手</strong>：client发送ACK(ACK&#x3D;y+1)的数据包，此时server和client都进入<strong>ESTABLISH</strong>状态，TCP三次握手完成</p>
+<h2 id="为什么是三次握手？"><a href="#为什么是三次握手？" class="headerlink" title="为什么是三次握手？"></a>为什么是三次握手？</h2><p>首先由于<strong>拜占庭将军问题</strong>，在信道（网络层）不可信的情况下，彼此直接是无法做到相互确认的，其次由于client，server自身的问题，也无法确认二者自身是否做好了连接的准备或者具备连接的条件</p>
+<p>例如即使是最后一次由client发出的ACK也可能丢失，此时server还是处于SYN_RECV状态 ，但是客户端已经进入ESTABLISH状态了，此时仍然会出错。如果变为四次握手————即client还需要等待server的第四次握手ACK，还是有可能出现server发送的这个ACK丢失的情况，如此一来为了确保二者互相确认，server和client永远都在相互等待，无论多少次握手都解决不了这个问题</p>
+<p>由此可见对于网络信道的信任程度决定了握手的次数</p>
+<p>但是实际过程中信道往往不可靠，因此需要折中即<strong>不能无条件相信信道，但是也不应该因为怀疑信道而反复彼此确认</strong>（即反复检验信道）</p>
+<p>发送方和接收方均需要检验以下点(各方只检验一次即可)后才能相互建立连接</p>
+<ol>
+<li><p><strong>对方的接受功能是正常的（对方愿意接受且做好了接受准备）</strong></p>
 </li>
-<li><p>当一个节点被标记为temp的时候，说明在此路径上已经被访问过，如果再次访问到temp节点，说明有环。</p>
+<li><p><strong>信道可信</strong></p>
+</li>
+</ol>
+<ul>
+<li><p>第一次握手：client无已知；server已知2</p>
+</li>
+<li><p>第二次握手：client已知1，2；server已知2</p>
+</li>
+<li><p>第三次握手：client已知1，2；server已知1，2</p>
 </li>
 </ul>
+<p>至此可以建立连接。同时TCP的ACK机制使得二者可以知道彼此确认的SEQ到底是对方发出的哪一个，降低了错误确认的可能。（注意，只有SYN占用SEQ，ACK不占用）</p>
+<p>第三次握手的时候client是可以传输数据的，是因为尽管server不知道1但是client已经知道了所有条件都被满足了，可以直接发送数据。</p>
+<p>由于需要检查对方是否最好了接受准备，最小的握手次数就是三次，此次数也能恰好满足对于信道可行的检查</p>
+<h1 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h1><pre><code class=" mermaid">sequenceDiagram
+    participant Client
+    participant Server
+    Client-&gt;&gt;Server: FIN
+    Server-&gt;&gt;Client: ACK
+    Server-&gt;&gt;Client: FIN
+    Client-&gt;&gt;Server: ACK
+</code></pre>
+
+<p><strong>第一次挥手</strong>：client发送一个FIN（SEQ&#x3D;x）给server，clientFIN_WAIT_1状态</p>
+<p><strong>第二次挥手</strong>：server收到FIN，发送一个ACK（ACK&#x3D;x+1）给client，server进入CLOSE_WAIT状态，client进入FIN_WAIT_2状态</p>
+<p><strong>第三次挥手</strong>：server发送一个FIN（SEQ&#x3D;y）给client，server进入LAST_ACK状态</p>
+<p><strong>第四次挥手</strong>：client收到FIN，发送一个ACK（ACK&#x3D;y+1）给server，client进入TIME_WAIT状态，等待2MSL后进入CLOSED状态，server收到ACK后进入CLOSED状态</p>
+<h2 id="为什么是四次挥手？"><a href="#为什么是四次挥手？" class="headerlink" title="为什么是四次挥手？"></a>为什么是四次挥手？</h2><p>首先双方必须确保彼此之间没有数据传输才能断开连接。</p>
+<p>各方需要检查</p>
+<ol>
+<li><p><strong>自身没有数据要发送</strong></p>
+</li>
+<li><p><strong>对方没有数据要发送</strong></p>
+</li>
+<li><p><strong>信道可信</strong></p>
+</li>
+</ol>
+<p>第一次握手：client已知1；server已知2，3</p>
+<p>第二次握手：client已知1，3；server已知2，3 （此时有可能还在传输数据）</p>
+<p>传输数据的时间比较长，无法保证第三次握手的时候信道依然可信，相当于重新确认一遍关闭</p>
+<p>第三次握手：client已知1，2，3；server已知1，2</p>
+<p>第四次握手：client已知1，2，3；server已知1，2，3</p>
+<p>与建立连接不同，如果建立连接的时候出现ACK丢失的情况，server会重传SYN-ACK，因此最后总能进入ESTABLISH状态，但是在关闭连接了以后，如果出现了ACK丢失由于client已经关闭，超时重传机制将不起作用，并不能保证二者都进入关闭状态，因此一个2MSL的机制是必要的</p>
 
                 
               </div>
@@ -301,11 +350,32 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/network/" class="category-chain-item">network</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/algorithm/" class="print-no-link">#algorithm</a>
+        <a href="/tags/network/" class="print-no-link">#network</a>
       
     </div>
   
@@ -317,8 +387,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>拓扑排序</div>
-      <div>https://perticevassly.github.io/project/2025/03/10/拓扑排序问题/</div>
+      <div>TCP.md</div>
+      <div>https://perticevassly.github.io/project/2025/03/12/network/TCP/</div>
     </div>
     <div class="license-meta">
       
@@ -330,7 +400,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年3月10日</div>
+          <div>2025年3月12日</div>
         </div>
       
       
@@ -368,18 +438,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/12/network/TCP/" title="TCP.md">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">TCP.md</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/03/03/DockerCompose%E7%BD%91%E7%BB%9C%E6%98%A0%E5%B0%84/" title="DockerCompose网络映射">
-                        <span class="hidden-mobile">DockerCompose网络映射</span>
+                      <a href="/2025/03/10/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/" title="拓扑排序">
+                        <span class="hidden-mobile">拓扑排序</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
