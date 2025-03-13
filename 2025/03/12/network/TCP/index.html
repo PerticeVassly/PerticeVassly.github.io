@@ -24,7 +24,7 @@
 <meta property="og:description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;cs-basics&#x2F;network&#x2F;tcp-connection-and-disconnection.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-12T09:36:00.000Z">
-<meta property="article:modified_time" content="2025-03-12T14:33:22.160Z">
+<meta property="article:modified_time" content="2025-03-13T15:47:50.216Z">
 <meta property="article:author" content="eqSun">
 <meta property="article:tag" content="network">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          4.5k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          20 分钟
+          38 分钟
         
       </span>
     
@@ -277,6 +277,26 @@
 <p><a target="_blank" rel="noopener" href="https://javaguide.cn/cs-basics/network/tcp-connection-and-disconnection.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97">https://javaguide.cn/cs-basics/network/tcp-connection-and-disconnection.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/24853633/answer/115173386">https://www.zhihu.com/question/24853633/answer/115173386</a></p>
 <p><a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc793#autoid-19">https://datatracker.ietf.org/doc/html/rfc793#autoid-19</a></p>
+<p>计算机网络（谢希仁）</p>
+<h1 id="TCP特点"><a href="#TCP特点" class="headerlink" title="TCP特点"></a>TCP特点</h1><p>面向连接的<strong>运输层协议</strong></p>
+<p>点对点连接（<strong>套接字</strong>作为端点 ip+端口）</p>
+<p>提供<strong>可靠</strong>交付</p>
+<p>提供<strong>全双工</strong>通信</p>
+<p>面向<strong>字节流</strong></p>
+<h1 id="TCP报文首部格式"><a href="#TCP报文首部格式" class="headerlink" title="TCP报文首部格式"></a>TCP报文首部格式</h1><p><strong>源端口和目的端口</strong>: ip地址再下一层的ip网络层</p>
+<p><strong>序号</strong> :SEQ</p>
+<p><strong>确认号</strong>: 表明确认收到报文，并且期待接受下一个报文的序号</p>
+<p>数据偏移（指定TCP头的大小）</p>
+<p>保留bit</p>
+<p>URGbit （意为应当优先传输）</p>
+<p>ACKbit （意为确认号有效）</p>
+<p>PSHbit （意为接收方应该尽快将数据交给应用层）</p>
+<p>RSTbit （意为重置连接）</p>
+<p>SYNbit （意为发起连接）</p>
+<p>窗口大小 （发送本报文一方的接受窗口）: 因为是全双工</p>
+<p>校验和</p>
+<p>紧急指针（URGbit为1时有效，指明紧急数据的位置）</p>
+<p>选项 eg:MSS（最大报文长度）</p>
 <h1 id="TCP-三次握手"><a href="#TCP-三次握手" class="headerlink" title="TCP 三次握手"></a>TCP 三次握手</h1><pre><code class=" mermaid">sequenceDiagram
     participant Client
     participant Server
@@ -342,6 +362,33 @@
 <p>第三次握手：client已知1，2，3；server已知1，2</p>
 <p>第四次握手：client已知1，2，3；server已知1，2，3</p>
 <p>与建立连接不同，如果建立连接的时候出现ACK丢失的情况，server会重传SYN-ACK，因此最后总能进入ESTABLISH状态，但是在关闭连接了以后，如果出现了ACK丢失由于client已经关闭，超时重传机制将不起作用，并不能保证二者都进入关闭状态，因此一个2MSL的机制是必要的</p>
+<h1 id="TCP核心机制"><a href="#TCP核心机制" class="headerlink" title="TCP核心机制"></a>TCP核心机制</h1><p><strong>超时重传机制</strong>：基本思想的是当没有收到接收方的ACK时候，发送方会进行超时重传。</p>
+<p><strong>滑动窗口机制</strong>：发送方和接收方都维护一个自身的滑动窗口，该滑动窗口指明了数据包的发送接受和确认情况。</p>
+<p>TCP对于可靠传输，流量控制和拥塞控制都是基于这两机制设计的</p>
+<h1 id="TCP可靠传输"><a href="#TCP可靠传输" class="headerlink" title="TCP可靠传输"></a>TCP可靠传输</h1><p>单纯由停止等待协议确保可靠会占用大量网络资源，因此采用滑动窗口机制设计TCP</p>
+<p><strong>累计确认</strong>，如果接收方接受到数据包不是按序到达的，接收方只能ACK SEQ最大的一段连续包，但是这样就会导致发送方重传后续所有的数据包，一种解决方案时，将其缓存，等待其他包到达以后&#x2F;自己需要传输数据的时候捎带统一发送ACK，但是这样又会与后文网络拥塞控制相冲突（快重传）</p>
+<p>其中超时重传时间选择是一个重要的问题，一般依据报文段往返时间RTT来选择，但是RTT是变化的，因此需要一个动态的算法来选择超时重传时间</p>
+<p><em>新的 RTT_s &#x3D; α * 旧的 RTT_s + (1-α) * 新的RTT样本,其中α一般取0.125. 超时重传时间 RTO &#x3D; RTT_s + 4 * RTT_D（RTT的偏差的加权平均）.新的RTT_D &#x3D; β * 旧的RTT_D + (1-β) * |新的RTT - 旧的RTT|</em></p>
+<p><em>上述算法的问题在于一旦出现超时重传，如果仅仅时因为网络阻塞等原因导致先前的包迟到了，那么接收端在接收到一个ACK的时候，应该将其视为对于哪一个数据包的ACK呢？选择错误会导致RTT计算偏差，Karn提出的解决方案是不采用超时重传的RTT进行计算。但是这样会导致发生重传的时候RTT的值还是不变，这是不合理的，因此可以每崇传一次，就报RTO增大一点（一般是旧时间的两倍）</em></p>
+<p><strong>选择确认SACK</strong> ：接收方可以发送一个SACK报文，告诉发送方哪些数据包没有到达，发送方只需要重传这些数据包即可，不需要重传所有数据包。需要启动TCP头中的选项字段</p>
+<h1 id="TCP流量控制"><a href="#TCP流量控制" class="headerlink" title="TCP流量控制"></a>TCP流量控制</h1><p>滑动窗口机制，使得接收方可以在ACK中标记自身接受窗口的大小，发送方的发送窗口不能超过这个接受窗口</p>
+<p>但是如果出现接收方接受窗口为0，发送方便会等待，此时如果接收方表示接受窗口恢复的数据包丢失，双方便会进入相互等待，此时需要设置一个持续计时器，记录0窗口时间，此时发送方会定时发送一个窗口探测数据包，以查询现在的接收方窗口</p>
+<h1 id="TCP传输效率"><a href="#TCP传输效率" class="headerlink" title="TCP传输效率"></a>TCP传输效率</h1><p>相比停止等待，TCP滑动窗口已经提高了一部分效率，但是仍然可能出现<strong>糊涂窗口问题</strong></p>
+<p>如果接收方应用的数据处理效率很低，且接受缓存已满，那么每次腾出的接受窗口就会很小，导致大量资源消耗在TCP&#x2F;IP报文头上，减低了传输效率，也提高了网络拥堵</p>
+<p>解决方法是让接收方等待一段时间&#x2F;接受缓存由一般空闲时间再发出ACK&#x2F;通知发送方，同时发送方自身也要避免传输小数据</p>
+<h2 id="TCP拥塞控制"><a href="#TCP拥塞控制" class="headerlink" title="TCP拥塞控制"></a>TCP拥塞控制</h2><p>由发送方自己维护一个拥塞窗口，表示发送方认为可以在网络中传输的数据量。发送方发送数据的大小是滑动窗口和拥塞窗口的最小值</p>
+<p>拥塞窗口的维护的算法，首先确定一个初始拥塞窗口大小，一般以 **SMSS（Sender Maximum Segment Size）**为大小</p>
+<p><strong>慢开始：slow start</strong></p>
+<p>每次收到一个对新报文的确认，拥塞窗口增加最多一个SMSS，此时拥塞窗口成倍增长</p>
+<p><strong>拥塞避免: congestion avoidance</strong></p>
+<p>一旦达到慢开始门限ssthresh就改为每经过一个RTT，就把cwnd + 1，当出现超时重传的时候，调整门限ssthresh为发生重传的cwnd的1&#x2F;2，此时拥塞窗口cwnd设置为1，重新进入慢开始，如此循环</p>
+<p><strong>快重传: fast retransmit</strong></p>
+<p>在这个过程中，如果出现仅仅个别报文超时的情况，很容易造成对于网络状态的误判从而拥塞避免机制。因此发送方会要求接受的实时汇报自己的接受情况，而不是累计确认。这样即使由个别包丢失了，由于已知可以收到接收方的ACK，避免接收方由于个别包丢失迟发ACK和网络拥塞情况的混淆。 一旦发送方收到3个相同的ACK，就知道需要立即进行重传</p>
+<p><strong>快恢复: fast recovery</strong></p>
+<p>如果发现个别包丢失————即上文快重传，那么可以将ssthresh设置为cwnd的一半，cwnd设置为ssthresh&#x2F;sshresh + 3， 并执行拥塞避免算法。</p>
+<p><strong>AQM主动管理队列</strong></p>
+<p>路由器在队列满的时候会丢弃数据包，从而触发网络中TCP的超时重传，大量TCP都会触发拥塞避免，导致网络通信量同步大幅下降或者上升。</p>
+<p>解决方案是，路由器应当在处理队列快要满的时候就开始主动丢弃，提醒TCP应当避免网络拥塞</p>
 
                 
               </div>
