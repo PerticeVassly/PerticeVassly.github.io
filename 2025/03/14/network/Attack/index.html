@@ -16,22 +16,22 @@
   <meta name="author" content="eqSun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="参考资料： leetcode-207 https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Topological_sorting Kahn’s algorithm123456789101112131415L ← Empty list that will contain the sorted elementsS ← Set of all nodes with no incoming edge">
+    <meta name="description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;cs-basics&#x2F;network&#x2F;network-attack-means.html 网络攻击常见手段可以分为窃取和拒绝服务式两种，前者主要依靠身份认证机制解决。后者依靠黑名单&#x2F;防火墙&#x2F;CDN等机制 IP欺骗伪造IP地址，使得合法用户无法访问服务 SYN Flood大量伪造TCP连接请求，使得服务器资源耗尽（因为serve">
 <meta property="og:type" content="article">
-<meta property="og:title" content="拓扑排序">
-<meta property="og:url" content="https://perticevassly.github.io/project/2025/03/10/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="常见网络攻击手段">
+<meta property="og:url" content="https://perticevassly.github.io/project/2025/03/14/network/Attack/index.html">
 <meta property="og:site_name" content="eqSun&#39;s Blog">
-<meta property="og:description" content="参考资料： leetcode-207 https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Topological_sorting Kahn’s algorithm123456789101112131415L ← Empty list that will contain the sorted elementsS ← Set of all nodes with no incoming edge">
+<meta property="og:description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;cs-basics&#x2F;network&#x2F;network-attack-means.html 网络攻击常见手段可以分为窃取和拒绝服务式两种，前者主要依靠身份认证机制解决。后者依靠黑名单&#x2F;防火墙&#x2F;CDN等机制 IP欺骗伪造IP地址，使得合法用户无法访问服务 SYN Flood大量伪造TCP连接请求，使得服务器资源耗尽（因为serve">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-10T12:30:00.000Z">
-<meta property="article:modified_time" content="2025-03-10T07:16:35.698Z">
+<meta property="article:published_time" content="2025-03-14T09:37:00.000Z">
+<meta property="article:modified_time" content="2025-03-14T12:12:16.523Z">
 <meta property="article:author" content="eqSun">
-<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="network">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>拓扑排序 - eqSun&#39;s Blog</title>
+  <title>常见网络攻击手段 - eqSun&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="拓扑排序"></span>
+            <span id="subtitle" data-typed-text="常见网络攻击手段"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-03-10 20:30" pubdate>
-          2025年3月10日 晚上
+        <time datetime="2025-03-14 17:37" pubdate>
+          2025年3月14日 下午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          483 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          11 分钟
+          5 分钟
         
       </span>
     
@@ -268,31 +268,23 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">拓扑排序</h1>
+            <h1 id="seo-header">常见网络攻击手段</h1>
             
             
               <div class="markdown-body">
                 
                 <p>参考资料：</p>
-<p>leetcode-207</p>
-<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Topological_sorting">https://en.wikipedia.org/wiki/Topological_sorting</a></p>
-<h1 id="Kahn’s-algorithm"><a href="#Kahn’s-algorithm" class="headerlink" title="Kahn’s algorithm"></a>Kahn’s algorithm</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">L ← Empty <span class="hljs-built_in">list</span> that will contain the <span class="hljs-built_in">sorted</span> elements<br>S ← <span class="hljs-type">Set</span> of <span class="hljs-built_in">all</span> nodes <span class="hljs-keyword">with</span> no incoming edge<br><br><span class="hljs-keyword">while</span> S <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> empty do<br>    remove a node n <span class="hljs-keyword">from</span> S<br>    add n to L<br>    <span class="hljs-keyword">for</span> each node m <span class="hljs-keyword">with</span> an edge e <span class="hljs-keyword">from</span> n to m do<br>        remove edge e <span class="hljs-keyword">from</span> the graph<br>        <span class="hljs-keyword">if</span> m has no other incoming edges then<br>            insert m into S<br><br><span class="hljs-keyword">if</span> graph has edges then<br>    <span class="hljs-keyword">return</span> error   (graph has at least one cycle)<br><span class="hljs-keyword">else</span> <br>    <span class="hljs-keyword">return</span> L   (a topologically <span class="hljs-built_in">sorted</span> order)<br></code></pre></td></tr></table></figure>
-
-<h1 id="Kahn’s-algorithm-BFS"><a href="#Kahn’s-algorithm-BFS" class="headerlink" title="Kahn’s algorithm (BFS)"></a>Kahn’s algorithm (BFS)</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">L ← Empty <span class="hljs-built_in">list</span> that will contain the <span class="hljs-built_in">sorted</span> elements<br>S ← <span class="hljs-type">Set</span> of <span class="hljs-built_in">all</span> nodes <span class="hljs-keyword">with</span> no incoming edge<br><br><span class="hljs-keyword">while</span> S <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> empty do<br>    remove a node n <span class="hljs-keyword">from</span> S<br>    add n to L<br>    <span class="hljs-keyword">for</span> each node m <span class="hljs-keyword">with</span> an edge e <span class="hljs-keyword">from</span> n to m do<br>        remove edge e <span class="hljs-keyword">from</span> the graph<br>        <span class="hljs-keyword">if</span> m has no other incoming edges then<br>            insert m into S<br><br><span class="hljs-keyword">if</span> graph has edges then<br>    <span class="hljs-keyword">return</span> error   (graph has at least one cycle)<br><span class="hljs-keyword">else</span> <br>    <span class="hljs-keyword">return</span> L   (a topologically <span class="hljs-built_in">sorted</span> order)<br></code></pre></td></tr></table></figure>
-
-<p>解释：</p>
-<ul>
-<li>环的特点是没有入度为0的点，依据这个特点可以逐步剥离出环</li>
-</ul>
-<h1 id="Depth-First-Search"><a href="#Depth-First-Search" class="headerlink" title="Depth First Search"></a>Depth First Search</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">L ← Empty <span class="hljs-built_in">list</span> that will contain the <span class="hljs-built_in">sorted</span> elements<br>S ← <span class="hljs-type">Set</span> of <span class="hljs-built_in">all</span> nodes <span class="hljs-keyword">with</span> no incoming edge<br><br><span class="hljs-keyword">while</span> S <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> empty do<br>    remove a node n <span class="hljs-keyword">from</span> S<br>    add n to L<br>    <span class="hljs-keyword">for</span> each node m <span class="hljs-keyword">with</span> an edge e <span class="hljs-keyword">from</span> n to m do<br>        remove edge e <span class="hljs-keyword">from</span> the graph<br>        <span class="hljs-keyword">if</span> m has no other incoming edges then<br>            insert m into S<br><br><span class="hljs-keyword">if</span> graph has edges then<br>    <span class="hljs-keyword">return</span> error   (graph has at least one cycle)<br><span class="hljs-keyword">else</span> <br>    <span class="hljs-keyword">return</span> L   (a topologically <span class="hljs-built_in">sorted</span> order)<br></code></pre></td></tr></table></figure>
-
-<p>解释:</p>
-<ul>
-<li><p>当一个节点被标记为permanent的时候，所有依赖其的节点都已经被放入队列（也标记为permanent）且已经可以确保无环。此时所有经过此节点的路径都不会有环。</p>
-</li>
-<li><p>当一个节点被标记为temp的时候，说明在此路径上已经被访问过，如果再次访问到temp节点，说明有环。</p>
-</li>
-</ul>
+<p><a target="_blank" rel="noopener" href="https://javaguide.cn/cs-basics/network/network-attack-means.html">https://javaguide.cn/cs-basics/network/network-attack-means.html</a></p>
+<h1 id="网络攻击常见手段"><a href="#网络攻击常见手段" class="headerlink" title="网络攻击常见手段"></a>网络攻击常见手段</h1><p>可以分为窃取和拒绝服务式两种，前者主要依靠身份认证机制解决。后者依靠黑名单&#x2F;防火墙&#x2F;CDN等机制</p>
+<h1 id="IP欺骗"><a href="#IP欺骗" class="headerlink" title="IP欺骗"></a>IP欺骗</h1><p>伪造IP地址，使得合法用户无法访问服务</p>
+<h1 id="SYN-Flood"><a href="#SYN-Flood" class="headerlink" title="SYN Flood"></a>SYN Flood</h1><p>大量伪造TCP连接请求，使得服务器资源耗尽（因为server会进入SYN_RECV）</p>
+<p>解决方案是填充挤压工作后覆盖最先创建的半开连接，或者要求服务器创建Cookie来识别合法ACK</p>
+<h1 id="UDP-Flood"><a href="#UDP-Flood" class="headerlink" title="UDP Flood"></a>UDP Flood</h1><p>server接受到UDP时会检查正在运行的侦听指定端口的请求的程序，如果没有程序再该端口监听，则返回一个ICMP响应以通知发送方目的不可达</p>
+<h1 id="Http-Flood"><a href="#Http-Flood" class="headerlink" title="Http Flood"></a>Http Flood</h1><p>大量请求Get大型资源&#x2F;大量Post修改数据库</p>
+<p>解决方法：人机验证。IP信誉数据库。Web防火墙</p>
+<h1 id="DNS-Flood"><a href="#DNS-Flood" class="headerlink" title="DNS Flood"></a>DNS Flood</h1><p>大量请求攻击某一个DNS服务器，从而瘫痪一个地区的DNS服务</p>
+<h1 id="TCP-重置攻击"><a href="#TCP-重置攻击" class="headerlink" title="TCP 重置攻击"></a>TCP 重置攻击</h1><p>发送RST报文 + 伪造IP地址，使得合法用户无法正常连接</p>
+<h1 id="中间人攻击"><a href="#中间人攻击" class="headerlink" title="中间人攻击"></a>中间人攻击</h1><p>参考httpshttp一文</p>
 
                 
               </div>
@@ -301,11 +293,32 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/network/" class="category-chain-item">network</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/algorithm/" class="print-no-link">#algorithm</a>
+        <a href="/tags/network/" class="print-no-link">#network</a>
       
     </div>
   
@@ -317,8 +330,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>拓扑排序</div>
-      <div>https://perticevassly.github.io/project/2025/03/10/拓扑排序问题/</div>
+      <div>常见网络攻击手段</div>
+      <div>https://perticevassly.github.io/project/2025/03/14/network/Attack/</div>
     </div>
     <div class="license-meta">
       
@@ -330,7 +343,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年3月10日</div>
+          <div>2025年3月14日</div>
         </div>
       
       
@@ -368,9 +381,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/12/network/TCP/" title="TCP">
+                      <a href="/2025/03/16/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/" title="快速排序">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">TCP</span>
+                        <span class="hidden-mobile">快速排序</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -378,8 +391,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/03/03/DockerCompose%E7%BD%91%E7%BB%9C%E6%98%A0%E5%B0%84/" title="DockerCompose网络映射">
-                        <span class="hidden-mobile">DockerCompose网络映射</span>
+                      <a href="/2025/03/14/os/%E7%94%A8%E6%88%B7%E6%80%81%E5%86%85%E6%A0%B8%E6%80%81/" title="用户态内核态">
+                        <span class="hidden-mobile">用户态内核态</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
