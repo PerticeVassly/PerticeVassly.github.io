@@ -16,22 +16,22 @@
   <meta name="author" content="eqSun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="java和cpp不同，cpp会默认调用拷贝构造函数，完成深拷贝，只有当你需要手动优化去除深拷贝的时候才会重写拷贝构造函数，而java则不同，java的数组是引用类型，所以直接赋值是浅拷贝，如果需要深拷贝，需要手动实现。 一种比较方便的数据深拷贝方法是 1this.nowGrid &#x3D; Arrays.stream(grid).map(int[]::clone).toArray(int[][]::new">
+    <meta name="description" content="For all the happiness and despair">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java数组深拷贝">
-<meta property="og:url" content="https://perticevassly.github.io/project/2025/03/17/Java%E6%95%B0%E7%BB%84%E6%B7%B1%E6%8B%B7%E8%B4%9D/index.html">
+<meta property="og:title" content="java读取输入数据和文件">
+<meta property="og:url" content="https://perticevassly.github.io/project/2025/03/19/Java%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/index.html">
 <meta property="og:site_name" content="eqSun&#39;s Blog">
-<meta property="og:description" content="java和cpp不同，cpp会默认调用拷贝构造函数，完成深拷贝，只有当你需要手动优化去除深拷贝的时候才会重写拷贝构造函数，而java则不同，java的数组是引用类型，所以直接赋值是浅拷贝，如果需要深拷贝，需要手动实现。 一种比较方便的数据深拷贝方法是 1this.nowGrid &#x3D; Arrays.stream(grid).map(int[]::clone).toArray(int[][]::new">
+<meta property="og:description" content="For all the happiness and despair">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-17T12:30:00.000Z">
-<meta property="article:modified_time" content="2025-03-17T07:13:15.015Z">
+<meta property="article:published_time" content="2025-03-19T12:30:00.000Z">
+<meta property="article:modified_time" content="2025-03-19T11:37:21.059Z">
 <meta property="article:author" content="eqSun">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>java数组深拷贝 - eqSun&#39;s Blog</title>
+  <title>java读取输入数据和文件 - eqSun&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="java数组深拷贝"></span>
+            <span id="subtitle" data-typed-text="java读取输入数据和文件"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-03-17 20:30" pubdate>
-          2025年3月17日 晚上
+        <time datetime="2025-03-19 20:30" pubdate>
+          2025年3月19日 晚上
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          302 字
+          0 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          3 分钟
+          1 分钟
         
       </span>
     
@@ -268,17 +268,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">java数组深拷贝</h1>
+            <h1 id="seo-header">java读取输入数据和文件</h1>
             
             
               <div class="markdown-body">
                 
-                <p>java和cpp不同，cpp会默认调用拷贝构造函数，完成深拷贝，只有当你需要手动优化去除深拷贝的时候才会重写拷贝构造函数，而java则不同，java的数组是引用类型，所以直接赋值是浅拷贝，如果需要深拷贝，需要手动实现。</p>
-<p>一种比较方便的数据深拷贝方法是</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-built_in">this</span>.nowGrid = Arrays.stream(grid).map(<span class="hljs-type">int</span>[]::clone).toArray(<span class="hljs-type">int</span>[][]::<span class="hljs-keyword">new</span>);<br></code></pre></td></tr></table></figure>
-
-<p>数组本身的复制可以使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] copy = Arrays.copyOf(original, newLength);<br><span class="hljs-type">int</span>[] copy = Arrays.copyOfRange(original, from, to);<br></code></pre></td></tr></table></figure>
+                
                 
               </div>
             
@@ -302,8 +297,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>java数组深拷贝</div>
-      <div>https://perticevassly.github.io/project/2025/03/17/Java数组深拷贝/</div>
+      <div>java读取输入数据和文件</div>
+      <div>https://perticevassly.github.io/project/2025/03/19/Java输入输出/</div>
     </div>
     <div class="license-meta">
       
@@ -315,7 +310,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年3月17日</div>
+          <div>2025年3月19日</div>
         </div>
       
       
@@ -353,18 +348,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/19/Java%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" title="java读取输入数据和文件">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">java读取输入数据和文件</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/03/17/daily/%E8%9A%82%E8%9A%81%E7%AC%94%E8%AF%95/" title="蚂蚁笔试">
-                        <span class="hidden-mobile">蚂蚁笔试</span>
+                      <a href="/2025/03/17/Java%E6%95%B0%E7%BB%84%E6%B7%B1%E6%8B%B7%E8%B4%9D/" title="java数组深拷贝">
+                        <span class="hidden-mobile">java数组深拷贝</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
