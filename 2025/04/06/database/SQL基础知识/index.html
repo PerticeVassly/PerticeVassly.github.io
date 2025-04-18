@@ -1,0 +1,769 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/nerv.jpeg">
+  <link rel="icon" href="/img/nerv.jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="eqSun">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;database&#x2F;sql&#x2F;sql-syntax-summary.html SQL基础知识数据库术语 database：保存有组织的数据的容器 table: 某种特定类型的数据的结构化清单 schema：关于数据库和表的分布以及特征的信息。定义了数据如何在表中存储，数据如何分解如何命名的问题 column： row： primary key： S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL基础知识">
+<meta property="og:url" content="https://perticevassly.github.io/project/2025/04/06/database/SQL%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="eqSun&#39;s Blog">
+<meta property="og:description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;database&#x2F;sql&#x2F;sql-syntax-summary.html SQL基础知识数据库术语 database：保存有组织的数据的容器 table: 某种特定类型的数据的结构化清单 schema：关于数据库和表的分布以及特征的信息。定义了数据如何在表中存储，数据如何分解如何命名的问题 column： row： primary key： S">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-06T09:00:00.000Z">
+<meta property="article:modified_time" content="2025-04-06T09:29:30.737Z">
+<meta property="article:author" content="eqSun">
+<meta property="article:tag" content="database">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>SQL基础知识 - eqSun&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"perticevassly.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/eva.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="SQL基础知识"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-06 17:00" pubdate>
+          2025年4月6日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">SQL基础知识</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>参考资料：</p>
+<p><a target="_blank" rel="noopener" href="https://javaguide.cn/database/sql/sql-syntax-summary.html">https://javaguide.cn/database/sql/sql-syntax-summary.html</a></p>
+<h1 id="SQL基础知识"><a href="#SQL基础知识" class="headerlink" title="SQL基础知识"></a>SQL基础知识</h1><p>数据库术语</p>
+<p>database：保存有组织的数据的容器</p>
+<p>table: 某种特定类型的数据的结构化清单</p>
+<p>schema：关于数据库和表的分布以及特征的信息。定义了数据如何在表中存储，数据如何分解如何命名的问题</p>
+<p>column：</p>
+<p>row：</p>
+<p>primary key：</p>
+<h1 id="SQL分类"><a href="#SQL分类" class="headerlink" title="SQL分类"></a>SQL分类</h1><p>DDL：数据定义语言，创建和修改数据库对象的语言。DDL语句包括CREATE、ALTER、DROP等</p>
+<p>DML：数据操作语言，操作数据库中数据的语言。DML语句包括INSERT、UPDATE、DELETE等</p>
+<p>TCL：事务控制语言，控制数据库事务的语言。TCL语句包括COMMIT、ROLLBACK、SAVEPOINT等</p>
+<p>DCL：数据控制语言，控制数据库访问权限的语言。DCL语句包括GRANT、REVOKE等</p>
+<h1 id="一些关键词"><a href="#一些关键词" class="headerlink" title="一些关键词"></a>一些关键词</h1><h2 id="LIKE"><a href="#LIKE" class="headerlink" title="LIKE"></a>LIKE</h2><p>LIKE：在where子句中使用，只有字段是文本值的时候才能使用LIKE，支持两个通配符 %和_，%表示任意长度的字符串，_表示一个字符</p>
+<h2 id="JOIN"><a href="#JOIN" class="headerlink" title="JOIN"></a>JOIN</h2><p>JOIN: 在每个表中选择一个字段，并且对这些字段的值进行比较，值相同的两条记录合并为一条。链接表的本质就是将不同表的记录合并起来形成一张新表。此表知识临时的，仅存在于查询中。如果两张表的关联字段相同可以使用USING关键字来简化语句。<code>inner join Orders o using (OrderID)</code></p>
+<p>INNER JOIN：内连接，返回两个表中匹配的记录</p>
+<p>LEFT JOIN：左连接，返回左表中所有的记录和右表中匹配的记录，如果右表中没有匹配的记录，则返回NULL</p>
+<p>RIGHT JOIN：右连接，返回右表中所有的记录和左表中匹配的记录，如果左表中没有匹配的记录，则返回NULL</p>
+<p>FULL JOIN：全连接，返回两个表中所有的记录，如果没有匹配的记录，则返回NULL</p>
+<p>SELF JOIN：自连接，表与表之间的连接，表与自身的连接 </p>
+<p>CROSS JOIN：笛卡尔积，返回两个表中所有的记录的组合</p>
+<h2 id="DELIMITER"><a href="#DELIMITER" class="headerlink" title="DELIMITER"></a>DELIMITER</h2><p>当你创建存储过程时，MySql会将分号作为语句的结束符，因此在创建存储过程时需要使用DELIMITER命令来改变分隔符。使得你的过程中可以使用分号。</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="文本处理"><a href="#文本处理" class="headerlink" title="文本处理"></a>文本处理</h2><p>LEFT(),RIGHT()：左边或右边的字符</p>
+<p>LOWER(),UPPER()：小写或大写</p>
+<p>LRIM(),RRIM()：去掉左边或右边的空格</p>
+<p>LENGTH()：字符串长度</p>
+<p>SOUDS()：返回字符串的声音值?</p>
+<h2 id="日期和时间"><a href="#日期和时间" class="headerlink" title="日期和时间"></a>日期和时间</h2><p>YYYY-MM-DD：日期格式</p>
+<p>HH:MM:SS：时间格式</p>
+<p>参考javaguide</p>
+<h2 id="数值处理"><a href="#数值处理" class="headerlink" title="数值处理"></a>数值处理</h2><p>参考javaguide</p>
+<h2 id="汇总处理"><a href="#汇总处理" class="headerlink" title="汇总处理"></a>汇总处理</h2><h1 id="事务处理"><a href="#事务处理" class="headerlink" title="事务处理"></a>事务处理</h1><p>不能回退SELECT语句, 回退SELECT语句没有意义；也不能回退CREATE和DROP语句</p>
+<p>MySql默认是隐式提交，美提交一条语句就把这条语句当作一个事务然后提交。当出现START TRANSACTION语句时，MySql会将隐式提交关闭，直到出现COMMIT或ROLLBACK语句时才会重新打开隐式提交。</p>
+<p>通过 set autocommit&#x3D;0 可以取消自动提交，直到 set autocommit&#x3D;1 才会提交；autocommit 标记是针对每个连接而不是针对服务器的。</p>
+<h1 id="权限控制"><a href="#权限控制" class="headerlink" title="权限控制"></a>权限控制</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">GRANT</span> privilege,[privilege],.. <span class="hljs-keyword">ON</span> privilege_level<br><span class="hljs-keyword">TO</span> <span class="hljs-keyword">user</span> [IDENTIFIED <span class="hljs-keyword">BY</span> password]<br>[REQUIRE tsl_option]<br>[<span class="hljs-keyword">WITH</span> [GRANT_OPTION <span class="hljs-operator">|</span> resource_option]];<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 将 SELECT 和 INSERT 权限授予用户 user1 在 database_name 上</span><br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">SELECT</span>, <span class="hljs-keyword">INSERT</span> <br><span class="hljs-keyword">ON</span> database_name.<span class="hljs-operator">*</span> <br><span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;user1&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span><br>IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;password123&#x27;</span><br><span class="hljs-keyword">WITH</span> <span class="hljs-keyword">GRANT</span> OPTION;<br><br><span class="hljs-comment">-- 将 UPDATE 权限授予用户 user2 在某个表上，并要求使用 TLS</span><br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">UPDATE</span> <br><span class="hljs-keyword">ON</span> database_name.table_name <br><span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;user2&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> <br>IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;password456&#x27;</span><br>REQUIRE SSL;<br><br><span class="hljs-comment">-- 将所有权限授予用户 user3，并且可以授予其他人</span><br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> PRIVILEGES <br><span class="hljs-keyword">ON</span> database_name.<span class="hljs-operator">*</span> <br><span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;user3&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> <br>IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;password789&#x27;</span><br><span class="hljs-keyword">WITH</span> <span class="hljs-keyword">GRANT</span> OPTION;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">GRANT</span> privilege,[privilege],.. <span class="hljs-keyword">ON</span> privilege_level<br><span class="hljs-keyword">TO</span> <span class="hljs-keyword">user</span> [IDENTIFIED <span class="hljs-keyword">BY</span> password]<br>[REQUIRE tsl_option]<br>[<span class="hljs-keyword">WITH</span> [GRANT_OPTION <span class="hljs-operator">|</span> resource_option]];<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 撤销用户 user1 在某个表上的 SELECT 和 INSERT 权限</span><br><span class="hljs-keyword">REVOKE</span> <span class="hljs-keyword">SELECT</span>, <span class="hljs-keyword">INSERT</span> <br><span class="hljs-keyword">ON</span> <span class="hljs-keyword">TABLE</span> employees <br><span class="hljs-keyword">FROM</span> <span class="hljs-string">&#x27;user1&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span>;<br><br><span class="hljs-comment">-- 撤销 user2 对某个表的 UPDATE 权限（仅限于指定列）</span><br><span class="hljs-keyword">REVOKE</span> <span class="hljs-keyword">UPDATE</span> (salary, bonus)<br><span class="hljs-keyword">ON</span> <span class="hljs-keyword">TABLE</span> employees <br><span class="hljs-keyword">FROM</span> <span class="hljs-string">&#x27;user2&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;<br><br><span class="hljs-comment">-- 撤销多个用户在数据库级别的 ALL 权限</span><br><span class="hljs-keyword">REVOKE</span> <span class="hljs-keyword">ALL</span> PRIVILEGES <br><span class="hljs-keyword">ON</span> database_name.<span class="hljs-operator">*</span> <br><span class="hljs-keyword">FROM</span> <span class="hljs-string">&#x27;user3&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span>, <span class="hljs-string">&#x27;user4&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<h1 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">PROCEDURE</span> IF <span class="hljs-keyword">EXISTS</span> `proc_adder`;<br>DELIMITER ;;<br><span class="hljs-keyword">CREATE</span> DEFINER<span class="hljs-operator">=</span>`root`@`localhost` <span class="hljs-keyword">PROCEDURE</span> `proc_adder`(<span class="hljs-keyword">IN</span> a <span class="hljs-type">int</span>, <span class="hljs-keyword">IN</span> b <span class="hljs-type">int</span>, <span class="hljs-keyword">OUT</span> sum <span class="hljs-type">int</span>)<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">DECLARE</span> c <span class="hljs-type">int</span>;<br>    if a <span class="hljs-keyword">is</span> <span class="hljs-keyword">null</span> <span class="hljs-keyword">then</span> <span class="hljs-keyword">set</span> a <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">end</span> if;<br><br>    if b <span class="hljs-keyword">is</span> <span class="hljs-keyword">null</span> <span class="hljs-keyword">then</span> <span class="hljs-keyword">set</span> b <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">end</span> if;<br><br>    <span class="hljs-keyword">set</span> sum  <span class="hljs-operator">=</span> a <span class="hljs-operator">+</span> b;<br><span class="hljs-keyword">END</span><br>;;<br>DELIMITER ;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">set</span> <span class="hljs-variable">@b</span><span class="hljs-operator">=</span><span class="hljs-number">5</span>;<br><span class="hljs-keyword">call</span> proc_adder(<span class="hljs-number">2</span>,<span class="hljs-variable">@b</span>,<span class="hljs-variable">@s</span>);<br><span class="hljs-keyword">select</span> <span class="hljs-variable">@s</span> <span class="hljs-keyword">as</span> sum;<br></code></pre></td></tr></table></figure>
+
+<h1 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h1><p>cursor 是一个存储在DBMS中的数据库查询，不是一条SELECT语句。而是被该语句检索出来的结果集。</p>
+<p>在存储过程中可以使用游标来遍历结果集。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs sql">DELIMITER $<br><span class="hljs-keyword">CREATE</span>  <span class="hljs-keyword">PROCEDURE</span> getTotal()<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">DECLARE</span> total <span class="hljs-type">INT</span>;<br>    <span class="hljs-comment">-- 创建接收游标数据的变量</span><br>    <span class="hljs-keyword">DECLARE</span> sid <span class="hljs-type">INT</span>;<br>    <span class="hljs-keyword">DECLARE</span> sname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">10</span>);<br>    <span class="hljs-comment">-- 创建总数变量</span><br>    <span class="hljs-keyword">DECLARE</span> sage <span class="hljs-type">INT</span>;<br>    <span class="hljs-comment">-- 创建结束标志变量</span><br>    <span class="hljs-keyword">DECLARE</span> done <span class="hljs-type">INT</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-comment">-- 创建游标</span><br>    <span class="hljs-keyword">DECLARE</span> cur <span class="hljs-keyword">CURSOR</span> <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">SELECT</span> id,name,age <span class="hljs-keyword">from</span> cursor_table <span class="hljs-keyword">where</span> age<span class="hljs-operator">&gt;</span><span class="hljs-number">30</span>;<br>    <span class="hljs-comment">-- 指定游标循环结束时的返回值</span><br>    <span class="hljs-keyword">DECLARE</span> CONTINUE HANDLER <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">NOT</span> FOUND <span class="hljs-keyword">SET</span> done <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">SET</span> total <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">OPEN</span> cur;<br>    <span class="hljs-keyword">FETCH</span> cur <span class="hljs-keyword">INTO</span> sid, sname, sage;<br>    WHILE(<span class="hljs-keyword">NOT</span> done)<br>    DO<br>        <span class="hljs-keyword">SET</span> total <span class="hljs-operator">=</span> total <span class="hljs-operator">+</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">FETCH</span> cur <span class="hljs-keyword">INTO</span> sid, sname, sage;<br>    <span class="hljs-keyword">END</span> WHILE;<br><br>    <span class="hljs-keyword">CLOSE</span> cur;<br>    <span class="hljs-keyword">SELECT</span> total;<br><span class="hljs-keyword">END</span> $<br>DELIMITER ;<br><br><span class="hljs-comment">-- 调用存储过程</span><br><span class="hljs-keyword">call</span> getTotal();<br></code></pre></td></tr></table></figure>
+
+<p>但 MySQL 不支持为特定游标声明专属的 handler（不像 PostgreSQL 有 block-scope），所以你需要：拆成多个独立的 BEGIN…END 块.</p>
+<h1 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h1><p>触发器是一种与表操作有关的数据库对象，当触发器所在表上出现指定事件时，将调用该对象，即表的操作事件触发表上的触发器的执行。</p>
+<p>MySQL 不允许在触发器中使用 CALL 语句 ，也就是不能调用存储过程。</p>
+<p>MySQL 中定义了 NEW 和 OLD 关键字，用来表示触发器的所在表中，触发了触发器的那一行数据。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/database/" class="category-chain-item">database</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/database/" class="print-no-link">#database</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>SQL基础知识</div>
+      <div>https://perticevassly.github.io/project/2025/04/06/database/SQL基础知识/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>eqSun</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年4月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/04/06/database/MongoDB/" title="MongoDB基础知识">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">MongoDB基础知识</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/04/Manacher%E7%AE%97%E6%B3%95/" title="Manacher算法">
+                        <span class="hidden-mobile">Manacher算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

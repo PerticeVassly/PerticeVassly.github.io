@@ -16,22 +16,23 @@
   <meta name="author" content="eqSun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="For all the happiness and despair">
+    <meta name="description" content="触发时机内存不足的时候：JVM检测内存不足，无法为新的对象分配内存的时候，会自动触发 手动请求：System.gc()，Runtime.getRuntime().gc()，这两个方法都是请求JVM进行垃圾回收，但是JVM不一定会立即回收，因为JVM有自己的垃圾回收策略 JVM参数：可以通过JVM参数来调整垃圾回收的行为，比如-Xmx -Xms -XX 最大堆大小和初始堆大小 数量对象或者内存使用达">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java读取输入数据和文件">
-<meta property="og:url" content="https://perticevassly.github.io/project/2025/03/19/Java%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/index.html">
+<meta property="og:title" content="jvm垃圾回收机制">
+<meta property="og:url" content="https://perticevassly.github.io/project/2025/03/25/java/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="eqSun&#39;s Blog">
-<meta property="og:description" content="For all the happiness and despair">
+<meta property="og:description" content="触发时机内存不足的时候：JVM检测内存不足，无法为新的对象分配内存的时候，会自动触发 手动请求：System.gc()，Runtime.getRuntime().gc()，这两个方法都是请求JVM进行垃圾回收，但是JVM不一定会立即回收，因为JVM有自己的垃圾回收策略 JVM参数：可以通过JVM参数来调整垃圾回收的行为，比如-Xmx -Xms -XX 最大堆大小和初始堆大小 数量对象或者内存使用达">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-19T12:30:00.000Z">
-<meta property="article:modified_time" content="2025-03-19T11:37:21.059Z">
+<meta property="article:published_time" content="2025-03-25T12:30:00.000Z">
+<meta property="article:modified_time" content="2025-04-15T09:41:29.409Z">
 <meta property="article:author" content="eqSun">
 <meta property="article:tag" content="java">
+<meta property="article:tag" content="jvm">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>java读取输入数据和文件 - eqSun&#39;s Blog</title>
+  <title>jvm垃圾回收机制 - eqSun&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="java读取输入数据和文件"></span>
+            <span id="subtitle" data-typed-text="jvm垃圾回收机制"></span>
           
         </div>
 
@@ -208,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-03-19 20:30" pubdate>
-          2025年3月19日 晚上
+        <time datetime="2025-03-25 20:30" pubdate>
+          2025年3月25日 晚上
         </time>
       </span>
     
@@ -220,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          222 字
         
       </span>
     
@@ -231,7 +232,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -268,12 +269,16 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">java读取输入数据和文件</h1>
+            <h1 id="seo-header">jvm垃圾回收机制</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <h1 id="触发时机"><a href="#触发时机" class="headerlink" title="触发时机"></a>触发时机</h1><p>内存不足的时候：JVM检测内存不足，无法为新的对象分配内存的时候，会自动触发</p>
+<p>手动请求：System.gc()，Runtime.getRuntime().gc()，这两个方法都是请求JVM进行垃圾回收，但是JVM不一定会立即回收，因为JVM有自己的垃圾回收策略</p>
+<p>JVM参数：可以通过JVM参数来调整垃圾回收的行为，比如-Xmx -Xms -XX 最大堆大小和初始堆大小</p>
+<p>数量对象或者内存使用达到阈值：比如JVM参数中设置的阈值，或者JVM自己的阈值</p>
+
                 
               </div>
             
@@ -281,11 +286,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/java/" class="category-chain-item">java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
         <a href="/tags/java/" class="print-no-link">#java</a>
+      
+        <a href="/tags/jvm/" class="print-no-link">#jvm</a>
       
     </div>
   
@@ -297,8 +325,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>java读取输入数据和文件</div>
-      <div>https://perticevassly.github.io/project/2025/03/19/Java输入输出/</div>
+      <div>jvm垃圾回收机制</div>
+      <div>https://perticevassly.github.io/project/2025/03/25/java/Java垃圾回收机制/</div>
     </div>
     <div class="license-meta">
       
@@ -310,7 +338,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年3月19日</div>
+          <div>2025年3月25日</div>
         </div>
       
       
@@ -348,9 +376,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/21/linux/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Linux基础知识">
+                      <a href="/2025/03/26/daily/%E7%BE%8E%E5%9B%A2AI%E9%9D%A2%E8%AF%95/" title="美团AI面试">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Linux基础知识</span>
+                        <span class="hidden-mobile">美团AI面试</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -358,8 +386,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/03/19/Spark%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AEmaster%E8%8A%82%E7%82%B9%E7%9A%84%E9%97%AE%E9%A2%98/" title="Spark无法访问master节点的问题">
-                        <span class="hidden-mobile">Spark无法访问master节点的问题</span>
+                      <a href="/2025/03/23/daily/pdd%E7%AC%94%E8%AF%95/" title="pdd笔试">
+                        <span class="hidden-mobile">pdd笔试</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
