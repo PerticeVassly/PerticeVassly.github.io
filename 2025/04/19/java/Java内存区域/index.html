@@ -16,23 +16,22 @@
   <meta name="author" content="eqSun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="触发时机内存不足的时候：JVM检测内存不足，无法为新的对象分配内存的时候，会自动触发 手动请求：System.gc()，Runtime.getRuntime().gc()，这两个方法都是请求JVM进行垃圾回收，但是JVM不一定会立即回收，因为JVM有自己的垃圾回收策略 JVM参数：可以通过JVM参数来调整垃圾回收的行为，比如-Xmx -Xms -XX 最大堆大小和初始堆大小 数量对象或者内存使用达">
+    <meta name="description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;java&#x2F;jvm&#x2F;memory-area.html java内存空间运行时空间包括： 线程私有：程序计数器（唯一不会出现OutOfMemoryError），虚拟机栈，本地方法栈 线程共享的：堆，方法区，直接内存 注意，此处的方法区指的是jvm规范中需要一个方法区存储类信息等。 JDK1.8之前，方法区实际上是内存区的永久代，JDK1.8之后，方">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jvm垃圾回收机制">
-<meta property="og:url" content="https://perticevassly.github.io/project/2025/03/25/java/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:title" content="java内存区域">
+<meta property="og:url" content="https://perticevassly.github.io/project/2025/04/19/java/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/index.html">
 <meta property="og:site_name" content="eqSun&#39;s Blog">
-<meta property="og:description" content="触发时机内存不足的时候：JVM检测内存不足，无法为新的对象分配内存的时候，会自动触发 手动请求：System.gc()，Runtime.getRuntime().gc()，这两个方法都是请求JVM进行垃圾回收，但是JVM不一定会立即回收，因为JVM有自己的垃圾回收策略 JVM参数：可以通过JVM参数来调整垃圾回收的行为，比如-Xmx -Xms -XX 最大堆大小和初始堆大小 数量对象或者内存使用达">
+<meta property="og:description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;java&#x2F;jvm&#x2F;memory-area.html java内存空间运行时空间包括： 线程私有：程序计数器（唯一不会出现OutOfMemoryError），虚拟机栈，本地方法栈 线程共享的：堆，方法区，直接内存 注意，此处的方法区指的是jvm规范中需要一个方法区存储类信息等。 JDK1.8之前，方法区实际上是内存区的永久代，JDK1.8之后，方">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-25T12:30:00.000Z">
-<meta property="article:modified_time" content="2025-04-15T09:41:29.409Z">
+<meta property="article:published_time" content="2025-04-19T12:30:00.000Z">
+<meta property="article:modified_time" content="2025-04-18T11:30:37.574Z">
 <meta property="article:author" content="eqSun">
 <meta property="article:tag" content="java">
-<meta property="article:tag" content="jvm">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>jvm垃圾回收机制 - eqSun&#39;s Blog</title>
+  <title>java内存区域 - eqSun&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="jvm垃圾回收机制"></span>
+            <span id="subtitle" data-typed-text="java内存区域"></span>
           
         </div>
 
@@ -209,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-03-25 20:30" pubdate>
-          2025年3月25日 晚上
+        <time datetime="2025-04-19 20:30" pubdate>
+          2025年4月19日 晚上
         </time>
       </span>
     
@@ -221,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          222 字
+          1.4k 字
         
       </span>
     
@@ -232,7 +231,7 @@
         
         
         
-          2 分钟
+          12 分钟
         
       </span>
     
@@ -269,15 +268,61 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">jvm垃圾回收机制</h1>
+            <h1 id="seo-header">java内存区域</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="触发时机"><a href="#触发时机" class="headerlink" title="触发时机"></a>触发时机</h1><p>内存不足的时候：JVM检测内存不足，无法为新的对象分配内存的时候，会自动触发</p>
-<p>手动请求：System.gc()，Runtime.getRuntime().gc()，这两个方法都是请求JVM进行垃圾回收，但是JVM不一定会立即回收，因为JVM有自己的垃圾回收策略</p>
-<p>JVM参数：可以通过JVM参数来调整垃圾回收的行为，比如-Xmx -Xms -XX 最大堆大小和初始堆大小</p>
-<p>数量对象或者内存使用达到阈值：比如JVM参数中设置的阈值，或者JVM自己的阈值</p>
+                <p>参考资料：</p>
+<p><a target="_blank" rel="noopener" href="https://javaguide.cn/java/jvm/memory-area.html">https://javaguide.cn/java/jvm/memory-area.html</a></p>
+<h1 id="java内存空间"><a href="#java内存空间" class="headerlink" title="java内存空间"></a>java内存空间</h1><p>运行时空间包括：</p>
+<p>线程私有：程序计数器（唯一不会出现<code>OutOfMemoryError</code>），虚拟机栈，本地方法栈</p>
+<p>线程共享的：堆，方法区，直接内存</p>
+<p>注意，此处的方法区指的是jvm规范中需要一个方法区存储类信息等。</p>
+<p>JDK1.8之前，方法区实际上是内存区的永久代，JDK1.8之后，方法区被元空间取代。</p>
+<p>为什么放弃永久代，使用元空间？</p>
+<p>因为永久代大小和JVM设定绑定，难以扩展，而元空间使用本地内存，溢出概率更小。</p>
+<h2 id="常量池"><a href="#常量池" class="headerlink" title="常量池"></a>常量池</h2><p>常量池：编译时生成的字面量和符号引用的集合。</p>
+<p>运行时常量池：在类加载后，常量池会被存放在方法区中。</p>
+<p>字符串常量池：专门针对<code>String</code>开辟的一块区域</p>
+<h2 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h2><p>直接通过<code>JNI</code>在本地内存上分配</p>
+<p>然后使用<code>Java</code>堆中的<code>DirectByteBuffer</code>来操作</p>
+<h2 id="java虚拟机栈"><a href="#java虚拟机栈" class="headerlink" title="java虚拟机栈"></a>java虚拟机栈</h2><p>栈帧包括：局部变量表，操作数栈，动态连接，方法的返回地址。</p>
+<p>局部变量表 主要存放了编译期可知的各种数据类型</p>
+<p>操作数栈 主要作为方法调用的中转站使用，用于存放方法执行过程产生的中间计算结果</p>
+<h2 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h2><p>堆内存一般可以被分为 1. 新生代内存 2. 老生代内存 3. 永久代内存</p>
+<p>其中新生代又包括 <code>Eden</code> 区和 <code>Survivor</code> 区（S0 和 S1）。</p>
+<p>JDK1.8 之后，永久代被元空间取代，元空间使用本地内存来存储类的元数据。</p>
+<p>处理逻辑：初始对象都在<code>Eden</code>区分配，一次GC以后，如果对象还存活，进入S0或者S1区，年龄 + 1， 15岁以上的对象会进入老年代。</p>
+<h2 id="逃逸分析"><a href="#逃逸分析" class="headerlink" title="逃逸分析"></a>逃逸分析</h2><p>一般来说对象的创建都是在堆中进行的，但是如果对象只在一个方法中使用，并且没有被引用到其他地方，那么这个对象就可以在栈上分配内存。JDK 1.7开始已经默认开启逃逸分析</p>
+<h1 id="HotSpot虚拟机对象"><a href="#HotSpot虚拟机对象" class="headerlink" title="HotSpot虚拟机对象"></a>HotSpot虚拟机对象</h1><p>对象的创建过程</p>
+<ol>
+<li><p>检查指令参数能否在常量池中定位到这个类的符号引用，并且检查这个符号引用代表的类是否已经被加载过，解析和初始化过。如果没有，那必须限制性相应的类加载过程</p>
+</li>
+<li><p>为新生对象分配内存。具体由两种分配方式“指针碰撞”和“空闲列表”两种方式</p>
+</li>
+<li><p>初始化0值，把分配到的内存空间初始化为0</p>
+</li>
+<li><p>设置对象头，例如当前对象是哪一个对象的实例，如何才能找到类的元数据信息，对象的Hash值，GC分代以及年龄等等</p>
+</li>
+<li><p>执行init方法，按照程序员的医院进行初始化</p>
+</li>
+</ol>
+<p>HotSpot虚拟机中对象的内存布局可以分为：</p>
+<p>对象头：<code>Header</code>， 实例数据：<code>Instance Data</code>， 对齐填充：<code>Padding</code></p>
+<p>对象头包括：</p>
+<p>标记字段 <code>(Mark Word)</code>：用于存储对象自身的运行时数据，例如HashCode，GC年龄，锁状态，线程持有的锁…; </p>
+<p>类型指针<code>（Klass pointer）</code>：对象指向它的类元数据的指针，虚拟机通过这个指针确定对象的类型</p>
+<h2 id="内存分配方法"><a href="#内存分配方法" class="headerlink" title="内存分配方法"></a>内存分配方法</h2><ol>
+<li><p>指针碰撞：用过的内存放一边，没用过的放一边，分配内存时只需要移动指针即可。</p>
+</li>
+<li><p>空闲列表：维护一个空闲列表，分配内存时从空闲列表中分配，找到一块足够大的内存块，分配后更新空闲列表。</p>
+</li>
+</ol>
+<p>具体使用哪一种取决于内存是否规整，是否规整又取决于GC算法。</p>
+<h2 id="创建对象时的并发问题"><a href="#创建对象时的并发问题" class="headerlink" title="创建对象时的并发问题"></a>创建对象时的并发问题</h2><p><code>CAS：compare and swap</code>，乐观锁，出现冲突就重试，直到成功</p>
+<p><code>TLAB</code>： 每一个线程预先在Eden区分配一块内存，JVM在给线程中的对象分配内存时，首先在TLAB中分配，如果不够再用CAS</p>
+<h2 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h2><p>使用句柄，直接指针</p>
 
                 
               </div>
@@ -313,8 +358,6 @@
       
         <a href="/tags/java/" class="print-no-link">#java</a>
       
-        <a href="/tags/jvm/" class="print-no-link">#jvm</a>
-      
     </div>
   
 </div>
@@ -325,8 +368,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>jvm垃圾回收机制</div>
-      <div>https://perticevassly.github.io/project/2025/03/25/java/Java垃圾回收机制/</div>
+      <div>java内存区域</div>
+      <div>https://perticevassly.github.io/project/2025/04/19/java/Java内存区域/</div>
     </div>
     <div class="license-meta">
       
@@ -338,7 +381,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年3月25日</div>
+          <div>2025年4月19日</div>
         </div>
       
       
@@ -376,9 +419,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/26/daily/%E7%BE%8E%E5%9B%A2AI%E9%9D%A2%E8%AF%95/" title="美团AI面试">
+                      <a href="/2025/04/19/java/jvm%E5%8F%82%E6%95%B0/" title="jvm参数">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">美团AI面试</span>
+                        <span class="hidden-mobile">jvm参数</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -386,8 +429,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/03/23/daily/pdd%E7%AC%94%E8%AF%95/" title="pdd笔试">
-                        <span class="hidden-mobile">pdd笔试</span>
+                      <a href="/2025/04/19/java/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD/" title="java类加载">
+                        <span class="hidden-mobile">java类加载</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
