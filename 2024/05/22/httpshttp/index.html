@@ -24,7 +24,7 @@
 <meta property="og:description" content="参考资料https:&#x2F;&#x2F;cloud.tencent.com&#x2F;developer&#x2F;article&#x2F;1633071 https:&#x2F;&#x2F;blog.csdn.net&#x2F;dreaming9420&#x2F;article&#x2F;details&#x2F;123622811 传输HTTP采用明文传输的形式，其中GET方法的请求参数会在URL中显示，留存在浏览器缓存中，容易被窃取。尽管post可以将参数放入请求体(body)中传输，但是由于">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-22T08:17:00.000Z">
-<meta property="article:modified_time" content="2025-03-10T15:36:36.768Z">
+<meta property="article:modified_time" content="2025-04-23T11:36:39.238Z">
 <meta property="article:author" content="eqSun">
 <meta property="article:tag" content="cryptology">
 <meta name="twitter:card" content="summary_large_image">
@@ -280,13 +280,13 @@
 <ol>
 <li><p>客户端向服务器发送请求。</p>
 </li>
-<li><p>服务器受到请求后将自己的公钥Pub发送给客户端</p>
+<li><p>服务器受到请求后将自己的公钥<code>Pub</code>发送给客户端</p>
 </li>
-<li><p>客户端使用公钥加密一个随机key，发送给客户端，客户端解密后得到这个随机key（此随机key就作为一个对称密钥）</p>
+<li><p>客户端使用公钥加密一个随机<code>key</code>，发送给客户端，客户端解密后得到这个随机<code>key</code>（此随机<code>key</code>就作为一个对称密钥）</p>
 </li>
-<li><p>接下来服务器给客户端发送的信息全部都用这个key加密</p>
+<li><p>接下来服务器给客户端发送的信息全部都用这个<code>key</code>加密</p>
 </li>
-<li><p>客户端使用这个key解密，得到消息</p>
+<li><p>客户端使用这个<code>key</code>解密，得到消息</p>
 </li>
 </ol>
 <p>这样就实现了传输加密。</p>
@@ -310,7 +310,8 @@
 <p>C 确认Internal-CA的公钥</p>
 <p>C 确认S的公钥</p>
 <p>C -&gt; S: 用S的公钥加密的随机key</p>
-<p>S -&gt; C: 用随机key即为对称密钥加密<br>开始通信</p>
+<p>S -&gt; C: 用随机key即为对称密钥加密</p>
+<p>开始通信</p>
 <h1 id="储存"><a href="#储存" class="headerlink" title="储存"></a>储存</h1><p>由于上述加密操作，以及在信道中间点进行窃听和截取的困难性，对于信源和信端的攻击往往收效更大。</p>
 <h2 id="明文存储"><a href="#明文存储" class="headerlink" title="明文存储"></a>明文存储</h2><p>为了防止数据库被拖库后造成的信息泄露，隐私信息（密码）在数据库中一般不以明文存储。</p>
 <h2 id="MD5或者其他Hash算法存储"><a href="#MD5或者其他Hash算法存储" class="headerlink" title="MD5或者其他Hash算法存储"></a>MD5或者其他Hash算法存储</h2><p>用户输入的密码进行MD5（举例）后发送给服务器，服务器进行比对。这样即使服务器数据泄露，攻击者也很难伪造出一个密码，使得其MD5加密后和服务器中储存的密码对应。</p>
@@ -402,8 +403,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/04/daily/template/" title="template">
-                        <span class="hidden-mobile">template</span>
+                      <a href="/2024/04/04/daily/%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE/" title="我的项目">
+                        <span class="hidden-mobile">我的项目</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

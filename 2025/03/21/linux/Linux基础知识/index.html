@@ -24,7 +24,7 @@
 <meta property="og:description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;cs-basics&#x2F;operating-system&#x2F;linux-intro.html#linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Inode inode磁盘以扇区(Sector)为最小物理存储单位 操作系统">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-21T08:11:00.000Z">
-<meta property="article:modified_time" content="2025-03-21T10:20:14.811Z">
+<meta property="article:modified_time" content="2025-04-23T13:11:37.800Z">
 <meta property="article:author" content="eqSun">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -278,11 +278,11 @@
 <p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Inode">https://en.wikipedia.org/wiki/Inode</a></p>
 <h1 id="inode"><a href="#inode" class="headerlink" title="inode"></a>inode</h1><p>磁盘以扇区(Sector)为最小物理存储单位</p>
 <p>操作系统和文件系统以块(Block)为单位进行读写</p>
-<p>文件元信息，存储在inode节点中。</p>
-<p>inode时一种固定大小的数据结构，其大小在文件系统创建的时候就确定了，并且在文件的生命周期内保持不变</p>
+<p>文件元信息，存储在<code>inode</code>节点中。</p>
+<p><code>inode</code> 是一种固定大小的数据结构，其大小在文件系统创建的时候就确定了，并且在文件的生命周期内保持不变</p>
 <p>操作系统可以直接通过inode号码确定到文件的元数据信息，无需遍历整个文件系统</p>
-<p>inode数量有哦先，每个文件系统只能包含固定数量的inode，当文件系统中的inode用完时，无法在创建的新的文件和目录</p>
-<h2 id="POSIX-inode-description"><a href="#POSIX-inode-description" class="headerlink" title="POSIX inode description"></a>POSIX inode description</h2><p>定义了一些列inode中包含的信息：</p>
+<p><code>inode</code>数量有哦先，每个文件系统只能包含固定数量的<code>inode</code>，当文件系统中的<code>inode</code>用完时，无法在创建的新的文件和目录</p>
+<h2 id="POSIX-inode-description"><a href="#POSIX-inode-description" class="headerlink" title="POSIX inode description"></a>POSIX inode description</h2><p>定义了一些列<code>inode</code>中包含的信息：</p>
 <p><strong>文件序列号</strong></p>
 <p><strong>文件类型</strong></p>
 <p><strong>UserID和GroupID</strong></p>
@@ -297,14 +297,14 @@
 <h1 id="Linux文件类型"><a href="#Linux文件类型" class="headerlink" title="Linux文件类型"></a>Linux文件类型</h1><p><strong>普通文件</strong>，<strong>目录文件</strong>，<strong>链接文件</strong>，<strong>设备文件</strong>，<strong>管道文件</strong>，<strong>Socket套接字文件</strong></p>
 <h1 id="Linux目录树"><a href="#Linux目录树" class="headerlink" title="Linux目录树"></a>Linux目录树</h1><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs xl">├── <span class="hljs-function"><span class="hljs-title">bin</span> -&gt;</span> usr/bin <span class="hljs-comment">// 二进制可执行文件，已经和usr/bin合并</span><br>├── boot <span class="hljs-comment">// 系统引导时的文件</span><br>├── dev <span class="hljs-comment">// 存放设备文件</span><br>├── etc <span class="hljs-comment">// 系统管理和配置文件</span><br>├── home <span class="hljs-comment">// 用户主文件目录</span><br>├── init<br>├── <span class="hljs-function"><span class="hljs-title">lib</span> -&gt;</span> usr/lib <span class="hljs-comment">// 库文件</span><br>├── <span class="hljs-function"><span class="hljs-title">lib32</span> -&gt;</span> usr/lib32 <span class="hljs-comment">// 库文件</span><br>├── <span class="hljs-function"><span class="hljs-title">lib64</span> -&gt;</span> usr/lib64 <span class="hljs-comment">// 库文件</span><br>├── <span class="hljs-function"><span class="hljs-title">libx32</span> -&gt;</span> usr/libx32 <span class="hljs-comment">// 库文件</span><br>├── lost+found <span class="hljs-comment">// 系统非正常关机留下的文件</span><br>├── media <span class="hljs-comment">// </span><br>├── mnt <span class="hljs-comment">// 临时文件系统挂载</span><br>├── opt <span class="hljs-comment">// 可选应用程序包的未知</span><br>├── proc <span class="hljs-comment">// 虚拟文件系统目录</span><br>├── root <span class="hljs-comment">// root主目录</span><br>├── <span class="hljs-function"><span class="hljs-title">sbin</span> -&gt;</span> usr/sbin<br>├── tmp <span class="hljs-comment">// 临时文件</span><br>├── usr <span class="hljs-comment">// 系统应用程序</span><br>├── var <span class="hljs-comment">// 运行时变动的文件log之类</span><br></code></pre></td></tr></table></figure>
 
-<h1 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h1><p>-rwxrwxr–</p>
+<h1 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h1><p><code>-rwxrwxr--</code></p>
 <p>分别代表</p>
 <p>文件类型</p>
 <p>属主权限（读写执行）</p>
 <p>属组权限（读写执行）</p>
 <p>其他用户权限（读写执行）</p>
 <p>对于文件而言，读写执行按照字面意思理解</p>
-<p>对于目录文件而言，读标识可以查看目录下列表，写标识可以创建和传出目录下文件，执行标识可以使用cd进入目录</p>
+<p>对于目录文件而言，读标识可以查看目录下列表，写标识可以创建和传出目录下文件，执行标识可以使用<code>cd</code>进入目录</p>
 <p>超级用户可以无视普通用户的权限，即使文件目录权限是000依旧可访问</p>
 
                 
@@ -402,9 +402,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/22/daily/%E7%BE%8E%E5%9B%A2%E7%AC%94%E8%AF%95/" title="美团笔试">
+                      <a href="/2025/03/26/%E7%BC%93%E5%AD%98%E5%BC%82%E5%B8%B8%E5%9C%BA%E6%99%AF/" title="缓存异常场景">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">美团笔试</span>
+                        <span class="hidden-mobile">缓存异常场景</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

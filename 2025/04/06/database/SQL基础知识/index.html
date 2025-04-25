@@ -24,7 +24,7 @@
 <meta property="og:description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;database&#x2F;sql&#x2F;sql-syntax-summary.html SQL基础知识数据库术语 database：保存有组织的数据的容器 table: 某种特定类型的数据的结构化清单 schema：关于数据库和表的分布以及特征的信息。定义了数据如何在表中存储，数据如何分解如何命名的问题 column： row： primary key： S">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-06T09:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-06T09:29:30.737Z">
+<meta property="article:modified_time" content="2025-04-24T02:23:31.472Z">
 <meta property="article:author" content="eqSun">
 <meta property="article:tag" content="database">
 <meta name="twitter:card" content="summary_large_image">
@@ -276,24 +276,24 @@
                 <p>参考资料：</p>
 <p><a target="_blank" rel="noopener" href="https://javaguide.cn/database/sql/sql-syntax-summary.html">https://javaguide.cn/database/sql/sql-syntax-summary.html</a></p>
 <h1 id="SQL基础知识"><a href="#SQL基础知识" class="headerlink" title="SQL基础知识"></a>SQL基础知识</h1><p>数据库术语</p>
-<p>database：保存有组织的数据的容器</p>
-<p>table: 某种特定类型的数据的结构化清单</p>
-<p>schema：关于数据库和表的分布以及特征的信息。定义了数据如何在表中存储，数据如何分解如何命名的问题</p>
-<p>column：</p>
-<p>row：</p>
-<p>primary key：</p>
-<h1 id="SQL分类"><a href="#SQL分类" class="headerlink" title="SQL分类"></a>SQL分类</h1><p>DDL：数据定义语言，创建和修改数据库对象的语言。DDL语句包括CREATE、ALTER、DROP等</p>
-<p>DML：数据操作语言，操作数据库中数据的语言。DML语句包括INSERT、UPDATE、DELETE等</p>
-<p>TCL：事务控制语言，控制数据库事务的语言。TCL语句包括COMMIT、ROLLBACK、SAVEPOINT等</p>
-<p>DCL：数据控制语言，控制数据库访问权限的语言。DCL语句包括GRANT、REVOKE等</p>
+<p><strong>database</strong>：保存有组织的数据的容器</p>
+<p><strong>table</strong>: 某种特定类型的数据的结构化清单</p>
+<p><strong>schema</strong>：关于数据库和表的分布以及特征的信息。定义了数据如何在表中存储，数据如何分解如何命名的问题</p>
+<p><strong>column</strong>：</p>
+<p><strong>row</strong>：</p>
+<p><strong>primary key</strong>：</p>
+<h1 id="SQL分类"><a href="#SQL分类" class="headerlink" title="SQL分类"></a>SQL分类</h1><p><strong>DDL</strong>：数据定义语言，创建和修改数据库对象的语言。DDL语句包括CREATE、ALTER、DROP等</p>
+<p><strong>DML</strong>：数据操作语言，操作数据库中数据的语言。DML语句包括INSERT、UPDATE、DELETE等</p>
+<p><strong>TCL</strong>：事务控制语言，控制数据库事务的语言。TCL语句包括COMMIT、ROLLBACK、SAVEPOINT等</p>
+<p><strong>DCL</strong>：数据控制语言，控制数据库访问权限的语言。DCL语句包括GRANT、REVOKE等</p>
 <h1 id="一些关键词"><a href="#一些关键词" class="headerlink" title="一些关键词"></a>一些关键词</h1><h2 id="LIKE"><a href="#LIKE" class="headerlink" title="LIKE"></a>LIKE</h2><p>LIKE：在where子句中使用，只有字段是文本值的时候才能使用LIKE，支持两个通配符 %和_，%表示任意长度的字符串，_表示一个字符</p>
-<h2 id="JOIN"><a href="#JOIN" class="headerlink" title="JOIN"></a>JOIN</h2><p>JOIN: 在每个表中选择一个字段，并且对这些字段的值进行比较，值相同的两条记录合并为一条。链接表的本质就是将不同表的记录合并起来形成一张新表。此表知识临时的，仅存在于查询中。如果两张表的关联字段相同可以使用USING关键字来简化语句。<code>inner join Orders o using (OrderID)</code></p>
-<p>INNER JOIN：内连接，返回两个表中匹配的记录</p>
-<p>LEFT JOIN：左连接，返回左表中所有的记录和右表中匹配的记录，如果右表中没有匹配的记录，则返回NULL</p>
-<p>RIGHT JOIN：右连接，返回右表中所有的记录和左表中匹配的记录，如果左表中没有匹配的记录，则返回NULL</p>
-<p>FULL JOIN：全连接，返回两个表中所有的记录，如果没有匹配的记录，则返回NULL</p>
-<p>SELF JOIN：自连接，表与表之间的连接，表与自身的连接 </p>
-<p>CROSS JOIN：笛卡尔积，返回两个表中所有的记录的组合</p>
+<h2 id="JOIN"><a href="#JOIN" class="headerlink" title="JOIN"></a>JOIN</h2><p><strong>JOIN</strong>: 在每个表中选择一个字段，并且对这些字段的值进行比较，值相同的两条记录合并为一条。链接表的本质就是将不同表的记录合并起来形成一张新表。此表知识临时的，仅存在于查询中。如果两张表的关联字段相同可以使用USING关键字来简化语句。<code>inner join Orders o using (OrderID)</code></p>
+<p><strong>INNER JOIN</strong>：内连接，返回两个表中匹配的记录</p>
+<p><strong>LEFT JOIN</strong>：左连接，返回左表中所有的记录和右表中匹配的记录，如果右表中没有匹配的记录，则返回NULL</p>
+<p><strong>RIGHT JOIN</strong>：右连接，返回右表中所有的记录和左表中匹配的记录，如果左表中没有匹配的记录，则返回NULL</p>
+<p><strong>FULL JOIN</strong>：全连接，返回两个表中所有的记录，如果没有匹配的记录，则返回NULL</p>
+<p><strong>SELF JOIN</strong>：自连接，表与表之间的连接，表与自身的连接 </p>
+<p><strong>CROSS JOIN</strong>：笛卡尔积，返回两个表中所有的记录的组合</p>
 <h2 id="DELIMITER"><a href="#DELIMITER" class="headerlink" title="DELIMITER"></a>DELIMITER</h2><p>当你创建存储过程时，MySql会将分号作为语句的结束符，因此在创建存储过程时需要使用DELIMITER命令来改变分隔符。使得你的过程中可以使用分号。</p>
 <h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="文本处理"><a href="#文本处理" class="headerlink" title="文本处理"></a>文本处理</h2><p>LEFT(),RIGHT()：左边或右边的字符</p>
 <p>LOWER(),UPPER()：小写或大写</p>
@@ -306,7 +306,7 @@
 <h2 id="数值处理"><a href="#数值处理" class="headerlink" title="数值处理"></a>数值处理</h2><p>参考javaguide</p>
 <h2 id="汇总处理"><a href="#汇总处理" class="headerlink" title="汇总处理"></a>汇总处理</h2><h1 id="事务处理"><a href="#事务处理" class="headerlink" title="事务处理"></a>事务处理</h1><p>不能回退SELECT语句, 回退SELECT语句没有意义；也不能回退CREATE和DROP语句</p>
 <p>MySql默认是隐式提交，美提交一条语句就把这条语句当作一个事务然后提交。当出现START TRANSACTION语句时，MySql会将隐式提交关闭，直到出现COMMIT或ROLLBACK语句时才会重新打开隐式提交。</p>
-<p>通过 set autocommit&#x3D;0 可以取消自动提交，直到 set autocommit&#x3D;1 才会提交；autocommit 标记是针对每个连接而不是针对服务器的。</p>
+<p>通过 <code>set autocommit=0</code> 可以取消自动提交，直到 <code>set autocommit=1</code> 才会提交；<code>autocommit</code> 标记是针对每个连接而不是针对服务器的。</p>
 <h1 id="权限控制"><a href="#权限控制" class="headerlink" title="权限控制"></a>权限控制</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">GRANT</span> privilege,[privilege],.. <span class="hljs-keyword">ON</span> privilege_level<br><span class="hljs-keyword">TO</span> <span class="hljs-keyword">user</span> [IDENTIFIED <span class="hljs-keyword">BY</span> password]<br>[REQUIRE tsl_option]<br>[<span class="hljs-keyword">WITH</span> [GRANT_OPTION <span class="hljs-operator">|</span> resource_option]];<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 将 SELECT 和 INSERT 权限授予用户 user1 在 database_name 上</span><br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">SELECT</span>, <span class="hljs-keyword">INSERT</span> <br><span class="hljs-keyword">ON</span> database_name.<span class="hljs-operator">*</span> <br><span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;user1&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span><br>IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;password123&#x27;</span><br><span class="hljs-keyword">WITH</span> <span class="hljs-keyword">GRANT</span> OPTION;<br><br><span class="hljs-comment">-- 将 UPDATE 权限授予用户 user2 在某个表上，并要求使用 TLS</span><br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">UPDATE</span> <br><span class="hljs-keyword">ON</span> database_name.table_name <br><span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;user2&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> <br>IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;password456&#x27;</span><br>REQUIRE SSL;<br><br><span class="hljs-comment">-- 将所有权限授予用户 user3，并且可以授予其他人</span><br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> PRIVILEGES <br><span class="hljs-keyword">ON</span> database_name.<span class="hljs-operator">*</span> <br><span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;user3&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> <br>IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;password789&#x27;</span><br><span class="hljs-keyword">WITH</span> <span class="hljs-keyword">GRANT</span> OPTION;<br></code></pre></td></tr></table></figure>

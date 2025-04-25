@@ -24,7 +24,7 @@
 <meta property="og:description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;cs-basics&#x2F;network&#x2F;network-attack-means.html 网络攻击常见手段可以分为窃取和拒绝服务式两种，前者主要依靠身份认证机制解决。后者依靠黑名单&#x2F;防火墙&#x2F;CDN等机制 IP欺骗伪造IP地址，使得合法用户无法访问服务 SYN Flood大量伪造TCP连接请求，使得服务器资源耗尽（因为serve">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-14T09:37:00.000Z">
-<meta property="article:modified_time" content="2025-03-14T12:12:16.523Z">
+<meta property="article:modified_time" content="2025-04-23T13:08:32.627Z">
 <meta property="article:author" content="eqSun">
 <meta property="article:tag" content="network">
 <meta name="twitter:card" content="summary_large_image">
@@ -277,7 +277,7 @@
 <p><a target="_blank" rel="noopener" href="https://javaguide.cn/cs-basics/network/network-attack-means.html">https://javaguide.cn/cs-basics/network/network-attack-means.html</a></p>
 <h1 id="网络攻击常见手段"><a href="#网络攻击常见手段" class="headerlink" title="网络攻击常见手段"></a>网络攻击常见手段</h1><p>可以分为窃取和拒绝服务式两种，前者主要依靠身份认证机制解决。后者依靠黑名单&#x2F;防火墙&#x2F;CDN等机制</p>
 <h1 id="IP欺骗"><a href="#IP欺骗" class="headerlink" title="IP欺骗"></a>IP欺骗</h1><p>伪造IP地址，使得合法用户无法访问服务</p>
-<h1 id="SYN-Flood"><a href="#SYN-Flood" class="headerlink" title="SYN Flood"></a>SYN Flood</h1><p>大量伪造TCP连接请求，使得服务器资源耗尽（因为server会进入SYN_RECV）</p>
+<h1 id="SYN-Flood"><a href="#SYN-Flood" class="headerlink" title="SYN Flood"></a>SYN Flood</h1><p>大量伪造TCP连接请求，使得服务器资源耗尽（因为server会进入<code>SYN_RECV</code>）</p>
 <p>解决方案是填充挤压工作后覆盖最先创建的半开连接，或者要求服务器创建Cookie来识别合法ACK</p>
 <h1 id="UDP-Flood"><a href="#UDP-Flood" class="headerlink" title="UDP Flood"></a>UDP Flood</h1><p>server接受到UDP时会检查正在运行的侦听指定端口的请求的程序，如果没有程序再该端口监听，则返回一个ICMP响应以通知发送方目的不可达</p>
 <h1 id="Http-Flood"><a href="#Http-Flood" class="headerlink" title="Http Flood"></a>Http Flood</h1><p>大量请求Get大型资源&#x2F;大量Post修改数据库</p>

@@ -24,7 +24,7 @@
 <meta property="og:description" content="简介又称为布鲁尔定理 (Brewer’s theorem) Consistency (一致性) ， Availability (可用性), Partition Tolerance (分区容错性) C：所有节点访问同一份最新的数据副本 A：非故障的节点在合理的时间返回合理的响应 P：出现网络分区的时候仍然能够对外提供服务 分布式系统理论只能是CP,AP 单机可以满足CA 常见组件Zookeeper保">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-09-03T09:36:00.000Z">
-<meta property="article:modified_time" content="2025-04-01T11:33:11.612Z">
+<meta property="article:modified_time" content="2025-04-23T13:22:39.846Z">
 <meta property="article:author" content="eqSun">
 <meta property="article:tag" content="distributed-system">
 <meta name="twitter:card" content="summary_large_image">
@@ -274,7 +274,7 @@
               <div class="markdown-body">
                 
                 <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>又称为布鲁尔定理 (Brewer’s theorem)</p>
-<p>Consistency (一致性) ， Availability (可用性), Partition Tolerance (分区容错性)</p>
+<p><strong>Consistency</strong> (一致性) ， <strong>Availability</strong> (可用性), <strong>Partition Tolerance</strong> (分区容错性)</p>
 <p>C：所有节点访问同一份最新的数据副本</p>
 <p>A：非故障的节点在合理的时间返回合理的响应</p>
 <p>P：出现网络分区的时候仍然能够对外提供服务</p>
@@ -282,9 +282,9 @@
 <p>单机可以满足CA</p>
 <h1 id="常见组件"><a href="#常见组件" class="headerlink" title="常见组件"></a>常见组件</h1><p>Zookeeper保证CP：Leader选举过程中半数以上的机器不可用的时候服务就是不可用的</p>
 <p>Eureka保证的是AP：不存在leader节点，每个节点都是一样的</p>
-<h1 id="BASE-理论"><a href="#BASE-理论" class="headerlink" title="BASE 理论"></a>BASE 理论</h1><p>Basically Available 基本可用</p>
-<p>Soft-state 软状态</p>
-<p>Eventually Consistent 最终一致性</p>
+<h1 id="BASE-理论"><a href="#BASE-理论" class="headerlink" title="BASE 理论"></a>BASE 理论</h1><p><strong>Basically Available</strong> 基本可用</p>
+<p><strong>Soft-state</strong> 软状态</p>
+<p><strong>Eventually Consistent</strong> 最终一致性</p>
 <p>Basically Available: 出现故障的时候允许损失部分可用性，包括非核心功能的损失和响应时间上的损失</p>
 <p>Soft-state: 允许数据在不影响整体可用性的存在不一致</p>
 <p>Eventually Consistent: 是系统中所有的数据副本，在经过一段时间的同步后，最终能够达到一个一致的状态</p>

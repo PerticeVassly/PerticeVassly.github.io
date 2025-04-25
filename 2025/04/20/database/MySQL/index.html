@@ -24,7 +24,7 @@
 <meta property="og:description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;database&#x2F;mysql&#x2F;mysql-questions-01.html 有哪些常见的关系型数据库MySQL, PostgreSQL, Oracle, SQL Server, SQLite 什么是SQLSQL是一种结构化查询语言（Structure Query Language），提供了一种从数据库中读写数据的方法 MySQL端口号3306">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-20T09:30:00.000Z">
-<meta property="article:modified_time" content="2025-04-20T16:01:03.668Z">
+<meta property="article:modified_time" content="2025-04-24T02:35:06.294Z">
 <meta property="article:author" content="eqSun">
 <meta property="article:tag" content="database">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.3k 字
+          4.1k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          28 分钟
+          34 分钟
         
       </span>
     
@@ -353,19 +353,19 @@
 <p>显然上述涉及支持写写并行，但是不支持读写并行和写写并行</p>
 <p>锁还分为表级别锁（table-level locking）和行级别锁(row-level locking）</p>
 <h2 id="MVCC（多版本并发控制）：乐观控制的模式"><a href="#MVCC（多版本并发控制）：乐观控制的模式" class="headerlink" title="MVCC（多版本并发控制）：乐观控制的模式"></a>MVCC（多版本并发控制）：乐观控制的模式</h2><p>对于一份数据会存储多个版本，通过事务的可见性来保证事务看到的是自己应该看到的版本。一般会哟一个全局的版本分配器来设定版本号</p>
-<h1 id="SQL标准的事务隔离级别"><a href="#SQL标准的事务隔离级别" class="headerlink" title="SQL标准的事务隔离级别"></a>SQL标准的事务隔离级别</h1><p>READ-UNCOMMITTED(读取未提交)： 最低隔离级别，可以读取其他事务尚未提交的数据,  可能导致脏读，幻读，不可重复读</p>
-<p>READ-COMMITTED（读取已提交）：只能读取并发事务已经提交的数据，可以避免脏读，不可重复读和幻读仍然不可以避免（能够保证读到的数据已经是已经提交的，但是无法保证后续此数据不会被继续修改）</p>
-<p>REPEATABLE-READ（可重复读）：对于同一字段的多次读取结果是一致的，除非数据被自己修改，可以防止脏读和不可重复读，但是幻读仍然可能</p>
-<p>SERIALIZABLE（可串行化）：最高隔离级别，完全服从ACID隔离级别。所有事务依次逐个执行，事务之间完全不可能产生干扰。</p>
+<h1 id="SQL标准的事务隔离级别"><a href="#SQL标准的事务隔离级别" class="headerlink" title="SQL标准的事务隔离级别"></a>SQL标准的事务隔离级别</h1><p><strong>READ-UNCOMMITTED(读取未提交)</strong>： 最低隔离级别，可以读取其他事务尚未提交的数据,  可能导致脏读，幻读，不可重复读</p>
+<p><strong>READ-COMMITTED（读取已提交）</strong>：只能读取并发事务已经提交的数据，可以避免脏读，不可重复读和幻读仍然不可以避免（能够保证读到的数据已经是已经提交的，但是无法保证后续此数据不会被继续修改）</p>
+<p><strong>REPEATABLE-READ（可重复读）</strong>：对于同一字段的多次读取结果是一致的，除非数据被自己修改，可以防止脏读和不可重复读，但是幻读仍然可能</p>
+<p><strong>SERIALIZABLE（可串行化）</strong>：最高隔离级别，完全服从ACID隔离级别。所有事务依次逐个执行，事务之间完全不可能产生干扰。</p>
 <p>上述隔离级别是基于锁和MVCC的实现, SERIALIZABLE是基于锁的实现，REPEATABLE-READ和READ-COMMITTED是基于MVCC和锁的实现</p>
-<p>MySQL的默认隔离级别是REPEATABLE-READ</p>
+<p>MySQL的默认隔离级别是<strong>REPEATABLE-READ</strong></p>
 <h1 id="表锁和行锁"><a href="#表锁和行锁" class="headerlink" title="表锁和行锁"></a>表锁和行锁</h1><p>MyISAM仅仅支持表级锁，InnoDB支持行级锁和表级锁</p>
 <p>表锁：针对整个表</p>
 <p>行锁：针对索引字段加锁，只是针对当前操作的行加锁</p>
 <h1 id="where字段导致大量加锁"><a href="#where字段导致大量加锁" class="headerlink" title="where字段导致大量加锁"></a>where字段导致大量加锁</h1><p>执行UPDATE, DELETE的时候，如果WHERE条件没有命中唯一索引或者索引失效，就可能扫描全表堆所有记录加锁，导致性能下降（因为行锁是基于索引的，如果索引失效了，就会回退到表锁）</p>
-<h1 id="InnoDB各类行锁"><a href="#InnoDB各类行锁" class="headerlink" title="InnoDB各类行锁"></a>InnoDB各类行锁</h1><p>记录锁（Record Lock）：属于单个行记录上的锁</p>
-<p>间隙锁（Gap Lock）：锁定一个范围，不包括记录本身，防止插入新记录</p>
-<p>临键锁（Next-Key Lock）：实际上就是记录锁+间隙锁，锁定一个范围，包括记录本身，防止插入新记录，也防止修改记录本身</p>
+<h1 id="InnoDB各类行锁"><a href="#InnoDB各类行锁" class="headerlink" title="InnoDB各类行锁"></a>InnoDB各类行锁</h1><p><strong>记录锁（Record Lock）</strong>：属于单个行记录上的锁</p>
+<p><strong>间隙锁（Gap Lock）</strong>：锁定一个范围，不包括记录本身，防止插入新记录</p>
+<p><strong>临键锁（Next-Key Lock）</strong>：实际上就是记录锁+间隙锁，锁定一个范围，包括记录本身，防止插入新记录，也防止修改记录本身</p>
 <p>InnoDB默认REPEATABLE-READ隔离级别下使用的是Next-Key Lock, 但是如果操作索引唯一，实际上退化为记录锁也可以</p>
 <p>ps: 上述也提到了X锁和S锁的概念，实际上这是一个不同粒度的概念。上述三种锁的粒度更大</p>
 <h1 id="意向锁"><a href="#意向锁" class="headerlink" title="意向锁"></a>意向锁</h1><p>当需要用到表锁的时候，如何判断表中记录有没有行锁呢</p>
@@ -374,7 +374,43 @@
 <p>意向锁之间是兼容的</p>
 <p>IS之间兼容，IS和IX之间不兼容，IX和IX之间不兼容,IS和S兼容，和X不兼容，IX和S不兼容，和X不兼容</p>
 <p>上述兼容性针对同一级，表级IXIS和行级SX之间兼容的</p>
-<h1 id="当前读和快照读有什么区别"><a href="#当前读和快照读有什么区别" class="headerlink" title="当前读和快照读有什么区别"></a>当前读和快照读有什么区别</h1>
+<h1 id="当前读和快照读有什么区别"><a href="#当前读和快照读有什么区别" class="headerlink" title="当前读和快照读有什么区别"></a>当前读和快照读有什么区别</h1><p><strong>快照（一致性非锁定读）</strong> 读顾名思义就是单纯的SELECT语句，当前读是SELECT FOR UPDATE或者SELECT LOCK IN SHARE MODE</p>
+<p>如果读取的记录时正在执行UPDATE&#x2F;DELETE操作，读取操作不会因此等待X锁释放，而是直接读取快照数据</p>
+<p>只有在事务隔离级别**RC（READ COMMITTED）<strong>和</strong>RR（REPEATABLE READ）**下，InnoDB才会使用一致性非锁定读（所以可重复读实际上时反复读取的快照？）</p>
+<p>RC级别下，总是读取被锁定行的最新的一份快照数据</p>
+<p>RR级别下，读取的快照数据是事务开始时的快照数据</p>
+<p><strong>当前读（一致性锁定读）</strong> 就是给行及记录加X锁或者S锁</p>
+<p>也就是上述的上锁方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"># 对读的记录加一个X锁<br>SELECT...FOR UPDATE<br># 对读的记录加一个S锁<br>SELECT...LOCK IN SHARE MODE<br># 对读的记录加一个S锁<br>SELECT...FOR SHARE<br># 对修改的记录加一个X锁<br>INSERT...<br>UPDATE...<br>DELETE...<br></code></pre></td></tr></table></figure>
+
+<h1 id="自增锁"><a href="#自增锁" class="headerlink" title="自增锁"></a>自增锁</h1><p>自增锁是InnoDB引擎的一个特殊的表级锁，主要用于解决自增主键的并发问题</p>
+<p>AUTO-INC Locks</p>
+<h1 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h1><h2 id="不要使用MySQL直接存储文件"><a href="#不要使用MySQL直接存储文件" class="headerlink" title="不要使用MySQL直接存储文件"></a>不要使用MySQL直接存储文件</h2><p>可以使用云服务厂商提供的开箱即用的文件存储服务</p>
+<h2 id="MySQL传递IP地址"><a href="#MySQL传递IP地址" class="headerlink" title="MySQL传递IP地址"></a>MySQL传递IP地址</h2><p>提供了两个方法来处理ip地址</p>
+<p>INET_ATON和INET_NTOA, 前者ip转为无符号整形，后者反之</p>
+<h2 id="Explain"><a href="#Explain" class="headerlink" title="Explain"></a>Explain</h2><p>一条SQL语句在经过MySQL优化器后，具体的执行方式</p>
+<h2 id="MySQL性能优化核心"><a href="#MySQL性能优化核心" class="headerlink" title="MySQL性能优化核心"></a>MySQL性能优化核心</h2><ol>
+<li><p>找到慢SQL，使用Performance Schema和EXPLAIN分析慢SQL，找到性能瓶颈</p>
+</li>
+<li><p>优化：</p>
+</li>
+</ol>
+<ul>
+<li>索引优化， 表结构优化， SQL优化</li>
+</ul>
+<ol start="3">
+<li>架构优化</li>
+</ol>
+<ul>
+<li>读写分离，分库分表，冷热分离，缓存机制</li>
+</ul>
+<ol start="4">
+<li>其他优化</li>
+</ol>
+<ul>
+<li>连接池配置，硬件配置</li>
+</ul>
+
                 
               </div>
             
@@ -469,6 +505,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2025/04/21/database/B%E6%A0%91%E4%B8%8EB+%E6%A0%91/" title="B树与B+树">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">B树与B+树</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
