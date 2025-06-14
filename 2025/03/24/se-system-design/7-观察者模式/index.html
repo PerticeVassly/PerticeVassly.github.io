@@ -1,0 +1,839 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/nerv.jpeg">
+  <link rel="icon" href="/img/nerv.jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="eqSun">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="观察者模式 (Observer Pattern)定义对象之间的一种一对多的依赖关系，使得当一个对象改变状态时，其相关的依赖对象都能得到通知并被自动更新。观察者模式又叫做发布-订阅模式（Publish-Subscribe Pattern），模型-视图（Model&#x2F;View）模式，源-监听器（Source-Listener）模式。观察者模式是一种对象行为模式 Observer Pattern">
+<meta property="og:type" content="article">
+<meta property="og:title" content="观察者模式">
+<meta property="og:url" content="https://perticevassly.github.io/project/2025/03/24/se-system-design/7-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="eqSun&#39;s Blog">
+<meta property="og:description" content="观察者模式 (Observer Pattern)定义对象之间的一种一对多的依赖关系，使得当一个对象改变状态时，其相关的依赖对象都能得到通知并被自动更新。观察者模式又叫做发布-订阅模式（Publish-Subscribe Pattern），模型-视图（Model&#x2F;View）模式，源-监听器（Source-Listener）模式。观察者模式是一种对象行为模式 Observer Pattern">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-24T15:10:00.000Z">
+<meta property="article:modified_time" content="2025-06-14T14:22:10.739Z">
+<meta property="article:author" content="eqSun">
+<meta property="article:tag" content="design-pattern">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>观察者模式 - eqSun&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"perticevassly.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/eva.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="观察者模式"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-03-24 23:10" pubdate>
+          2025年3月24日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          41 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">观察者模式</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="观察者模式-Observer-Pattern"><a href="#观察者模式-Observer-Pattern" class="headerlink" title="观察者模式 (Observer Pattern)"></a>观察者模式 (Observer Pattern)</h1><p>定义对象之间的一种一对多的依赖关系，使得当一个对象改变状态时，其相关的依赖对象都能得到通知并被自动更新。观察者模式又叫做发布-订阅模式（Publish-Subscribe Pattern），模型-视图（Model&#x2F;View）模式，源-监听器（Source-Listener）模式。观察者模式是一种对象行为模式</p>
+<p>Observer Pattern: Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically. </p>
+<h1 id="模式结构"><a href="#模式结构" class="headerlink" title="模式结构"></a>模式结构</h1><pre><code class=" mermaid">classDiagram
+    class Subject&#123;
+        +attach(Observer)
+        +detach(Observer)
+        +notify()           
+        
+    &#125;
+    class ConcreteSubject&#123;
+        -subjectState
+        +getState()
+        +setState()
+    &#125;
+    class Observer&#123;
+        +update()
+    &#125;
+    class ConcreteObserver&#123;
+        -observerState
+        +update()
+    &#125;
+    Subject &lt;|-- ConcreteSubject
+    Observer &lt;|-- ConcreteObserver
+    Subject --&gt; Observer : observers
+    ConcreteObserver --&gt; ConcreteSubject : subject
+</code></pre>
+
+<p>这里实际上是双向持有引用，subject通知，observer来取</p>
+<p>其中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Subject</span>::<span class="hljs-title function_">notify</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-title class_">Observer</span> observer : observers) &#123;<br>        observer.<span class="hljs-title function_">update</span>();<br>    &#125;<br>&#125;<br><br><span class="hljs-title class_">ConcreteSubject</span>::<span class="hljs-title function_">getState</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> subjectState;<br>&#125;<br><br><span class="hljs-title class_">ConcreteObserver</span>::<span class="hljs-title function_">update</span>(<span class="hljs-params"></span>) &#123;<br>    observerState = subject.<span class="hljs-title function_">getState</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.ArrayList;<br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Subject</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">registerObserver</span><span class="hljs-params">(Observer o)</span>;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">removeObserver</span><span class="hljs-params">(Observer o)</span>;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">notifyObservers</span><span class="hljs-params">()</span>;<br>&#125;<br><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Observer</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">update</span><span class="hljs-params">(<span class="hljs-type">float</span> temp, <span class="hljs-type">float</span> humidity, <span class="hljs-type">float</span> pressure)</span>;<br>&#125;<br><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">DisplayElement</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">display</span><span class="hljs-params">()</span>;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CurrentConditionsDisplay</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">DisplayElement</span>, Observer &#123;<br>  <span class="hljs-keyword">private</span> <span class="hljs-type">float</span> temperature;<br>  <span class="hljs-keyword">private</span> <span class="hljs-type">float</span> humidity;<br>  <span class="hljs-keyword">private</span> Subject weatherData;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">CurrentConditionsDisplay</span><span class="hljs-params">(Subject weatherData)</span> &#123;<br>    <span class="hljs-built_in">this</span>.weatherData = weatherData;<br>    <span class="hljs-built_in">this</span>.weatherData.registerObserver(<span class="hljs-built_in">this</span>);<br>  &#125;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">update</span><span class="hljs-params">(<span class="hljs-type">float</span> temperature, <span class="hljs-type">float</span> humidity, <span class="hljs-type">float</span> pressure)</span> &#123;<br>    <span class="hljs-built_in">this</span>.temperature = temperature;<br>    <span class="hljs-built_in">this</span>.humidity = humidity;<br>    display();<br>  &#125;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">display</span><span class="hljs-params">()</span> &#123;<br>    System.out.println(<span class="hljs-string">&quot;Current conditions: &quot;</span> + temperature + <span class="hljs-string">&quot;F degrees and&quot;</span> + humidity + <span class="hljs-string">&quot;% humidity&quot;</span>);<br>  &#125;<br><br><br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">WeatherData</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Subject</span> &#123;<br>  <span class="hljs-keyword">private</span> <span class="hljs-type">float</span> temperature;<br>  <span class="hljs-keyword">private</span> <span class="hljs-type">float</span> humidity;<br>  <span class="hljs-keyword">private</span> <span class="hljs-type">float</span> pressure;<br>  List&lt;Observer&gt; observers;<br>  WeatherData() &#123;<br>    <span class="hljs-built_in">this</span>.observers = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>  &#125;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">registerObserver</span><span class="hljs-params">(Observer o)</span> &#123;<br>    <span class="hljs-built_in">this</span>.observers.add(o);<br>  &#125;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">removeObserver</span><span class="hljs-params">(Observer o)</span> &#123;<br>    <span class="hljs-built_in">this</span>.observers.remove(o);<br>  &#125;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">notifyObservers</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">for</span> (Observer observer : observers) &#123;<br>      observer.update(temperature, humidity, pressure);<br>    &#125;<br>  &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setTemperature</span><span class="hljs-params">(<span class="hljs-type">float</span> temperature)</span> &#123;<br>    <span class="hljs-built_in">this</span>.temperature = temperature;<br>    notifyObservers();<br>  &#125;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setHumidity</span><span class="hljs-params">(<span class="hljs-type">float</span> humidity)</span> &#123;<br>    <span class="hljs-built_in">this</span>.humidity = humidity;<br>    notifyObservers();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>当然上述实现也有一定问题。比如说每次被观察对象都传输了所有数据，而不考虑观察者是不是需要。而且每次被观察者数据变动都会调用notify(), 被观察者无法自主决定速率。应该改成上述模式结构中互相持有引用的形式</p>
+<h1 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h1><p><strong>优点</strong></p>
+<p>实现类表现层和数据逻辑层的分离</p>
+<p>在观察目标和数据逻辑层之间建立了一个抽象的耦合</p>
+<p>支持广播通信</p>
+<p>符合 “开闭原则”</p>
+<p><strong>缺点</strong></p>
+<p>如果一个观察目标有很多直接和间接的观察者，<strong>通知所有的观察者比较耗时</strong></p>
+<p>如果观察目标和观察者之间有<strong>循环依赖</strong>关系，可能会导致<strong>系统崩溃</strong></p>
+<p>观察者模式<strong>没有相应的机制让观察者知道所观察的目标对象是怎么发生变化</strong>的，仅仅知道观察目标发生了变化</p>
+<h3 id="Java中的观察者模式"><a href="#Java中的观察者模式" class="headerlink" title="Java中的观察者模式"></a>Java中的观察者模式</h3><pre><code class=" mermaid">classDiagram
+    class Observable &#123;
+        - changed : boolean
+        - obs : Vector
+        + Observable()
+        + addObserver(Observer o) : void
+        + deleteObserver(Observer o) : void
+        + notifyObservers() : void
+        + notifyObservers(Object arg) : void
+        + deleteObservers() : void
+        + setChanged() : void
+        + clearChanged() : void
+        + hasChanged() : boolean
+        + countObservers() : int
+    &#125;
+
+    class Observer &#123;
+        + update(Observable o, Object arg) : void
+    &#125;
+
+    ConcreteObservable --|&gt; Observable
+    ConcreteObserver --|&gt; Observer
+    Observable --&gt; Observer : obs
+</code></pre>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java">setChanged() &#123;<br>    changed = <span class="hljs-literal">true</span>;<br>&#125;<br><br>notifyObservers(Object arg) &#123;<br>    <span class="hljs-keyword">if</span> (changed) &#123;<br>        <span class="hljs-keyword">for</span> every observer on the list &#123;<br>            call <span class="hljs-title function_">update</span> <span class="hljs-params">(<span class="hljs-built_in">this</span>, arg)</span><br>        &#125;<br>        changed = <span class="hljs-literal">false</span>;<br>    &#125;<br>&#125;<br><br>notifyObservers() &#123;<br>    notifyObservers(<span class="hljs-literal">null</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>为什么会有setChanged()? 被观察者是否发送notify还取取决于setChanged()得状态</p>
+<p><code>void update(Observable o, Object arg);</code> 前者o可以提供get方法来让observer自取需要得数据而非全部发送。arg用于传输一些额外定制的而数据, 这里和上述模式结构有略微的不同，模式结构中是直接将subject作为一个成员变量在其中的，这里是作为参数，效果是一样的。</p>
+<h3 id="谁触发更新"><a href="#谁触发更新" class="headerlink" title="谁触发更新"></a>谁触发更新</h3><p>目标和它的观察者依赖于通知机制来保持一致。</p>
+<ul>
+<li><p>由目标对象的状态设定操作在改变目标对象的状态之后自动调用Notify, 缺点是多个连续的操作会产生多次连续的更新</p>
+</li>
+<li><p>让客户负责在适当的时候调用Notify。这样做的有点事客户可以在一系列的状态改变完成后再一次性地触发更新，避免了不必要的中间更新。缺点是给客户增加了触发跟新的责任，客户端可能会忘记调用Notify</p>
+</li>
+</ul>
+<h3 id="封装复杂的更新语义"><a href="#封装复杂的更新语义" class="headerlink" title="封装复杂的更新语义"></a>封装复杂的更新语义</h3><p>当目标和观察者之间的依赖关系特别复杂的时候，可能需要一个维护这些关系的对象。将这样的对象称之为更改管理器 （Change Manager）</p>
+<p>尽量减少观察者反映其目标的状态变化所需的工作量。例如，如果一个操作设计对于几个相互依赖的目标进行改动，就必须保证仅在所有目录都更改完毕以后，才一次性通知他们的观察者，而不是每个目标都通知</p>
+<pre><code class=" mermaid">classDiagram
+    class ChangeManager &#123;
+        - mapping : Subject-Observer
+        Register(Subject, Observer)
+        Unregister(Subject, Observer)
+        Notify()
+    &#125;
+
+    class SimpleChangeManager &#123;
+        + Register(Subject, Observer)
+        + Unregister(Subject, Observer)
+        + Notify()     
+    &#125;
+
+    class DAGChangeManager &#123;
+        + Register(Observer)
+        + Unregister(Observer)
+        + Notify()
+    &#125;
+
+    class Observer &#123;
+        + Update(Subject)
+    &#125;
+
+    class Subject &#123;
+        + Attach(Observer)
+        + Detach(Observer)
+        + Notify()
+    &#125;
+
+    Subject --|&gt; ChangeManager : chman
+    ChangeManager --&gt; Subject : subjects
+    ChangeManager --&gt; Observer : observers
+
+    SimpleChangeManager --|&gt; ChangeManager
+
+    DAGChangeManager --|&gt; ChangeManager 
+
+</code></pre>
+
+<h2 id="MCV模式"><a href="#MCV模式" class="headerlink" title="MCV模式"></a>MCV模式</h2><p>MVC模式是将应用程序分为三个部分：模型、视图和控制器</p>
+<p>其中观察目标就是Model，观察者就是视图，控制器就是观察者和模型之间的中介</p>
+<p><img src="data:image/png;base64,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" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/design-pattern/" class="category-chain-item">design-pattern</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/design-pattern/" class="print-no-link">#design-pattern</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>观察者模式</div>
+      <div>https://perticevassly.github.io/project/2025/03/24/se-system-design/7-观察者模式/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>eqSun</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年3月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/03/26/%E7%BC%93%E5%AD%98%E5%BC%82%E5%B8%B8%E5%9C%BA%E6%99%AF/" title="缓存异常场景">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">缓存异常场景</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/03/21/linux/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Linux基础知识">
+                        <span class="hidden-mobile">Linux基础知识</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
