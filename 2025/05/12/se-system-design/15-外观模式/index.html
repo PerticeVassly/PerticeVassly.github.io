@@ -24,7 +24,7 @@
 <meta property="og:description" content="模式定义 (Facade Pattern)外观模式（Facade Pattern）：外部与一个子系统的通信必须通过一个统一的外观对象进行，为子系统中的一组接口提供一个一致的界面，外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。外观模式又称之为门面模式（Facade），是属于对象结构型模式。 Facade Pattern: Provide a unified interface to">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-12T15:10:05.000Z">
-<meta property="article:modified_time" content="2025-06-14T14:22:10.622Z">
+<meta property="article:modified_time" content="2025-06-16T06:53:25.381Z">
 <meta property="article:author" content="eqSun">
 <meta property="article:tag" content="design-pattern">
 <meta name="twitter:card" content="summary_large_image">
@@ -306,7 +306,7 @@
 <h1 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h1><p><strong>优点：</strong></p>
 <p>对于客户屏蔽子系统组件，减少了客户处理的对象数目并使得子系统使用起来更加容易</p>
 <p>实现了子系统和客户之间的松耦合关系</p>
-<p>降低了大型软件系统中的编译依赖性，并且简化了系统在不同平台之间的一致过程。因为编译一个子系统一般不需要编译其他的子系统</p>
+<p>降低了大型软件系统中的编译依赖性，并且简化了系统在不同平台之间的移植过程。因为编译一个子系统一般不需要编译其他的子系统</p>
 <p>只提供了一个访问子系统的统一入口，并不影响用户直接使用子系统类</p>
 <p><strong>缺点：</strong></p>
 <p>不能很好地限制客户使用子系统，如果对客户访问子系统做太多限制，则限制可变性和灵活性</p>

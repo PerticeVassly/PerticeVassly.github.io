@@ -24,7 +24,7 @@
 <meta property="og:description" content="组合模式 （Composite Pattern）组合多个对象形成树型接口以标识“整体-部分”的结构层次。组合模式对当个对象和组合对象的使用具有一致性 又可以称之为“整体-部分”（Part-Whole）模式，属于对象的结构模式，它将对象组织到树结构中，描述整体和部分的关系 Composite Pattern: Compose objects into tree structures to repre">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-09T15:10:00.000Z">
-<meta property="article:modified_time" content="2025-06-14T14:22:10.571Z">
+<meta property="article:modified_time" content="2025-06-16T07:11:55.204Z">
 <meta property="article:author" content="eqSun">
 <meta property="article:tag" content="design-pattern">
 <meta name="twitter:card" content="summary_large_image">
@@ -321,7 +321,7 @@
 <p>可以形成比较复杂的树形结构</p>
 <p>可以比较容易在组合体内加入对象构建</p>
 <p><strong>缺点</strong></p>
-<p>设计变得抽象，不是所有方法斗鱼叶子对象子类都有关联（上述方法暴露的问题）</p>
+<p>设计变得抽象，不是所有方法都与叶子对象子类都有关联（上述方法暴露的问题）</p>
 <p>难以对容器中的构建类型进行限制，毕竟只要实现Component接口就可以了</p>
 <h1 id="适用环境"><a href="#适用环境" class="headerlink" title="适用环境"></a>适用环境</h1><p>需要表示一个对象整体或者部分层次</p>
 <p>客户端可以针对抽象构件编程，无需关心对象层次结构的细节</p>
