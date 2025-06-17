@@ -16,22 +16,22 @@
   <meta name="author" content="eqSun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="适配器模式 (Adapter Pattern)&#x2F;(wrapper Pattern)将一个接口转化为客户希望的另外一个接口，适配器模式使得接口不兼容的类可以一起工作，别名为包装器模式（Wrapper Pattern）既可以作为类结构模式，也可以作为对象结构模式 Adapter Pattern: Convert the interface of a class into another in">
+    <meta name="description" content="敏捷宣言个人和交互高于流程和工具 工作软件高于详尽的文档  但是敏捷团队也是做计划的  客户合作高于合同谈判 响应变化高于遵循计划 尽管右项有其价值，我们更重视左项的价值。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="适配器模式">
-<meta property="og:url" content="https://perticevassly.github.io/project/2025/05/08/se-system-design/11-%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:title" content="Agile">
+<meta property="og:url" content="https://perticevassly.github.io/project/2025/05/19/se-quality-management/Agile/index.html">
 <meta property="og:site_name" content="eqSun&#39;s Blog">
-<meta property="og:description" content="适配器模式 (Adapter Pattern)&#x2F;(wrapper Pattern)将一个接口转化为客户希望的另外一个接口，适配器模式使得接口不兼容的类可以一起工作，别名为包装器模式（Wrapper Pattern）既可以作为类结构模式，也可以作为对象结构模式 Adapter Pattern: Convert the interface of a class into another in">
+<meta property="og:description" content="敏捷宣言个人和交互高于流程和工具 工作软件高于详尽的文档  但是敏捷团队也是做计划的  客户合作高于合同谈判 响应变化高于遵循计划 尽管右项有其价值，我们更重视左项的价值。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-05-08T15:10:00.000Z">
-<meta property="article:modified_time" content="2025-06-14T14:22:10.552Z">
+<meta property="article:published_time" content="2025-05-19T02:00:02.000Z">
+<meta property="article:modified_time" content="2025-06-17T15:33:29.401Z">
 <meta property="article:author" content="eqSun">
-<meta property="article:tag" content="design-pattern">
+<meta property="article:tag" content="se-quality-management">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>适配器模式 - eqSun&#39;s Blog</title>
+  <title>Agile - eqSun&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="适配器模式"></span>
+            <span id="subtitle" data-typed-text="Agile"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-05-08 23:10" pubdate>
-          2025年5月8日 晚上
+        <time datetime="2025-05-19 10:00" pubdate>
+          2025年5月19日 上午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.1k 字
+          79 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          26 分钟
+          1 分钟
         
       </span>
     
@@ -268,118 +268,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">适配器模式</h1>
+            <h1 id="seo-header">Agile</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="适配器模式-Adapter-Pattern-wrapper-Pattern"><a href="#适配器模式-Adapter-Pattern-wrapper-Pattern" class="headerlink" title="适配器模式 (Adapter Pattern)&#x2F;(wrapper Pattern)"></a>适配器模式 (Adapter Pattern)&#x2F;(wrapper Pattern)</h1><p>将一个接口转化为客户希望的另外一个接口，适配器模式使得接口不兼容的类可以一起工作，别名为包装器模式（Wrapper Pattern）既可以作为类结构模式，也可以作为对象结构模式</p>
-<p>Adapter Pattern: Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn’t otherwise because of incompatible interfaces. </p>
-<h1 id="模式结构"><a href="#模式结构" class="headerlink" title="模式结构"></a>模式结构</h1><p>对象适配器</p>
-<pre><code class=" mermaid">classDiagram
-    class Client &#123;
-    &#125;
-
-    class Target &#123;
-      + request()
-    &#125;
-
-    class Adaptee &#123;
-      + specificRequest()
-    &#125;
-
-    class Adapter &#123;
-      + request()
-      - adaptee: Adaptee
-    &#125;
-
-  Target &lt;|-- Adapter
-  Adaptee &lt;-- Adapter : adaptee
-  Target &lt;-- Client
-</code></pre>
-
-<p>类适配器</p>
-<pre><code class=" mermaid">classDiagram
-    class Client &#123;
-    &#125;
-
-    class Target &#123;
-      + request()
-    &#125;
-
-    class Adaptee &#123;
-      + specificRequest()
-    &#125;
-
-    class Adapter &#123;
-      + request()
-      - adaptee: Adaptee
-    &#125;
-
-    Target &lt;|-- Adapter
-    Adaptee &lt;|-- Adapter : adaptee
-    Target &lt;-- Client
-</code></pre>
-<p>Adapter调用Adaptee的specificRequest方法来实现Target的request方法</p>
-<p>至于类适配器和对象适配器实际上是代表了两种复用的方式，一种是组合复用，一种是集成复用</p>
-<p>但是集成复用显然暴露了Adaptee的接口，可能会导致不必要的依赖关系？</p>
-<p>核心在于一些需要复用的类可能都没有源代码可以参考，只能通过适配器来实现</p>
-<p>其实有点像全部依赖抽象接口，只是这里强调如何复用？集成和组合</p>
-<h1 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h1><p>将目标类和适配者类解耦。</p>
-<p>增加了类的透明性和复用性。具体实现对于客户端是透明的</p>
-<p>灵活性和扩展性都非常好。可以使用配置文件快速配置具体的适配器，使用SPI来实现适配器的动态加载</p>
-<p>除了复用Adaptee类的功能外，Adapter还可以添加一些额外的功能或者置换一些功能</p>
-<p>缺点在于对于一些不能支持多重继承的语言（Java，C#）, 如果采用的是类适配器，甚至只能适配一个Adaptee类</p>
-<p>相对来说对象适配可以适配多个Adaptee类</p>
-<p>但是如果要置换适配者类就比较难了，因为继承的话可以基于多态直接重写，但是组合的话就必须先有一个继承Apdaptee类的temp类，这个子类重写一些方法，再把这个子类组合到Adapter中，这样就会导致Adapter类的复杂度增加</p>
-<h1 id="适用环境"><a href="#适用环境" class="headerlink" title="适用环境"></a>适用环境</h1><p>系统需要适用现有的类，而这些类的接口不符合系统的需要</p>
-<p>想要建立一个可以重复使用的类，用于一些彼此之间没有太大关联的类</p>
-<h1 id="模式应用"><a href="#模式应用" class="headerlink" title="模式应用"></a>模式应用</h1><p>SPI中用到了，定义一个需接口，即Adapter接口，各家厂商根据自己的代码适配这个接口。</p>
-<p>其实适配器中就是两个思想，一个是依赖抽象接口实现解耦，另外一个是复用已有代码，这些都是SPI中经常用到的</p>
-<h1 id="模式扩展"><a href="#模式扩展" class="headerlink" title="模式扩展"></a>模式扩展</h1><p>默认适配器模式&#x2F;缺省适配器模式</p>
-<p>刚才说到Adapter是一个接口，但是实际过程中我们希望适配器有一些默认实现，这时就可以先定义一个抽象类，里面实现一些默认的方法，然后再定义一个具体的适配器类，继承这个抽象类，这样只需要重写需要的方法就可以了，但是这样显然是和java这类语言的单继承有冲突的，如果使用了默认适配器模式，那么只能使用组合方式进行复用了。</p>
-<p>双向适配器</p>
-<p>此时讨论谁是target，谁是adaptee意义不大了，为了方便依然采用这种表述</p>
-<pre><code class=" mermaid">classDiagram
-    class Target &#123;
-      &lt;&lt;interface&gt;&gt;
-      + request()
-    &#125;
-
-    class Adaptee &#123;
-      &lt;&lt;interface&gt;&gt;
-      + specificRequest()
-    &#125;
-
-    class ConcreteTarget &#123;
-      + request()
-    &#125;
-
-    class ConcreteAdaptee &#123;
-      + specificRequest()
-    &#125;
-
-    class Adapter &#123;
-      - adaptee: Adaptee
-      - target: Target
-      + request()
-      + specificRequest()
-      + setAdaptee(adaptee: Adaptee)
-      + setTarget(target: Target)
-    &#125;
-
-    Target &lt;|-- ConcreteTarget
-    Adaptee &lt;|-- ConcreteAdaptee
-    Target &lt;|-- Adapter
-    Adaptee &lt;|-- Adapter
-    Target &lt;-- Adapter
-    Adaptee &lt;-- Adapter
-</code></pre>
-
-<p>由于java这样的语言是不支持多重继承的，所以我们只能使用组合的方式来实现双向适配器模式。即A接口的某个调用实际上由B接口的实现来完成，反之亦然。最终的呈现形式就是Adapter实现了两个接口</p>
-<p>这种双向适配发生在两个class都是已经写好不能变更得情况下得，如果他们彼此需要对方得逻辑那么就需要使用双向适配器模式来实现了，比如一个汇率转换器，人民币和美元得输出格式是完全不一样得，此时人民币得transform方法需要调用美元的transform方法，美元的transform方法也需要调用人民币的transform方法，这时就需要使用双向适配器模式来实现了</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Target接口</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Target</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">request</span><span class="hljs-params">()</span>;<br>&#125;<br><span class="hljs-comment">// Adaptee类</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Adaptee</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">specificRequest</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;Adaptee specific request&quot;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-comment">// 对象适配器</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Adapter</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Target</span> &#123;<br>    <span class="hljs-keyword">private</span> Adaptee adaptee;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Adapter</span><span class="hljs-params">(Adaptee adaptee)</span> &#123;<br>        <span class="hljs-built_in">this</span>.adaptee = adaptee;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">request</span><span class="hljs-params">()</span> &#123;<br>        adaptee.specificRequest();<br>    &#125;<br>&#125;<br><span class="hljs-comment">// 客户端代码</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Client</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Adaptee</span> <span class="hljs-variable">adaptee</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Adaptee</span>();<br>        <span class="hljs-type">Target</span> <span class="hljs-variable">adapter</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Adapter</span>(adaptee);<br>        adapter.request(); <span class="hljs-comment">// 调用适配器的方法</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
+                <h1 id="敏捷宣言"><a href="#敏捷宣言" class="headerlink" title="敏捷宣言"></a>敏捷宣言</h1><p>个人和交互高于流程和工具</p>
+<p>工作软件高于详尽的文档</p>
+<ul>
+<li>但是敏捷团队也是做计划的</li>
+</ul>
+<p>客户合作高于合同谈判</p>
+<p>响应变化高于遵循计划</p>
+<p>尽管右项有其价值，我们更重视左项的价值。</p>
 
                 
               </div>
@@ -398,7 +299,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/design-pattern/" class="category-chain-item">design-pattern</a>
+  <a href="/categories/se-quality-management/" class="category-chain-item">se-quality-management</a>
   
   
 
@@ -413,7 +314,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/design-pattern/" class="print-no-link">#design-pattern</a>
+        <a href="/tags/se-quality-management/" class="print-no-link">#se-quality-management</a>
       
     </div>
   
@@ -425,8 +326,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>适配器模式</div>
-      <div>https://perticevassly.github.io/project/2025/05/08/se-system-design/11-适配器模式/</div>
+      <div>Agile</div>
+      <div>https://perticevassly.github.io/project/2025/05/19/se-quality-management/Agile/</div>
     </div>
     <div class="license-meta">
       
@@ -438,7 +339,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年5月8日</div>
+          <div>2025年5月19日</div>
         </div>
       
       
@@ -476,9 +377,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/05/09/se-system-design/12-%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/" title="组合模式">
+                      <a href="/2025/06/09/cloud-computing/%E4%BA%91%E8%AE%A1%E7%AE%97%E9%87%8D%E7%82%B9/" title="云计算复习">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">组合模式</span>
+                        <span class="hidden-mobile">云计算复习</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -486,8 +387,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/05/06/se-quality-management/Xp/" title="Xp">
-                        <span class="hidden-mobile">Xp</span>
+                      <a href="/2025/05/19/se-quality-management/New-Method/" title="new-method">
+                        <span class="hidden-mobile">new-method</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
