@@ -1,0 +1,843 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/nerv.jpeg">
+  <link rel="icon" href="/img/nerv.jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="eqSun">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Scrum 定义Scrum 不是构建产品的一种过程或者一项技术，而是一个框架，在这个框架里可以应用各种流程和技术。Scrum能使得产品管理和开发实践的相对功效显现出来，以便随时改进 “Scrum是一个基于团队进行复杂系统和产品开发的框架” Scrum框架包括Scrum团队及其相关的角色，实践，工件和规则。框架中的每一个模块都有一个特定的每一滴，对于Scrum的成功和使用都至关重要。 Scrum示意">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scrum">
+<meta property="og:url" content="https://perticevassly.github.io/project/2025/03/25/se-quality-management/Scrum/index.html">
+<meta property="og:site_name" content="eqSun&#39;s Blog">
+<meta property="og:description" content="Scrum 定义Scrum 不是构建产品的一种过程或者一项技术，而是一个框架，在这个框架里可以应用各种流程和技术。Scrum能使得产品管理和开发实践的相对功效显现出来，以便随时改进 “Scrum是一个基于团队进行复杂系统和产品开发的框架” Scrum框架包括Scrum团队及其相关的角色，实践，工件和规则。框架中的每一个模块都有一个特定的每一滴，对于Scrum的成功和使用都至关重要。 Scrum示意">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://perticevassly.github.io/img/scurm%E5%9B%BE.png">
+<meta property="article:published_time" content="2025-03-25T02:00:02.000Z">
+<meta property="article:modified_time" content="2025-06-17T03:54:08.647Z">
+<meta property="article:author" content="eqSun">
+<meta property="article:tag" content="se-quality-management">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://perticevassly.github.io/img/scurm%E5%9B%BE.png">
+  
+  
+  
+  <title>Scrum - eqSun&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"perticevassly.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/eva.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Scrum"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-03-25 10:00" pubdate>
+          2025年3月25日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          25 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Scrum</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Scrum-定义"><a href="#Scrum-定义" class="headerlink" title="Scrum 定义"></a>Scrum 定义</h1><p>Scrum 不是构建产品的一种过程或者一项技术，而是一个框架，在这个框架里可以应用各种流程和技术。Scrum能使得产品管理和开发实践的相对功效显现出来，以便随时改进</p>
+<p>“Scrum是一个基于团队进行复杂系统和产品开发的框架”</p>
+<p>Scrum框架包括Scrum团队及其相关的角色，实践，工件和规则。框架中的每一个模块都有一个特定的每一滴，对于Scrum的成功和使用都至关重要。</p>
+<h1 id="Scrum示意图"><a href="#Scrum示意图" class="headerlink" title="Scrum示意图"></a>Scrum示意图</h1><p>Scrum以整体的形式存在，才能作为其他技术，方法论和实践的容器良好运行</p>
+<p><img src="/./img/scurm%E5%9B%BE.png" srcset="/img/loading.gif" lazyload></p>
+<p>Scrum需要Scrum Master营造一个环境，从而：</p>
+<ol>
+<li><p>一名Product Owner将解决复杂问题所需的工作整理成一份Product Backlog</p>
+</li>
+<li><p>Scrum Team 在一个Sprint期间将选择的工作转化为可工作的Increments</p>
+</li>
+<li><p>Scrum Team 和利益攸关者检视结果并为下一个Sprint进行条件</p>
+</li>
+<li><p>重复</p>
+</li>
+</ol>
+<h1 id="Srum33355-（或3355）"><a href="#Srum33355-（或3355）" class="headerlink" title="Srum33355 （或3355）"></a>Srum33355 （或3355）</h1><p>三大支柱</p>
+<ul>
+<li>透明，检视，适应</li>
+</ul>
+<p>五个价值</p>
+<ul>
+<li>承诺，专注，开放，尊重，勇气</li>
+</ul>
+<p>三个角色</p>
+<ul>
+<li>开发团队，Scrum Master，Product Owner</li>
+</ul>
+<p>三个工件</p>
+<ul>
+<li>产品Backlog，Sprint Backlog，Incrment</li>
+</ul>
+<p>五个事件</p>
+<ul>
+<li>Sprint，Sprint Planning，Daily Scrum，Sprint Review，Sprint Retrospective</li>
+</ul>
+<h2 id="三个支柱"><a href="#三个支柱" class="headerlink" title="三个支柱"></a>三个支柱</h2><p>透明：浮现的过程和工作必须对执行工作的人员和接受工作的人员都是可见</p>
+<p>检视：Scrum工件和实现商定目标的进展必须经常地和勤勉地监视，以便发现潜在地不良地差异和问题。</p>
+<p>调整：如果过程的任何方面超过可接受地管理或者所得地产品不可接受，就必须对当下过程或者处理的内容加以调整。</p>
+<h1 id="Scrum-Team"><a href="#Scrum-Team" class="headerlink" title="Scrum Team"></a>Scrum Team</h1><p>一个Scrum Team包括一个Product Owner，一个Scrum Master和一个开发团队</p>
+<p>规模足够小以保持灵活，一般10人左右</p>
+<p>Scrum Team是跨职能的，意味着团队成员有在每个Sprint中完成所选工作所需的所有技能</p>
+<h1 id="微观管理，“自管理”和“自组织”"><a href="#微观管理，“自管理”和“自组织”" class="headerlink" title="微观管理，“自管理”和“自组织”"></a>微观管理，“自管理”和“自组织”</h1><h1 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h1><p><strong>Developers</strong></p>
+<p>Developers 是 Scrum Team 中致力于创建每个 Sprint 可用 Increment 的任何方面的人员。</p>
+<p><strong>Product</strong></p>
+<p>Product Owner 负责将 Scrum Team 的工作所产生的产品价值最大化。 </p>
+<p>Product Owner 还负责对 Product Backlog 进行有效管理</p>
+<ul>
+<li>开发并明确地沟通 Product Goal ；</li>
+<li>创建并清晰地沟通 Product Backlog 条目（items）；</li>
+<li>对 Product Backlog 条目进行排序； 和，</li>
+<li>确保 Product Backlog 是透明的、可见的和可理解的</li>
+</ul>
+<p>Product Owner 可以自己做上述工作，或者也可以将职责委托他人。然而无论如何， Product Owner 是负最终责任的人。</p>
+<p>为保证 Product Owner 取得成功，整个组织必须尊重他们的决定</p>
+<p>Product Owner 是一个人，而不是一个委员会</p>
+<p><strong>Scrum Master</strong></p>
+<p>Scrum Master 负责按照 Scrum 指南的游戏规则来建立 Scrum。他们通过帮助 Scrum Team 和组织内的每个人理解 Scrum 理论和实践来做到这一点。</p>
+<p>Scrum Master 对 Scrum Team 的效能负责。他们通过让 Scrum Team 在 Scrum 框架内改进其实践来做到这一点</p>
+<p>Scrum Masters 是真正的领导者（服务者，仆人？），服务于 Scrum Team 和作为更大范围的组织。</p>
+<p>Scrum Master 以多种方式服务于 Scrum Team</p>
+<p>Scrum Master 以多种方式服务于 Product Owner，包括</p>
+<p>Scrum Master 以多种方式服务于组织</p>
+<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>用户故事是产品列表的基础构建</p>
+<p>用户故事模板</p>
+<p><code>作为&lt;某类用户&gt;，我想要&lt;做某事 &gt;，从而&lt;创造出某些价值；&gt;</code></p>
+<h2 id="Ron-Jeffries-的三个-C"><a href="#Ron-Jeffries-的三个-C" class="headerlink" title="Ron Jeffries 的三个 C"></a>Ron Jeffries 的三个 C</h2><ul>
+<li><p>卡片(Card) (PlaceHolder, 占位符)</p>
+</li>
+<li><p>交谈（Conversation）聚在一起对要开发的软件进行深入讨论</p>
+</li>
+<li><p>确认（Confirmation）对完工条件的确认</p>
+</li>
+</ul>
+<h1 id="用户故事是占位符"><a href="#用户故事是占位符" class="headerlink" title="用户故事是占位符"></a>用户故事是占位符</h1><p>是不完整的需求或说明书，是占位符</p>
+<p>提醒团队有东西要完成，但是我们不必刻意过于探求细节</p>
+<h1 id="Definition-of-Done"><a href="#Definition-of-Done" class="headerlink" title="Definition of Done"></a>Definition of Done</h1><p>DoD 完成的定义，是敏捷软件开发中的一个关键概念，用于描述一个用户故事，任务或者功能合适可以被认为真正的完成。它是对完成工作的标准化定义，确保开发过程中的每一个增量都符合质量要求并且准备好交付</p>
+<h1 id="BDD"><a href="#BDD" class="headerlink" title="BDD"></a>BDD</h1><p>(Behavior-Driven Development, BDD) </p>
+<p>通过定义软件的行为来驱动开发过程。 BDD的重点是增强团队队需求的理解，确保开发的软件满足业务目标</p>
+<h1 id="用户故事是INVEST原则"><a href="#用户故事是INVEST原则" class="headerlink" title="用户故事是INVEST原则"></a>用户故事是INVEST原则</h1><p>独立性 （Independent）：尽可能要让一个用户故事独立于其他的用户故事</p>
+<p>可协商性 （Negotiable）：用户故事是可以协商的，用户故事不是合同</p>
+<p>有价值 （Valuable）：每个故事必须对客户具有价值</p>
+<p>可以估算性 （Estimable）：开发团队需要去估计一个用户故事一边确定优先级，工作量，安排计划</p>
+<p>短小 （Smal）：一个好的故事在工作量上要尽量短小，至少要保证在一个迭代或者是Sprint中完成</p>
+<p>可测试性 （Testable）：一个故事要是可以测试的，以便确认它是可以完成的</p>
+<h1 id="用户故事SMART原则"><a href="#用户故事SMART原则" class="headerlink" title="用户故事SMART原则"></a>用户故事SMART原则</h1><p>Specific 用户故事需要明确描述一个具体的功能或者需求，避免模糊或者笼统的描述</p>
+<p>Measurable 用户故事的结果必须能用明确的指标或者验收标准验证</p>
+<p>Achievable 用户故事需要和当前用户需求直接相关，避免无关功能</p>
+<p>Time-bound 有时限，用户故事需要明确截至时间或者优先级，避免无限延期</p>
+<p>（Testable ） 需求可以通过自动化测试验证</p>
+<h1 id="用户地图"><a href="#用户地图" class="headerlink" title="用户地图"></a>用户地图</h1><p>在需求拆分过程中保持全景图的技术</p>
+<p>解决的问题：</p>
+<ul>
+<li><p>全局视角缺失</p>
+</li>
+<li><p>需求优先级难以确定</p>
+</li>
+<li><p>缺乏用户需求聚焦</p>
+</li>
+<li><p>难以理解功能之间的关系</p>
+</li>
+<li><p>发布计划不明确</p>
+</li>
+</ul>
+<h1 id="Sprint"><a href="#Sprint" class="headerlink" title="Sprint"></a>Sprint</h1><p>是Scrum的核心，这里idea转化为价值</p>
+<p>是固定时长的事件</p>
+<p>当前Scrum周期通常为两个星期</p>
+<p>每个故事都含有三个变量，两两都对彼此有强烈依赖</p>
+<p>scope importance estimate</p>
+<p>前两个由团队负责人设置，估算由团队设置</p>
+<h1 id="估算"><a href="#估算" class="headerlink" title="估算"></a>估算</h1><p>Story point：选取可识别的最小用例为2个story point。 其他它估算都是相对值，在所有的sprint中保持该相对值一致</p>
+<h1 id="故事和任务"><a href="#故事和任务" class="headerlink" title="故事和任务"></a>故事和任务</h1><p>Story是可交付的东西，Task是不可交付的，Product Owner对于Task不关心</p>
+<h1 id="跟踪进度————燃尽图"><a href="#跟踪进度————燃尽图" class="headerlink" title="跟踪进度————燃尽图"></a>跟踪进度————燃尽图</h1><h1 id="每日站会"><a href="#每日站会" class="headerlink" title="每日站会"></a>每日站会</h1><p>不超过15min</p>
+<p>回答三个问题：</p>
+<p>“昨天我做了什么”</p>
+<p>“今天准备干什么”</p>
+<p>“你遇到了什么障碍，需要其他人如何帮助你”</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="三大理论支柱"><a href="#三大理论支柱" class="headerlink" title="三大理论支柱"></a>三大理论支柱</h2><p>透明，检视，适应</p>
+<h2 id="五大价值观"><a href="#五大价值观" class="headerlink" title="五大价值观"></a>五大价值观</h2><p>承诺，专注，开放，尊重，勇气</p>
+<h2 id="团队结构"><a href="#团队结构" class="headerlink" title="团队结构"></a>团队结构</h2><p>组成</p>
+<p>Product Owner, Scrum Master，Developers</p>
+<p>团队特性</p>
+<p>10人以内</p>
+<h2 id="五大事件"><a href="#五大事件" class="headerlink" title="五大事件"></a>五大事件</h2><p>Sprint， Sprint Planning, Daily Scrum, Sprint Review, Spring Retrospective</p>
+<h2 id="三大工件与承诺"><a href="#三大工件与承诺" class="headerlink" title="三大工件与承诺"></a>三大工件与承诺</h2><p>Product Backlog, Spring Backlong, Increment</p>
+<h1 id="大规模敏捷-SAFe"><a href="#大规模敏捷-SAFe" class="headerlink" title="大规模敏捷 SAFe"></a>大规模敏捷 SAFe</h1><h1 id="LeSS-Large-Scale-Scrum"><a href="#LeSS-Large-Scale-Scrum" class="headerlink" title="LeSS Large-Scale Scrum"></a>LeSS Large-Scale Scrum</h1><p>仅在一个产品代办列表下扩展多个Scrum团队</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/se-quality-management/" class="category-chain-item">se-quality-management</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/se-quality-management/" class="print-no-link">#se-quality-management</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Scrum</div>
+      <div>https://perticevassly.github.io/project/2025/03/25/se-quality-management/Scrum/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>eqSun</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年3月25日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/03/26/%E7%BC%93%E5%AD%98%E5%BC%82%E5%B8%B8%E5%9C%BA%E6%99%AF/" title="缓存异常场景">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">缓存异常场景</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/03/24/se-system-design/7-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" title="观察者模式">
+                        <span class="hidden-mobile">观察者模式</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
