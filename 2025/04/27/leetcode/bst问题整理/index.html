@@ -16,22 +16,22 @@
   <meta name="author" content="eqSun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="参考资料： https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;70532099 https:&#x2F;&#x2F;leetcode.com&#x2F;problems&#x2F;longest-palindromic-substring&#x2F;solutions&#x2F;4212564&#x2F;beats-96-49-5-different-approaches-brute-force-eac-dp-ma-recursion&#x2F;?envType&#x3D;st">
+    <meta name="description" content="bst的几种遍历方式的循环的实现方式inorder遍历1234567891011121314151617181920212223242526272829class BSTIterator &amp;#123;  Stack&lt;TreeNode&gt; stack;  public BSTIterator(TreeNode root) &amp;#123;    this.stack &#x3D; new Stack&amp;l">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Manacher算法">
-<meta property="og:url" content="https://perticevassly.github.io/project/2025/04/04/Manacher%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:title" content="stringarray问题整理">
+<meta property="og:url" content="https://perticevassly.github.io/project/2025/04/27/leetcode/bst%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/index.html">
 <meta property="og:site_name" content="eqSun&#39;s Blog">
-<meta property="og:description" content="参考资料： https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;70532099 https:&#x2F;&#x2F;leetcode.com&#x2F;problems&#x2F;longest-palindromic-substring&#x2F;solutions&#x2F;4212564&#x2F;beats-96-49-5-different-approaches-brute-force-eac-dp-ma-recursion&#x2F;?envType&#x3D;st">
+<meta property="og:description" content="bst的几种遍历方式的循环的实现方式inorder遍历1234567891011121314151617181920212223242526272829class BSTIterator &amp;#123;  Stack&lt;TreeNode&gt; stack;  public BSTIterator(TreeNode root) &amp;#123;    this.stack &#x3D; new Stack&amp;l">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-04-04T12:30:00.000Z">
-<meta property="article:modified_time" content="2025-04-23T11:12:45.380Z">
+<meta property="article:published_time" content="2025-04-27T07:00:00.000Z">
+<meta property="article:modified_time" content="2025-04-29T10:54:35.100Z">
 <meta property="article:author" content="eqSun">
 <meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Manacher算法 - eqSun&#39;s Blog</title>
+  <title>stringarray问题整理 - eqSun&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Manacher算法"></span>
+            <span id="subtitle" data-typed-text="stringarray问题整理"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-04-04 20:30" pubdate>
-          2025年4月4日 晚上
+        <time datetime="2025-04-27 15:00" pubdate>
+          2025年4月27日 下午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          1.3k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          17 分钟
+          11 分钟
         
       </span>
     
@@ -268,32 +268,17 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Manacher算法</h1>
+            <h1 id="seo-header">stringarray问题整理</h1>
             
             
               <div class="markdown-body">
                 
-                <p>参考资料：</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/70532099">https://zhuanlan.zhihu.com/p/70532099</a></p>
-<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-palindromic-substring/solutions/4212564/beats-96-49-5-different-approaches-brute-force-eac-dp-ma-recursion/?envType=study-plan-v2&envId=top-100-liked">https://leetcode.com/problems/longest-palindromic-substring/solutions/4212564/beats-96-49-5-different-approaches-brute-force-eac-dp-ma-recursion/?envType=study-plan-v2&amp;envId=top-100-liked</a></p>
-<h1 id="Manacher算法"><a href="#Manacher算法" class="headerlink" title="Manacher算法"></a>Manacher算法</h1><p>具体算法参考上述资料</p>
-<p>判断一个<code>string</code>最长回文<code>substring</code>的时候，最简单的想法是遍历所有的<code>subString</code>，判断是否是回文串，复杂度 $O(n^3)$</p>
-<p>或者从中间开始扩展，复杂度 $O(n^2)$</p>
-<p>或者使用动态规划的思想，复杂度 $O(n^2)$</p>
-<p><code>manacher</code>算法利用了回文串的对称性，快速跳过了一些不必要的判断，复杂度 $O(n)$</p>
-<p>如何做到的？</p>
-<p>首先对字符串进行扩展，加入 <code>^</code> 和 <code>$</code>，以及 <code>#</code> 避免处理奇偶数回文串的不同, 最后再还原回来。</p>
-<p>考虑一种情况</p>
-<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">|</span> <span class="hljs-literal">--------</span> <span class="hljs-comment">|</span> <span class="hljs-literal">--------</span> <span class="hljs-comment">|</span> <span class="hljs-literal">-</span>&gt; <span class="hljs-comment">回文子串S_i 中心</span><span class="hljs-string">,</span> <span class="hljs-comment">边界已标出</span><span class="hljs-literal">--</span><span class="hljs-comment">p</span><span class="hljs-title">[</span><span class="hljs-comment">i</span><span class="hljs-title">]</span><span class="hljs-comment">，R</span><br><span class="hljs-comment">R          p</span><span class="hljs-title">[</span><span class="hljs-comment">i</span><span class="hljs-title">]</span>       <span class="hljs-comment">R</span><br> <span class="hljs-comment">R j&#x27;R          R j R</span>   <span class="hljs-literal">-</span>&gt; <span class="hljs-comment">回文子串S_j 中心</span><span class="hljs-string">,</span> <span class="hljs-comment">边界已标出</span><span class="hljs-literal">--</span><span class="hljs-comment">p</span><span class="hljs-title">[</span><span class="hljs-comment">j</span><span class="hljs-title">]</span><span class="hljs-comment">，R</span><br></code></pre></td></tr></table></figure>
+                <h1 id="bst的几种遍历方式的循环的实现方式"><a href="#bst的几种遍历方式的循环的实现方式" class="headerlink" title="bst的几种遍历方式的循环的实现方式"></a>bst的几种遍历方式的循环的实现方式</h1><h2 id="inorder遍历"><a href="#inorder遍历" class="headerlink" title="inorder遍历"></a>inorder遍历</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">BSTIterator</span> &#123;<br><br>  Stack&lt;TreeNode&gt; stack;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">BSTIterator</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>    <span class="hljs-built_in">this</span>.stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>    pushAllLeft(root);<br>  &#125;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">pushAllLeft</span><span class="hljs-params">(TreeNode node)</span> &#123;<br>    <span class="hljs-keyword">while</span> (node != <span class="hljs-literal">null</span>) &#123;<br>      stack.push(node);<br>      node = node.left;<br>    &#125;<br>  &#125;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">next</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">if</span> (!hasNext()) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-type">TreeNode</span> <span class="hljs-variable">t</span> <span class="hljs-operator">=</span> stack.pop();<br>    pushAllLeft(t.right);<br>    <span class="hljs-keyword">return</span> t.val;<br>  &#125;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">hasNext</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> !stack.empty();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>此时刚刚使用<code>expand</code>的方法确定了 $p[i]$ 的值，由于是顺序确认的，之前的 $p[i]$ 的值是也已经确认了。</p>
-<p>当尝试 <code>expand j</code>的时候，如果我发现<code>j</code>正好在某一个回文字符串（$S_i$）的范围内，我可以选取其关于中心 $i$ 的对称点 $j’$ 的 $p[j’]$ 的值来作为 $p[j]$ 的初始值的参考。</p>
-<p>因为，如果发现这个回文串还是落在 $S_i$ 范围内，我们可以判断 $S_j$ 的半径肯定也是 $p[j’]$。因为只要落在$i$的范围内（不包括边界重合），那么一定存在一个两端的 $a$ 和 $b$ 破坏了 $S_j’$ 的对称性。由$S_i$的对称性，这个$a$和$b$也会在对称的位置破坏$S_j$的对称性，所以二者的半径是相同的。</p>
-<p>但是问题在于 $j$ 可能会落在 $S_i$ 的范围外，这时我们无法通过$i$的对称性，推断出上述$a$,$b$的存在; 或者$j’$之所以不能更大是因为到了整个原始<code>string</code>的左边界，此时由于右边界还有字符，因此$j$依然有可能继续扩展。</p>
-<p>根据上述分析，我们应该让$S_i$对应的右边界尽可能大，从而充分利用其对称性跳过一些不必要的判断。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution5Manacher</span> &#123;<br><br>  <span class="hljs-keyword">public</span> String <span class="hljs-title function_">longestPalindrome</span><span class="hljs-params">(String s)</span> &#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">t</span> <span class="hljs-operator">=</span> preProcess(s);<br>    <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> t.length();<br>    <span class="hljs-type">int</span>[] p = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>    <span class="hljs-type">int</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, r = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt; n - <span class="hljs-number">1</span>; i++) &#123;<br>      <span class="hljs-type">int</span> <span class="hljs-variable">iMirror</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span> * c - i;<br>      <span class="hljs-keyword">if</span> (r &gt; i) &#123;<br>        p[i] = Math.min(r - i, p[iMirror]); <span class="hljs-comment">// i在r的范围内，有可能是最终结果，也有可能i是因为左边界没有字符而被限制了，因此只能确定到Math.min(r - i, p[iMirror])的范围一定是对称的</span><br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        p[i] = <span class="hljs-number">0</span>; <span class="hljs-comment">// 无法利用i的对称性，直接从0开始扩展</span><br>      &#125;<br><br>      <span class="hljs-keyword">while</span> (t.charAt(i + <span class="hljs-number">1</span> + p[i]) == t.charAt(i - <span class="hljs-number">1</span> - p[i])) &#123;<br>        p[i]++;<br>      &#125;<br><br>      <span class="hljs-keyword">if</span> (i + p[i] &gt; r) &#123;<br>        c = i;<br>        r = i + p[i];<br>      &#125; <span class="hljs-comment">// 更新c和r的值，使得右边界尽可能大</span><br>    &#125;<br><br>    <span class="hljs-type">int</span> <span class="hljs-variable">maxLen</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">centerIndex</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt; n - <span class="hljs-number">1</span>; i++) &#123;<br>      <span class="hljs-keyword">if</span> (p[i] &gt; maxLen) &#123;<br>        maxLen = p[i];<br>        centerIndex = i;<br>      &#125;<br>    &#125;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">start</span> <span class="hljs-operator">=</span> (centerIndex - maxLen) / <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">return</span> s.substring(start, start + maxLen);<br>  &#125;<br><br>  <span class="hljs-keyword">private</span> String <span class="hljs-title function_">preProcess</span><span class="hljs-params">(String s)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> s.length();<br>    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;^$&quot;</span>;<br>    &#125;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">ret</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;^&quot;</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span> ; i &lt; n; i++) &#123;<br>      ret += <span class="hljs-string">&quot;#&quot;</span> + s.charAt(i);<br>    &#125;<br>    ret += <span class="hljs-string">&quot;#$&quot;</span>;<br>    <span class="hljs-keyword">return</span> ret;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>栈的作用是用来模拟递归。因为我们无法暂停递归过程去返回一个值，所以我们需要一个栈来保存当前的状态。关键在于理清楚栈的关系和需要返回的值的关系。在中序遍历中，一个值可以被返回时因为他的左子树和右子树都已经被遍历完了。又因为我们总是优先处理左子树，所以每次进入下一轮递归的最高stack就是将当前节点的所有左子节点压入。随后返回，这个过程中会检查当前节点的右子树是否有值，如果有值就将其压入栈中。这样就可以实现中序遍历了。</p>
+<h2 id="preorder遍历"><a href="#preorder遍历" class="headerlink" title="preorder遍历"></a>preorder遍历</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">BSTIterator</span><br>&#123;<br>  Stack&lt;TreeNode&gt; stack;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">BSTIterator</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>    <span class="hljs-built_in">this</span>.stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>    <span class="hljs-keyword">if</span> (root != <span class="hljs-literal">null</span>) &#123;<br>      stack.push(root);<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">next</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">if</span> (!hasNext()) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-type">TreeNode</span> <span class="hljs-variable">t</span> <span class="hljs-operator">=</span> stack.pop();<br>    <span class="hljs-keyword">if</span> (t.right != <span class="hljs-literal">null</span>) &#123;<br>      stack.push(t.right);<br>    &#125;<br>    <span class="hljs-keyword">if</span> (t.left != <span class="hljs-literal">null</span>) &#123;<br>      stack.push(t.left);<br>    &#125;<br>    <span class="hljs-keyword">return</span> t.val;<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">hasNext</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> !stack.empty();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-
+<p>前序遍历，乍一听好像挺复杂，但是实际上就是BFS，只不过时在tree上操作的。上述中序遍历实际上时dfs的二叉树特化版本（事实上所有的递归都可以转化为stack+循环的形式）</p>
 
                 
               </div>
@@ -318,8 +303,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Manacher算法</div>
-      <div>https://perticevassly.github.io/project/2025/04/04/Manacher算法/</div>
+      <div>stringarray问题整理</div>
+      <div>https://perticevassly.github.io/project/2025/04/27/leetcode/bst问题整理/</div>
     </div>
     <div class="license-meta">
       
@@ -331,7 +316,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年4月4日</div>
+          <div>2025年4月27日</div>
         </div>
       
       
@@ -369,9 +354,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/04/06/database/SQL%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="SQL基础知识">
+                      <a href="/2025/04/28/leetcode/slidingwindow%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/" title="slidingwindow问题整理">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SQL基础知识</span>
+                        <span class="hidden-mobile">slidingwindow问题整理</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -379,8 +364,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/04/04/dp%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/" title="dp问题整理">
-                        <span class="hidden-mobile">dp问题整理</span>
+                      <a href="/2025/04/27/leetcode/stringarray%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/" title="stringarray问题整理">
+                        <span class="hidden-mobile">stringarray问题整理</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

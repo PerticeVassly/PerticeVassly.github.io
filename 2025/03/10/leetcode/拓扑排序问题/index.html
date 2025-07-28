@@ -16,22 +16,22 @@
   <meta name="author" content="eqSun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="bst的几种遍历方式的循环的实现方式inorder遍历1234567891011121314151617181920212223242526272829class BSTIterator &amp;#123;  Stack&lt;TreeNode&gt; stack;  public BSTIterator(TreeNode root) &amp;#123;    this.stack &#x3D; new Stack&amp;l">
+    <meta name="description" content="参考资料： leetcode-207 https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Topological_sorting Kahn’s algorithm (BFS)123456789101112131415L ← Empty list that will contain the sorted elementsS ← Set of all nodes with no incomin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="stringarray问题整理">
-<meta property="og:url" content="https://perticevassly.github.io/project/2025/04/27/bst%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/index.html">
+<meta property="og:title" content="拓扑排序">
+<meta property="og:url" content="https://perticevassly.github.io/project/2025/03/10/leetcode/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="eqSun&#39;s Blog">
-<meta property="og:description" content="bst的几种遍历方式的循环的实现方式inorder遍历1234567891011121314151617181920212223242526272829class BSTIterator &amp;#123;  Stack&lt;TreeNode&gt; stack;  public BSTIterator(TreeNode root) &amp;#123;    this.stack &#x3D; new Stack&amp;l">
+<meta property="og:description" content="参考资料： leetcode-207 https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Topological_sorting Kahn’s algorithm (BFS)123456789101112131415L ← Empty list that will contain the sorted elementsS ← Set of all nodes with no incomin">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-04-27T07:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-29T10:54:35.100Z">
+<meta property="article:published_time" content="2025-03-10T12:30:00.000Z">
+<meta property="article:modified_time" content="2025-04-21T05:58:46.854Z">
 <meta property="article:author" content="eqSun">
 <meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>stringarray问题整理 - eqSun&#39;s Blog</title>
+  <title>拓扑排序 - eqSun&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="stringarray问题整理"></span>
+            <span id="subtitle" data-typed-text="拓扑排序"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-04-27 15:00" pubdate>
-          2025年4月27日 下午
+        <time datetime="2025-03-10 20:30" pubdate>
+          2025年3月10日 晚上
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          934 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          11 分钟
+          8 分钟
         
       </span>
     
@@ -268,17 +268,29 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">stringarray问题整理</h1>
+            <h1 id="seo-header">拓扑排序</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="bst的几种遍历方式的循环的实现方式"><a href="#bst的几种遍历方式的循环的实现方式" class="headerlink" title="bst的几种遍历方式的循环的实现方式"></a>bst的几种遍历方式的循环的实现方式</h1><h2 id="inorder遍历"><a href="#inorder遍历" class="headerlink" title="inorder遍历"></a>inorder遍历</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">BSTIterator</span> &#123;<br><br>  Stack&lt;TreeNode&gt; stack;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">BSTIterator</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>    <span class="hljs-built_in">this</span>.stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>    pushAllLeft(root);<br>  &#125;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">pushAllLeft</span><span class="hljs-params">(TreeNode node)</span> &#123;<br>    <span class="hljs-keyword">while</span> (node != <span class="hljs-literal">null</span>) &#123;<br>      stack.push(node);<br>      node = node.left;<br>    &#125;<br>  &#125;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">next</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">if</span> (!hasNext()) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-type">TreeNode</span> <span class="hljs-variable">t</span> <span class="hljs-operator">=</span> stack.pop();<br>    pushAllLeft(t.right);<br>    <span class="hljs-keyword">return</span> t.val;<br>  &#125;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">hasNext</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> !stack.empty();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <p>参考资料：</p>
+<p>leetcode-207</p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Topological_sorting">https://en.wikipedia.org/wiki/Topological_sorting</a></p>
+<h1 id="Kahn’s-algorithm-BFS"><a href="#Kahn’s-algorithm-BFS" class="headerlink" title="Kahn’s algorithm (BFS)"></a>Kahn’s algorithm (BFS)</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">L ← Empty <span class="hljs-built_in">list</span> that will contain the <span class="hljs-built_in">sorted</span> elements<br>S ← <span class="hljs-type">Set</span> of <span class="hljs-built_in">all</span> nodes <span class="hljs-keyword">with</span> no incoming edge<br><br><span class="hljs-keyword">while</span> S <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> empty do<br>    remove a node n <span class="hljs-keyword">from</span> S<br>    add n to L<br>    <span class="hljs-keyword">for</span> each node m <span class="hljs-keyword">with</span> an edge e <span class="hljs-keyword">from</span> n to m do<br>        remove edge e <span class="hljs-keyword">from</span> the graph<br>        <span class="hljs-keyword">if</span> m has no other incoming edges then<br>            insert m into S<br><br><span class="hljs-keyword">if</span> graph has edges then<br>    <span class="hljs-keyword">return</span> error   (graph has at least one cycle)<br><span class="hljs-keyword">else</span> <br>    <span class="hljs-keyword">return</span> L   (a topologically <span class="hljs-built_in">sorted</span> order)<br></code></pre></td></tr></table></figure>
 
-<p>栈的作用是用来模拟递归。因为我们无法暂停递归过程去返回一个值，所以我们需要一个栈来保存当前的状态。关键在于理清楚栈的关系和需要返回的值的关系。在中序遍历中，一个值可以被返回时因为他的左子树和右子树都已经被遍历完了。又因为我们总是优先处理左子树，所以每次进入下一轮递归的最高stack就是将当前节点的所有左子节点压入。随后返回，这个过程中会检查当前节点的右子树是否有值，如果有值就将其压入栈中。这样就可以实现中序遍历了。</p>
-<h2 id="preorder遍历"><a href="#preorder遍历" class="headerlink" title="preorder遍历"></a>preorder遍历</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">BSTIterator</span><br>&#123;<br>  Stack&lt;TreeNode&gt; stack;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">BSTIterator</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>    <span class="hljs-built_in">this</span>.stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>    <span class="hljs-keyword">if</span> (root != <span class="hljs-literal">null</span>) &#123;<br>      stack.push(root);<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">next</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">if</span> (!hasNext()) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-type">TreeNode</span> <span class="hljs-variable">t</span> <span class="hljs-operator">=</span> stack.pop();<br>    <span class="hljs-keyword">if</span> (t.right != <span class="hljs-literal">null</span>) &#123;<br>      stack.push(t.right);<br>    &#125;<br>    <span class="hljs-keyword">if</span> (t.left != <span class="hljs-literal">null</span>) &#123;<br>      stack.push(t.left);<br>    &#125;<br>    <span class="hljs-keyword">return</span> t.val;<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">hasNext</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> !stack.empty();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>解释：</p>
+<ul>
+<li>环的特点是没有入度为0的点，依据这个特点可以逐步剥离出环</li>
+</ul>
+<h1 id="Depth-First-Search"><a href="#Depth-First-Search" class="headerlink" title="Depth First Search"></a>Depth First Search</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python">L ← Empty <span class="hljs-built_in">list</span> that will contain the <span class="hljs-built_in">sorted</span> nodes<br><span class="hljs-keyword">while</span> exists nodes without a permanent mark do<br>    select an unmarked node n<br>    visit(n)<br><br>function visit(node n)<br>    <span class="hljs-keyword">if</span> n has a permanent mark then<br>        <span class="hljs-keyword">return</span><br>    <span class="hljs-keyword">if</span> n has a temporary mark then<br>        stop   (graph has at least one cycle)<br><br>    mark n <span class="hljs-keyword">with</span> a temporary mark<br><br>    <span class="hljs-keyword">for</span> each node m <span class="hljs-keyword">with</span> an edge <span class="hljs-keyword">from</span> n to m do<br>        visit(m)<br><br>    mark n <span class="hljs-keyword">with</span> a permanent mark<br>    add n to head of L<br></code></pre></td></tr></table></figure>
 
-<p>前序遍历，乍一听好像挺复杂，但是实际上就是BFS，只不过时在tree上操作的。上述中序遍历实际上时dfs的二叉树特化版本（事实上所有的递归都可以转化为stack+循环的形式）</p>
+<p>解释:</p>
+<ul>
+<li><p>当一个节点被标记为permanent的时候，所有依赖其的节点都已经被放入队列（也标记为permanent）且已经可以确保无环。此时所有经过此节点的路径都不会有环。</p>
+</li>
+<li><p>当一个节点被标记为temp的时候，说明在此路径上已经被访问过，如果再次访问到temp节点，说明有环。</p>
+</li>
+</ul>
 
                 
               </div>
@@ -303,8 +315,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>stringarray问题整理</div>
-      <div>https://perticevassly.github.io/project/2025/04/27/bst问题整理/</div>
+      <div>拓扑排序</div>
+      <div>https://perticevassly.github.io/project/2025/03/10/leetcode/拓扑排序问题/</div>
     </div>
     <div class="license-meta">
       
@@ -316,7 +328,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年4月27日</div>
+          <div>2025年3月10日</div>
         </div>
       
       
@@ -354,9 +366,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/04/27/stringarray%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/" title="stringarray问题整理">
+                      <a href="/2025/03/12/network/TCP/" title="TCP">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">stringarray问题整理</span>
+                        <span class="hidden-mobile">TCP</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -364,8 +376,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/04/26/backtracing%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/" title="backtracing问题整理">
-                        <span class="hidden-mobile">backtracing问题整理</span>
+                      <a href="/2025/03/03/DockerCompose%E7%BD%91%E7%BB%9C%E6%98%A0%E5%B0%84/" title="DockerCompose网络映射">
+                        <span class="hidden-mobile">DockerCompose网络映射</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

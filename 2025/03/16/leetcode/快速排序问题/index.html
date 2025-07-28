@@ -16,22 +16,22 @@
   <meta name="author" content="eqSun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="参考资料： leetcode-207 https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Topological_sorting Kahn’s algorithm (BFS)123456789101112131415L ← Empty list that will contain the sorted elementsS ← Set of all nodes with no incomin">
+    <meta name="description" content="参考资料： leetcode 75 https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Quicksort 代码12345678910111213141516171819202122232425262728293031&#x2F;&#x2F; Sorts (a portion of) an array, divides it into partitions, then sorts thosealgorithm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="拓扑排序">
-<meta property="og:url" content="https://perticevassly.github.io/project/2025/03/10/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="快速排序">
+<meta property="og:url" content="https://perticevassly.github.io/project/2025/03/16/leetcode/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="eqSun&#39;s Blog">
-<meta property="og:description" content="参考资料： leetcode-207 https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Topological_sorting Kahn’s algorithm (BFS)123456789101112131415L ← Empty list that will contain the sorted elementsS ← Set of all nodes with no incomin">
+<meta property="og:description" content="参考资料： leetcode 75 https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Quicksort 代码12345678910111213141516171819202122232425262728293031&#x2F;&#x2F; Sorts (a portion of) an array, divides it into partitions, then sorts thosealgorithm">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-10T12:30:00.000Z">
-<meta property="article:modified_time" content="2025-04-21T05:58:46.854Z">
+<meta property="article:published_time" content="2025-03-16T12:30:00.000Z">
+<meta property="article:modified_time" content="2025-03-16T06:24:39.680Z">
 <meta property="article:author" content="eqSun">
 <meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>拓扑排序 - eqSun&#39;s Blog</title>
+  <title>快速排序 - eqSun&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="拓扑排序"></span>
+            <span id="subtitle" data-typed-text="快速排序"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-03-10 20:30" pubdate>
-          2025年3月10日 晚上
+        <time datetime="2025-03-16 20:30" pubdate>
+          2025年3月16日 晚上
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          934 字
+          1k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          8 分钟
+          9 分钟
         
       </span>
     
@@ -268,29 +268,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">拓扑排序</h1>
+            <h1 id="seo-header">快速排序</h1>
             
             
               <div class="markdown-body">
                 
                 <p>参考资料：</p>
-<p>leetcode-207</p>
-<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Topological_sorting">https://en.wikipedia.org/wiki/Topological_sorting</a></p>
-<h1 id="Kahn’s-algorithm-BFS"><a href="#Kahn’s-algorithm-BFS" class="headerlink" title="Kahn’s algorithm (BFS)"></a>Kahn’s algorithm (BFS)</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">L ← Empty <span class="hljs-built_in">list</span> that will contain the <span class="hljs-built_in">sorted</span> elements<br>S ← <span class="hljs-type">Set</span> of <span class="hljs-built_in">all</span> nodes <span class="hljs-keyword">with</span> no incoming edge<br><br><span class="hljs-keyword">while</span> S <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> empty do<br>    remove a node n <span class="hljs-keyword">from</span> S<br>    add n to L<br>    <span class="hljs-keyword">for</span> each node m <span class="hljs-keyword">with</span> an edge e <span class="hljs-keyword">from</span> n to m do<br>        remove edge e <span class="hljs-keyword">from</span> the graph<br>        <span class="hljs-keyword">if</span> m has no other incoming edges then<br>            insert m into S<br><br><span class="hljs-keyword">if</span> graph has edges then<br>    <span class="hljs-keyword">return</span> error   (graph has at least one cycle)<br><span class="hljs-keyword">else</span> <br>    <span class="hljs-keyword">return</span> L   (a topologically <span class="hljs-built_in">sorted</span> order)<br></code></pre></td></tr></table></figure>
+<p>leetcode 75</p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Quicksort">https://en.wikipedia.org/wiki/Quicksort</a></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python">// Sorts (a portion of) an array, divides it into partitions, then sorts those<br>algorithm quicksort(A, lo, hi) <span class="hljs-keyword">is</span> <br>  // Ensure indices are <span class="hljs-keyword">in</span> correct order<br>  <span class="hljs-keyword">if</span> lo &gt;= hi then <br>    <span class="hljs-keyword">return</span><br>    <br>  // Partition array <span class="hljs-keyword">and</span> get the pivot index<br>  p := partition(A, lo, hi) <br>      <br>  // Sort the two partitions<br>  quicksort(A, lo, p - <span class="hljs-number">1</span>) // Left side of pivot<br>  quicksort(A, p + <span class="hljs-number">1</span>, hi) // Right side of pivot<br><br>// Divides array into two partitions<br>algorithm partition(A, lo, hi) <span class="hljs-keyword">is</span> <br>  pivot := A[hi] // Choose the last element <span class="hljs-keyword">as</span> the pivot<br><br>  // Temporary pivot index<br>  i := lo<br><br>  <span class="hljs-keyword">for</span> j := lo to hi - <span class="hljs-number">1</span> do <br>    // If the current element <span class="hljs-keyword">is</span> less than <span class="hljs-keyword">or</span> equal to the pivot<br>    <span class="hljs-keyword">if</span> A[j] &lt;= pivot then <br>      // Swap the current element <span class="hljs-keyword">with</span> the element at the temporary pivot index<br>      swap A[i] <span class="hljs-keyword">with</span> A[j]<br>      // Move the temporary pivot index forward<br>      i := i + <span class="hljs-number">1</span><br><br>  // Swap the pivot <span class="hljs-keyword">with</span> the last element<br>  swap A[i] <span class="hljs-keyword">with</span> A[hi]<br>  <span class="hljs-keyword">return</span> i // the pivot index<br></code></pre></td></tr></table></figure>
 
-<p>解释：</p>
-<ul>
-<li>环的特点是没有入度为0的点，依据这个特点可以逐步剥离出环</li>
-</ul>
-<h1 id="Depth-First-Search"><a href="#Depth-First-Search" class="headerlink" title="Depth First Search"></a>Depth First Search</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python">L ← Empty <span class="hljs-built_in">list</span> that will contain the <span class="hljs-built_in">sorted</span> nodes<br><span class="hljs-keyword">while</span> exists nodes without a permanent mark do<br>    select an unmarked node n<br>    visit(n)<br><br>function visit(node n)<br>    <span class="hljs-keyword">if</span> n has a permanent mark then<br>        <span class="hljs-keyword">return</span><br>    <span class="hljs-keyword">if</span> n has a temporary mark then<br>        stop   (graph has at least one cycle)<br><br>    mark n <span class="hljs-keyword">with</span> a temporary mark<br><br>    <span class="hljs-keyword">for</span> each node m <span class="hljs-keyword">with</span> an edge <span class="hljs-keyword">from</span> n to m do<br>        visit(m)<br><br>    mark n <span class="hljs-keyword">with</span> a permanent mark<br>    add n to head of L<br></code></pre></td></tr></table></figure>
-
-<p>解释:</p>
-<ul>
-<li><p>当一个节点被标记为permanent的时候，所有依赖其的节点都已经被放入队列（也标记为permanent）且已经可以确保无环。此时所有经过此节点的路径都不会有环。</p>
-</li>
-<li><p>当一个节点被标记为temp的时候，说明在此路径上已经被访问过，如果再次访问到temp节点，说明有环。</p>
-</li>
-</ul>
+<p>每次partition将arr分为了小于等于pivot的部分和大于pivot的部分，然后递归的对这两部分进行partition。</p>
+<p>注意这里你选择小于等于还是小于其实是无所谓的。</p>
+<p>为什么是 p + 1 和 p - 1 ？因为每次经过partition之后，pivot已经在正确的位置上了，所以不需要再对pivot进行排序。并且对于lo hi上的partition， 所得出的index完全有可能是lo或者hi，所以 + 1 和 - 1 也避免了循环。</p>
 
                 
               </div>
@@ -315,8 +305,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>拓扑排序</div>
-      <div>https://perticevassly.github.io/project/2025/03/10/拓扑排序问题/</div>
+      <div>快速排序</div>
+      <div>https://perticevassly.github.io/project/2025/03/16/leetcode/快速排序问题/</div>
     </div>
     <div class="license-meta">
       
@@ -328,7 +318,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年3月10日</div>
+          <div>2025年3月16日</div>
         </div>
       
       
@@ -366,9 +356,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/12/network/TCP/" title="TCP">
+                      <a href="/2025/03/16/se-system-design/6-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/" title="原型模式">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">TCP</span>
+                        <span class="hidden-mobile">原型模式</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -376,8 +366,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/03/03/DockerCompose%E7%BD%91%E7%BB%9C%E6%98%A0%E5%B0%84/" title="DockerCompose网络映射">
-                        <span class="hidden-mobile">DockerCompose网络映射</span>
+                      <a href="/2025/03/15/se-system-design/3-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" title="工厂模式">
+                        <span class="hidden-mobile">工厂模式</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
