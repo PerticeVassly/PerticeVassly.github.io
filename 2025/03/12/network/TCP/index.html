@@ -1,0 +1,946 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;cs-basics&#x2F;network&#x2F;tcp-connection-and-disconnection.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TCP">
+<meta property="og:url" content="http://example.com/2025/03/12/network/TCP/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;cs-basics&#x2F;network&#x2F;tcp-connection-and-disconnection.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-12T09:36:00.000Z">
+<meta property="article:modified_time" content="2026-05-19T07:44:17.899Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="network">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>TCP - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="TCP"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-03-12 17:36" pubdate>
+          2025年3月12日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          38 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">TCP</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>参考资料：</p>
+<p><a target="_blank" rel="noopener" href="https://javaguide.cn/cs-basics/network/tcp-connection-and-disconnection.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97">https://javaguide.cn/cs-basics/network/tcp-connection-and-disconnection.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/24853633/answer/115173386">https://www.zhihu.com/question/24853633/answer/115173386</a></p>
+<p><a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc793#autoid-19">https://datatracker.ietf.org/doc/html/rfc793#autoid-19</a></p>
+<p>计算机网络（谢希仁）</p>
+<h1 id="TCP特点"><a href="#TCP特点" class="headerlink" title="TCP特点"></a>TCP特点</h1><p>面向连接的<strong>运输层协议</strong></p>
+<p>点对点连接（<strong>套接字</strong>作为端点 ip+端口）</p>
+<p>提供<strong>可靠</strong>交付</p>
+<p>提供<strong>全双工</strong>通信</p>
+<p>面向<strong>字节流</strong></p>
+<h1 id="TCP报文首部格式"><a href="#TCP报文首部格式" class="headerlink" title="TCP报文首部格式"></a>TCP报文首部格式</h1><p><strong>源端口和目的端口</strong>: ip地址再下一层的ip网络层</p>
+<p><strong>序号</strong> :SEQ</p>
+<p><strong>确认号</strong>: 表明确认收到报文，并且期待接受下一个报文的序号</p>
+<p>数据偏移（指定TCP头的大小）</p>
+<p>保留bit</p>
+<p>URGbit （意为应当优先传输）</p>
+<p>ACKbit （意为确认号有效）</p>
+<p>PSHbit （意为接收方应该尽快将数据交给应用层）</p>
+<p>RSTbit （意为重置连接）</p>
+<p>SYNbit （意为发起连接）</p>
+<p>窗口大小 （发送本报文一方的接受窗口）: 因为是全双工</p>
+<p>校验和</p>
+<p>紧急指针（URGbit为1时有效，指明紧急数据的位置）</p>
+<p>选项 eg:MSS（最大报文长度）</p>
+<h1 id="TCP断线重连"><a href="#TCP断线重连" class="headerlink" title="TCP断线重连"></a>TCP断线重连</h1><p>会默认发送心跳包，然后看是否收到了ACK，如果没有收到ACK就会进行重传，直到达到最大重传次数，此时关闭连接，由于一方关闭连接以后，另一方肯定也无法收到ACK，因此另一方也会关闭连接.</p>
+<h1 id="TCP-三次握手"><a href="#TCP-三次握手" class="headerlink" title="TCP 三次握手"></a>TCP 三次握手</h1><pre class="mermaid">sequenceDiagram
+    participant Client
+    participant Server
+    Client->>Server: SYN
+    Server->>Client: SYN+ACK
+    Client->>Server: ACK</pre>
+
+<p><strong>第一次握手</strong>：client发送带有SYN(SEQ&#x3D;x)的数据包到server，进入<strong>SYN_SEND</strong>状态，等待server确认</p>
+<p><em>意为client已做好准备连接，请求连接</em></p>
+<p><strong>第二次握手</strong>：server收到SYN包，确认client的SYN+ACK(SEQ&#x3D;y, ACK&#x3D;x+1)，自身进入<strong>SYN_RECV</strong>状态，client进入<strong>ESTABLISH</strong>状态</p>
+<p><em>意为server已经收到连接请求，并且做好连接准备</em></p>
+<p><em>ACK&#x3D;x+1意为针对第x个数据包的确认，即对SYN数据包的确认</em></p>
+<p><strong>第三次握手</strong>：client发送ACK(ACK&#x3D;y+1)的数据包，此时server和client都进入<strong>ESTABLISH</strong>状态，TCP三次握手完成</p>
+<h2 id="为什么是三次握手？"><a href="#为什么是三次握手？" class="headerlink" title="为什么是三次握手？"></a>为什么是三次握手？</h2><p>首先由于<strong>拜占庭将军问题</strong>，在信道（网络层）不可信的情况下，彼此直接是无法做到相互确认的，其次由于client，server自身的问题，也无法确认二者自身是否做好了连接的准备或者具备连接的条件</p>
+<p>例如即使是最后一次由client发出的ACK也可能丢失，此时server还是处于SYN_RECV状态 ，但是客户端已经进入ESTABLISH状态了，此时仍然会出错。如果变为四次握手————即client还需要等待server的第四次握手ACK，还是有可能出现server发送的这个ACK丢失的情况，如此一来为了确保二者互相确认，server和client永远都在相互等待，无论多少次握手都解决不了这个问题</p>
+<p>由此可见对于网络信道的信任程度决定了握手的次数</p>
+<p>但是实际过程中信道往往不可靠，因此需要折中即<strong>不能无条件相信信道，但是也不应该因为怀疑信道而反复彼此确认</strong>（即反复检验信道）</p>
+<p>发送方和接收方均需要检验以下点(各方只检验一次即可)后才能相互建立连接</p>
+<ol>
+<li><p><strong>对方的接受功能是正常的（对方愿意接受且做好了接受准备）</strong></p>
+</li>
+<li><p><strong>信道可信</strong></p>
+</li>
+</ol>
+<ul>
+<li><p>第一次握手：client无已知；server已知2</p>
+</li>
+<li><p>第二次握手：client已知1，2；server已知2</p>
+</li>
+<li><p>第三次握手：client已知1，2；server已知1，2</p>
+</li>
+</ul>
+<p>至此可以建立连接。同时TCP的ACK机制使得二者可以知道彼此确认的SEQ到底是对方发出的哪一个，降低了错误确认的可能。（注意，只有SYN占用SEQ，ACK不占用）</p>
+<p>第三次握手的时候client是可以传输数据的，是因为尽管server不知道1但是client已经知道了所有条件都被满足了，可以直接发送数据。</p>
+<p>由于需要检查对方是否最好了接受准备，最小的握手次数就是三次，此次数也能恰好满足对于信道可行的检查</p>
+<h1 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h1><pre class="mermaid">sequenceDiagram
+    participant Client
+    participant Server
+    Client->>Server: FIN
+    Server->>Client: ACK
+    Server->>Client: FIN
+    Client->>Server: ACK</pre>
+
+<p><strong>第一次挥手</strong>：client发送一个FIN（SEQ&#x3D;x）给server，client进入 <strong>FIN_WAIT_1</strong> 状态</p>
+<p><strong>第二次挥手</strong>：server收到FIN，发送一个ACK（ACK&#x3D;x+1）给client，server进入 <strong>CLOSE_WAIT</strong> 状态，client进入<strong>FIN_WAIT_2</strong> 状态</p>
+<p><strong>第三次挥手</strong>：server发送一个FIN（SEQ&#x3D;y）给client，server进入 <strong>LAST_ACK</strong>状态</p>
+<p><strong>第四次挥手</strong>：client收到FIN，发送一个ACK（ACK&#x3D;y+1）给server，client进入 <strong>TIME_WAIT</strong> 状态，等待2MSL后进入 <strong>CLOSED</strong>状态，server收到ACK后进入 <strong>CLOSED</strong> 状态</p>
+<h2 id="为什么是四次挥手？"><a href="#为什么是四次挥手？" class="headerlink" title="为什么是四次挥手？"></a>为什么是四次挥手？</h2><p>首先双方必须确保彼此之间没有数据传输才能断开连接。</p>
+<p>各方需要检查</p>
+<ol>
+<li><p><strong>自身没有数据要发送</strong></p>
+</li>
+<li><p><strong>对方没有数据要发送</strong></p>
+</li>
+<li><p><strong>信道可信</strong></p>
+</li>
+</ol>
+<p>第一次握手：client已知1；server已知2，3</p>
+<p>第二次握手：client已知1，3；server已知2，3 （此时有可能还在传输数据）</p>
+<p>传输数据的时间比较长，无法保证第三次握手的时候信道依然可信，相当于重新确认一遍关闭</p>
+<p>第三次握手：client已知1，2，3；server已知1，2</p>
+<p>第四次握手：client已知1，2，3；server已知1，2，3</p>
+<p>与建立连接不同，如果建立连接的时候出现ACK丢失的情况，server会重传SYN-ACK，因此最后总能进入ESTABLISH状态，但是在关闭连接了以后，如果出现了ACK丢失由于client已经关闭，超时重传机制将不起作用，并不能保证二者都进入关闭状态，因此一个2MSL的机制是必要的</p>
+<h1 id="TCP核心机制"><a href="#TCP核心机制" class="headerlink" title="TCP核心机制"></a>TCP核心机制</h1><p><strong>超时重传机制</strong>：基本思想的是当没有收到接收方的ACK时候，发送方会进行超时重传。</p>
+<p><strong>滑动窗口机制</strong>：发送方和接收方都维护一个自身的滑动窗口，该滑动窗口指明了数据包的发送接受和确认情况。</p>
+<p>TCP对于可靠传输，流量控制和拥塞控制都是基于这两机制设计的</p>
+<h1 id="TCP可靠传输"><a href="#TCP可靠传输" class="headerlink" title="TCP可靠传输"></a>TCP可靠传输</h1><p>单纯由停止等待协议确保可靠会占用大量网络资源，因此采用滑动窗口机制设计TCP</p>
+<p><strong>累计确认</strong>，如果接收方接受到数据包不是按序到达的，接收方只能ACK SEQ最大的一段连续包，但是这样就会导致发送方重传后续所有的数据包，一种解决方案时，将其缓存，等待其他包到达以后&#x2F;自己需要传输数据的时候捎带统一发送ACK，但是这样又会与后文网络拥塞控制相冲突（快重传）</p>
+<p>其中超时重传时间选择是一个重要的问题，一般依据报文段往返时间RTT来选择，但是RTT是变化的，因此需要一个动态的算法来选择超时重传时间</p>
+<p><em>新的 RTT_s &#x3D; α * 旧的 RTT_s + (1-α) * 新的RTT样本,其中α一般取0.125. 超时重传时间 RTO &#x3D; RTT_s + 4 * RTT_D（RTT的偏差的加权平均）.新的RTT_D &#x3D; β * 旧的RTT_D + (1-β) * |新的RTT - 旧的RTT|</em></p>
+<p><em>上述算法的问题在于一旦出现超时重传，如果仅仅时因为网络阻塞等原因导致先前的包迟到了，那么接收端在接收到一个ACK的时候，应该将其视为对于哪一个数据包的ACK呢？选择错误会导致RTT计算偏差，Karn提出的解决方案是不采用超时重传的RTT进行计算。但是这样会导致发生重传的时候RTT的值还是不变，这是不合理的，因此可以每崇传一次，就报RTO增大一点（一般是旧时间的两倍）</em></p>
+<p><strong>选择确认SACK</strong> ：接收方可以发送一个SACK报文，告诉发送方哪些数据包没有到达，发送方只需要重传这些数据包即可，不需要重传所有数据包。需要启动TCP头中的选项字段</p>
+<h1 id="TCP流量控制"><a href="#TCP流量控制" class="headerlink" title="TCP流量控制"></a>TCP流量控制</h1><p>滑动窗口机制，使得接收方可以在ACK中标记自身接受窗口的大小，发送方的发送窗口不能超过这个接受窗口</p>
+<p>但是如果出现接收方接受窗口为0，发送方便会等待，此时如果接收方表示接受窗口恢复的数据包丢失，双方便会进入相互等待，此时需要设置一个持续计时器，记录0窗口时间，此时发送方会定时发送一个窗口探测数据包，以查询现在的接收方窗口</p>
+<h1 id="TCP传输效率"><a href="#TCP传输效率" class="headerlink" title="TCP传输效率"></a>TCP传输效率</h1><p>相比停止等待，TCP滑动窗口已经提高了一部分效率，但是仍然可能出现<strong>糊涂窗口问题</strong></p>
+<p>如果接收方应用的数据处理效率很低，且接受缓存已满，那么每次腾出的接受窗口就会很小，导致大量资源消耗在TCP&#x2F;IP报文头上，减低了传输效率，也提高了网络拥堵</p>
+<p>解决方法是让接收方等待一段时间&#x2F;接受缓存由一般空闲时间再发出ACK&#x2F;通知发送方，同时发送方自身也要避免传输小数据</p>
+<h2 id="TCP拥塞控制"><a href="#TCP拥塞控制" class="headerlink" title="TCP拥塞控制"></a>TCP拥塞控制</h2><p>由发送方自己维护一个拥塞窗口，表示发送方认为可以在网络中传输的数据量。发送方发送数据的大小是滑动窗口和拥塞窗口的最小值</p>
+<p>拥塞窗口的维护的算法，首先确定一个初始拥塞窗口大小，一般以 **SMSS（Sender Maximum Segment Size）**为大小</p>
+<p><strong>慢开始：slow start</strong></p>
+<p>每次收到一个对新报文的确认，拥塞窗口增加最多一个SMSS，此时拥塞窗口成倍增长</p>
+<p><strong>拥塞避免: congestion avoidance</strong></p>
+<p>一旦达到慢开始门限ssthresh就改为每经过一个RTT，就把cwnd + 1，当出现超时重传的时候，调整门限ssthresh为发生重传的cwnd的1&#x2F;2，此时拥塞窗口cwnd设置为1，重新进入慢开始，如此循环</p>
+<p><strong>快重传: fast retransmit</strong></p>
+<p>在这个过程中，如果出现仅仅个别报文超时的情况，很容易造成对于网络状态的误判从而拥塞避免机制。因此发送方会要求接受的实时汇报自己的接受情况，而不是累计确认。这样即使由个别包丢失了，由于已知可以收到接收方的ACK，避免接收方由于个别包丢失迟发ACK和网络拥塞情况的混淆。 一旦发送方收到3个相同的ACK，就知道需要立即进行重传</p>
+<p><strong>快恢复: fast recovery</strong></p>
+<p>如果发现个别包丢失————即上文快重传，那么可以将ssthresh设置为cwnd的一半，cwnd设置为ssthresh&#x2F;sshresh + 3， 并执行拥塞避免算法。</p>
+<p><strong>AQM主动管理队列</strong></p>
+<p>路由器在队列满的时候会丢弃数据包，从而触发网络中TCP的超时重传，大量TCP都会触发拥塞避免，导致网络通信量同步大幅下降或者上升。</p>
+<p>解决方案是，路由器应当在处理队列快要满的时候就开始主动丢弃，提醒TCP应当避免网络拥塞</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/network/" class="category-chain-item">network</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/network/" class="print-no-link">#network</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>TCP</div>
+      <div>http://example.com/2025/03/12/network/TCP/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年3月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/03/14/os/%E7%94%A8%E6%88%B7%E6%80%81%E5%86%85%E6%A0%B8%E6%80%81/" title="用户态内核态">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">用户态内核态</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/03/10/leetcode/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/" title="拓扑排序">
+                        <span class="hidden-mobile">拓扑排序</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
