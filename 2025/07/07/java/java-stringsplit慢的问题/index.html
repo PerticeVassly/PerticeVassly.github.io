@@ -19,12 +19,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1String[] tokens &#x3D; str.split(&quot;&#x2F;&quot;);  1String[] tokens &#x3D; str.split(&quot;[&#x2F;]&quot;);  前者要比后者块四倍左右 这是因为前者是对非正则表达式字符分割做了优化，后者是正则表达式分割，调用了正则表达式引擎 源码如下 12345678910private String[] split(String reg">
+    <meta name="description" content="1String[] tokens &#x3D; str.split(&quot;&#x2F;&quot;); 1String[] tokens &#x3D; str.split(&quot;[&#x2F;]&quot;); 前者要比后者块四倍左右 这是因为前者是对非正则表达式字符分割做了优化，后者是正则表达式分割，调用了正则表达式引擎 源码如下 12345678910private String[] split(String regex">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java String.split 慢的问题">
 <meta property="og:url" content="http://example.com/2025/07/07/java/java-stringsplit%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="eqsun&#39;s blog">
-<meta property="og:description" content="1String[] tokens &#x3D; str.split(&quot;&#x2F;&quot;);  1String[] tokens &#x3D; str.split(&quot;[&#x2F;]&quot;);  前者要比后者块四倍左右 这是因为前者是对非正则表达式字符分割做了优化，后者是正则表达式分割，调用了正则表达式引擎 源码如下 12345678910private String[] split(String reg">
+<meta property="og:description" content="1String[] tokens &#x3D; str.split(&quot;&#x2F;&quot;); 1String[] tokens &#x3D; str.split(&quot;[&#x2F;]&quot;); 前者要比后者块四倍左右 这是因为前者是对非正则表达式字符分割做了优化，后者是正则表达式分割，调用了正则表达式引擎 源码如下 12345678910private String[] split(String regex">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-07-07T04:00:00.000Z">
 <meta property="article:modified_time" content="2026-05-19T07:44:17.895Z">
@@ -382,14 +382,11 @@
               <div class="markdown-body">
                 
                 <figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">String[] tokens <span class="hljs-operator">=</span> str.split(<span class="hljs-string">&quot;/&quot;</span>)<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
-
 <figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">String[] tokens <span class="hljs-operator">=</span> str.split(<span class="hljs-string">&quot;[/]&quot;</span>)<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
-
 <p>前者要比后者块四倍左右</p>
 <p>这是因为前者是对非正则表达式字符分割做了优化，后者是正则表达式分割，调用了正则表达式引擎</p>
 <p>源码如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> String[] split(String regex, <span class="hljs-type">int</span> limit, <span class="hljs-type">boolean</span> withDelimiters) &#123;<br>   <span class="hljs-type">char</span> <span class="hljs-variable">ch</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;<br>   <span class="hljs-type">char</span> ch;<br>   <span class="hljs-keyword">if</span> ((regex.length() == <span class="hljs-number">1</span> &amp;&amp; <span class="hljs-string">&quot;.$|()[&#123;^?*+\\&quot;</span>.indexOf(ch = regex.charAt(<span class="hljs-number">0</span>)) == -<span class="hljs-number">1</span> || regex.length() == <span class="hljs-number">2</span> &amp;&amp; regex.charAt(<span class="hljs-number">0</span>) == <span class="hljs-string">&#x27;\\&#x27;</span> &amp;&amp; ((ch = regex.charAt(<span class="hljs-number">1</span>)) - <span class="hljs-number">48</span> | <span class="hljs-number">57</span> - ch) &lt; <span class="hljs-number">0</span> &amp;&amp; (ch - <span class="hljs-number">97</span> | <span class="hljs-number">122</span> - ch) &lt; <span class="hljs-number">0</span> &amp;&amp; (ch - <span class="hljs-number">65</span> | <span class="hljs-number">90</span> - ch) &lt; <span class="hljs-number">0</span>) &amp;&amp; (ch &lt; <span class="hljs-string">&#x27;\ud800&#x27;</span> || ch &gt; <span class="hljs-string">&#x27;\udfff&#x27;</span>)) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.split(ch, limit, withDelimiters);<br>   &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-type">Pattern</span> <span class="hljs-variable">pattern</span> <span class="hljs-operator">=</span> Pattern.compile(regex);<br>      <span class="hljs-keyword">return</span> withDelimiters ? pattern.splitWithDelimiters(<span class="hljs-built_in">this</span>, limit) : pattern.split(<span class="hljs-built_in">this</span>, limit);<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>可以看出，前者直接调用了 <code>split(char ch, int limit, boolean withDelimiters)</code> 方法，而后者则是编译正则表达式并调用 <code>Pattern</code> 类的 <code>split</code> 方法。</p>
 
                 

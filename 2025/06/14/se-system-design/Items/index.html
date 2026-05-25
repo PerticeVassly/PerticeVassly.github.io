@@ -19,12 +19,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Design decisions(tactics)A tatic is a desgin decision 可以分为 Responsibilities Coordination Data Resources Elements mapping Binding time Technology tactics 针对不同的 QA （参考QA部分） Design StrategyA collection o">
+    <meta name="description" content="Design decisions(tactics) A tatic is a desgin decision 可以分为 Responsibilities Coordination Data Resources Elements mapping Binding time Technology tactics 针对不同的 QA （参考QA部分） Design Strategy A collection">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Architecture Items">
 <meta property="og:url" content="http://example.com/2025/06/14/se-system-design/Items/index.html">
 <meta property="og:site_name" content="eqsun&#39;s blog">
-<meta property="og:description" content="Design decisions(tactics)A tatic is a desgin decision 可以分为 Responsibilities Coordination Data Resources Elements mapping Binding time Technology tactics 针对不同的 QA （参考QA部分） Design StrategyA collection o">
+<meta property="og:description" content="Design decisions(tactics) A tatic is a desgin decision 可以分为 Responsibilities Coordination Data Resources Elements mapping Binding time Technology tactics 针对不同的 QA （参考QA部分） Design Strategy A collection">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-06-14T04:00:00.000Z">
 <meta property="article:modified_time" content="2026-05-19T07:44:17.935Z">
@@ -337,7 +337,7 @@
         
         
         
-          17 分钟
+          16 分钟
         
       </span>
     
@@ -381,7 +381,8 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Design-decisions-tactics"><a href="#Design-decisions-tactics" class="headerlink" title="Design decisions(tactics)"></a>Design decisions(tactics)</h1><p>A tatic is <strong>a desgin decision</strong></p>
+                <h1 id="design-decisions(tactics)">Design decisions(tactics)</h1>
+<p>A tatic is <strong>a desgin decision</strong></p>
 <p>可以分为</p>
 <p>Responsibilities</p>
 <p>Coordination</p>
@@ -391,40 +392,54 @@
 <p>Binding time</p>
 <p>Technology</p>
 <p><em>tactics 针对不同的 QA （参考QA部分）</em></p>
-<h1 id="Design-Strategy"><a href="#Design-Strategy" class="headerlink" title="Design Strategy"></a>Design Strategy</h1><p><strong>A collection of tactics</strong> is called a design strategy</p>
+<h1 id="design-strategy">Design Strategy</h1>
+<p><strong>A collection of tactics</strong> is called a design strategy</p>
 <p>Generic Design Strategies:</p>
 <ul>
-<li><p>Decomposition</p>
+<li>
+<p>Decomposition</p>
 </li>
-<li><p>Abstraction</p>
+<li>
+<p>Abstraction</p>
 </li>
-<li><p>Stepwise: ‘Divid and Conquer’</p>
+<li>
+<p>Stepwise: ‘Divid and Conquer’</p>
 </li>
-<li><p>Generate and Test</p>
+<li>
+<p>Generate and Test</p>
 </li>
-<li><p>Iteration: Incremental Development</p>
+<li>
+<p>Iteration: Incremental Development</p>
 </li>
-<li><p>Reuseable elements</p>
+<li>
+<p>Reuseable elements</p>
 </li>
 </ul>
-<h1 id="Design-Patterns"><a href="#Design-Patterns" class="headerlink" title="Design Patterns"></a>Design Patterns</h1><p>Architecture pattern</p>
+<h1 id="design-patterns">Design Patterns</h1>
+<p>Architecture pattern</p>
 <ul>
-<li><p>is a package of design decisions that is found repeatedly in practice,</p>
+<li>
+<p>is a package of design decisions that is found repeatedly in practice,</p>
 </li>
-<li><p>has known properties that permit reuse, and describes a class of architectures.</p>
+<li>
+<p>has known properties that permit reuse, and describes a class of architectures.</p>
 </li>
 </ul>
 <p>Architecture pattern establishes a relationship between:</p>
 <ul>
-<li><p><strong>A context</strong>: A recurring, common situation in the world that gives rise to a problem.</p>
+<li>
+<p><strong>A context</strong>: A recurring, common situation in the world that gives rise to a problem.</p>
 </li>
-<li><p><strong>A problem</strong>: The problem, appropriately generalized, that arises in the given context.</p>
+<li>
+<p><strong>A problem</strong>: The problem, appropriately generalized, that arises in the given context.</p>
 </li>
-<li><p><strong>A solution</strong>: A successful architecture resolution to the problem, appropriately abstracted.</p>
+<li>
+<p><strong>A solution</strong>: A successful architecture resolution to the problem, appropriately abstracted.</p>
 </li>
 </ul>
 <p><strong>Elements + Relations + Constraints</strong></p>
-<h1 id="Design-Concepts"><a href="#Design-Concepts" class="headerlink" title="Design Concepts"></a>Design Concepts</h1><p>Avoid reinventing the wheel</p>
+<h1 id="design-concepts">Design Concepts</h1>
+<p>Avoid reinventing the wheel</p>
 <p>There are several categories of design concepts, someareabstractand some more concrete.</p>
 <p><strong>Reference Architectures</strong> : provide a blueprint for structuring an application</p>
 <ul>
@@ -435,17 +450,20 @@
 <li>Web applications</li>
 </ul>
 <p><strong>Deployment Patterns</strong> : provide guidance on how to structure the system from <strong>a physical standpoint</strong></p>
-<p><strong>Tactics</strong> : Design decisions that influence the control of a quality attribute </p>
+<p><strong>Tactics</strong> : Design decisions that influence the control of a quality attribute</p>
 <p><strong>Patterns</strong> : Patterns are proven (conceptual) solutions to recurring design problems.</p>
 <p><strong>Externally developed components</strong> : resuable components （framework）</p>
-<h1 id="关系梳理"><a href="#关系梳理" class="headerlink" title="关系梳理"></a>关系梳理</h1><p>tactic &#x3D; design decision 针对QA，每个QA都有多个tactic</p>
-<p>strategy &#x3D; 多个tactic组成，一种思想方法&#x2F;手段</p>
-<p>pattern &#x3D; 多个tactic组成，特定context下为了解决特定problem而设计的solution。</p>
+<h1 id="关系梳理">关系梳理</h1>
+<p>tactic = design decision 针对QA，每个QA都有多个tactic</p>
+<p>strategy = 多个tactic组成，一种思想方法/手段</p>
+<p>pattern = 多个tactic组成，特定context下为了解决特定problem而设计的solution。</p>
 <p>design concepts 包含patterns，tactics，reference architectures等</p>
-<h1 id="软件架构的风格"><a href="#软件架构的风格" class="headerlink" title="软件架构的风格"></a>软件架构的风格</h1><p>module，C&amp;C，Allocation三种风格</p>
-<p>一方面是Documenting部分对view进行了分类Structral Views（Module， C&amp;C，Allocation）&#x2F;Quality Views</p>
+<h1 id="软件架构的风格">软件架构的风格</h1>
+<p>module，C&amp;C，Allocation三种风格</p>
+<p>一方面是Documenting部分对view进行了分类Structral Views（Module， C&amp;C，Allocation）/Quality Views</p>
 <p>一方面是Patterns部分对于各个pattern又按照Module， C&amp;C，Allocation等进行了分类。</p>
-<h1 id="Architecture，structure和Design的区别？"><a href="#Architecture，structure和Design的区别？" class="headerlink" title="Architecture，structure和Design的区别？"></a>Architecture，structure和Design的区别？</h1><p>Design 包括Architecture， Architecture 包括Structure</p>
+<h1 id="architecture，structure和design的区别？">Architecture，structure和Design的区别？</h1>
+<p>Design 包括Architecture， Architecture 包括Structure</p>
 <p>结构是静态的，逻辑的，关于系统是如何构成的</p>
 <p>体系结构除包含架构，还包含组件之间的相关的关系结构，并且定义一些动态行为</p>
 <p>体系结构是关于软件设计的，所谓体系结构都是设计的，但是不是所有的设计都是architecture的设计</p>

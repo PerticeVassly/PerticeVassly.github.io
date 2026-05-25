@@ -19,12 +19,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Kanban看板是一种通过使用可视化，拉动式系统来优化流程中价值流动的策略。定义价值的方式可能多种多样。例如，可以考虑客户，终端用户，组织和环境的需求。 看板由以下三种协同的实践组成：  定义并且可视化工作流程  主动管理工作流程中的事项  改进工作流程   实施过程中，这些看板实践统称为看板系统。参与看板系统价值交互的人员称之为看板系统成员。 相比较Scrum规定角色和迭代周期，Kanban没有">
+    <meta name="description" content="Kanban 看板是一种通过使用可视化，拉动式系统来优化流程中价值流动的策略。定义价值的方式可能多种多样。例如，可以考虑客户，终端用户，组织和环境的需求。 看板由以下三种协同的实践组成：   定义并且可视化工作流程   主动管理工作流程中的事项   改进工作流程   实施过程中，这些看板实践统称为看板系统。参与看板系统价值交互的人员称之为看板系统成员。 相比较Scrum规定角色和迭代周期，Kanb">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kanban">
 <meta property="og:url" content="http://example.com/2025/05/15/se-quality-management/Kanban/index.html">
 <meta property="og:site_name" content="eqsun&#39;s blog">
-<meta property="og:description" content="Kanban看板是一种通过使用可视化，拉动式系统来优化流程中价值流动的策略。定义价值的方式可能多种多样。例如，可以考虑客户，终端用户，组织和环境的需求。 看板由以下三种协同的实践组成：  定义并且可视化工作流程  主动管理工作流程中的事项  改进工作流程   实施过程中，这些看板实践统称为看板系统。参与看板系统价值交互的人员称之为看板系统成员。 相比较Scrum规定角色和迭代周期，Kanban没有">
+<meta property="og:description" content="Kanban 看板是一种通过使用可视化，拉动式系统来优化流程中价值流动的策略。定义价值的方式可能多种多样。例如，可以考虑客户，终端用户，组织和环境的需求。 看板由以下三种协同的实践组成：   定义并且可视化工作流程   主动管理工作流程中的事项   改进工作流程   实施过程中，这些看板实践统称为看板系统。参与看板系统价值交互的人员称之为看板系统成员。 相比较Scrum规定角色和迭代周期，Kanb">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-15T02:00:02.000Z">
 <meta property="article:modified_time" content="2026-05-19T07:44:17.900Z">
@@ -381,52 +381,70 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Kanban"><a href="#Kanban" class="headerlink" title="Kanban"></a>Kanban</h1><p>看板是一种通过使用<strong>可视化</strong>，<strong>拉动式系统</strong>来优化流程中价值流动的策略。定义价值的方式可能多种多样。例如，可以考虑客户，终端用户，组织和环境的需求。</p>
+                <h1 id="kanban">Kanban</h1>
+<p>看板是一种通过使用<strong>可视化</strong>，<strong>拉动式系统</strong>来优化流程中价值流动的策略。定义价值的方式可能多种多样。例如，可以考虑客户，终端用户，组织和环境的需求。</p>
 <p>看板由以下三种协同的实践组成：</p>
 <ul>
-<li><p><strong>定义并且可视化工作流程</strong></p>
+<li>
+<p><strong>定义并且可视化工作流程</strong></p>
 </li>
-<li><p><strong>主动管理工作流程中的事项</strong></p>
+<li>
+<p><strong>主动管理工作流程中的事项</strong></p>
 </li>
-<li><p><strong>改进工作流程</strong></p>
+<li>
+<p><strong>改进工作流程</strong></p>
 </li>
 </ul>
 <p>实施过程中，这些看板实践统称为看板系统。参与看板系统价值交互的人员称之为看板系统成员。</p>
 <p>相比较Scrum规定角色和迭代周期，Kanban没有严格规定，提供普世原则和实践，使团队能在现有流程上逐步提高效率。</p>
 <p>运维，持续交付等场景倾向于使用Kanban。新产品开发常用Scrum。</p>
-<h1 id="工作流映射"><a href="#工作流映射" class="headerlink" title="工作流映射"></a>工作流映射</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs css">kanban<br>    title 工作流<br>    <span class="hljs-selector-tag">section</span> 待办<br><br>    <span class="hljs-selector-tag">section</span> 分析<br><br>    <span class="hljs-selector-tag">section</span> 开发<br><br>    <span class="hljs-selector-tag">section</span> 测试<br><br>    <span class="hljs-selector-tag">section</span> 验收<br><br>    <span class="hljs-selector-tag">section</span> 等待运维<br><br>    <span class="hljs-selector-tag">section</span> 发布生产环境<br></code></pre></td></tr></table></figure>
-
-<h2 id="定义与可视化工作流"><a href="#定义与可视化工作流" class="headerlink" title="定义与可视化工作流"></a>定义与可视化工作流</h2><p>优化流必须先定义流在特定情境中流得含义。在其情境中，Kanban系统成员对于流得明确且共同得认知，就被称之为“工作流的定义” （Definition of Workflow，DoW）</p>
+<h1 id="工作流映射">工作流映射</h1>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs css">kanban<br>    title 工作流<br>    <span class="hljs-selector-tag">section</span> 待办<br><br>    <span class="hljs-selector-tag">section</span> 分析<br><br>    <span class="hljs-selector-tag">section</span> 开发<br><br>    <span class="hljs-selector-tag">section</span> 测试<br><br>    <span class="hljs-selector-tag">section</span> 验收<br><br>    <span class="hljs-selector-tag">section</span> 等待运维<br><br>    <span class="hljs-selector-tag">section</span> 发布生产环境<br></code></pre></td></tr></table></figure>
+<h2 id="定义与可视化工作流">定义与可视化工作流</h2>
+<p>优化流必须先定义流在特定情境中流得含义。在其情境中，Kanban系统成员对于流得明确且共同得认知，就被称之为“工作流的定义” （Definition of Workflow，DoW）</p>
 <p>包括：</p>
 <ul>
-<li><p>在工作流中移动的各个价值单元的定义。被称之为“工作项” （work item）。</p>
+<li>
+<p>在工作流中移动的各个价值单元的定义。被称之为“工作项” （work item）。</p>
 </li>
-<li><p>在工作流中“开始”和“完成” 工作项的定义。</p>
+<li>
+<p>在工作流中“开始”和“完成” 工作项的定义。</p>
 </li>
-<li><p>工作项目开始到结束时流动所经过的一个或者多个已定义状态。介于开始节点和结束节点间的任意一个工作就被称之为“进行中工作” （WIP）</p>
+<li>
+<p>工作项目开始到结束时流动所经过的一个或者多个已定义状态。介于开始节点和结束节点间的任意一个工作就被称之为“进行中工作” （WIP）</p>
 </li>
-<li><p>如何从开始到结束间控制WIP的定义</p>
+<li>
+<p>如何从开始到结束间控制WIP的定义</p>
 </li>
-<li><p>有关工作项如何在每个状态中从开始到完成的明确政策</p>
+<li>
+<p>有关工作项如何在每个状态中从开始到完成的明确政策</p>
 </li>
-<li><p>一份用来预估一个工作项从开始到完成所应花费实践的“服务水平期望”</p>
+<li>
+<p>一份用来预估一个工作项从开始到完成所应花费实践的“服务水平期望”</p>
 </li>
 </ul>
-<h3 id="紧急工作"><a href="#紧急工作" class="headerlink" title="紧急工作"></a>紧急工作</h3><p>快速通道，处理特殊情况的常用方式</p>
+<h3 id="紧急工作">紧急工作</h3>
+<p>快速通道，处理特殊情况的常用方式</p>
 <ul>
-<li><p>任意时刻最多有一个工作项在快速通道内</p>
+<li>
+<p>任意时刻最多有一个工作项在快速通道内</p>
 </li>
-<li><p>每周最多有一个紧急工作</p>
+<li>
+<p>每周最多有一个紧急工作</p>
 </li>
-<li><p>快速通道内的工作项无需计入在制品限制</p>
+<li>
+<p>快速通道内的工作项无需计入在制品限制</p>
 </li>
 </ul>
-<h3 id="Kanban与卡片"><a href="#Kanban与卡片" class="headerlink" title="Kanban与卡片"></a>Kanban与卡片</h3><p>Kanban看板 (Kanban Board): Kanban方法的核心工具，可视化工作及其流程状态。典型看板按流程划分为列（如“待处理”、“进行中”、“待测试”、“已完成”），工作项以卡片形式放置。提供实时透明度，显示任务状态、位置、整体负荷。可以是物理白板或电子工具（Jira, Trello, Azure DevOps等）。作为信息辐射器，促进团队内外同步对齐。</p>
+<h3 id="Kanban与卡片">Kanban与卡片</h3>
+<p>Kanban看板 (Kanban Board): Kanban方法的核心工具，可视化工作及其流程状态。典型看板按流程划分为列（如“待处理”、“进行中”、“待测试”、“已完成”），工作项以卡片形式放置。提供实时透明度，显示任务状态、位置、整体负荷。可以是物理白板或电子工具（Jira, Trello, Azure DevOps等）。作为信息辐射器，促进团队内外同步对齐。</p>
 <p>Kanban卡片 (Kanban Card): 代表具体工作项（用户故事、任务、缺陷等）。记录必要信息（标题、负责人、描述、截止日期等）助成员理解任务。电子卡片可含更多属性（子任务、附件、评论）。卡片从左到右移动反映流动。受阻时标记（红标）或入阻塞区提示解决。卡片流动形成拉动信号。</p>
-<h3 id="关键概念-流程阶段与-WIP"><a href="#关键概念-流程阶段与-WIP" class="headerlink" title="关键概念 - 流程阶段与 WIP"></a>关键概念 - 流程阶段与 WIP</h3><p>Kanban根据具体流程定制列 （如“待开发”，“开发中”，“待测试”，“测试中”，“已部署”）。列间可以设置 “等待&#x2F;就绪”子列。可以设置泳道横向分区（例如紧急通道）</p>
+<h3 id="关键概念-流程阶段与-WIP">关键概念 - 流程阶段与 WIP</h3>
+<p>Kanban根据具体流程定制列 （如“待开发”，“开发中”，“待测试”，“测试中”，“已部署”）。列间可以设置 “等待/就绪”子列。可以设置泳道横向分区（例如紧急通道）</p>
 <p>在制品限制（WIP Limit）。给每个工作阶段设置WIP限制。强制团队避免多任务过载。</p>
 <p>拉动系统（Pull System）。采用拉动理念，下游主动拉取上有工作，而非上游推送. 看板上体现为：完成任务以后，下一阶段的负责人才在空闲的时候拉取新卡片。</p>
-<h1 id="Kanban度量"><a href="#Kanban度量" class="headerlink" title="Kanban度量"></a>Kanban度量</h1><p>WIP：一开始但是没有完成的工作项数量</p>
+<h1 id="kanban度量">Kanban度量</h1>
+<p>WIP：一开始但是没有完成的工作项数量</p>
 <p>产能（Through）：每单位时间内完成的工作项的数量。</p>
 <p>工作存续时长（Work Item Age）：一项工作从开始到当前时刻所经过的时间长度</p>
 <ul>
@@ -436,12 +454,16 @@
 <ul>
 <li>周期通常指“处理时间”， 而交付时间可能包括需求提出到启动前的等待时间</li>
 </ul>
-<h1 id="与其他的差异"><a href="#与其他的差异" class="headerlink" title="与其他的差异"></a>与其他的差异</h1><h2 id="与Scrum的差异"><a href="#与Scrum的差异" class="headerlink" title="与Scrum的差异"></a>与Scrum的差异</h2><p>Scrum是迭代式框架，通过固定长度Sprint规划交互增量。Kanban是流动式框架，无预定迭代周期。</p>
+<h1 id="与其他的差异">与其他的差异</h1>
+<h2 id="与Scrum的差异">与Scrum的差异</h2>
+<p>Scrum是迭代式框架，通过固定长度Sprint规划交互增量。Kanban是流动式框架，无预定迭代周期。</p>
 <p>Scurm规定了PO Scrum Master和开发团队的角色，Kanban没有规定角色。</p>
 <p>Scrum以Sprint为时间盒进行计划评估，又固定节奏的会议。Sprint中同构不接受新需求变更。而Kanban没有时间盒约束，计划连续交付。需求变更可以随时反应在队列上</p>
 <p>流程和工件：Scrum强调事件和工件（Product Backlog， Sprint Backlog， Increment），Kanban无指定事件工件，唯一主要工件是看板以及相关策略</p>
-<h3 id="Scrumban"><a href="#Scrumban" class="headerlink" title="Scrumban"></a>Scrumban</h3><p>保留Scrum的部分结构（例如定期会议）取消固定Sprint承诺，改用Kanban拉动节奏和WIP控制</p>
-<h2 id="与极限编程XP的差异"><a href="#与极限编程XP的差异" class="headerlink" title="与极限编程XP的差异"></a>与极限编程XP的差异</h2><p>XP侧重工程实践。 Kanban关注流程和可视化管理。</p>
+<h3 id="Scrumban">Scrumban</h3>
+<p>保留Scrum的部分结构（例如定期会议）取消固定Sprint承诺，改用Kanban拉动节奏和WIP控制</p>
+<h2 id="与极限编程XP的差异">与极限编程XP的差异</h2>
+<p>XP侧重工程实践。 Kanban关注流程和可视化管理。</p>
 
                 
               </div>
@@ -542,8 +564,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/05/12/se-system-design/16-%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/" title="享元模式">
-                        <span class="hidden-mobile">享元模式</span>
+                      <a href="/2025/05/12/se-system-design/17-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" title="代理模式">
+                        <span class="hidden-mobile">代理模式</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -19,12 +19,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="redis基础全称：Remote Dictionary Server，基于c语言开发的NoSQL数据库（怪不得这么快） 内置了多种数据类型，string，hash，sortedset，bitmap，HyperLogLog，geospatial等。其也支持事务，持久化，lua脚本等等 redis为什么这么快为什么使用redis而不用本地缓存呢本地缓存会有多台服务器数据不一致的问题 内存受限于多台服务">
+    <meta name="description" content="redis基础 全称：Remote Dictionary Server，基于c语言开发的NoSQL数据库（怪不得这么快） 内置了多种数据类型，string，hash，sortedset，bitmap，HyperLogLog，geospatial等。其也支持事务，持久化，lua脚本等等 redis为什么这么快 为什么使用redis而不用本地缓存呢 本地缓存会有多台服务器数据不一致的问题 内存受限于多">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis">
 <meta property="og:url" content="http://example.com/2025/04/29/redis%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="eqsun&#39;s blog">
-<meta property="og:description" content="redis基础全称：Remote Dictionary Server，基于c语言开发的NoSQL数据库（怪不得这么快） 内置了多种数据类型，string，hash，sortedset，bitmap，HyperLogLog，geospatial等。其也支持事务，持久化，lua脚本等等 redis为什么这么快为什么使用redis而不用本地缓存呢本地缓存会有多台服务器数据不一致的问题 内存受限于多台服务">
+<meta property="og:description" content="redis基础 全称：Remote Dictionary Server，基于c语言开发的NoSQL数据库（怪不得这么快） 内置了多种数据类型，string，hash，sortedset，bitmap，HyperLogLog，geospatial等。其也支持事务，持久化，lua脚本等等 redis为什么这么快 为什么使用redis而不用本地缓存呢 本地缓存会有多台服务器数据不一致的问题 内存受限于多">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-29T11:30:00.000Z">
 <meta property="article:modified_time" content="2026-05-19T07:44:17.900Z">
@@ -381,29 +381,40 @@
             
               <div class="markdown-body">
                 
-                <h1 id="redis基础"><a href="#redis基础" class="headerlink" title="redis基础"></a>redis基础</h1><p>全称：Remote Dictionary Server，基于c语言开发的NoSQL数据库（怪不得这么快）</p>
+                <h1 id="redis基础">redis基础</h1>
+<p>全称：Remote Dictionary Server，基于c语言开发的NoSQL数据库（怪不得这么快）</p>
 <p>内置了多种数据类型，string，hash，sortedset，bitmap，HyperLogLog，geospatial等。其也支持事务，持久化，lua脚本等等</p>
-<h1 id="redis为什么这么快"><a href="#redis为什么这么快" class="headerlink" title="redis为什么这么快"></a>redis为什么这么快</h1><h1 id="为什么使用redis而不用本地缓存呢"><a href="#为什么使用redis而不用本地缓存呢" class="headerlink" title="为什么使用redis而不用本地缓存呢"></a>为什么使用redis而不用本地缓存呢</h1><p>本地缓存会有多台服务器数据不一致的问题</p>
+<h1 id="redis为什么这么快">redis为什么这么快</h1>
+<h1 id="为什么使用redis而不用本地缓存呢">为什么使用redis而不用本地缓存呢</h1>
+<p>本地缓存会有多台服务器数据不一致的问题</p>
 <p>内存受限于多台服务器</p>
 <p>不支持持久化保存</p>
 <p>维护管理不变</p>
 <p>功能比较优先</p>
-<h1 id="redis除了做缓存，还能做什么"><a href="#redis除了做缓存，还能做什么" class="headerlink" title="redis除了做缓存，还能做什么"></a>redis除了做缓存，还能做什么</h1><p>分布式锁</p>
+<h1 id="redis除了做缓存，还能做什么">redis除了做缓存，还能做什么</h1>
+<p>分布式锁</p>
 <p>限流：一般是通过redis + lua脚本的方式来实现的，也可以直接使用RRateLimiter来实现分布式限流</p>
 <p>消息队列: 自带的list可以作为一个简单的对u列使用。比较类似于kafaka，但是kafka会更牛一点。而且redis没有广播机制，消息只能被消费一次。不过后续的redis2.0引入了二发布订阅的功能，解决了List实现消息队列没有广播机制的问题。但是仍然存在消息丢失这样的问题。Redis 5.0 新增加的一个功能结构Stream来做消息队列，新增了消息持久化，ACK机制等等</p>
 <p>延时队列: 基于Sorted Set实现的一个延时队列</p>
 <p>分布式session: 使用String或者Hash数据类型保存Session数据</p>
 <p>复杂业务场景</p>
-<h1 id="redis可以做搜索引擎吗？"><a href="#redis可以做搜索引擎吗？" class="headerlink" title="redis可以做搜索引擎吗？"></a>redis可以做搜索引擎吗？</h1><p>可以只要基于RedisSearch这样的模块。支持中文分词，聚合统计，停用词，同义词，拼写检查，标签查询，向量相似度查询等等功能，而且是专门基于redis进行适配的（内存，分布式）</p>
-<h1 id="基于redis实现时延任务"><a href="#基于redis实现时延任务" class="headerlink" title="基于redis实现时延任务"></a>基于redis实现时延任务</h1><p>使用内部的DelayQueue实现</p>
-<h1 id="redis数据类型"><a href="#redis数据类型" class="headerlink" title="redis数据类型"></a>redis数据类型</h1><p>五种基础数据类型：String List Set Hash Zset</p>
+<h1 id="redis可以做搜索引擎吗？">redis可以做搜索引擎吗？</h1>
+<p>可以只要基于RedisSearch这样的模块。支持中文分词，聚合统计，停用词，同义词，拼写检查，标签查询，向量相似度查询等等功能，而且是专门基于redis进行适配的（内存，分布式）</p>
+<h1 id="基于redis实现时延任务">基于redis实现时延任务</h1>
+<p>使用内部的DelayQueue实现</p>
+<h1 id="redis数据类型">redis数据类型</h1>
+<p>五种基础数据类型：String List Set Hash Zset</p>
 <p>三种特殊数据类型：HyperLogLog（基数统计） Bitmap（位图） Geo（地理位置）</p>
-<h1 id="redis对象存储"><a href="#redis对象存储" class="headerlink" title="redis对象存储"></a>redis对象存储</h1><p>String存储的是序列化后的对象，Hash是对对象的每个字段单独存储，可以获取部分字段的信息，也可以修改或者添加部分字段。节省网络流量</p>
+<h1 id="redis对象存储">redis对象存储</h1>
+<p>String存储的是序列化后的对象，Hash是对对象的每个字段单独存储，可以获取部分字段的信息，也可以修改或者添加部分字段。节省网络流量</p>
 <p>简单对象的时候Hash会比String节省内存，复杂对象的时候String会比Hash更节省内存。而且String是O(1)复杂度，其存储的是整个对象，操作简单直接，整体读写性能较好。</p>
-<h1 id="String的底层C实现是啥"><a href="#String的底层C实现是啥" class="headerlink" title="String的底层C实现是啥"></a>String的底层C实现是啥</h1><p>是为C语言中的字符串字节编写SDS（simple dynamic string）</p>
-<h1 id="Redis有序集合底层为什么要用跳表，而不用平衡树，红黑树或者B-树"><a href="#Redis有序集合底层为什么要用跳表，而不用平衡树，红黑树或者B-树" class="headerlink" title="Redis有序集合底层为什么要用跳表，而不用平衡树，红黑树或者B+树"></a>Redis有序集合底层为什么要用跳表，而不用平衡树，红黑树或者B+树</h1><p>平衡树 vs 跳表：</p>
+<h1 id="string的底层c实现是啥">String的底层C实现是啥</h1>
+<p>是为C语言中的字符串字节编写SDS（simple dynamic string）</p>
+<h1 id="redis有序集合底层为什么要用跳表，而不用平衡树，红黑树或者b+树">Redis有序集合底层为什么要用跳表，而不用平衡树，红黑树或者B+树</h1>
+<p>平衡树 vs 跳表：</p>
 <p>二者的插入和查询的复杂度都是O(logN)，但是实际上调表由于不需要保持整棵树的平衡，相对来说速度更快</p>
-<h1 id="Bitmap-以bit为单位统计活跃用户"><a href="#Bitmap-以bit为单位统计活跃用户" class="headerlink" title="Bitmap 以bit为单位统计活跃用户"></a>Bitmap 以bit为单位统计活跃用户</h1><p>例如如果想要使用Bitmap统计活跃用户的话，可以使用日期（精确到天作为key，然后用户id为offset，如果当日活跃过就设置为1）</p>
+<h1 id="bitmap-以bit为单位统计活跃用户">Bitmap 以bit为单位统计活跃用户</h1>
+<p>例如如果想要使用Bitmap统计活跃用户的话，可以使用日期（精确到天作为key，然后用户id为offset，如果当日活跃过就设置为1）</p>
 
                 
               </div>

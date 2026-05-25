@@ -19,22 +19,22 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="docker容器自身有一个export的端口，负责与外部通信, 容器内部的应用监听这个端口。例如EXPOSE 8080 docker-compose可以用来自动进行容器编排。其原理是创建一个虚拟网络，为不同的docker容器分配不同的IP地址。同时docker-compose提供DNS服务，将容器的名字映射到容器的IP地址上。容器之间可以直接通过容器名字访问。 例如简单创建一个nginx容器，监听">
+    <meta name="description" content="记录一下2025.5-2026.5我看过的书。  《百年孤独》 马尔克斯  毫无疑问的排名第一，前无古人，后无来者，过于精彩以至于6小时一口气读完。  《春雪》 三岛由纪夫  神，美在压抑和痴情中凋亡，最后一幕男主清显之死一切如电影一般倒回最初的一幕。  《海边的卡夫卡》 村上春树  别问，问就是隐喻。炫技之作，村上春树众多作品之“根”  《围城》 钱钟书  社交也是一种围城呐  《窄门》 纪德">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DockerCompose网络映射">
-<meta property="og:url" content="http://example.com/2025/03/03/DockerCompose%E7%BD%91%E7%BB%9C%E6%98%A0%E5%B0%84/index.html">
+<meta property="og:title" content="我的项目">
+<meta property="og:url" content="http://example.com/2026/05/25/daily/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="eqsun&#39;s blog">
-<meta property="og:description" content="docker容器自身有一个export的端口，负责与外部通信, 容器内部的应用监听这个端口。例如EXPOSE 8080 docker-compose可以用来自动进行容器编排。其原理是创建一个虚拟网络，为不同的docker容器分配不同的IP地址。同时docker-compose提供DNS服务，将容器的名字映射到容器的IP地址上。容器之间可以直接通过容器名字访问。 例如简单创建一个nginx容器，监听">
+<meta property="og:description" content="记录一下2025.5-2026.5我看过的书。  《百年孤独》 马尔克斯  毫无疑问的排名第一，前无古人，后无来者，过于精彩以至于6小时一口气读完。  《春雪》 三岛由纪夫  神，美在压抑和痴情中凋亡，最后一幕男主清显之死一切如电影一般倒回最初的一幕。  《海边的卡夫卡》 村上春树  别问，问就是隐喻。炫技之作，村上春树众多作品之“根”  《围城》 钱钟书  社交也是一种围城呐  《窄门》 纪德">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-03T12:31:00.000Z">
-<meta property="article:modified_time" content="2026-05-19T07:44:17.802Z">
+<meta property="article:published_time" content="2026-05-25T07:30:00.000Z">
+<meta property="article:modified_time" content="2026-05-25T15:42:58.463Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="docker">
+<meta property="article:tag" content="daily">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>DockerCompose网络映射 - eqsun&#39;s blog</title>
+  <title>我的项目 - eqsun&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="DockerCompose网络映射"></span>
+            <span id="subtitle" data-typed-text="我的项目"></span>
           
         </div>
 
@@ -314,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-03-03 20:31" pubdate>
-          2025年3月3日 晚上
+        <time datetime="2026-05-25 15:30" pubdate>
+          2026年5月25日 下午
         </time>
       </span>
     
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          957 字
+          658 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          8 分钟
+          6 分钟
         
       </span>
     
@@ -376,24 +376,95 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">DockerCompose网络映射</h1>
+            <h1 id="seo-header">我的项目</h1>
             
             
               <div class="markdown-body">
                 
-                <p>docker容器自身有一个export的端口，负责与外部通信, 容器内部的应用监听这个端口。例如<code>EXPOSE 8080</code></p>
-<p>docker-compose可以用来自动进行容器编排。其原理是创建一个虚拟网络，为不同的docker容器分配不同的IP地址。同时docker-compose提供DNS服务，将容器的名字映射到容器的IP地址上。容器之间可以直接通过容器名字访问。</p>
-<p>例如简单创建一个nginx容器，监听80端口。</p>
-<p>使用<code>docker-compose.yml</code>文件进行配置</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3&#x27;</span><br><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">nginx1:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">nginx</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">nginx_8080</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;8081:80&quot;</span>  <span class="hljs-comment"># 绑定宿主机的 8081 端口到容器的 80 端口</span><br></code></pre></td></tr></table></figure>
-<p>使用<code>docker-compose up -d</code>启动服务</p>
-<p>docker-compose在启动这个服务的同时将本地8081端口映射到docker容器ip, 因此宿主机可以通过<code>http://localhost:8081</code>访问nginx容器。</p>
-<p>docker-compose首先创建了一个虚拟网络。</p>
-<p>使用<code>ip a</code>查看虚拟网络，可以看到有一个<code>br-</code>开头的虚拟网络</p>
-<p>使用<code>sudo iptables -t nat -L -n -v</code>查看nat表，可以看到docker-compose创建了一个名为<code>DOCKER</code>的链，<code>pre-routing</code>和<code>output</code>将<code>target</code>设置为这个<code>DOCKER</code>链。<code>DOCKER</code>链指明了所有来源不是本地的数据包都会被重定向即<code>172.23.0.2:80</code>(我的机器)</p>
-<p>这就是为什么可以通过<code>localhost:8081</code>访问nginx容器的原因。事实上直接访问<code>172.23.0.2:80</code>也是可以的。</p>
-<p>可以通过<code>docker network ls</code> + <code>docker network inspect &lt;name&gt;</code>查看创建出的虚拟网络信息，包括子网、网关等信息，以及对应的docker容器的IP地址等信息。</p>
-<p>可以在docker容器内部运行<code>cat /etc/resolv</code> 可以看到<code>nameserver</code>指向了<code>127.0.0.11</code>，这实际上是docker-compose提供的DNS服务的代理，实际位置一般就是<code>docker-compose</code>创建的虚拟网络的网关地址。</p>
+                <p>记录一下2025.5-2026.5我看过的书。</p>
+<ol>
+<li><strong>《百年孤独》</strong> 马尔克斯</li>
+</ol>
+<p>毫无疑问的排名第一，前无古人，后无来者，过于精彩以至于6小时一口气读完。</p>
+<ol start="2">
+<li><strong>《春雪》</strong> 三岛由纪夫</li>
+</ol>
+<p>神，美在压抑和痴情中凋亡，最后一幕男主清显之死一切如电影一般倒回最初的一幕。</p>
+<ol start="3">
+<li><strong>《海边的卡夫卡》</strong> 村上春树</li>
+</ol>
+<p><s>别问，问就是隐喻</s>。炫技之作，村上春树众多作品之“根”</p>
+<ol start="4">
+<li><strong>《围城》</strong> 钱钟书</li>
+</ol>
+<p>社交也是一种围城呐</p>
+<ol start="5">
+<li><strong>《窄门》</strong> 纪德</li>
+</ol>
+<p>“靠近你就靠近了痛苦，远离你就远离了幸福”</p>
+<ol start="6">
+<li><strong>《呼啸山庄》</strong> 艾米利</li>
+</ol>
+<p>前1/2很神，凯瑟琳死后人物张力明显不足了，最后大结局包薯条</p>
+<ol start="7">
+<li><strong>《工作，消费主义和新穷人》</strong> 齐格蒙特·鲍曼</li>
+</ol>
+<p>低物欲是不被允许的，因为这个社会需要的是“选择”的自由。</p>
+<ol start="8">
+<li><strong>《月亮与六便士》</strong> 毛姆</li>
+</ol>
+<p>初看不知书中意，再看已是书中人</p>
+<ol start="9">
+<li><strong>《少年维特的烦恼》</strong> 歌德</li>
+</ol>
+<p>让我想起了电影《纵横四海》</p>
+<ol start="10">
+<li><strong>《白夜》</strong> 陀思妥耶夫斯基</li>
+</ol>
+<p>感觉风格确实偏苦闷，暂时还未能感受到俄国文学的魅力。</p>
+<ol start="11">
+<li><strong>《潮骚》</strong> 三岛由纪夫</li>
+</ol>
+<p>远不及《春雪》，非常公式的作品，其实是披着渔村皮的贵族言情。</p>
+<ol start="12">
+<li><strong>《莎乐美》</strong> 王尔德</li>
+</ol>
+<p>很精炼的唯美悲剧</p>
+<ol start="13">
+<li><strong>《德国通史第二卷：信仰分裂的时代》</strong> 孙立新</li>
+</ol>
+<p>偏向于教科书风格，非常详细，宗教改革应该是整个神罗历史上最有意思的部分了</p>
+<ol start="14">
+<li><strong>《局外人》》</strong> 加缪</li>
+</ol>
+<p>无感 <s>可能已经和主人公同一境界了</s></p>
+<ol start="15">
+<li><strong>《情人》</strong> 杜拉斯</li>
+</ol>
+<p>本质还是有很多露骨描写的言情小说</p>
+<ol start="16">
+<li><strong>《寻羊冒险记》</strong> 村上春树</li>
+</ol>
+<p>有点无聊说实话，充斥着村上春树式的自言自语和哲理说教</p>
+<ol start="17">
+<li><strong>《波兰史》</strong> 亚当·扎莫伊斯基</li>
+</ol>
+<p>如果说法国历史是波澜壮阔的史诗，德国历史是群雄纷争的演绎，那波兰历史就是彻底的一曲悲歌。</p>
+<p>此外目前正在看的书</p>
+<ol>
+<li>
+<p>《战争与和平》</p>
+</li>
+<li>
+<p>《源氏物语》</p>
+</li>
+<li>
+<p>《巴黎圣母院》</p>
+</li>
+<li>
+<p>《中国国民党史》</p>
+</li>
+</ol>
 
                 
               </div>
@@ -402,11 +473,32 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/daily/" class="category-chain-item">daily</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/docker/" class="print-no-link">#docker</a>
+        <a href="/tags/daily/" class="print-no-link">#daily</a>
       
     </div>
   
@@ -418,8 +510,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>DockerCompose网络映射</div>
-      <div>http://example.com/2025/03/03/DockerCompose网络映射/</div>
+      <div>我的项目</div>
+      <div>http://example.com/2026/05/25/daily/读书笔记/</div>
     </div>
     <div class="license-meta">
       
@@ -431,7 +523,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年3月3日</div>
+          <div>2026年5月25日</div>
         </div>
       
       
@@ -463,18 +555,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/10/leetcode/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/" title="拓扑排序">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">拓扑排序</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/03/02/OAuth2%E4%BB%8B%E7%BB%8D/" title="OAuth2介绍">
-                        <span class="hidden-mobile">OAuth2介绍</span>
+                      <a href="/2026/05/19/test/AndroTest/" title="安卓测试入门">
+                        <span class="hidden-mobile">安卓测试入门</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -19,12 +19,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;cs-basics&#x2F;operating-system&#x2F;operating-system-basic-questions-01.html#%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81 用户态内核态用户态切换到内核态的3种方式  系统调用(Trap)  中断(Inte">
+    <meta name="description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;cs-basics&#x2F;operating-system&#x2F;operating-system-basic-questions-01.html#用户态和内核态 用户态内核态 用户态切换到内核态的3种方式   系统调用(Trap)   中断(Interrupt)   异常(Exception)   进程和线程 进程（Process）是资源分配的基本单位，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用户态内核态">
 <meta property="og:url" content="http://example.com/2025/03/14/os/%E7%94%A8%E6%88%B7%E6%80%81%E5%86%85%E6%A0%B8%E6%80%81/index.html">
 <meta property="og:site_name" content="eqsun&#39;s blog">
-<meta property="og:description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;cs-basics&#x2F;operating-system&#x2F;operating-system-basic-questions-01.html#%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81 用户态内核态用户态切换到内核态的3种方式  系统调用(Trap)  中断(Inte">
+<meta property="og:description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;cs-basics&#x2F;operating-system&#x2F;operating-system-basic-questions-01.html#用户态和内核态 用户态内核态 用户态切换到内核态的3种方式   系统调用(Trap)   中断(Interrupt)   异常(Exception)   进程和线程 进程（Process）是资源分配的基本单位，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-14T09:36:00.000Z">
 <meta property="article:modified_time" content="2026-05-19T07:44:17.900Z">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          592 字
+          536 字
         
       </span>
     
@@ -382,24 +382,31 @@
               <div class="markdown-body">
                 
                 <p>参考资料：</p>
-<p><a target="_blank" rel="noopener" href="https://javaguide.cn/cs-basics/operating-system/operating-system-basic-questions-01.html#%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81">https://javaguide.cn/cs-basics/operating-system/operating-system-basic-questions-01.html#%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81</a></p>
-<h1 id="用户态内核态"><a href="#用户态内核态" class="headerlink" title="用户态内核态"></a>用户态内核态</h1><p>用户态切换到内核态的3种方式</p>
+<p><a target="_blank" rel="noopener" href="https://javaguide.cn/cs-basics/operating-system/operating-system-basic-questions-01.html#%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81">https://javaguide.cn/cs-basics/operating-system/operating-system-basic-questions-01.html#用户态和内核态</a></p>
+<h1 id="用户态内核态">用户态内核态</h1>
+<p>用户态切换到内核态的3种方式</p>
 <ol>
-<li><p>系统调用(Trap)</p>
+<li>
+<p>系统调用(Trap)</p>
 </li>
-<li><p>中断(Interrupt)</p>
+<li>
+<p>中断(Interrupt)</p>
 </li>
-<li><p>异常(Exception)</p>
+<li>
+<p>异常(Exception)</p>
 </li>
 </ol>
-<h1 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h1><p>进程（Process）是资源分配的基本单位，线程是CPU调度的基本单位</p>
+<h1 id="进程和线程">进程和线程</h1>
+<p>进程（Process）是资源分配的基本单位，线程是CPU调度的基本单位</p>
 <p>线程（Thread）也被称之为轻量级进程。多个线程共享进程之间内存空间和网络连接等资源</p>
-<h2 id="线程之间的同步机制"><a href="#线程之间的同步机制" class="headerlink" title="线程之间的同步机制"></a>线程之间的同步机制</h2><p>互斥锁(Mutex): Java中的synchronzied和Lock</p>
+<h2 id="线程之间的同步机制">线程之间的同步机制</h2>
+<p>互斥锁(Mutex): Java中的synchronzied和Lock</p>
 <p>读写锁(Read-Write Lock): 允许多个进程同时读资源，但是只有一个可以进行写</p>
 <p>信号量(Semaphore): 允许同一时刻多个线程访问统一资源，但是需要控制同一时刻访问此资源的最大线程数量</p>
 <p>屏障(Barrier): 同步原语，用于等待多个线程到达某一个点再继续执行。当一个线程到达屏障的时候，他会停止执行并且等待其他线程到达屏障</p>
-<p>事件(Event): 通知的方式来保持多线程同步 </p>
-<h2 id="PCB-Process-Control-Block"><a href="#PCB-Process-Control-Block" class="headerlink" title="PCB(Process Control Block)"></a>PCB(Process Control Block)</h2><p>进程的描述信息</p>
+<p>事件(Event): 通知的方式来保持多线程同步</p>
+<h2 id="PCB-Process-Control-Block">PCB(Process Control Block)</h2>
+<p>进程的描述信息</p>
 <p>进程的调度信息</p>
 <p>进程对于资源的需求情况</p>
 <p>进程打开的文件信息</p>

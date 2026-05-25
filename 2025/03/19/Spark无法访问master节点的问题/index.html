@@ -19,12 +19,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="问题描述在华为云上使用spark-standalone模式，启动master节点后，出现了无法访问worker节点，无法访问master节点的情况 原因经过排查发现，master节点的start-wokers脚本实际上是读取works文件中指定的所有主机进行ssh远程登录当前同名用户（需要提前配置ssh免密登录），执行远程机器上的start-worker.sh脚本。 首先由于华为云是弹性公网ip，">
+    <meta name="description" content="问题描述 在华为云上使用spark-standalone模式，启动master节点后，出现了无法访问worker节点，无法访问master节点的情况 原因 经过排查发现，master节点的start-wokers脚本实际上是读取works文件中指定的所有主机进行ssh远程登录当前同名用户（需要提前配置ssh免密登录），执行远程机器上的start-worker.sh脚本。 首先由于华为云是弹性公网i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spark无法访问master节点的问题">
 <meta property="og:url" content="http://example.com/2025/03/19/Spark%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AEmaster%E8%8A%82%E7%82%B9%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="eqsun&#39;s blog">
-<meta property="og:description" content="问题描述在华为云上使用spark-standalone模式，启动master节点后，出现了无法访问worker节点，无法访问master节点的情况 原因经过排查发现，master节点的start-wokers脚本实际上是读取works文件中指定的所有主机进行ssh远程登录当前同名用户（需要提前配置ssh免密登录），执行远程机器上的start-worker.sh脚本。 首先由于华为云是弹性公网ip，">
+<meta property="og:description" content="问题描述 在华为云上使用spark-standalone模式，启动master节点后，出现了无法访问worker节点，无法访问master节点的情况 原因 经过排查发现，master节点的start-wokers脚本实际上是读取works文件中指定的所有主机进行ssh远程登录当前同名用户（需要提前配置ssh免密登录），执行远程机器上的start-worker.sh脚本。 首先由于华为云是弹性公网i">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-19T12:30:00.000Z">
 <meta property="article:modified_time" content="2026-05-19T07:44:17.802Z">
@@ -381,14 +381,17 @@
             
               <div class="markdown-body">
                 
-                <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>在华为云上使用<code>spark-standalone</code>模式，启动<code>master</code>节点后，出现了无法访问<code>worker</code>节点，无法访问<code>master</code>节点的情况</p>
-<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p>经过排查发现，<code>master</code>节点的<code>start-wokers</code>脚本实际上是读取<code>works</code>文件中指定的所有主机进行ssh远程登录当前同名用户（需要提前配置ssh免密登录），执行远程机器上的<code>start-worker.sh</code>脚本。</p>
+                <h1 id="问题描述">问题描述</h1>
+<p>在华为云上使用<code>spark-standalone</code>模式，启动<code>master</code>节点后，出现了无法访问<code>worker</code>节点，无法访问<code>master</code>节点的情况</p>
+<h1 id="原因">原因</h1>
+<p>经过排查发现，<code>master</code>节点的<code>start-wokers</code>脚本实际上是读取<code>works</code>文件中指定的所有主机进行ssh远程登录当前同名用户（需要提前配置ssh免密登录），执行远程机器上的<code>start-worker.sh</code>脚本。</p>
 <p>首先由于华为云是弹性公网ip，由于NAT的限制，<code>master</code>实际上是无法访问到自己的公网ip的，因此，只能使用回环<code>localhost</code>或者是内网ip。而对于<code>woker</code>节点，则需要使用公网ip访问<code>master</code>。</p>
 <p>不论是master节点还是woker节点，配置文件中<code>spark-env.sh</code>中都需要配置<code>SPARK_MASTER_HOST</code>的主机名。（注意这里有部分教程的说的是ip地址，这是不严谨的）<code>worker</code>节点的<code>start-worker.sh</code>通过这个变量来访问<code>master</code>节点，<code>master</code>节点的<code>start-master</code>也需要检查指定主机上的端口是否可用（用于监听）</p>
 <p>但是由于上述原因，<code>master</code>节点实际上是<code>ssh</code>登录每一台<code>worker</code>节点，然后执行<code>start-worker.sh</code>脚本，因此<code>start-worker.sh</code>中的<code>$SPARK_MASTER_HOST</code>实际上用的<code>master</code>节点中设置的环境变量，而不是<code>worker</code>节点中的环境变量。</p>
 <p>因此如果你将<code>SPARK_MASTER_HOST</code>设置为<code>master</code>机器的公网ip，<code>worker</code>节点可以成功访问<code>master</code>机器，但是<code>master</code>机器由于无法访问公网ip，<code>master</code>节点本身无法启动，<code>dashboard</code>无法访问。</p>
 <p>如果将<code>SPARK_MASTER_HOST</code>设置为<code>master</code>机器的<code>localhost</code>即<code>master</code>的具体的内网ip，<code>master</code>节点可以成功启动，但是<code>worker</code>节点无法访问<code>master</code>节点。</p>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>为<code>master</code>机器设置一个主机名，再在各自<code>host</code>文件中，分别解析为公网和内网的ip，这样无论是<code>master</code>还是<code>worker</code>节点，都可以通过主机名访问<code>master</code>节点。</p>
+<h1 id="解决方法">解决方法</h1>
+<p>为<code>master</code>机器设置一个主机名，再在各自<code>host</code>文件中，分别解析为公网和内网的ip，这样无论是<code>master</code>还是<code>worker</code>节点，都可以通过主机名访问<code>master</code>节点。</p>
 <p>或者在<code>master</code>机器中使用<code>localhost/内网ip</code>启动<code>master</code>，然后不使用<code>start-workers</code>，手动进入<code>worker</code>节点执行<code>start-worker.sh spark://&lt;ip&gt;:7077</code>，这样<code>worker</code>节点可以成功连接。（不推荐）</p>
 
                 

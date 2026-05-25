@@ -19,12 +19,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;java&#x2F;new-features&#x2F;java9.html https:&#x2F;&#x2F;javaguide.cn&#x2F;java&#x2F;new-features&#x2F;java10.html 以及后续文章… Java 9模块化系统模块化系统，任意一个jar文件，只要加上一个模块描述文件（module-info.java）就可以升级为一个模块 jdk被重组为94个模块，通过jl">
+    <meta name="description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;java&#x2F;new-features&#x2F;java9.html https:&#x2F;&#x2F;javaguide.cn&#x2F;java&#x2F;new-features&#x2F;java10.html 以及后续文章… Java 9 模块化系统 模块化系统，任意一个jar文件，只要加上一个模块描述文件（module-info.java）就可以升级为一个模块 jdk被重组为94个模块，通过">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java新特性">
 <meta property="og:url" content="http://example.com/2025/04/19/java/Java%E6%96%B0%E7%89%B9%E6%80%A7/index.html">
 <meta property="og:site_name" content="eqsun&#39;s blog">
-<meta property="og:description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;java&#x2F;new-features&#x2F;java9.html https:&#x2F;&#x2F;javaguide.cn&#x2F;java&#x2F;new-features&#x2F;java10.html 以及后续文章… Java 9模块化系统模块化系统，任意一个jar文件，只要加上一个模块描述文件（module-info.java）就可以升级为一个模块 jdk被重组为94个模块，通过jl">
+<meta property="og:description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;java&#x2F;new-features&#x2F;java9.html https:&#x2F;&#x2F;javaguide.cn&#x2F;java&#x2F;new-features&#x2F;java10.html 以及后续文章… Java 9 模块化系统 模块化系统，任意一个jar文件，只要加上一个模块描述文件（module-info.java）就可以升级为一个模块 jdk被重组为94个模块，通过">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-19T13:30:00.000Z">
 <meta property="article:modified_time" content="2026-05-19T07:44:17.895Z">
@@ -385,57 +385,127 @@
 <p><a target="_blank" rel="noopener" href="https://javaguide.cn/java/new-features/java9.html">https://javaguide.cn/java/new-features/java9.html</a></p>
 <p><a target="_blank" rel="noopener" href="https://javaguide.cn/java/new-features/java10.html">https://javaguide.cn/java/new-features/java10.html</a></p>
 <p>以及后续文章…</p>
-<h1 id="Java-9"><a href="#Java-9" class="headerlink" title="Java 9"></a>Java 9</h1><h2 id="模块化系统"><a href="#模块化系统" class="headerlink" title="模块化系统"></a>模块化系统</h2><p>模块化系统，任意一个jar文件，只要加上一个模块描述文件（<code>module-info.java</code>）就可以升级为一个模块</p>
+<h1 id="java-9">Java 9</h1>
+<h2 id="模块化系统">模块化系统</h2>
+<p>模块化系统，任意一个jar文件，只要加上一个模块描述文件（<code>module-info.java</code>）就可以升级为一个模块</p>
 <p>jdk被重组为94个模块，通过jlink实现轻量级JRE（只使用必要的模块）</p>
 <p>使用<code>exports</code>关键词控制哪些类可以对外开放使用，哪些类只能内部使用</p>
-<h2 id="G1成为默认垃圾回收器"><a href="#G1成为默认垃圾回收器" class="headerlink" title="G1成为默认垃圾回收器"></a>G1成为默认垃圾回收器</h2><h2 id="快速创建不可见集合"><a href="#快速创建不可见集合" class="headerlink" title="快速创建不可见集合"></a>快速创建不可见集合</h2><p><code>List.of</code>, <code>Set.of</code>, <code>Map.of</code>, <code>Map.ofEntries</code></p>
+<h2 id="G1成为默认垃圾回收器">G1成为默认垃圾回收器</h2>
+<h2 id="快速创建不可见集合">快速创建不可见集合</h2>
+<p><code>List.of</code>, <code>Set.of</code>, <code>Map.of</code>, <code>Map.ofEntries</code></p>
 <p>不能进行添加、删除、替换、 排序等操作，不然会报 <code>java.lang.UnsupportedOperationException</code> 异常。</p>
 <p>实际过程中慎用</p>
-<h2 id="String-存储结构优化"><a href="#String-存储结构优化" class="headerlink" title="String 存储结构优化"></a>String 存储结构优化</h2><p>char[] 改为 byte[]</p>
-<h2 id="接口中允许定义私有方法"><a href="#接口中允许定义私有方法" class="headerlink" title="接口中允许定义私有方法"></a>接口中允许定义私有方法</h2><p>也是对于default的一种适配</p>
+<h2 id="String-存储结构优化">String 存储结构优化</h2>
+<p>char[] 改为 byte[]</p>
+<h2 id="接口中允许定义私有方法">接口中允许定义私有方法</h2>
+<p>也是对于default的一种适配</p>
 <p>抽象类和interface之间的界限再次模糊了</p>
-<h2 id="try-with-resources增强"><a href="#try-with-resources增强" class="headerlink" title="try-with-resources增强"></a>try-with-resources增强</h2><p>可以在其中使用effectively-final变量</p>
-<h2 id="Stream-Optional增强"><a href="#Stream-Optional增强" class="headerlink" title="Stream&amp;Optional增强"></a>Stream&amp;Optional增强</h2><p>Stream 中增加了新的方法 ofNullable()、dropWhile()、takeWhile() 以及 iterate() 方法的重载方法。</p>
-<h2 id="进程API"><a href="#进程API" class="headerlink" title="进程API"></a>进程API</h2><p>新增<code>java.lang.ProcessHandle</code></p>
-<h2 id="Concurrent响应流"><a href="#Concurrent响应流" class="headerlink" title="Concurrent响应流"></a>Concurrent响应流</h2><h2 id="变量句柄"><a href="#变量句柄" class="headerlink" title="变量句柄"></a>变量句柄</h2><p>变量句柄是一个变量或一组变量的引用，包括静态域，非静态域，数组元素和堆外数据结构中的组成部分等。</p>
-<h1 id="Java-10"><a href="#Java-10" class="headerlink" title="Java 10"></a>Java 10</h1><h2 id="var-关键字"><a href="#var-关键字" class="headerlink" title="var 关键字"></a>var 关键字</h2><p>var 关键字只能用于带有构造器的局部变量（包括包装类）和 for 循环中</p>
+<h2 id="try-with-resources增强">try-with-resources增强</h2>
+<p>可以在其中使用effectively-final变量</p>
+<h2 id="Stream-Optional增强">Stream&amp;Optional增强</h2>
+<p>Stream 中增加了新的方法 ofNullable()、dropWhile()、takeWhile() 以及 iterate() 方法的重载方法。</p>
+<h2 id="进程API">进程API</h2>
+<p>新增<code>java.lang.ProcessHandle</code></p>
+<h2 id="Concurrent响应流">Concurrent响应流</h2>
+<h2 id="变量句柄">变量句柄</h2>
+<p>变量句柄是一个变量或一组变量的引用，包括静态域，非静态域，数组元素和堆外数据结构中的组成部分等。</p>
+<h1 id="java-10">Java 10</h1>
+<h2 id="var-关键字">var 关键字</h2>
+<p>var 关键字只能用于带有构造器的局部变量（包括包装类）和 for 循环中</p>
 <figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-keyword">var</span> <span class="hljs-built_in">count</span>=<span class="hljs-literal">null</span>; <span class="hljs-comment">//❌编译不通过，不能声明为 null</span><br><span class="hljs-keyword">var</span> r = () -&gt; Math.<span class="hljs-built_in">random</span>();<span class="hljs-comment">//❌编译不通过,不能声明为 Lambda表达式</span><br><span class="hljs-keyword">var</span> <span class="hljs-built_in">array</span> = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;;<span class="hljs-comment">//❌编译不通过,不能声明数组</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="集合增强"><a href="#集合增强" class="headerlink" title="集合增强"></a>集合增强</h2><p><code>List</code>，<code>Set</code>，<code>Map</code>等集合类增加了<code>copyOf</code>方法，创建对应的不可变集合</p>
+<h2 id="集合增强">集合增强</h2>
+<p><code>List</code>，<code>Set</code>，<code>Map</code>等集合类增加了<code>copyOf</code>方法，创建对应的不可变集合</p>
 <p><code>java.util.stream.Collectors</code>增加了<code>toUnmodifiableList</code>、<code>toUnmodifiableSet</code>、<code>toUnmodifiableMap</code>方法，创建不可变集合</p>
-<h2 id="Optional增强"><a href="#Optional增强" class="headerlink" title="Optional增强"></a>Optional增强</h2><p>新增<code>orElseThrow()</code>方法，允许抛出异常</p>
+<h2 id="Optional增强">Optional增强</h2>
+<p>新增<code>orElseThrow()</code>方法，允许抛出异常</p>
 <p>慎用</p>
-<h2 id="扩展CDS"><a href="#扩展CDS" class="headerlink" title="扩展CDS"></a>扩展CDS</h2><p>引入了类数据共享机制简称CDS，将一组类预处理为共享归档文件，运行时减少内存映射减少Java类的启动时间，多个虚拟机共用同的归档文件，提高资源利用率</p>
-<h2 id="Graal-JIT编译器"><a href="#Graal-JIT编译器" class="headerlink" title="Graal JIT编译器"></a>Graal JIT编译器</h2><p>是AOT的基础</p>
-<h1 id="Java-11"><a href="#Java-11" class="headerlink" title="Java 11"></a>Java 11</h1><h2 id="HTTP-Client标准化"><a href="#HTTP-Client标准化" class="headerlink" title="HTTP Client标准化"></a>HTTP Client标准化</h2><p>使用<code>CompleteableFuture</code>提供非阻塞请求和响应语义</p>
-<h2 id="String增强"><a href="#String增强" class="headerlink" title="String增强"></a>String增强</h2><p>是否为空，去掉首尾空格，重复字符串，转换为<code>String</code>数组，范围由行终止符分割的字符串集合</p>
-<h2 id="Optional新增isEmpty"><a href="#Optional新增isEmpty" class="headerlink" title="Optional新增isEmpty"></a>Optional新增isEmpty</h2><h2 id="lambda表达式支持var"><a href="#lambda表达式支持var" class="headerlink" title="lambda表达式支持var"></a>lambda表达式支持var</h2><h1 id="Java-12-13"><a href="#Java-12-13" class="headerlink" title="Java 12&amp;13"></a>Java 12&amp;13</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>新增字符串缩进方法text.indent(int n)，可以在字符串前面添加n个空格</p>
+<h2 id="扩展CDS">扩展CDS</h2>
+<p>引入了类数据共享机制简称CDS，将一组类预处理为共享归档文件，运行时减少内存映射减少Java类的启动时间，多个虚拟机共用同的归档文件，提高资源利用率</p>
+<h2 id="Graal-JIT编译器">Graal JIT编译器</h2>
+<p>是AOT的基础</p>
+<h1 id="java-11">Java 11</h1>
+<h2 id="HTTP-Client标准化">HTTP Client标准化</h2>
+<p>使用<code>CompleteableFuture</code>提供非阻塞请求和响应语义</p>
+<h2 id="String增强">String增强</h2>
+<p>是否为空，去掉首尾空格，重复字符串，转换为<code>String</code>数组，范围由行终止符分割的字符串集合</p>
+<h2 id="Optional新增isEmpty">Optional新增isEmpty</h2>
+<h2 id="lambda表达式支持var">lambda表达式支持var</h2>
+<h1 id="java-12amp;13">Java 12&amp;13</h1>
+<h2 id="String">String</h2>
+<p>新增字符串缩进方法text.indent(int n)，可以在字符串前面添加n个空格</p>
 <p><code>transform</code>方法，允许使用<code>Function</code>接口对字符串进行转换</p>
-<h2 id="Files增强"><a href="#Files增强" class="headerlink" title="Files增强"></a>Files增强</h2><p>支持比较两个文件的内容，返回第一个不匹配字符的未知，如果相同返回-1L</p>
-<h2 id="复杂的数字格式化工具"><a href="#复杂的数字格式化工具" class="headerlink" title="复杂的数字格式化工具"></a>复杂的数字格式化工具</h2><p>支持输出1k这样的复杂格式</p>
-<h2 id="增强Switch"><a href="#增强Switch" class="headerlink" title="增强Switch"></a>增强Switch</h2><p>可以不用写<code>break</code></p>
+<h2 id="Files增强">Files增强</h2>
+<p>支持比较两个文件的内容，返回第一个不匹配字符的未知，如果相同返回-1L</p>
+<h2 id="复杂的数字格式化工具">复杂的数字格式化工具</h2>
+<p>支持输出1k这样的复杂格式</p>
+<h2 id="增强Switch">增强Switch</h2>
+<p>可以不用写<code>break</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">switch</span> (day) &#123;<br>    <span class="hljs-keyword">case</span> MONDAY, FRIDAY, SUNDAY -&gt; System.out.println(<span class="hljs-number">6</span>);<br>    <span class="hljs-keyword">case</span> TUESDAY                -&gt; System.out.println(<span class="hljs-number">7</span>);<br>    <span class="hljs-keyword">case</span> THURSDAY, SATURDAY     -&gt; System.out.println(<span class="hljs-number">8</span>);<br>    <span class="hljs-keyword">case</span> WEDNESDAY              -&gt; System.out.println(<span class="hljs-number">9</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h2 id="instanceof增强"><a href="#instanceof增强" class="headerlink" title="instanceof增强"></a>instanceof增强</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;我是字符串&quot;</span>;<br><span class="hljs-keyword">if</span>(obj <span class="hljs-keyword">instanceof</span> String str)&#123;<br>  System.out.println(str);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h2 id="SocketAPI重构"><a href="#SocketAPI重构" class="headerlink" title="SocketAPI重构"></a>SocketAPI重构</h2><h2 id="FileSystems"><a href="#FileSystems" class="headerlink" title="FileSystems"></a>FileSystems</h2><p>新增将文件内容视为一个文件系统的API</p>
-<h2 id="动态CDS存档"><a href="#动态CDS存档" class="headerlink" title="动态CDS存档"></a>动态CDS存档</h2><h2 id="字符块"><a href="#字符块" class="headerlink" title="字符块"></a>字符块</h2><p>以及对应的<code>formatted</code>，<code>stripIndent</code>, <code>translateEscapes</code>方法</p>
-<h2 id="增强switch"><a href="#增强switch" class="headerlink" title="增强switch"></a>增强switch</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">descLanguage</span><span class="hljs-params">(String name)</span> &#123;<br>       <span class="hljs-keyword">return</span> <span class="hljs-keyword">switch</span> (name) &#123;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Java&quot;</span>: <span class="hljs-keyword">yield</span> <span class="hljs-string">&quot;object-oriented, platform independent and secured&quot;</span>;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Ruby&quot;</span>: <span class="hljs-keyword">yield</span> <span class="hljs-string">&quot;a programmer&#x27;s best friend&quot;</span>;<br>           <span class="hljs-keyword">default</span>: <span class="hljs-keyword">yield</span> name +<span class="hljs-string">&quot; is a good language&quot;</span>;<br>       &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="java-14-15"><a href="#java-14-15" class="headerlink" title="java 14&amp;15"></a>java 14&amp;15</h1><h2 id="更加精准的空指针问题"><a href="#更加精准的空指针问题" class="headerlink" title="更加精准的空指针问题"></a>更加精准的空指针问题</h2><h2 id="switch增强yield转正"><a href="#switch增强yield转正" class="headerlink" title="switch增强yield转正"></a>switch增强yield转正</h2><h2 id="record关键字预览"><a href="#record关键字预览" class="headerlink" title="record关键字预览"></a>record关键字预览</h2><h2 id="文本块特性预览（加入新的转义字符）"><a href="#文本块特性预览（加入新的转义字符）" class="headerlink" title="文本块特性预览（加入新的转义字符）"></a>文本块特性预览（加入新的转义字符）</h2><h2 id="TreeMap增强"><a href="#TreeMap增强" class="headerlink" title="TreeMap增强"></a>TreeMap增强</h2><p>新增putIfAbsent，computeIfAbsent，computeIfPresent，compute，merge方法</p>
-<h2 id="ZGC转正"><a href="#ZGC转正" class="headerlink" title="ZGC转正"></a>ZGC转正</h2><h2 id="新增EdDSA数字签名算法"><a href="#新增EdDSA数字签名算法" class="headerlink" title="新增EdDSA数字签名算法"></a>新增EdDSA数字签名算法</h2><h2 id="文本块转正"><a href="#文本块转正" class="headerlink" title="文本块转正"></a>文本块转正</h2><h2 id="密封类预览"><a href="#密封类预览" class="headerlink" title="密封类预览"></a>密封类预览</h2><p>final字段直接把所有继承和实现都堵死了</p>
+<h2 id="instanceof增强">instanceof增强</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;我是字符串&quot;</span>;<br><span class="hljs-keyword">if</span>(obj <span class="hljs-keyword">instanceof</span> String str)&#123;<br>  System.out.println(str);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="SocketAPI重构">SocketAPI重构</h2>
+<h2 id="FileSystems">FileSystems</h2>
+<p>新增将文件内容视为一个文件系统的API</p>
+<h2 id="动态CDS存档">动态CDS存档</h2>
+<h2 id="字符块">字符块</h2>
+<p>以及对应的<code>formatted</code>，<code>stripIndent</code>, <code>translateEscapes</code>方法</p>
+<h2 id="增强switch">增强switch</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">descLanguage</span><span class="hljs-params">(String name)</span> &#123;<br>       <span class="hljs-keyword">return</span> <span class="hljs-keyword">switch</span> (name) &#123;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Java&quot;</span>: <span class="hljs-keyword">yield</span> <span class="hljs-string">&quot;object-oriented, platform independent and secured&quot;</span>;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Ruby&quot;</span>: <span class="hljs-keyword">yield</span> <span class="hljs-string">&quot;a programmer&#x27;s best friend&quot;</span>;<br>           <span class="hljs-keyword">default</span>: <span class="hljs-keyword">yield</span> name +<span class="hljs-string">&quot; is a good language&quot;</span>;<br>       &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="java-14amp;15">java 14&amp;15</h1>
+<h2 id="更加精准的空指针问题">更加精准的空指针问题</h2>
+<h2 id="switch增强yield转正">switch增强yield转正</h2>
+<h2 id="record关键字预览">record关键字预览</h2>
+<h2 id="文本块特性预览（加入新的转义字符）">文本块特性预览（加入新的转义字符）</h2>
+<h2 id="TreeMap增强">TreeMap增强</h2>
+<p>新增putIfAbsent，computeIfAbsent，computeIfPresent，compute，merge方法</p>
+<h2 id="ZGC转正">ZGC转正</h2>
+<h2 id="新增EdDSA数字签名算法">新增EdDSA数字签名算法</h2>
+<h2 id="文本块转正">文本块转正</h2>
+<h2 id="密封类预览">密封类预览</h2>
+<p>final字段直接把所有继承和实现都堵死了</p>
 <p>密封类可以堆继承或者实现它的类进行限制，这个类只能被指定的类继承</p>
-<h1 id="Java-16"><a href="#Java-16" class="headerlink" title="Java 16"></a>Java 16</h1><h2 id="提出向量api"><a href="#提出向量api" class="headerlink" title="提出向量api"></a>提出向量api</h2><h2 id="jdk源代码中启用cpp14特性"><a href="#jdk源代码中启用cpp14特性" class="headerlink" title="jdk源代码中启用cpp14特性"></a>jdk源代码中启用cpp14特性</h2><h2 id="启用弹性元空间"><a href="#启用弹性元空间" class="headerlink" title="启用弹性元空间"></a>启用弹性元空间</h2><h2 id="instanceof增强转正"><a href="#instanceof增强转正" class="headerlink" title="instanceof增强转正"></a>instanceof增强转正</h2><h1 id="Java-17"><a href="#Java-17" class="headerlink" title="Java 17"></a>Java 17</h1><h2 id="增强的伪随机数生成器"><a href="#增强的伪随机数生成器" class="headerlink" title="增强的伪随机数生成器"></a>增强的伪随机数生成器</h2><p>Random，ThreadLoaclRandom，SplittableRandom</p>
-<h2 id="switch的类型匹配-预览"><a href="#switch的类型匹配-预览" class="headerlink" title="switch的类型匹配 预览"></a>switch的类型匹配 预览</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span> String <span class="hljs-title function_">formatterPatternSwitch</span><span class="hljs-params">(Object o)</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">switch</span> (o) &#123;<br>        <span class="hljs-keyword">case</span> Integer i -&gt; String.format(<span class="hljs-string">&quot;int %d&quot;</span>, i);<br>        <span class="hljs-keyword">case</span> Long l    -&gt; String.format(<span class="hljs-string">&quot;long %d&quot;</span>, l);<br>        <span class="hljs-keyword">case</span> Double d  -&gt; String.format(<span class="hljs-string">&quot;double %f&quot;</span>, d);<br>        <span class="hljs-keyword">case</span> String s  -&gt; String.format(<span class="hljs-string">&quot;String %s&quot;</span>, s);<br>        <span class="hljs-keyword">default</span>        -&gt; o.toString();<br>    &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h2 id="移除实验性的提前AOT编译器和JIT编译器"><a href="#移除实验性的提前AOT编译器和JIT编译器" class="headerlink" title="移除实验性的提前AOT编译器和JIT编译器"></a>移除实验性的提前AOT编译器和JIT编译器</h2><h1 id="Java-18"><a href="#Java-18" class="headerlink" title="Java 18"></a>Java 18</h1><h1 id="Java-19"><a href="#Java-19" class="headerlink" title="Java 19"></a>Java 19</h1><h2 id="外部函数和内存API"><a href="#外部函数和内存API" class="headerlink" title="外部函数和内存API"></a>外部函数和内存API</h2><p>可以通过此API和java运行时职位的代码和数据进行互操作，通过高效调用外部函数安全的访问外部内存</p>
+<h1 id="java-16">Java 16</h1>
+<h2 id="提出向量api">提出向量api</h2>
+<h2 id="jdk源代码中启用cpp14特性">jdk源代码中启用cpp14特性</h2>
+<h2 id="启用弹性元空间">启用弹性元空间</h2>
+<h2 id="instanceof增强转正">instanceof增强转正</h2>
+<h1 id="java-17">Java 17</h1>
+<h2 id="增强的伪随机数生成器">增强的伪随机数生成器</h2>
+<p>Random，ThreadLoaclRandom，SplittableRandom</p>
+<h2 id="switch的类型匹配-预览">switch的类型匹配 预览</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span> String <span class="hljs-title function_">formatterPatternSwitch</span><span class="hljs-params">(Object o)</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">switch</span> (o) &#123;<br>        <span class="hljs-keyword">case</span> Integer i -&gt; String.format(<span class="hljs-string">&quot;int %d&quot;</span>, i);<br>        <span class="hljs-keyword">case</span> Long l    -&gt; String.format(<span class="hljs-string">&quot;long %d&quot;</span>, l);<br>        <span class="hljs-keyword">case</span> Double d  -&gt; String.format(<span class="hljs-string">&quot;double %f&quot;</span>, d);<br>        <span class="hljs-keyword">case</span> String s  -&gt; String.format(<span class="hljs-string">&quot;String %s&quot;</span>, s);<br>        <span class="hljs-keyword">default</span>        -&gt; o.toString();<br>    &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="移除实验性的提前AOT编译器和JIT编译器">移除实验性的提前AOT编译器和JIT编译器</h2>
+<h1 id="java-18">Java 18</h1>
+<h1 id="java-19">Java 19</h1>
+<h2 id="外部函数和内存API">外部函数和内存API</h2>
+<p>可以通过此API和java运行时职位的代码和数据进行互操作，通过高效调用外部函数安全的访问外部内存</p>
 <p>逐步抛弃unsafe</p>
-<h2 id="虚拟线程特性预览"><a href="#虚拟线程特性预览" class="headerlink" title="虚拟线程特性预览"></a>虚拟线程特性预览</h2><p>多个虚拟线程共享一个操作系统线程</p>
-<h1 id="Java-20"><a href="#Java-20" class="headerlink" title="Java 20"></a>Java 20</h1><h2 id="作用域值"><a href="#作用域值" class="headerlink" title="作用域值"></a>作用域值</h2><h1 id="Java-21"><a href="#Java-21" class="headerlink" title="Java 21"></a>Java 21</h1><h2 id="字符串模板预览"><a href="#字符串模板预览" class="headerlink" title="字符串模板预览"></a>字符串模板预览</h2><p>仿python的字符串模板</p>
-<h2 id="序列化集合SequencedCollections"><a href="#序列化集合SequencedCollections" class="headerlink" title="序列化集合SequencedCollections"></a>序列化集合SequencedCollections</h2><h2 id="分代ZGC"><a href="#分代ZGC" class="headerlink" title="分代ZGC"></a>分代ZGC</h2><h2 id="Switch模式匹配增强"><a href="#Switch模式匹配增强" class="headerlink" title="Switch模式匹配增强"></a>Switch模式匹配增强</h2><h2 id="未命名的模式匹配"><a href="#未命名的模式匹配" class="headerlink" title="未命名的模式匹配"></a>未命名的模式匹配</h2><h2 id="未命名类和实例main方法"><a href="#未命名类和实例main方法" class="headerlink" title="未命名类和实例main方法"></a>未命名类和实例main方法</h2><h1 id="Java-22"><a href="#Java-22" class="headerlink" title="Java 22"></a>Java 22</h1><h2 id="instanceof增强，switch增强，新增对于所有类型的模式匹配"><a href="#instanceof增强，switch增强，新增对于所有类型的模式匹配" class="headerlink" title="instanceof增强，switch增强，新增对于所有类型的模式匹配"></a>instanceof增强，switch增强，新增对于所有类型的模式匹配</h2><h2 id="javadoc新增markdown支持"><a href="#javadoc新增markdown支持" class="headerlink" title="javadoc新增markdown支持"></a>javadoc新增markdown支持</h2><h2 id="准备启用Unsafe中的内存方法"><a href="#准备启用Unsafe中的内存方法" class="headerlink" title="准备启用Unsafe中的内存方法"></a>准备启用Unsafe中的内存方法</h2><h2 id="模块导入声明预览"><a href="#模块导入声明预览" class="headerlink" title="模块导入声明预览"></a>模块导入声明预览</h2><p>直接使用<code>import module java.base</code>，一键导入常用核心包</p>
-<h2 id="灵活的构造函数体"><a href="#灵活的构造函数体" class="headerlink" title="灵活的构造函数体"></a>灵活的构造函数体</h2><p>Java要求在构造函数中super(),this()必须是第一行，java22允许在此之前编写语句，只要这些语句不引用正在构造的实例即可</p>
-<h1 id="java-24"><a href="#java-24" class="headerlink" title="java 24"></a>java 24</h1><h2 id="密钥派生函数api"><a href="#密钥派生函数api" class="headerlink" title="密钥派生函数api"></a>密钥派生函数api</h2><h2 id="提前类加载和连接"><a href="#提前类加载和连接" class="headerlink" title="提前类加载和连接"></a>提前类加载和连接</h2><p>缓存已经加载和连接的类</p>
-<h2 id="流收集器"><a href="#流收集器" class="headerlink" title="流收集器"></a>流收集器</h2>
+<h2 id="虚拟线程特性预览">虚拟线程特性预览</h2>
+<p>多个虚拟线程共享一个操作系统线程</p>
+<h1 id="java-20">Java 20</h1>
+<h2 id="作用域值">作用域值</h2>
+<h1 id="java-21">Java 21</h1>
+<h2 id="字符串模板预览">字符串模板预览</h2>
+<p>仿python的字符串模板</p>
+<h2 id="序列化集合SequencedCollections">序列化集合SequencedCollections</h2>
+<h2 id="分代ZGC">分代ZGC</h2>
+<h2 id="Switch模式匹配增强">Switch模式匹配增强</h2>
+<h2 id="未命名的模式匹配">未命名的模式匹配</h2>
+<h2 id="未命名类和实例main方法">未命名类和实例main方法</h2>
+<h1 id="java-22">Java 22</h1>
+<h2 id="instanceof增强，switch增强，新增对于所有类型的模式匹配">instanceof增强，switch增强，新增对于所有类型的模式匹配</h2>
+<h2 id="javadoc新增markdown支持">javadoc新增markdown支持</h2>
+<h2 id="准备启用Unsafe中的内存方法">准备启用Unsafe中的内存方法</h2>
+<h2 id="模块导入声明预览">模块导入声明预览</h2>
+<p>直接使用<code>import module java.base</code>，一键导入常用核心包</p>
+<h2 id="灵活的构造函数体">灵活的构造函数体</h2>
+<p>Java要求在构造函数中super(),this()必须是第一行，java22允许在此之前编写语句，只要这些语句不引用正在构造的实例即可</p>
+<h1 id="java-24">java 24</h1>
+<h2 id="密钥派生函数api">密钥派生函数api</h2>
+<h2 id="提前类加载和连接">提前类加载和连接</h2>
+<p>缓存已经加载和连接的类</p>
+<h2 id="流收集器">流收集器</h2>
+
                 
               </div>
             

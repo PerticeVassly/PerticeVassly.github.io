@@ -19,12 +19,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="索引有很多种：B树，B+树，Hash，红黑树。在mysql中无论是Innodb还是MyISAM都是基于B+树作为索引节点的 MySQLDE InnoDB不支持常规的hash索引，但是支持一种特殊的“自适应hash索引”。叫做“Adaptive Hash Index”。实际上每一个Hash的桶是一个B+tree。Hash算法在范围问题上表现不佳 索引的划分按照数据结构划分：B树，B+树，Hash，红">
+    <meta name="description" content="索引有很多种：B树，B+树，Hash，红黑树。在mysql中无论是Innodb还是MyISAM都是基于B+树作为索引节点的 MySQLDE InnoDB不支持常规的hash索引，但是支持一种特殊的“自适应hash索引”。叫做“Adaptive Hash Index”。实际上每一个Hash的桶是一个B+tree。Hash算法在范围问题上表现不佳 索引的划分 按照数据结构划分：B树，B+树，Hash，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL重要知识点">
 <meta property="og:url" content="http://example.com/2025/04/24/database/MySQL%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
 <meta property="og:site_name" content="eqsun&#39;s blog">
-<meta property="og:description" content="索引有很多种：B树，B+树，Hash，红黑树。在mysql中无论是Innodb还是MyISAM都是基于B+树作为索引节点的 MySQLDE InnoDB不支持常规的hash索引，但是支持一种特殊的“自适应hash索引”。叫做“Adaptive Hash Index”。实际上每一个Hash的桶是一个B+tree。Hash算法在范围问题上表现不佳 索引的划分按照数据结构划分：B树，B+树，Hash，红">
+<meta property="og:description" content="索引有很多种：B树，B+树，Hash，红黑树。在mysql中无论是Innodb还是MyISAM都是基于B+树作为索引节点的 MySQLDE InnoDB不支持常规的hash索引，但是支持一种特殊的“自适应hash索引”。叫做“Adaptive Hash Index”。实际上每一个Hash的桶是一个B+tree。Hash算法在范围问题上表现不佳 索引的划分 按照数据结构划分：B树，B+树，Hash，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-24T12:30:00.000Z">
 <meta property="article:modified_time" content="2026-05-19T07:44:17.811Z">
@@ -383,7 +383,8 @@
                 
                 <p>索引有很多种：B树，B+树，Hash，红黑树。在mysql中无论是Innodb还是MyISAM都是基于B+树作为索引节点的</p>
 <p>MySQLDE InnoDB不支持常规的hash索引，但是支持一种特殊的“自适应hash索引”。叫做“Adaptive Hash Index”。实际上每一个Hash的桶是一个B+tree。Hash算法在范围问题上表现不佳</p>
-<h1 id="索引的划分"><a href="#索引的划分" class="headerlink" title="索引的划分"></a>索引的划分</h1><p>按照数据结构划分：B树，B+树，Hash，红黑树</p>
+<h1 id="索引的划分">索引的划分</h1>
+<p>按照数据结构划分：B树，B+树，Hash，红黑树</p>
 <p>按照底层存储方式</p>
 <p>聚簇索引：数据也放到索引中（不需要回标），例如主键索引</p>
 <p>非聚簇索引：分开存放的</p>
@@ -394,49 +395,70 @@
 <p>联合索引： 多列组成一个索引</p>
 <p>全文索引：对于分配内容进行分词。</p>
 <p>前缀索引：text这样的索引</p>
-<h1 id="主键索引"><a href="#主键索引" class="headerlink" title="主键索引"></a>主键索引</h1><p>一个表一定会有，没有也会创建一个默认</p>
-<h1 id="二级索引"><a href="#二级索引" class="headerlink" title="二级索引"></a>二级索引</h1><p>二级索引的叶子节点存储的数据是主键的值，通过二级索引可以定位主键的未知，二级索引称之为辅助索引&#x2F;非主键索引</p>
+<h1 id="主键索引">主键索引</h1>
+<p>一个表一定会有，没有也会创建一个默认</p>
+<h1 id="二级索引">二级索引</h1>
+<p>二级索引的叶子节点存储的数据是主键的值，通过二级索引可以定位主键的未知，二级索引称之为辅助索引/非主键索引</p>
 <p>除了主键以外的所有所有可以理解为，毕竟一切数据都是放在主键中</p>
-<h1 id="聚簇索引的优缺点"><a href="#聚簇索引的优缺点" class="headerlink" title="聚簇索引的优缺点"></a>聚簇索引的优缺点</h1><p>优点显然，不需要回表，由于叶子节点有序，排序查找也很快</p>
+<h1 id="聚簇索引的优缺点">聚簇索引的优缺点</h1>
+<p>优点显然，不需要回表，由于叶子节点有序，排序查找也很快</p>
 <p>缺点如果索引不是整数这样的形式，查找困难，如果直接动了索引，那么树就要重新构建，浪费实践</p>
-<h2 id="非聚簇索引，（二级索引）"><a href="#非聚簇索引，（二级索引）" class="headerlink" title="非聚簇索引，（二级索引）"></a>非聚簇索引，（二级索引）</h2><p>叶子节点只是存放的主键，之后再用主键取查具体的字典</p>
+<h2 id="非聚簇索引，（二级索引）">非聚簇索引，（二级索引）</h2>
+<p>叶子节点只是存放的主键，之后再用主键取查具体的字典</p>
 <p>优点和聚簇一脉相承，但是缺点就是要回表</p>
-<h2 id="非聚簇索引一定回表吗？（覆盖索引）"><a href="#非聚簇索引一定回表吗？（覆盖索引）" class="headerlink" title="非聚簇索引一定回表吗？（覆盖索引）"></a>非聚簇索引一定回表吗？（覆盖索引）</h2><p>要查的本身就是索引的内容，那么就不需要回表了</p>
+<h2 id="非聚簇索引一定回表吗？（覆盖索引）">非聚簇索引一定回表吗？（覆盖索引）</h2>
+<p>要查的本身就是索引的内容，那么就不需要回表了</p>
 <p>如果要查的就是主键的内容，也不需要回表了</p>
-<h2 id="覆盖索引"><a href="#覆盖索引" class="headerlink" title="覆盖索引"></a>覆盖索引</h2><p>字段也加入索引</p>
-<h2 id="联合索引"><a href="#联合索引" class="headerlink" title="联合索引"></a>联合索引</h2><p>最左前缀匹配原则指的是使用联合索引，MySQL会根据索引中的字段顺序，从左到右依次匹配查询条件中的字段。如果查询条件和索引中的最左字段匹配，那么就会使用索引来过滤数据。</p>
+<h2 id="覆盖索引">覆盖索引</h2>
+<p>字段也加入索引</p>
+<h2 id="联合索引">联合索引</h2>
+<p>最左前缀匹配原则指的是使用联合索引，MySQL会根据索引中的字段顺序，从左到右依次匹配查询条件中的字段。如果查询条件和索引中的最左字段匹配，那么就会使用索引来过滤数据。</p>
 <p>显然如果索引中的最左字段在查询条件中是最后写的，索引就失效了</p>
 <p>这样的设计肯定是不合理的，极大增加了程序员的心智成本</p>
 <p>8.0.13版本中加入了索引条约查询（Index Skip Scan），可以在不使用最左前缀的情况下，使用索引来过滤数据。（但是实际比较鸡肋）</p>
-<h2 id="索引下推"><a href="#索引下推" class="headerlink" title="索引下推"></a>索引下推</h2><p>（Index condition PushDown）</p>
+<h2 id="索引下推">索引下推</h2>
+<p>（Index condition PushDown）</p>
 <p>允许存储引擎再索引遍历的过程中执行部分WHERE子句的判断条件，直接过滤掉不满足条件的记录，从而减少回表次数</p>
 <p>例如如果我创建一个idx</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE TABLE</span> `<span class="hljs-keyword">user</span>` (<br>  `id` <span class="hljs-type">int</span> <span class="hljs-keyword">NOT NULL</span> AUTO_INCREMENT,<br>  `username` <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">CHARACTER SET</span> utf8mb4 <span class="hljs-keyword">COLLATE</span> utf8mb4_0900_ai_ci <span class="hljs-keyword">NOT NULL</span>,<br>  `zipcode` <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">CHARACTER SET</span> utf8mb4 <span class="hljs-keyword">COLLATE</span> utf8mb4_0900_ai_ci <span class="hljs-keyword">NOT NULL</span>,<br>  `birthdate` <span class="hljs-type">date</span> <span class="hljs-keyword">NOT NULL</span>,<br>  <span class="hljs-keyword">PRIMARY KEY</span> (`id`),<br>  KEY `idx_username_birthdate` (`zipcode`,`birthdate`) ) ENGINE<span class="hljs-operator">=</span>InnoDB AUTO_INCREMENT<span class="hljs-operator">=</span><span class="hljs-number">1001</span> <span class="hljs-keyword">DEFAULT</span> CHARSET<span class="hljs-operator">=</span>utf8mb4;<br><br># 查询 zipcode 为 <span class="hljs-number">431200</span> 且生日在 <span class="hljs-number">3</span> 月的用户<br># birthdate 字段使用函数索引失效<br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">WHERE</span> zipcode <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;431200&#x27;</span> <span class="hljs-keyword">AND</span> <span class="hljs-keyword">MONTH</span>(birthdate) <span class="hljs-operator">=</span> <span class="hljs-number">3</span>;<br></code></pre></td></tr></table></figure>
-
-<p>由于使用了函数，所以birth实际上是索引失效了的。但是索引下推可以同时判断MONTH(birthdate) &#x3D; 3，直接过滤掉不满足条件的记录，减少回表次数。实际上是对联合索引的一种优化？</p>
+<p>由于使用了函数，所以birth实际上是索引失效了的。但是索引下推可以同时判断MONTH(birthdate) = 3，直接过滤掉不满足条件的记录，减少回表次数。实际上是对联合索引的一种优化？</p>
 <p>实际的原理。</p>
 <p>MySQL可以分为Server层和存储引擎这两层。Serever层处理查询解析，分析，优化，缓存等等。存储引擎层次（Innodb，MyISAM等）负责数据的存储和检索。</p>
 <p>所谓索引下推就是把上层（Server层）负责的事情，交给下层处理。上例子中的zipcode和birthdate一次性全部交给下层处理。而不是分开一个处理一个然后server和存储引擎之间来回传递数据。</p>
-<h1 id="正确使用索引的一些建议。"><a href="#正确使用索引的一些建议。" class="headerlink" title="正确使用索引的一些建议。"></a>正确使用索引的一些建议。</h1><h2 id="选择合适的字段创建索引"><a href="#选择合适的字段创建索引" class="headerlink" title="选择合适的字段创建索引"></a>选择合适的字段创建索引</h2><p>字段不应该为NULL</p>
+<h1 id="正确使用索引的一些建议。">正确使用索引的一些建议。</h1>
+<h2 id="选择合适的字段创建索引">选择合适的字段创建索引</h2>
+<p>字段不应该为NULL</p>
 <p>被频繁查询的字段</p>
 <p>被作为条件查询的字段</p>
 <p>需要排序的字段</p>
 <p>用于连接的字段</p>
-<h2 id="被频繁更新的字段应该慎重建立索引"><a href="#被频繁更新的字段应该慎重建立索引" class="headerlink" title="被频繁更新的字段应该慎重建立索引"></a>被频繁更新的字段应该慎重建立索引</h2><h2 id="限制每张表上的索引数量"><a href="#限制每张表上的索引数量" class="headerlink" title="限制每张表上的索引数量"></a>限制每张表上的索引数量</h2><h2 id="可能考虑建立联合索引而不是单例索引。"><a href="#可能考虑建立联合索引而不是单例索引。" class="headerlink" title="可能考虑建立联合索引而不是单例索引。"></a>可能考虑建立联合索引而不是单例索引。</h2><p>因为联合索引实际上是一个索引但是包含多个字段进行比较，比较节省空间，这也是为啥会有最左前缀的原因。</p>
-<h2 id="注意避免冗余索引"><a href="#注意避免冗余索引" class="headerlink" title="注意避免冗余索引"></a>注意避免冗余索引</h2><h2 id="字符串类型的字段使用前缀索引代替普通索引"><a href="#字符串类型的字段使用前缀索引代替普通索引" class="headerlink" title="字符串类型的字段使用前缀索引代替普通索引"></a>字符串类型的字段使用前缀索引代替普通索引</h2><p>为了效率考量</p>
-<h2 id="避免索引失效"><a href="#避免索引失效" class="headerlink" title="避免索引失效"></a>避免索引失效</h2><ul>
-<li><p>联合索引但是没有使用最左匹配</p>
+<h2 id="被频繁更新的字段应该慎重建立索引">被频繁更新的字段应该慎重建立索引</h2>
+<h2 id="限制每张表上的索引数量">限制每张表上的索引数量</h2>
+<h2 id="可能考虑建立联合索引而不是单例索引。">可能考虑建立联合索引而不是单例索引。</h2>
+<p>因为联合索引实际上是一个索引但是包含多个字段进行比较，比较节省空间，这也是为啥会有最左前缀的原因。</p>
+<h2 id="注意避免冗余索引">注意避免冗余索引</h2>
+<h2 id="字符串类型的字段使用前缀索引代替普通索引">字符串类型的字段使用前缀索引代替普通索引</h2>
+<p>为了效率考量</p>
+<h2 id="避免索引失效">避免索引失效</h2>
+<ul>
+<li>
+<p>联合索引但是没有使用最左匹配</p>
 </li>
-<li><p>再索引列上进行计算，函数，转换（隐式转换）等操作</p>
+<li>
+<p>再索引列上进行计算，函数，转换（隐式转换）等操作</p>
 </li>
-<li><p>LIKE查询，触发全表扫描</p>
+<li>
+<p>LIKE查询，触发全表扫描</p>
 </li>
-<li><p>OR查询，如果有一个列没有索引，那么就会触发全表扫描（应为反正都要全表扫描的）</p>
+<li>
+<p>OR查询，如果有一个列没有索引，那么就会触发全表扫描（应为反正都要全表扫描的）</p>
 </li>
-<li><p>IN取值过大，触发全表扫描</p>
+<li>
+<p>IN取值过大，触发全表扫描</p>
 </li>
 </ul>
-<h2 id="删除长期不使用的索引"><a href="#删除长期不使用的索引" class="headerlink" title="删除长期不使用的索引"></a>删除长期不使用的索引</h2><p>占用空间且可能影响性能</p>
+<h2 id="删除长期不使用的索引">删除长期不使用的索引</h2>
+<p>占用空间且可能影响性能</p>
 
                 
               </div>

@@ -19,12 +19,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="简单工厂模式 (Simple Factory Pattern)模式定义又称之为静态工厂方法（Static Factory Method）模式，其属于类创建型模式。在简单工厂模式中，可以根据参数的不同返回不同类的实例。简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都有共同的父类 模式结构classDiagram     class Factory{         +create">
+    <meta name="description" content="简单工厂模式 (Simple Factory Pattern) 模式定义 又称之为静态工厂方法（Static Factory Method）模式，其属于类创建型模式。在简单工厂模式中，可以根据参数的不同返回不同类的实例。简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都有共同的父类 模式结构 classDiagram     class Factory&#123;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="工厂模式">
 <meta property="og:url" content="http://example.com/2025/03/15/se-system-design/3-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="eqsun&#39;s blog">
-<meta property="og:description" content="简单工厂模式 (Simple Factory Pattern)模式定义又称之为静态工厂方法（Static Factory Method）模式，其属于类创建型模式。在简单工厂模式中，可以根据参数的不同返回不同类的实例。简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都有共同的父类 模式结构classDiagram     class Factory{         +create">
+<meta property="og:description" content="简单工厂模式 (Simple Factory Pattern) 模式定义 又称之为静态工厂方法（Static Factory Method）模式，其属于类创建型模式。在简单工厂模式中，可以根据参数的不同返回不同类的实例。简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都有共同的父类 模式结构 classDiagram     class Factory&#123;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-15T15:10:00.000Z">
 <meta property="article:modified_time" content="2026-05-19T07:44:17.935Z">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          5.4k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          15 分钟
+          46 分钟
         
       </span>
     
@@ -381,131 +381,156 @@
             
               <div class="markdown-body">
                 
-                <h1 id="简单工厂模式-Simple-Factory-Pattern"><a href="#简单工厂模式-Simple-Factory-Pattern" class="headerlink" title="简单工厂模式 (Simple Factory Pattern)"></a>简单工厂模式 (Simple Factory Pattern)</h1><h2 id="模式定义"><a href="#模式定义" class="headerlink" title="模式定义"></a>模式定义</h2><p>又称之为静态工厂方法（Static Factory Method）模式，其属于类创建型模式。在简单工厂模式中，可以根据参数的不同返回不同类的实例。简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都有共同的父类</p>
-<h2 id="模式结构"><a href="#模式结构" class="headerlink" title="模式结构"></a>模式结构</h2><pre class="mermaid">classDiagram
-    class Factory{
+                <h1 id="简单工厂模式-(simple-factory-pattern)">简单工厂模式 (Simple Factory Pattern)</h1>
+<h2 id="模式定义">模式定义</h2>
+<p>又称之为静态工厂方法（Static Factory Method）模式，其属于类创建型模式。在简单工厂模式中，可以根据参数的不同返回不同类的实例。简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都有共同的父类</p>
+<h2 id="模式结构">模式结构</h2>
+<pre><code class=" mermaid">classDiagram
+    class Factory&#123;
         +createProduct() Product
-    }
-    class Product{
+    &#125;
+    class Product&#123;
         +operation()
-    }
-    Product <|-- ConcreteProductA
-    Product <|-- ConcreteProductB
-    Factory ..> ConcreteProductA
-    Factory ..> ConcreteProductB</pre>
-
+    &#125;
+    Product &lt;|-- ConcreteProductA
+    Product &lt;|-- ConcreteProductB
+    Factory ..&gt; ConcreteProductA
+    Factory ..&gt; ConcreteProductB
+</code></pre>
 <p>包含如下角色</p>
 <p><strong>Factory</strong>: 工厂类，负责创建产品类的实例</p>
 <p><strong>Product</strong>: 抽象产品类</p>
 <p><strong>ConcreteProduct</strong>: 具体产品类</p>
-<h2 id="模式分析"><a href="#模式分析" class="headerlink" title="模式分析"></a>模式分析</h2><p><strong>将对象的创建和对象本身业务处理分离</strong>可以降低系统的耦合度</p>
+<h2 id="模式分析">模式分析</h2>
+<p><strong>将对象的创建和对象本身业务处理分离</strong>可以降低系统的耦合度</p>
 <p>工厂方法是<strong>静态方法</strong></p>
 <p>问题在于<strong>工厂类的职责相对过重</strong>，增加新的产品需要修改工厂类的判断逻辑，违背了开闭原则</p>
 <p>简单工厂模式的要点在于：<strong>当你需要什么，只需要传入参数就可以获取你需要的对象，而无需知道其创建细节</strong></p>
-<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p><strong>优点：</strong></p>
+<h2 id="优缺点">优缺点</h2>
+<p><strong>优点：</strong></p>
 <ul>
-<li><p>实现了对于责任的分割，提供了专门的工厂类用于创建对象</p>
+<li>
+<p>实现了对于责任的分割，提供了专门的工厂类用于创建对象</p>
 </li>
-<li><p>客户端无需知道所创建的具体产品的类名，只要知道对象的参数即可</p>
+<li>
+<p>客户端无需知道所创建的具体产品的类名，只要知道对象的参数即可</p>
 </li>
-<li><p>通过引入配置文件，可以在不修改任何客户端代码的情况下更换和增加新的具体类</p>
+<li>
+<p>通过引入配置文件，可以在不修改任何客户端代码的情况下更换和增加新的具体类</p>
 </li>
 </ul>
 <p><strong>缺点：</strong></p>
 <ul>
-<li><p>工厂类集中了所有产品的创建逻辑, 臃肿也不符合开闭逻辑</p>
+<li>
+<p>工厂类集中了所有产品的创建逻辑, 臃肿也不符合开闭逻辑</p>
 </li>
-<li><p>使用简单工厂会增加系统中类的个数，增加系统的复杂度和理解难度</p>
+<li>
+<p>使用简单工厂会增加系统中类的个数，增加系统的复杂度和理解难度</p>
 </li>
-<li><p>系统扩展困难，一旦添加新产品就不得不修改工厂类的判断逻辑，产品类型较多的时候，工厂类会变得很复杂</p>
+<li>
+<p>系统扩展困难，一旦添加新产品就不得不修改工厂类的判断逻辑，产品类型较多的时候，工厂类会变得很复杂</p>
 </li>
-<li><p>工厂角色无法形成基于继承的等级结构</p>
+<li>
+<p>工厂角色无法形成基于继承的等级结构</p>
 </li>
 </ul>
-<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>工厂类负责创建的对象比较少</p>
+<h2 id="使用场景">使用场景</h2>
+<p>工厂类负责创建的对象比较少</p>
 <p>客户端不关系如何创建对象</p>
-<h2 id="模式扩展"><a href="#模式扩展" class="headerlink" title="模式扩展"></a>模式扩展</h2><p>上述方法创建了一个单独的工厂类，而且使用静态方法生产产品。同时我们又创建了一个抽象产品类，自然可以把这个静态方法写到抽象产品类中，这是一样的。称之为对简单工厂模式的简化</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SimpleFactory</span> &#123;<br><br>  <span class="hljs-keyword">static</span> Product <span class="hljs-title function_">getProduct</span><span class="hljs-params">(String p)</span> &#123;<br>    <span class="hljs-keyword">if</span> (p == <span class="hljs-string">&quot;A&quot;</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ProductA</span>();<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ProductB</span>();<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-type">Product</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> SimpleFactory.getProduct(<span class="hljs-string">&quot;A&quot;</span>);<br>    p.hello();<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Product</span> &#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;abstract&quot;</span>;<br><br>    Product(String name) &#123;<br>      <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">hello</span><span class="hljs-params">()</span> &#123;<br>      System.out.print(<span class="hljs-string">&quot;This is &quot;</span> + <span class="hljs-built_in">this</span>.name);<br>    &#125; <br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ProductA</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Product</span> &#123;<br><br>  ProductA() &#123;<br>    <span class="hljs-built_in">super</span>(<span class="hljs-string">&quot;A&quot;</span>);<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ProductB</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Product</span> &#123;<br><br>  ProductB() &#123;<br>    <span class="hljs-built_in">super</span>(<span class="hljs-string">&quot;B&quot;</span>);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="工厂方法模式-（Factory-Method-Pattern）"><a href="#工厂方法模式-（Factory-Method-Pattern）" class="headerlink" title="工厂方法模式 (（Factory Method Pattern）"></a>工厂方法模式 (（Factory Method Pattern）</h1><h2 id="模式定义-1"><a href="#模式定义-1" class="headerlink" title="模式定义"></a>模式定义</h2><p>工厂方法模式（Factory Method Pattern）又称为工厂模式，也叫虚拟构造器模式（Virtual Constructor）模式或者多态工厂模式（Polymorphic Factory Pattern）。</p>
+<h2 id="模式扩展">模式扩展</h2>
+<p>上述方法创建了一个单独的工厂类，而且使用静态方法生产产品。同时我们又创建了一个抽象产品类，自然可以把这个静态方法写到抽象产品类中，这是一样的。称之为对简单工厂模式的简化</p>
+<h2 id="代码">代码</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SimpleFactory</span> &#123;<br><br>  <span class="hljs-keyword">static</span> Product <span class="hljs-title function_">getProduct</span><span class="hljs-params">(String p)</span> &#123;<br>    <span class="hljs-keyword">if</span> (p == <span class="hljs-string">&quot;A&quot;</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ProductA</span>();<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ProductB</span>();<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-type">Product</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> SimpleFactory.getProduct(<span class="hljs-string">&quot;A&quot;</span>);<br>    p.hello();<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Product</span> &#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;abstract&quot;</span>;<br><br>    Product(String name) &#123;<br>      <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">hello</span><span class="hljs-params">()</span> &#123;<br>      System.out.print(<span class="hljs-string">&quot;This is &quot;</span> + <span class="hljs-built_in">this</span>.name);<br>    &#125; <br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ProductA</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Product</span> &#123;<br><br>  ProductA() &#123;<br>    <span class="hljs-built_in">super</span>(<span class="hljs-string">&quot;A&quot;</span>);<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ProductB</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Product</span> &#123;<br><br>  ProductB() &#123;<br>    <span class="hljs-built_in">super</span>(<span class="hljs-string">&quot;B&quot;</span>);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="工厂方法模式-(（factory-method-pattern）">工厂方法模式 (（Factory Method Pattern）</h1>
+<h2 id="模式定义-2">模式定义</h2>
+<p>工厂方法模式（Factory Method Pattern）又称为工厂模式，也叫虚拟构造器模式（Virtual Constructor）模式或者多态工厂模式（Polymorphic Factory Pattern）。</p>
 <p>实际上是<strong>将产品类的实例化操作延迟到工厂的子类中完成</strong></p>
 <p>实际上是对if-else的进一步拆分（每一次拆分就引入一个抽象层，使用抽象来替代if-else）</p>
-<h2 id="模式结构-1"><a href="#模式结构-1" class="headerlink" title="模式结构"></a>模式结构</h2><pre class="mermaid">classDiagram
-    class Factory{
+<h2 id="模式结构-2">模式结构</h2>
+<pre><code class=" mermaid">classDiagram
+    class Factory&#123;
         +createProduct()  Product
-    }
-    class Product{
+    &#125;
+    class Product&#123;
         +operation()
-    }
-    Product <|-- ConcreteProductA
-    Product <|-- ConcreteProductB
-    Factory <|-- ConcreteFactoryA
-    Factory <|-- ConcreteFactoryB
-    ConcreteFactoryA ..> ConcreteProductA : create
-    ConcreteFactoryB ..> ConcreteProductB : create</pre>
-
-<h2 id="模式分析-1"><a href="#模式分析-1" class="headerlink" title="模式分析"></a>模式分析</h2><p>核心的工厂类不再负责所有的产品的创建，而是将<strong>具体的创建工作交给子类去做</strong></p>
+    &#125;
+    Product &lt;|-- ConcreteProductA
+    Product &lt;|-- ConcreteProductB
+    Factory &lt;|-- ConcreteFactoryA
+    Factory &lt;|-- ConcreteFactoryB
+    ConcreteFactoryA ..&gt; ConcreteProductA : create
+    ConcreteFactoryB ..&gt; ConcreteProductB : create
+</code></pre>
+<h2 id="模式分析-2">模式分析</h2>
+<p>核心的工厂类不再负责所有的产品的创建，而是将<strong>具体的创建工作交给子类去做</strong></p>
 <p>可以允许系统在<strong>不修改工厂角色的情况下引进新产品</strong></p>
 <p><em>简单工厂是将所有的创建逻辑都放在一个工厂类中，可以认为这种方式的封装粒度还是过大了，同时以传入参数的形式来决定创建逻辑本身就必然导致代码的修改。要解决这个问题只能将选择逻辑放在客户端中————即类的选择来替代这个参数选择，同时这个类本身也作为封装封装了创建对象的复杂逻辑。但是缺陷也是明显的————引入了大量的类</em></p>
 <p><strong>很好符合了开闭原则</strong>，退化以后变成简单工厂</p>
 <p><strong>很好使用了依赖倒转原则</strong>，使用抽象产品类以及本身继承抽象工厂类，实际使用只要更换对应工厂即可</p>
 <p>实际应用开发中一般将工厂类的实例化过程进行改造，而不使用new关键词来创建对象，而是将具体类的类名写入配置文件中，再通过Java的反射机制，读取XML格式的配置文件，根据存储在XML文件中的类名字符串生成对象。</p>
-<h2 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h2><p><strong>优点：</strong></p>
+<h2 id="优缺点-2">优缺点</h2>
+<p><strong>优点：</strong></p>
 <p>用户只需要关心所需产品对应的工厂，无需关心创建细节，甚至无需知道具体产品类的类名</p>
 <p>工厂剋以自主决定创建何种产品对象，以及创建这个对象的细节可以完全封装在具体的工厂内部</p>
 <p>系统中加入新产品的时候，无需修改抽象工厂和抽象产品提供的接口，只需要添加具体的工厂和具体的产品即可</p>
 <p><strong>缺点：</strong></p>
 <p>需要编写新的具体产品类，而且还要提供与之对应的具体工厂类，系统中的类的个数将成对增加</p>
 <p>增加了系统的抽象性和理解难度</p>
-<h2 id="使用场景-1"><a href="#使用场景-1" class="headerlink" title="使用场景"></a>使用场景</h2><p>一个类不知道它所需要的对象的具体类</p>
+<h2 id="使用场景-2">使用场景</h2>
+<p>一个类不知道它所需要的对象的具体类</p>
 <p>一个类通过子类来指定创建哪一个对象</p>
 <p>将创建对象的任务委托给多个工厂子类中的某一个，客户端在使用的时候无需关系是哪一个工厂子类创建产品类，需要时再动态指定</p>
-<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Button</span> &#123;<br>  <span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">show</span><span class="hljs-params">()</span> &#123;<br>    System.out.println(<span class="hljs-built_in">this</span>.getClass().getSimpleName());<br>  &#125;<br>&#125;;<br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">ButtonFactory</span> &#123;<br>  Button <span class="hljs-title function_">createButton</span><span class="hljs-params">()</span>;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">WinButton</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Button</span> &#123;<br><br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MacButton</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Button</span> &#123;<br><br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">WinButtonFactory</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ButtonFactory</span> &#123;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> Button <span class="hljs-title function_">createButton</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">WinButton</span>();<br>  &#125;<br><br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MacButtonFactory</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ButtonFactory</span> &#123;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> Button <span class="hljs-title function_">createButton</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MacButton</span>();<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">test</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-type">ButtonFactory</span> <span class="hljs-variable">factory</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">WinButtonFactory</span>();<br>    <span class="hljs-type">Button</span> <span class="hljs-variable">bt</span> <span class="hljs-operator">=</span> factory.createButton();<br>    bt.show();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="抽象工厂模式（Abstract-Factory-Pattern）"><a href="#抽象工厂模式（Abstract-Factory-Pattern）" class="headerlink" title="抽象工厂模式（Abstract Factory Pattern）"></a>抽象工厂模式（Abstract Factory Pattern）</h1><h2 id="模式定义-2"><a href="#模式定义-2" class="headerlink" title="模式定义"></a>模式定义</h2><p>抽象工厂模式（Abstract Factory Pattern）提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们的具体类。抽象工厂模式又称之为Kit模式，属于对象创建型模式</p>
+<h2 id="代码-2">代码</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Button</span> &#123;<br>  <span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">show</span><span class="hljs-params">()</span> &#123;<br>    System.out.println(<span class="hljs-built_in">this</span>.getClass().getSimpleName());<br>  &#125;<br>&#125;;<br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">ButtonFactory</span> &#123;<br>  Button <span class="hljs-title function_">createButton</span><span class="hljs-params">()</span>;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">WinButton</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Button</span> &#123;<br><br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MacButton</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Button</span> &#123;<br><br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">WinButtonFactory</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ButtonFactory</span> &#123;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> Button <span class="hljs-title function_">createButton</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">WinButton</span>();<br>  &#125;<br><br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MacButtonFactory</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ButtonFactory</span> &#123;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> Button <span class="hljs-title function_">createButton</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MacButton</span>();<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">test</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-type">ButtonFactory</span> <span class="hljs-variable">factory</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">WinButtonFactory</span>();<br>    <span class="hljs-type">Button</span> <span class="hljs-variable">bt</span> <span class="hljs-operator">=</span> factory.createButton();<br>    bt.show();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="抽象工厂模式（abstract-factory-pattern）">抽象工厂模式（Abstract Factory Pattern）</h1>
+<h2 id="模式定义-3">模式定义</h2>
+<p>抽象工厂模式（Abstract Factory Pattern）提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们的具体类。抽象工厂模式又称之为Kit模式，属于对象创建型模式</p>
 <p><em>可以视为在工厂方法中添加了一个新的产品类————增加了一个新的产品结构（依然从属于一个工厂）</em></p>
-<h2 id="模式结构-2"><a href="#模式结构-2" class="headerlink" title="模式结构"></a>模式结构</h2><pre class="mermaid">classDiagram
-    class AbstractFactory{
-        <<interface>>
+<h2 id="模式结构-3">模式结构</h2>
+<pre><code class=" mermaid">classDiagram
+    class AbstractFactory&#123;
+        &lt;&lt;interface&gt;&gt;
         +createProductA()  ProductA
         +createProductB()  ProductB
-    }
-    class ProductA{
-        <<interface>>
+    &#125;
+    class ProductA&#123;
+        &lt;&lt;interface&gt;&gt;
         +operation()
-    }
-    class ProductB{
-        <<interface>>
+    &#125;
+    class ProductB&#123;
+        &lt;&lt;interface&gt;&gt;
         +operation()
-    }
-    AbstractFactory <|.. ConcreteFactoryA
-    AbstractFactory <|.. ConcreteFactoryB
-    ProductA <|.. ConcreteProductA1
-    ProductA <|.. ConcreteProductA2
-    ProductB <|.. ConcreteProductB1
-    ProductB <|.. ConcreteProductB2
-    ConcreteFactoryA ..> ConcreteProductA1 : create
-    ConcreteFactoryA ..> ConcreteProductB1 : create
-    ConcreteFactoryB ..> ConcreteProductA2 : create
-    ConcreteFactoryB ..> ConcreteProductB2 : create</pre>
-
+    &#125;
+    AbstractFactory &lt;|.. ConcreteFactoryA
+    AbstractFactory &lt;|.. ConcreteFactoryB
+    ProductA &lt;|.. ConcreteProductA1
+    ProductA &lt;|.. ConcreteProductA2
+    ProductB &lt;|.. ConcreteProductB1
+    ProductB &lt;|.. ConcreteProductB2
+    ConcreteFactoryA ..&gt; ConcreteProductA1 : create
+    ConcreteFactoryA ..&gt; ConcreteProductB1 : create
+    ConcreteFactoryB ..&gt; ConcreteProductA2 : create
+    ConcreteFactoryB ..&gt; ConcreteProductB2 : create
+</code></pre>
 <p>抽象工厂模式包括</p>
 <p><strong>AbstractFactory</strong>: 抽象工厂类</p>
 <p><strong>ConcreteFactory</strong>: 具体工厂类</p>
 <p><strong>AbstractProduct</strong>: 抽象产品类</p>
 <p><strong>Product</strong>: 具体产品类</p>
-<h2 id="优缺点-2"><a href="#优缺点-2" class="headerlink" title="优缺点"></a>优缺点</h2><p><strong>优点</strong></p>
+<h2 id="优缺点-3">优缺点</h2>
+<p><strong>优点</strong></p>
 <p>隔离了具体类的生成</p>
 <p>保证客户端始终只使用一个产品族中的产品</p>
 <p>符合开闭原则</p>
 <p><strong>缺点</strong></p>
 <p>难以扩展抽象工厂来生产新种类的产品，产品簇很容易扩展，但是新产品很难</p>
 <p>开闭原则的倾斜性：新增新的工厂和产品族容易，增加新的产品等级结构麻烦</p>
-<h2 id="使用场景-2"><a href="#使用场景-2" class="headerlink" title="使用场景"></a>使用场景</h2><p>系统不应当依赖产品实例的创建，组合和表达的细节</p>
+<h2 id="使用场景-3">使用场景</h2>
+<p>系统不应当依赖产品实例的创建，组合和表达的细节</p>
 <p>同一个产品族的产品在一起使用</p>
 <p>所有产品以同样的接口出现，客户端不依赖于具体实现</p>
-<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">AbFactory</span> &#123;<br><br>  Computer <span class="hljs-title function_">genCp</span><span class="hljs-params">()</span>;<br><br>  Phone <span class="hljs-title function_">genPh</span><span class="hljs-params">()</span>;<br>  <br>&#125;<br><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Computer</span> &#123;<br><br>  <span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">show</span><span class="hljs-params">()</span> &#123;<br>    System.out.println(<span class="hljs-built_in">this</span>.getClass().getSimpleName());<br>  &#125;<br><br>&#125;<br><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Phone</span> &#123;<br><br>  <span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">show</span><span class="hljs-params">()</span> &#123;<br>    System.out.println(<span class="hljs-built_in">this</span>.getClass().getSimpleName());<br>  &#125;<br><br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Harmony</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Computer</span> &#123;<br><br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MacBook</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Computer</span> &#123;<br><br>&#125; <br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Iphone</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Phone</span> &#123;<br><br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Honor</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Phone</span> &#123;<br><br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Huawei</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AbFactory</span> &#123;<br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> Computer <span class="hljs-title function_">genCp</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Harmony</span>();<br>  &#125;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> Phone <span class="hljs-title function_">genPh</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Honor</span>();<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Apple</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AbFactory</span> &#123;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> Computer <span class="hljs-title function_">genCp</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MacBook</span>();<br>  &#125;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> Phone <span class="hljs-title function_">genPh</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Iphone</span>();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
+<h2 id="代码-3">代码</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">AbFactory</span> &#123;<br><br>  Computer <span class="hljs-title function_">genCp</span><span class="hljs-params">()</span>;<br><br>  Phone <span class="hljs-title function_">genPh</span><span class="hljs-params">()</span>;<br>  <br>&#125;<br><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Computer</span> &#123;<br><br>  <span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">show</span><span class="hljs-params">()</span> &#123;<br>    System.out.println(<span class="hljs-built_in">this</span>.getClass().getSimpleName());<br>  &#125;<br><br>&#125;<br><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Phone</span> &#123;<br><br>  <span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">show</span><span class="hljs-params">()</span> &#123;<br>    System.out.println(<span class="hljs-built_in">this</span>.getClass().getSimpleName());<br>  &#125;<br><br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Harmony</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Computer</span> &#123;<br><br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MacBook</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Computer</span> &#123;<br><br>&#125; <br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Iphone</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Phone</span> &#123;<br><br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Honor</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Phone</span> &#123;<br><br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Huawei</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AbFactory</span> &#123;<br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> Computer <span class="hljs-title function_">genCp</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Harmony</span>();<br>  &#125;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> Phone <span class="hljs-title function_">genPh</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Honor</span>();<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Apple</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AbFactory</span> &#123;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> Computer <span class="hljs-title function_">genCp</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MacBook</span>();<br>  &#125;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> Phone <span class="hljs-title function_">genPh</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Iphone</span>();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>

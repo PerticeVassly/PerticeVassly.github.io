@@ -384,7 +384,6 @@
                 <p>java和cpp不同，cpp会默认调用拷贝构造函数，完成深拷贝，只有当你需要手动优化去除深拷贝的时候才会重写拷贝构造函数，而java则不同，java的数组是引用类型，所以直接赋值是浅拷贝，如果需要深拷贝，需要手动实现。</p>
 <p>一种比较方便的数据深拷贝方法是</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-built_in">this</span>.nowGrid = Arrays.stream(grid).map(<span class="hljs-type">int</span>[]::clone).toArray(<span class="hljs-type">int</span>[][]::<span class="hljs-keyword">new</span>);<br></code></pre></td></tr></table></figure>
-
 <p>数组本身的复制可以使用</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] copy = Arrays.copyOf(original, newLength);<br><span class="hljs-type">int</span>[] copy = Arrays.copyOfRange(original, from, to);<br></code></pre></td></tr></table></figure>
                 
