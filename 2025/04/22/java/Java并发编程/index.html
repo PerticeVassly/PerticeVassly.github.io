@@ -382,13 +382,13 @@
               <div class="markdown-body">
                 
                 <p>参考资料：</p>
-<p><a target="_blank" rel="noopener" href="https://javaguide.cn/java/concurrent/java-concurrent-questions-01.html">https://javaguide.cn/java/concurrent/java-concurrent-questions-01.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://javaguide.cn/java/concurrent/java-concurrent-questions-02.html">https://javaguide.cn/java/concurrent/java-concurrent-questions-02.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://javaguide.cn/java/concurrent/java-concurrent-questions-03.html">https://javaguide.cn/java/concurrent/java-concurrent-questions-03.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/codeclock/p/13803898.html">https://www.cnblogs.com/codeclock/p/13803898.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43584847/article/details/106429549">https://blog.csdn.net/qq_43584847/article/details/106429549</a></p>
-<p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1504327">https://developer.aliyun.com/article/1504327</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013541140/article/details/95225769">https://blog.csdn.net/u013541140/article/details/95225769</a></p>
+<p>https://javaguide.cn/java/concurrent/java-concurrent-questions-01.html</p>
+<p>https://javaguide.cn/java/concurrent/java-concurrent-questions-02.html</p>
+<p>https://javaguide.cn/java/concurrent/java-concurrent-questions-03.html</p>
+<p>https://www.cnblogs.com/codeclock/p/13803898.html</p>
+<p>https://blog.csdn.net/qq_43584847/article/details/106429549</p>
+<p>https://developer.aliyun.com/article/1504327</p>
+<p>https://blog.csdn.net/u013541140/article/details/95225769</p>
 <h1 id="进程">进程</h1>
 <p>进程是程序的一次执行过程</p>
 <h1 id="线程">线程</h1>
@@ -401,9 +401,7 @@
 <p>jdk1.2之前，java是基于绿色线程（Green Thread）实现的。但是使用模拟的方式无法提供异步IO以及多核处理器的支持。</p>
 <p>1.2以后，java线程改为原生线程（Native Threads）实现，JVM直接调用操作系统原生的内核级线程</p>
 <p>线程模型是用户线程到内核线程之间的关联方式，常见有三种</p>
-<p>一对一<br>
-多对一<br>
-多对多</p>
+<p>一对一 多对一 多对多</p>
 <p>一般来说java线程采用的是一对一线程模型</p>
 <p>一个进程中有多个线程，多个线程共享进程的堆和方法区资源，但是每个线程有自己的程序计数器，虚拟机栈和本地方法栈</p>
 <h1 id="程序计数器为什么是私有的">程序计数器为什么是私有的</h1>
@@ -412,9 +410,9 @@
 <p>实际上也是当前线程的上下文的一部分</p>
 <p>虚拟机栈：每个java方法在执行之前会创建一个栈帧存储局部变量表，操作数栈，常量池而当等</p>
 <p>本地方法栈：略去</p>
-<h1 id="如何创建线程（java中）">如何创建线程（java中）</h1>
+<h1 id="如何创建线程java中">如何创建线程（java中）</h1>
 <p>Thread，Callable，CompletableFuture，</p>
-<h1 id="线程状态图（java中）">线程状态图（java中）</h1>
+<h1 id="线程状态图java中">线程状态图（java中）</h1>
 <p>NEW：初始状态，线程被创建出来但是没有调用start()</p>
 <p>RUNNABLE：运行状态，线程调用了start()等待运行的状态</p>
 <p>BLOCKED：阻塞状态，线程在等待锁的状态</p>
@@ -446,7 +444,7 @@
 <p>时间片用完</p>
 <p>阻塞IO</p>
 <p>被终止</p>
-<h1 id="thread.sleep()和object.wait()的区别">Thread.sleep()和Object.wait()的区别</h1>
+<h1 id="thread.sleep和object.wait的区别">Thread.sleep()和Object.wait()的区别</h1>
 <p>sleep没有释放锁，wait释放了锁</p>
 <p>wait常常用于线程交互/通信，sleep通常摆用于暂停执行</p>
 <p>wait要别人唤起才能苏醒，sleep是到点自动苏醒</p>
@@ -462,38 +460,22 @@
 <h1 id="线程安全">线程安全</h1>
 <p>多线程环境下对于同一份数据的访问是否能够保证其正确性和一致性的描述</p>
 <h1 id="死锁的四个必要条件">死锁的四个必要条件</h1>
-<ol>
-<li>
-<p>互斥条件：该资源任意一个时刻只能由一个线程占用</p>
-</li>
-<li>
-<p>请求和保持条件：一个线程因请求资源而阻塞的时候，对于已经获得的资源保持不放</p>
-</li>
-<li>
-<p>不剥夺条件：线程已经获得的资源在没有使用完之前不能被其他线程强行剥夺</p>
-</li>
-<li>
-<p>循环等待条件：若干线程之间形成一种头尾相接的循环等待资源关系</p>
-</li>
+<ol type="1">
+<li><p>互斥条件：该资源任意一个时刻只能由一个线程占用</p></li>
+<li><p>请求和保持条件：一个线程因请求资源而阻塞的时候，对于已经获得的资源保持不放</p></li>
+<li><p>不剥夺条件：线程已经获得的资源在没有使用完之前不能被其他线程强行剥夺</p></li>
+<li><p>循环等待条件：若干线程之间形成一种头尾相接的循环等待资源关系</p></li>
 </ol>
 <h1 id="检测死锁">检测死锁</h1>
 <p>jmap, jstack 等从jvm层面进行检查</p>
 <p>top，df, free 查看操作系统的情况</p>
 <h1 id="如何预防和避免产生线程死锁">如何预防和避免产生线程死锁</h1>
 <p>如何预防死锁：实际上就是破坏上述的四个必要条件</p>
-<ol>
-<li>
-<p>互斥条件：这个由业务逻辑决定，很难修改</p>
-</li>
-<li>
-<p>请求和保持条件：一次性申请所有的资源</p>
-</li>
-<li>
-<p>不剥夺条件：一个线程生获取资源的时候如果获取不到，则强行剥夺某一个线程的资源</p>
-</li>
-<li>
-<p>循环等待条件：出现循环等待的时候剥夺一方的资源</p>
-</li>
+<ol type="1">
+<li><p>互斥条件：这个由业务逻辑决定，很难修改</p></li>
+<li><p>请求和保持条件：一次性申请所有的资源</p></li>
+<li><p>不剥夺条件：一个线程生获取资源的时候如果获取不到，则强行剥夺某一个线程的资源</p></li>
+<li><p>循环等待条件：出现循环等待的时候剥夺一方的资源</p></li>
 </ol>
 <h1 id="虚拟线程">虚拟线程</h1>
 <p>暂时没看</p>
@@ -517,7 +499,7 @@
 <h1 id="乐观锁">乐观锁</h1>
 <h2 id="版本号机制">版本号机制</h2>
 <p>加入一个数据版本号，表示数据被修改的次数。当准备更新的时候，先检查版本号是否和当前版本号一致，如果一致则更新数据和版本号，如果不一致则说明数据已经被修改过了，更新失败。更新失败则重新操作</p>
-<h2 id="CAS算法">CAS算法</h2>
+<h2 id="cas算法">CAS算法</h2>
 <p>然而比较过程本身可能是出现非原子，所以一般要原子操作，对应cmpxchg指令</p>
 <p>V：要更新的值</p>
 <p>E：期望值</p>
@@ -567,18 +549,10 @@
 <p>ReentrantLock是依赖于API来实现的，实际上是代码中写好了lock和unlock的逻辑</p>
 <p>显然后者比前者灵活，ReentrantLock的一些高级功能</p>
 <ul>
-<li>
-<p>可以中断等待锁的进程</p>
-</li>
-<li>
-<p>可以自由决定是否公平</p>
-</li>
-<li>
-<p>支持等待超时</p>
-</li>
-<li>
-<p>可以选择性通知</p>
-</li>
+<li><p>可以中断等待锁的进程</p></li>
+<li><p>可以自由决定是否公平</p></li>
+<li><p>支持等待超时</p></li>
+<li><p>可以选择性通知</p></li>
 </ul>
 <h1 id="可中断和不可中断锁">可中断和不可中断锁</h1>
 <p>字面意思，可中断锁有reentrantLock</p>
@@ -606,16 +580,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Entry</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">WeakReference</span>&lt;ThreadLocal&lt;?&gt;&gt; &#123;<br>    Object value;<br><br>    Entry(ThreadLocal&lt;?&gt; k, Object v) &#123;<br>        <span class="hljs-built_in">super</span>(k);<br>        value = v;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>即把传入的ThreadLocal对象（key）是作为一个entry的一个弱引用。弱引用是只要GC扫描到就会被回收（只要Threadlocal对象没有被其他强引用指向），但是value是强引用（成员变量），，和可能依然存在，此时key被回收但是value依然存在，这就导致了内存泄漏的问题</p>
 <p>总结下来就是：ThreadLocal的的作用，首先用其地址计算hash作为entry表的index，然后构建entry的时候将其打上弱引用的标记。</p>
-<ol>
-<li>
-<p>Threadlocalmap由于和线程绑定长期存活</p>
-</li>
-<li>
-<p>其内部的key 即ThreadLocal对象是弱引用，被回收了, 由于上述“hashmap”实际上是一个entry表，entry是强引用，所以object value也是强引用，所以value不会被回收</p>
-</li>
+<ol type="1">
+<li><p>Threadlocalmap由于和线程绑定长期存活</p></li>
+<li><p>其内部的key 即ThreadLocal对象是弱引用，被回收了, 由于上述“hashmap”实际上是一个entry表，entry是强引用，所以object value也是强引用，所以value不会被回收</p></li>
 </ol>
 <p>使用完以后要调用remove方法，从localmap中移除entry，这样enrty消失了value也就会被回收了</p>
-<h1 id="为啥要把threadlocal设计为弱引用？不把value也设置为弱引用">为啥要把Threadlocal设计为弱引用？不把value也设置为弱引用</h1>
+<h1 id="为啥要把threadlocal设计为弱引用不把value也设置为弱引用">为啥要把Threadlocal设计为弱引用？不把value也设置为弱引用</h1>
 <p>为什么要把threadlocal设计为弱引用？应为实际上的threadlocal的set和get机制是把自己和当前thread绑定的，并且存储到当前thread的上期文中的。也就是说这个对象的生命周期严格来说是和所有线程绑定的，只有所有用到过这个threadlocal的线程都结束了，这个threadlocal才会被回收。</p>
 <p>但是这样很不优雅，也不满足编译优化，应该是如过没有线程持有这个threadlocal了就应该把他gc掉</p>
 <figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lasso"><span class="hljs-keyword">thread</span><br><span class="hljs-built_in">local</span>.<span class="hljs-built_in">set</span>(value); <span class="hljs-comment">// st2</span><br><span class="hljs-params">...</span><br><span class="hljs-built_in">local</span>.get(); <span class="hljs-comment">// st1</span><br><span class="hljs-params">...</span> <span class="hljs-comment">// 由活跃变量分析可知，后续已经没有使用这个threadlocal了</span><br></code></pre></td></tr></table></figure>
@@ -633,7 +603,7 @@
 <h1 id="创建线程的注意点">创建线程的注意点</h1>
 <p>不要手动创建线程而是使用线程池</p>
 <p>强制线程池不允许使用Executors去创建，而是通过ThreadPoolExecutor来创建</p>
-<h1 id="线程池的常见参数有哪些，如何解释">线程池的常见参数有哪些，如何解释</h1>
+<h1 id="线程池的常见参数有哪些如何解释">线程池的常见参数有哪些，如何解释</h1>
 <p>ThreadPoolExecutor的参数</p>
 <p>corePoolSize：核心线程数，默认情况下，核心线程会一致存活。任务队列没有达到队列容量的时候，最大可以同时运行的线程数</p>
 <p>maximumPoolSize：线程池所能容纳的最大线程数，达到这个值后续的新任务会阻塞。任务队列中存放的任务达到任务容量的时候，当前可以同时运行的线程数会增加到maximumPoolSize</p>
@@ -656,30 +626,24 @@
 <p>ThreadPoolExecutor.CallerRunsPolicy：调用者线程中直接执行，如果调用者线程已经结束，则直接抛出异常</p>
 <p>ThreadPoolExecutor.DiscardPolicy：丢弃任务，不抛出异常</p>
 <p>ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列中最旧的任务，然后尝试重新执行</p>
-<h1 id="callerrunspolicy拒绝策略有声明风险，如何解决">CallerRunsPolicy拒绝策略有声明风险，如何解决</h1>
+<h1 id="callerrunspolicy拒绝策略有声明风险如何解决">CallerRunsPolicy拒绝策略有声明风险，如何解决</h1>
 <p>风险在于可能会导致调用者线程阻塞，但是一旦调用者阻塞了，线程池的fetch任务等等管理操作也会随之阻塞，导致线程池后续任务无法及时执行</p>
 <p>如何解决？增加blockingqueue的容量，增加maximumPoolSize的值，增加corePoolSize的值提高任务处理效率</p>
 <p>但是这样依然有耗尽的一天，如果我们不希望任何一个任务被丢弃呢</p>
 <ul>
-<li>
-<p>设计任务表存储到MySQL中</p>
-</li>
-<li>
-<p>Redis缓存任务</p>
-</li>
-<li>
-<p>任务提交到消息队列</p>
-</li>
+<li><p>设计任务表存储到MySQL中</p></li>
+<li><p>Redis缓存任务</p></li>
+<li><p>任务提交到消息队列</p></li>
 </ul>
-<h1 id="线程池常用的阻塞队列有哪些？">线程池常用的阻塞队列有哪些？</h1>
+<h1 id="线程池常用的阻塞队列有哪些">线程池常用的阻塞队列有哪些？</h1>
 <p>LinkedBlockingQueue：主要用于FixedThreadPoolExecutor和SingleThreadPool，队列大小为Integer.MAX_VALUE，这两个线程池都是核心线程数等于最大线程数，SingleThreadPool二者都是1</p>
 <p>SychronousQueue：主要用于CachedThreadPoolExecutor，队列大小为0，线程池的最大线程数是Integer.MAX_VALUE, 不存储任务，仅仅只是传递，提供同步功能</p>
 <p>DelayedWorkQueue：数字要用于ScheduledThreadPool和SingleThreadScheduledPool，按照延迟时间长短堆任务排序提供，且自动扩容，最大可到达Integer.MAX_VALUE</p>
 <p>ArrayBlockingQueue：数组实现，一旦创建，不能修改</p>
-<h1 id="线程池中线程异常，销毁还是复用">线程池中线程异常，销毁还是复用</h1>
+<h1 id="线程池中线程异常销毁还是复用">线程池中线程异常，销毁还是复用</h1>
 <p>execute提交，如果异常没有被捕获，当前线程终止，异常信息打印到控制台或者log中，线程池创建一个新的线程来替换他</p>
 <p>submit提交，异常封装在submit返回的Future对象，调用get的时候返回，此时线程不会因为异常终止，而是继续执行下一个任务</p>
-<h1 id="线程池如何命名？">线程池如何命名？</h1>
+<h1 id="线程池如何命名">线程池如何命名？</h1>
 <p>设置factory setNameFormat</p>
 <p>或者直接重写一个自己的ThreadFactory实现类，重写newThread方法来命名线程</p>
 <h1 id="线程池的大小设计">线程池的大小设计</h1>
@@ -694,19 +658,11 @@
 <h1 id="future">Future</h1>
 <p>核心思想是异步调用</p>
 <p>主要包括下面四个功能</p>
-<ol>
-<li>
-<p>取消任务</p>
-</li>
-<li>
-<p>判断任务是否被取消</p>
-</li>
-<li>
-<p>判断任务是否已经执行完成</p>
-</li>
-<li>
-<p>获取任务执行结果</p>
-</li>
+<ol type="1">
+<li><p>取消任务</p></li>
+<li><p>判断任务是否被取消</p></li>
+<li><p>判断任务是否已经执行完成</p></li>
+<li><p>获取任务执行结果</p></li>
 </ol>
 <p>FutureTask提供了Future接口的基本实现，用于封装Callable和Runnable对象，ExecutorService的submit方法返回的就是FutureTask对象</p>
 <p>Runnable接口 + Future接口 = RunnableFuture接口</p>

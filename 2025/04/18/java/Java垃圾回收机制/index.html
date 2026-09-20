@@ -383,7 +383,7 @@
               <div class="markdown-body">
                 
                 <p>参考资料：</p>
-<p><a target="_blank" rel="noopener" href="https://javaguide.cn/java/jvm/jvm-garbage-collection.html">https://javaguide.cn/java/jvm/jvm-garbage-collection.html</a></p>
+<p>https://javaguide.cn/java/jvm/jvm-garbage-collection.html</p>
 <h1 id="堆的分区">堆的分区</h1>
 <p>Eden | survivor 0 | survivor 1</p>
 <p>Tenured</p>
@@ -396,12 +396,8 @@
 <h1 id="gc种类">GC种类</h1>
 <p>部分GC <code>（Partial GC）</code></p>
 <ul>
-<li>
-<p>新生代 <code>（Minor GC / Young GC）</code>：只对新生代进行垃圾回收，通常是Eden区和Survivor区的回收。</p>
-</li>
-<li>
-<p>老年代 <code>（Major GC / Old GC）</code>：只对老年代进行垃圾回收，现在的语义下有些地方也指代整堆收集</p>
-</li>
+<li><p>新生代 <code>（Minor GC / Young GC）</code>：只对新生代进行垃圾回收，通常是Eden区和Survivor区的回收。</p></li>
+<li><p>老年代 <code>（Major GC / Old GC）</code>：只对老年代进行垃圾回收，现在的语义下有些地方也指代整堆收集</p></li>
 </ul>
 <p>整堆GC <code>（Full GC）</code></p>
 <ul>
@@ -410,30 +406,18 @@
 <p>各类GC可以处理垃圾回收中的不同情况。</p>
 <p>一种常见的情况是需要确保年老区的剩余空间大于新生代所有的对象的总和，这样的GC是可以确保安全的。否则需要查看是否允许担保失败（<code>HandlePromotionFailure</code>）；如果允许，会检查这段连续空间是否大于历次晋升的新生代对象的最大值，如果大于可以勉强判定为安全的，否则需要进行<code>Full GC</code>。</p>
 <h1 id="对象死亡判断">对象死亡判断</h1>
-<h2 id="引用计数：">引用计数：</h2>
+<h2 id="引用计数">引用计数：</h2>
 <p>但是难以处理循环引用的问题。对此cpp是使用弱引用这样的方式来处理的。</p>
-<h2 id="可达性分析：">可达性分析：</h2>
+<h2 id="可达性分析">可达性分析：</h2>
 <p>通过一系列的GC Roots 来判断对象是否可达。从这些节点开始向下搜索，搜索到的对象都是可达的。如果一个对象不可达，则会被回收。</p>
 <p>哪些对象可以作为GC Roots？</p>
 <ul>
-<li>
-<p>虚拟机栈（栈帧中的局部变量表）中引用的对象</p>
-</li>
-<li>
-<p>本地方法栈中引用的对象</p>
-</li>
-<li>
-<p>方法区中类静态属性引用的对象</p>
-</li>
-<li>
-<p>方法区中常量引用的对象</p>
-</li>
-<li>
-<p>所有被同步锁引用的对象</p>
-</li>
-<li>
-<p>JNI引用的对象</p>
-</li>
+<li><p>虚拟机栈（栈帧中的局部变量表）中引用的对象</p></li>
+<li><p>本地方法栈中引用的对象</p></li>
+<li><p>方法区中类静态属性引用的对象</p></li>
+<li><p>方法区中常量引用的对象</p></li>
+<li><p>所有被同步锁引用的对象</p></li>
+<li><p>JNI引用的对象</p></li>
 </ul>
 <p><code>finalize</code>方法的存在导致对象的可达性分析变得复杂。因此当不可达的时候还需要执行<code>finalize</code>方法。才能被回收。</p>
 <p><code>finalize</code>方法是很不好的设计</p>
@@ -461,18 +445,10 @@
 <p>对应的一个老年代收集器是 <strong><code>Parallel Old</code>收集器</strong></p>
 <p><strong><code>CMS（Concurrent Mark Sweep）</code>收集器</strong>：并发收集器，使用标记清除算法</p>
 <ul>
-<li>
-<p>初始标记：标记root</p>
-</li>
-<li>
-<p>并发标记：并发运行，记录可达性（但是此时用户线程也在运行，所以可能会有对象被修改）</p>
-</li>
-<li>
-<p>重新标记：对并发标记的结果进行修正，避免遗漏（stop the world）</p>
-</li>
-<li>
-<p>并发清除：此时并发执行</p>
-</li>
+<li><p>初始标记：标记root</p></li>
+<li><p>并发标记：并发运行，记录可达性（但是此时用户线程也在运行，所以可能会有对象被修改）</p></li>
+<li><p>重新标记：对并发标记的结果进行修正，避免遗漏（stop the world）</p></li>
+<li><p>并发清除：此时并发执行</p></li>
 </ul>
 <p>缺点在于：并发消耗大量cpu资源，始终存在浮动的垃圾，无法做到彻底清除，标记-清除算法会产生内存碎片</p>
 <p><strong>G1(Garbage-First)收集器</strong>：</p>

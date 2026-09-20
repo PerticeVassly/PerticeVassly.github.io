@@ -382,7 +382,7 @@
               <div class="markdown-body">
                 
                 <p>参考资料：</p>
-<p><a target="_blank" rel="noopener" href="https://javaguide.cn/database/mysql/mysql-questions-01.html">https://javaguide.cn/database/mysql/mysql-questions-01.html</a></p>
+<p>https://javaguide.cn/database/mysql/mysql-questions-01.html</p>
 <h1 id="有哪些常见的关系型数据库">有哪些常见的关系型数据库</h1>
 <p>MySQL, PostgreSQL, Oracle, SQL Server, SQLite</p>
 <h1 id="什么是sql">什么是SQL</h1>
@@ -405,11 +405,11 @@
 <ul>
 <li>YEAR, TIME, DATE, DATETIME, TIMESTAMP</li>
 </ul>
-<h2 id="CHAR和VARCHAR的区别">CHAR和VARCHAR的区别</h2>
+<h2 id="char和varchar的区别">CHAR和VARCHAR的区别</h2>
 <p>CHAR和VARCHAR的区别：CHAR是定长的，实际上会在右边补空格，检索的时候再去掉，VARCHAR会使用1-2个额外字节记录长度信息，此外VARCHAR(n)虽然说在db中存储是按照实际数据量存储的，但是在内存中处理的时候还是按照N来分配的</p>
-<h2 id="DECIAML和FLOAT-DOUBLE的区别">DECIAML和FLOAT/DOUBLE的区别</h2>
+<h2 id="deciaml和floatdouble的区别">DECIAML和FLOAT/DOUBLE的区别</h2>
 <p>精度上的区别</p>
-<h2 id="为什么不推荐使用TEXT-BLOB">为什么不推荐使用TEXT/BLOB</h2>
+<h2 id="为什么不推荐使用textblob">为什么不推荐使用TEXT/BLOB</h2>
 <p>TEXT主要用来存储长文本</p>
 <p>TINYTEXT: 0-255字节</p>
 <p>TEXT: 0-65535字节</p>
@@ -427,13 +427,13 @@
 <p>不能直接创建索引，需要指定前缀长度</p>
 <p>可能会消耗大量的网络和IO带宽</p>
 <p>可能导致表上的DML操作变得非常慢</p>
-<h2 id="DATETIME和TIMESTAMP的区别">DATETIME和TIMESTAMP的区别</h2>
+<h2 id="datetime和timestamp的区别">DATETIME和TIMESTAMP的区别</h2>
 <p>前者和时区无关，后者和时区有关</p>
 <p>TIMESTAMP只需要使用4个，而DATETIME需要使用8个字节</p>
-<h2 id="NULL">NULL</h2>
+<h2 id="null">NULL</h2>
 <p>任何值和NULL比较结果都是NULL</p>
 <p>绝大多数聚合函数都会忽略NULL值，除了COUNT这种</p>
-<h2 id="Boolean">Boolean</h2>
+<h2 id="boolean">Boolean</h2>
 <p>MySQL中没有专门的Boolean类型，通常使用TINYINT(1)来表示</p>
 <h1 id="mysql基础架构">MySQL基础架构</h1>
 <p>用户sql执行流程给如下。</p>
@@ -471,7 +471,7 @@
 <p>幻读（Phantom Read）：一个事务在读取数据时，另一个事务插入了新数据，第一个事务发现凭空多出了数据</p>
 <h1 id="mysql并发事务控制的方法">MySQL并发事务控制的方法</h1>
 <p>锁和MVCC</p>
-<h2 id="锁：悲观控制的模式">锁：悲观控制的模式</h2>
+<h2 id="锁悲观控制的模式">锁：悲观控制的模式</h2>
 <p>（共享锁）S锁：又称之为读锁，事务读取记录的时候获取, 允许多个事务同时获取</p>
 <p>（排他锁）写锁：修改的时候获取，不允许多个事务同时获取，如果一个记录已经被加入了排他锁，其他食物不能对这个记录增加任何联系类型的锁</p>
 <p>如果资源已经有S锁，那么其他事务只能加入S锁，不能加入X锁</p>
@@ -480,10 +480,10 @@
 <p>S锁和X锁是互斥的，S锁和S锁没有互斥</p>
 <p>显然上述涉及支持写写并行，但是不支持读写并行和写写并行</p>
 <p>锁还分为表级别锁（table-level locking）和行级别锁(row-level locking）</p>
-<h2 id="MVCC（多版本并发控制）：乐观控制的模式">MVCC（多版本并发控制）：乐观控制的模式</h2>
+<h2 id="mvcc多版本并发控制乐观控制的模式">MVCC（多版本并发控制）：乐观控制的模式</h2>
 <p>对于一份数据会存储多个版本，通过事务的可见性来保证事务看到的是自己应该看到的版本。一般会哟一个全局的版本分配器来设定版本号</p>
 <h1 id="sql标准的事务隔离级别">SQL标准的事务隔离级别</h1>
-<p><strong>READ-UNCOMMITTED(读取未提交)</strong>： 最低隔离级别，可以读取其他事务尚未提交的数据,  可能导致脏读，幻读，不可重复读</p>
+<p><strong>READ-UNCOMMITTED(读取未提交)</strong>： 最低隔离级别，可以读取其他事务尚未提交的数据, 可能导致脏读，幻读，不可重复读</p>
 <p><strong>READ-COMMITTED（读取已提交）</strong>：只能读取并发事务已经提交的数据，可以避免脏读，不可重复读和幻读仍然不可以避免（能够保证读到的数据已经是已经提交的，但是无法保证后续此数据不会被继续修改）</p>
 <p><strong>REPEATABLE-READ（可重复读）</strong>：对于同一字段的多次读取结果是一致的，除非数据被自己修改，可以防止脏读和不可重复读，但是幻读仍然可能</p>
 <p><strong>SERIALIZABLE（可串行化）</strong>：最高隔离级别，完全服从ACID隔离级别。所有事务依次逐个执行，事务之间完全不可能产生干扰。</p>
@@ -503,8 +503,7 @@
 <p>ps: 上述也提到了X锁和S锁的概念，实际上这是一个不同粒度的概念。上述三种锁的粒度更大</p>
 <h1 id="意向锁">意向锁</h1>
 <p>当需要用到表锁的时候，如何判断表中记录有没有行锁呢</p>
-<p>意向共享锁（IS Lock）：表示一个事务想要对表中的某些行加共享锁，首先需要对表加意向共享锁<br>
-意向排他锁（IX Lock）：表示一个事务想要对表中的某些行加排他锁，首先需要对表加意向排他锁</p>
+<p>意向共享锁（IS Lock）：表示一个事务想要对表中的某些行加共享锁，首先需要对表加意向共享锁 意向排他锁（IX Lock）：表示一个事务想要对表中的某些行加排他锁，首先需要对表加意向排他锁</p>
 <p>数据引擎维护，用户透明，用于增加效率</p>
 <p>意向锁之间是兼容的</p>
 <p>IS之间兼容，IS和IX之间不兼容，IX和IX之间不兼容,IS和S兼容，和X不兼容，IX和S不兼容，和X不兼容</p>
@@ -512,7 +511,7 @@
 <h1 id="当前读和快照读有什么区别">当前读和快照读有什么区别</h1>
 <p><strong>快照（一致性非锁定读）</strong> 读顾名思义就是单纯的SELECT语句，当前读是SELECT FOR UPDATE或者SELECT LOCK IN SHARE MODE</p>
 <p>如果读取的记录时正在执行UPDATE/DELETE操作，读取操作不会因此等待X锁释放，而是直接读取快照数据</p>
-<p>只有在事务隔离级别**RC（READ COMMITTED）<strong>和</strong>RR（REPEATABLE READ）**下，InnoDB才会使用一致性非锁定读（所以可重复读实际上时反复读取的快照？）</p>
+<p>只有在事务隔离级别<strong>RC（READ COMMITTED）</strong>和<strong>RR（REPEATABLE READ）</strong>下，InnoDB才会使用一致性非锁定读（所以可重复读实际上时反复读取的快照？）</p>
 <p>RC级别下，总是读取被锁定行的最新的一份快照数据</p>
 <p>RR级别下，读取的快照数据是事务开始时的快照数据</p>
 <p><strong>当前读（一致性锁定读）</strong> 就是给行及记录加X锁或者S锁</p>
@@ -522,32 +521,28 @@
 <p>自增锁是InnoDB引擎的一个特殊的表级锁，主要用于解决自增主键的并发问题</p>
 <p>AUTO-INC Locks</p>
 <h1 id="性能优化">性能优化</h1>
-<h2 id="不要使用MySQL直接存储文件">不要使用MySQL直接存储文件</h2>
+<h2 id="不要使用mysql直接存储文件">不要使用MySQL直接存储文件</h2>
 <p>可以使用云服务厂商提供的开箱即用的文件存储服务</p>
-<h2 id="MySQL传递IP地址">MySQL传递IP地址</h2>
+<h2 id="mysql传递ip地址">MySQL传递IP地址</h2>
 <p>提供了两个方法来处理ip地址</p>
 <p>INET_ATON和INET_NTOA, 前者ip转为无符号整形，后者反之</p>
-<h2 id="Explain">Explain</h2>
+<h2 id="explain">Explain</h2>
 <p>一条SQL语句在经过MySQL优化器后，具体的执行方式</p>
-<h2 id="MySQL性能优化核心">MySQL性能优化核心</h2>
-<ol>
-<li>
-<p>找到慢SQL，使用Performance Schema和EXPLAIN分析慢SQL，找到性能瓶颈</p>
-</li>
-<li>
-<p>优化：</p>
-</li>
+<h2 id="mysql性能优化核心">MySQL性能优化核心</h2>
+<ol type="1">
+<li><p>找到慢SQL，使用Performance Schema和EXPLAIN分析慢SQL，找到性能瓶颈</p></li>
+<li><p>优化：</p></li>
 </ol>
 <ul>
 <li>索引优化， 表结构优化， SQL优化</li>
 </ul>
-<ol start="3">
+<ol start="3" type="1">
 <li>架构优化</li>
 </ol>
 <ul>
 <li>读写分离，分库分表，冷热分离，缓存机制</li>
 </ul>
-<ol start="4">
+<ol start="4" type="1">
 <li>其他优化</li>
 </ol>
 <ul>

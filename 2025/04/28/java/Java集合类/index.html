@@ -402,12 +402,12 @@
 <p>HashTable是数组加链表组成的</p>
 <p>保证线程安全要用ConcurrentHashMap</p>
 <p>随着Java并发编程的发展，vector和stack已经被淘汰，推荐使用并发集合类ConcurrentHashMap和CopyOnWriteArrayList来替代。</p>
-<h1 id="arraylist中可以为null，但是这样代码那一维护">ArrayList中可以为null，但是这样代码那一维护</h1>
+<h1 id="arraylist中可以为null但是这样代码那一维护">ArrayList中可以为null，但是这样代码那一维护</h1>
 <h1 id="arraylist是对的">ArrayList是对的</h1>
 <p>应为Linkedlist实际上只有头尾操作，其他操作都需要遍历，而且实际过程中还有大量的读取。LinkedList不支持读取操作。</p>
 <h1 id="randomaccess接口">RandomAccess接口</h1>
 <p>实际上这个接口啥都没有，只是一个标识</p>
-<h1 id="fail-fast，fail-safe">fail-fast，fail-safe</h1>
+<h1 id="fail-fastfail-safe">fail-fast，fail-safe</h1>
 <p>fail-fast：在多线程环境下，使用迭代器遍历集合时，如果在遍历过程中对集合进行了修改，则会抛出ConcurrentModificationException异常。实际上不是严格通过并发实现的</p>
 <p>fail-safe：例如copyOnwrite可以保证在修改操作的时候复制出一份快照，快照完成以后，再把这个copyonwrite底层数组引用指向这个新的数组空间。安全失败的意思？？？</p>
 <h1 id="comparable-和-comparator的区别">Comparable 和 Comparator的区别</h1>
@@ -416,19 +416,13 @@
 <h1 id="blockingqueue">BlockingQueue</h1>
 <p>继承自Queue。当队列没有元素的时候一致阻塞，直到有元素；还支持如果队列已满，一致等待队列可以放入新元素的时候再放入。</p>
 <p>java中有这样几种实现</p>
-<ol>
-<li>
-<p>ArrayBlockingQueue。使用数组实现有界阻塞队列</p>
-</li>
-<li>
-<p>LinkedBlokcingQueue。单个链表实现</p>
-</li>
-<li>
-<p>PriorityBlockingQueue，单链表</p>
-</li>
+<ol type="1">
+<li><p>ArrayBlockingQueue。使用数组实现有界阻塞队列</p></li>
+<li><p>LinkedBlokcingQueue。单个链表实现</p></li>
+<li><p>PriorityBlockingQueue，单链表</p></li>
 </ol>
 <p>4， SynchronousQueue同步队列，不存储元素的阻塞队列，每次插入都必须等待删除，常用于线程之间的直接传递数据</p>
-<ol start="4">
+<ol start="4" type="1">
 <li>DelayQueue：延迟队列，其中元素只有到了其指定的延迟时间，才能从队列中出队</li>
 </ol>
 <p>上述ArrayBlokcingQueue和LinkedBlockingQueue是线程安全的。</p>

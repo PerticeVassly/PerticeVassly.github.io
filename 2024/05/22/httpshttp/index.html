@@ -382,29 +382,19 @@
               <div class="markdown-body">
                 
                 <h1 id="参考资料">参考资料</h1>
-<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1633071">https://cloud.tencent.com/developer/article/1633071</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dreaming9420/article/details/123622811">https://blog.csdn.net/dreaming9420/article/details/123622811</a></p>
+<p>https://cloud.tencent.com/developer/article/1633071</p>
+<p>https://blog.csdn.net/dreaming9420/article/details/123622811</p>
 <h1 id="传输">传输</h1>
-<h2 id="HTTP">HTTP</h2>
+<h2 id="http">HTTP</h2>
 <p>采用明文传输的形式，其中GET方法的请求参数会在URL中显示，留存在浏览器缓存中，容易被窃取。尽管post可以将参数放入请求体(body)中传输，但是由于没有直接采用加密，信息仍然可能被抓包后获取。</p>
-<h2 id="HTTPS">HTTPS</h2>
+<h2 id="https">HTTPS</h2>
 <p><strong>使用SSL/TLS完成加密和验证。</strong></p>
-<ol>
-<li>
-<p>客户端向服务器发送请求。</p>
-</li>
-<li>
-<p>服务器受到请求后将自己的公钥<code>Pub</code>发送给客户端</p>
-</li>
-<li>
-<p>客户端使用公钥加密一个随机<code>key</code>，发送给客户端，客户端解密后得到这个随机<code>key</code>（此随机<code>key</code>就作为一个对称密钥）</p>
-</li>
-<li>
-<p>接下来服务器给客户端发送的信息全部都用这个<code>key</code>加密</p>
-</li>
-<li>
-<p>客户端使用这个<code>key</code>解密，得到消息</p>
-</li>
+<ol type="1">
+<li><p>客户端向服务器发送请求。</p></li>
+<li><p>服务器受到请求后将自己的公钥<code>Pub</code>发送给客户端</p></li>
+<li><p>客户端使用公钥加密一个随机<code>key</code>，发送给客户端，客户端解密后得到这个随机<code>key</code>（此随机<code>key</code>就作为一个对称密钥）</p></li>
+<li><p>接下来服务器给客户端发送的信息全部都用这个<code>key</code>加密</p></li>
+<li><p>客户端使用这个<code>key</code>解密，得到消息</p></li>
 </ol>
 <p>这样就实现了传输加密。</p>
 <p><strong>ps:之所以使用对称加密（key加密解密）是从性能考虑的，两组非对称加密的耗时远大于对称加密。</strong></p>
@@ -433,10 +423,10 @@
 <p>由于上述加密操作，以及在信道中间点进行窃听和截取的困难性，对于信源和信端的攻击往往收效更大。</p>
 <h2 id="明文存储">明文存储</h2>
 <p>为了防止数据库被拖库后造成的信息泄露，隐私信息（密码）在数据库中一般不以明文存储。</p>
-<h2 id="MD5或者其他Hash算法存储">MD5或者其他Hash算法存储</h2>
+<h2 id="md5或者其他hash算法存储">MD5或者其他Hash算法存储</h2>
 <p>用户输入的密码进行MD5（举例）后发送给服务器，服务器进行比对。这样即使服务器数据泄露，攻击者也很难伪造出一个密码，使得其MD5加密后和服务器中储存的密码对应。</p>
 <p>但是大多数人的密码是常见的排列组合，而常见的加密算法（如MD5）又是固定的，所以可以为一些常见密码组合构建一个彩虹表（rainbow table），从而通过数据库中的密码摘要直接对比得出原始密码，从而实现破解。由于彩虹表只要计算一次就可以反复使用，目前针对各类加密算法已经形成了大量的彩虹表（还在快速增加）这种加密方式安全性较低。</p>
-<h2 id="加盐后Hash存储">加盐后Hash存储</h2>
+<h2 id="加盐后hash存储">加盐后Hash存储</h2>
 <p>在密码中中固定的位置插入特定的字符串，使其不再是人常用的组合，在进行Hash存储到数据库中，数据库同时存储salt的值和MD5值，攻击者同样难以针对MD5值伪造一个密码使其加盐之后能对应这个MD5值（更何况加盐的方式还是未知的）同时还使得彩虹表难以使用。</p>
 <p>为了加盐的效果：salt要足够长且随机。</p>
 

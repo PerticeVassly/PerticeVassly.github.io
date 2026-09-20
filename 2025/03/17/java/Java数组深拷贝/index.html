@@ -386,6 +386,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-built_in">this</span>.nowGrid = Arrays.stream(grid).map(<span class="hljs-type">int</span>[]::clone).toArray(<span class="hljs-type">int</span>[][]::<span class="hljs-keyword">new</span>);<br></code></pre></td></tr></table></figure>
 <p>数组本身的复制可以使用</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] copy = Arrays.copyOf(original, newLength);<br><span class="hljs-type">int</span>[] copy = Arrays.copyOfRange(original, from, to);<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             

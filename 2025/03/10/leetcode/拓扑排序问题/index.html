@@ -383,8 +383,8 @@
                 
                 <p>参考资料：</p>
 <p>leetcode-207</p>
-<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Topological_sorting">https://en.wikipedia.org/wiki/Topological_sorting</a></p>
-<h1 id="kahn’s-algorithm-(bfs)">Kahn’s algorithm (BFS)</h1>
+<p>https://en.wikipedia.org/wiki/Topological_sorting</p>
+<h1 id="kahns-algorithm-bfs">Kahn’s algorithm (BFS)</h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">L ← Empty <span class="hljs-built_in">list</span> that will contain the <span class="hljs-built_in">sorted</span> elements<br>S ← <span class="hljs-type">Set</span> of <span class="hljs-built_in">all</span> nodes <span class="hljs-keyword">with</span> no incoming edge<br><br><span class="hljs-keyword">while</span> S <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> empty do<br>    remove a node n <span class="hljs-keyword">from</span> S<br>    add n to L<br>    <span class="hljs-keyword">for</span> each node m <span class="hljs-keyword">with</span> an edge e <span class="hljs-keyword">from</span> n to m do<br>        remove edge e <span class="hljs-keyword">from</span> the graph<br>        <span class="hljs-keyword">if</span> m has no other incoming edges then<br>            insert m into S<br><br><span class="hljs-keyword">if</span> graph has edges then<br>    <span class="hljs-keyword">return</span> error   (graph has at least one cycle)<br><span class="hljs-keyword">else</span> <br>    <span class="hljs-keyword">return</span> L   (a topologically <span class="hljs-built_in">sorted</span> order)<br></code></pre></td></tr></table></figure>
 <p>解释：</p>
 <ul>
@@ -394,12 +394,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python">L ← Empty <span class="hljs-built_in">list</span> that will contain the <span class="hljs-built_in">sorted</span> nodes<br><span class="hljs-keyword">while</span> exists nodes without a permanent mark do<br>    select an unmarked node n<br>    visit(n)<br><br>function visit(node n)<br>    <span class="hljs-keyword">if</span> n has a permanent mark then<br>        <span class="hljs-keyword">return</span><br>    <span class="hljs-keyword">if</span> n has a temporary mark then<br>        stop   (graph has at least one cycle)<br><br>    mark n <span class="hljs-keyword">with</span> a temporary mark<br><br>    <span class="hljs-keyword">for</span> each node m <span class="hljs-keyword">with</span> an edge <span class="hljs-keyword">from</span> n to m do<br>        visit(m)<br><br>    mark n <span class="hljs-keyword">with</span> a permanent mark<br>    add n to head of L<br></code></pre></td></tr></table></figure>
 <p>解释:</p>
 <ul>
-<li>
-<p>当一个节点被标记为permanent的时候，所有依赖其的节点都已经被放入队列（也标记为permanent）且已经可以确保无环。此时所有经过此节点的路径都不会有环。</p>
-</li>
-<li>
-<p>当一个节点被标记为temp的时候，说明在此路径上已经被访问过，如果再次访问到temp节点，说明有环。</p>
-</li>
+<li><p>当一个节点被标记为permanent的时候，所有依赖其的节点都已经被放入队列（也标记为permanent）且已经可以确保无环。此时所有经过此节点的路径都不会有环。</p></li>
+<li><p>当一个节点被标记为temp的时候，说明在此路径上已经被访问过，如果再次访问到temp节点，说明有环。</p></li>
 </ul>
 
                 

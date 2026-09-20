@@ -381,7 +381,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="享元模式（flyweight-pattern）">享元模式（Flyweight Pattern）</h1>
+                <h1 id="享元模式flyweight-pattern">享元模式（Flyweight Pattern）</h1>
 <p>面向对象数量太多的时候，将导致运行代价过高，带来性能下降等问题</p>
 <p>通过共享技术（享元）实现相同或者相似对象的重用</p>
 <p>在享元模式中可以共享的相同内容称之为内部状态（Intrinsic State），而需要外部环境来设置的不能共享的内容称之为外部状态（Extrinsic State）</p>
@@ -447,6 +447,7 @@
 <p>复合享元，统一对享元模式对象设置外部状态</p>
 <h1 id="代码">代码</h1>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FlyweightPatternDemo</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">FlyweightFactory</span> <span class="hljs-variable">factory</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FlyweightFactory</span>();<br>        <span class="hljs-type">Flyweight</span> <span class="hljs-variable">flyweight1</span> <span class="hljs-operator">=</span> factory.getFlyweight(<span class="hljs-string">&quot;A&quot;</span>);<br>        flyweight1.operation(<span class="hljs-string">&quot;State1&quot;</span>);<br><br>        <span class="hljs-type">Flyweight</span> <span class="hljs-variable">flyweight2</span> <span class="hljs-operator">=</span> factory.getFlyweight(<span class="hljs-string">&quot;B&quot;</span>);<br>        flyweight2.operation(<span class="hljs-string">&quot;State2&quot;</span>);<br><br>        <span class="hljs-type">Flyweight</span> <span class="hljs-variable">flyweight3</span> <span class="hljs-operator">=</span> factory.getFlyweight(<span class="hljs-string">&quot;A&quot;</span>);<br>        flyweight3.operation(<span class="hljs-string">&quot;State3&quot;</span>); <span class="hljs-comment">// 共享对象</span><br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Flyweight</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">(String extrinsicState)</span>;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteFlyweight</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Flyweight</span> &#123;<br>    <span class="hljs-keyword">private</span> String intrinsicState;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">ConcreteFlyweight</span><span class="hljs-params">(String intrinsicState)</span> &#123;<br>        <span class="hljs-built_in">this</span>.intrinsicState = intrinsicState;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">(String extrinsicState)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;Intrinsic State: &quot;</span> + intrinsicState + <span class="hljs-string">&quot;, Extrinsic State: &quot;</span> + extrinsicState);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FlyweightFactory</span> &#123;<br>    <span class="hljs-keyword">private</span> Map&lt;String, Flyweight&gt; flyweights = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br><br>    <span class="hljs-keyword">public</span> Flyweight <span class="hljs-title function_">getFlyweight</span><span class="hljs-params">(String key)</span> &#123;<br>        <span class="hljs-keyword">if</span> (flyweights.containsKey(key)) &#123;<br>            <span class="hljs-keyword">return</span> flyweights.get(key);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-type">Flyweight</span> <span class="hljs-variable">flyweight</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteFlyweight</span>(key);<br>            flyweights.put(key, flyweight);<br>            <span class="hljs-keyword">return</span> flyweight;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
@@ -536,9 +537,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/05/12/se-system-design/17-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" title="代理模式">
+                      <a href="/2025/05/15/se-quality-management/Kanban/" title="Kanban">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">代理模式</span>
+                        <span class="hidden-mobile">Kanban</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -546,8 +547,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/05/12/se-system-design/15-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/" title="外观模式">
-                        <span class="hidden-mobile">外观模式</span>
+                      <a href="/2025/05/12/se-system-design/17-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" title="代理模式">
+                        <span class="hidden-mobile">代理模式</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

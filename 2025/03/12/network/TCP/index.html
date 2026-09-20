@@ -19,12 +19,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;cs-basics&#x2F;network&#x2F;tcp-connection-and-disconnection.html#什么是半连接队列和全连接队列 https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;24853633&#x2F;answer&#x2F;115173386 https:&#x2F;&#x2F;datatracker.ietf.org&#x2F;doc&#x2F;html&#x2F;rfc793#">
+    <meta name="description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;cs-basics&#x2F;network&#x2F;tcp-connection-and-disconnection.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCP">
 <meta property="og:url" content="http://example.com/2025/03/12/network/TCP/index.html">
 <meta property="og:site_name" content="eqsun&#39;s blog">
-<meta property="og:description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;cs-basics&#x2F;network&#x2F;tcp-connection-and-disconnection.html#什么是半连接队列和全连接队列 https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;24853633&#x2F;answer&#x2F;115173386 https:&#x2F;&#x2F;datatracker.ietf.org&#x2F;doc&#x2F;html&#x2F;rfc793#">
+<meta property="og:description" content="参考资料： https:&#x2F;&#x2F;javaguide.cn&#x2F;cs-basics&#x2F;network&#x2F;tcp-connection-and-disconnection.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-12T09:36:00.000Z">
 <meta property="article:modified_time" content="2026-05-19T07:44:17.899Z">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.4k 字
+          4.5k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          37 分钟
+          38 分钟
         
       </span>
     
@@ -382,9 +382,9 @@
               <div class="markdown-body">
                 
                 <p>参考资料：</p>
-<p><a target="_blank" rel="noopener" href="https://javaguide.cn/cs-basics/network/tcp-connection-and-disconnection.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97">https://javaguide.cn/cs-basics/network/tcp-connection-and-disconnection.html#什么是半连接队列和全连接队列</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/24853633/answer/115173386">https://www.zhihu.com/question/24853633/answer/115173386</a></p>
-<p><a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc793#autoid-19">https://datatracker.ietf.org/doc/html/rfc793#autoid-19</a></p>
+<p>https://javaguide.cn/cs-basics/network/tcp-connection-and-disconnection.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97</p>
+<p>https://www.zhihu.com/question/24853633/answer/115173386</p>
+<p>https://datatracker.ietf.org/doc/html/rfc793#autoid-19</p>
 <p>计算机网络（谢希仁）</p>
 <h1 id="tcp特点">TCP特点</h1>
 <p>面向连接的<strong>运输层协议</strong></p>
@@ -423,30 +423,20 @@
 <p><em>意为server已经收到连接请求，并且做好连接准备</em></p>
 <p><em>ACK=x+1意为针对第x个数据包的确认，即对SYN数据包的确认</em></p>
 <p><strong>第三次握手</strong>：client发送ACK(ACK=y+1)的数据包，此时server和client都进入<strong>ESTABLISH</strong>状态，TCP三次握手完成</p>
-<h2 id="为什么是三次握手？">为什么是三次握手？</h2>
+<h2 id="为什么是三次握手">为什么是三次握手？</h2>
 <p>首先由于<strong>拜占庭将军问题</strong>，在信道（网络层）不可信的情况下，彼此直接是无法做到相互确认的，其次由于client，server自身的问题，也无法确认二者自身是否做好了连接的准备或者具备连接的条件</p>
 <p>例如即使是最后一次由client发出的ACK也可能丢失，此时server还是处于SYN_RECV状态 ，但是客户端已经进入ESTABLISH状态了，此时仍然会出错。如果变为四次握手————即client还需要等待server的第四次握手ACK，还是有可能出现server发送的这个ACK丢失的情况，如此一来为了确保二者互相确认，server和client永远都在相互等待，无论多少次握手都解决不了这个问题</p>
 <p>由此可见对于网络信道的信任程度决定了握手的次数</p>
 <p>但是实际过程中信道往往不可靠，因此需要折中即<strong>不能无条件相信信道，但是也不应该因为怀疑信道而反复彼此确认</strong>（即反复检验信道）</p>
 <p>发送方和接收方均需要检验以下点(各方只检验一次即可)后才能相互建立连接</p>
-<ol>
-<li>
-<p><strong>对方的接受功能是正常的（对方愿意接受且做好了接受准备）</strong></p>
-</li>
-<li>
-<p><strong>信道可信</strong></p>
-</li>
+<ol type="1">
+<li><p><strong>对方的接受功能是正常的（对方愿意接受且做好了接受准备）</strong></p></li>
+<li><p><strong>信道可信</strong></p></li>
 </ol>
 <ul>
-<li>
-<p>第一次握手：client无已知；server已知2</p>
-</li>
-<li>
-<p>第二次握手：client已知1，2；server已知2</p>
-</li>
-<li>
-<p>第三次握手：client已知1，2；server已知1，2</p>
-</li>
+<li><p>第一次握手：client无已知；server已知2</p></li>
+<li><p>第二次握手：client已知1，2；server已知2</p></li>
+<li><p>第三次握手：client已知1，2；server已知1，2</p></li>
 </ul>
 <p>至此可以建立连接。同时TCP的ACK机制使得二者可以知道彼此确认的SEQ到底是对方发出的哪一个，降低了错误确认的可能。（注意，只有SYN占用SEQ，ACK不占用）</p>
 <p>第三次握手的时候client是可以传输数据的，是因为尽管server不知道1但是client已经知道了所有条件都被满足了，可以直接发送数据。</p>
@@ -464,19 +454,13 @@
 <p><strong>第二次挥手</strong>：server收到FIN，发送一个ACK（ACK=x+1）给client，server进入 <strong>CLOSE_WAIT</strong> 状态，client进入<strong>FIN_WAIT_2</strong> 状态</p>
 <p><strong>第三次挥手</strong>：server发送一个FIN（SEQ=y）给client，server进入 <strong>LAST_ACK</strong>状态</p>
 <p><strong>第四次挥手</strong>：client收到FIN，发送一个ACK（ACK=y+1）给server，client进入 <strong>TIME_WAIT</strong> 状态，等待2MSL后进入 <strong>CLOSED</strong>状态，server收到ACK后进入 <strong>CLOSED</strong> 状态</p>
-<h2 id="为什么是四次挥手？">为什么是四次挥手？</h2>
+<h2 id="为什么是四次挥手">为什么是四次挥手？</h2>
 <p>首先双方必须确保彼此之间没有数据传输才能断开连接。</p>
 <p>各方需要检查</p>
-<ol>
-<li>
-<p><strong>自身没有数据要发送</strong></p>
-</li>
-<li>
-<p><strong>对方没有数据要发送</strong></p>
-</li>
-<li>
-<p><strong>信道可信</strong></p>
-</li>
+<ol type="1">
+<li><p><strong>自身没有数据要发送</strong></p></li>
+<li><p><strong>对方没有数据要发送</strong></p></li>
+<li><p><strong>信道可信</strong></p></li>
 </ol>
 <p>第一次握手：client已知1；server已知2，3</p>
 <p>第二次握手：client已知1，3；server已知2，3 （此时有可能还在传输数据）</p>
@@ -492,7 +476,7 @@
 <p>单纯由停止等待协议确保可靠会占用大量网络资源，因此采用滑动窗口机制设计TCP</p>
 <p><strong>累计确认</strong>，如果接收方接受到数据包不是按序到达的，接收方只能ACK SEQ最大的一段连续包，但是这样就会导致发送方重传后续所有的数据包，一种解决方案时，将其缓存，等待其他包到达以后/自己需要传输数据的时候捎带统一发送ACK，但是这样又会与后文网络拥塞控制相冲突（快重传）</p>
 <p>其中超时重传时间选择是一个重要的问题，一般依据报文段往返时间RTT来选择，但是RTT是变化的，因此需要一个动态的算法来选择超时重传时间</p>
-<p><em>新的 RTT_s = α * 旧的 RTT_s + (1-α) * 新的RTT样本,其中α一般取0.125. 超时重传时间 RTO = RTT_s + 4 * RTT_D（RTT的偏差的加权平均）.新的RTT_D = β * 旧的RTT_D + (1-β) * |新的RTT - 旧的RTT|</em></p>
+<p><em>新的 RTT_s = α </em> 旧的 RTT_s + (1-α) * 新的RTT样本,其中α一般取0.125. 超时重传时间 RTO = RTT_s + 4 * RTT_D（RTT的偏差的加权平均）.新的RTT_D = β * 旧的RTT_D + (1-β) * |新的RTT - 旧的RTT|*</p>
 <p><em>上述算法的问题在于一旦出现超时重传，如果仅仅时因为网络阻塞等原因导致先前的包迟到了，那么接收端在接收到一个ACK的时候，应该将其视为对于哪一个数据包的ACK呢？选择错误会导致RTT计算偏差，Karn提出的解决方案是不采用超时重传的RTT进行计算。但是这样会导致发生重传的时候RTT的值还是不变，这是不合理的，因此可以每崇传一次，就报RTO增大一点（一般是旧时间的两倍）</em></p>
 <p><strong>选择确认SACK</strong> ：接收方可以发送一个SACK报文，告诉发送方哪些数据包没有到达，发送方只需要重传这些数据包即可，不需要重传所有数据包。需要启动TCP头中的选项字段</p>
 <h1 id="tcp流量控制">TCP流量控制</h1>
@@ -502,9 +486,9 @@
 <p>相比停止等待，TCP滑动窗口已经提高了一部分效率，但是仍然可能出现<strong>糊涂窗口问题</strong></p>
 <p>如果接收方应用的数据处理效率很低，且接受缓存已满，那么每次腾出的接受窗口就会很小，导致大量资源消耗在TCP/IP报文头上，减低了传输效率，也提高了网络拥堵</p>
 <p>解决方法是让接收方等待一段时间/接受缓存由一般空闲时间再发出ACK/通知发送方，同时发送方自身也要避免传输小数据</p>
-<h2 id="TCP拥塞控制">TCP拥塞控制</h2>
+<h2 id="tcp拥塞控制">TCP拥塞控制</h2>
 <p>由发送方自己维护一个拥塞窗口，表示发送方认为可以在网络中传输的数据量。发送方发送数据的大小是滑动窗口和拥塞窗口的最小值</p>
-<p>拥塞窗口的维护的算法，首先确定一个初始拥塞窗口大小，一般以 **SMSS（Sender Maximum Segment Size）**为大小</p>
+<p>拥塞窗口的维护的算法，首先确定一个初始拥塞窗口大小，一般以 <strong>SMSS（Sender Maximum Segment Size）</strong>为大小</p>
 <p><strong>慢开始：slow start</strong></p>
 <p>每次收到一个对新报文的确认，拥塞窗口增加最多一个SMSS，此时拥塞窗口成倍增长</p>
 <p><strong>拥塞避免: congestion avoidance</strong></p>

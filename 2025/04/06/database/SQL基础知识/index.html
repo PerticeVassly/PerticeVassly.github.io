@@ -382,7 +382,7 @@
               <div class="markdown-body">
                 
                 <p>参考资料：</p>
-<p><a target="_blank" rel="noopener" href="https://javaguide.cn/database/sql/sql-syntax-summary.html">https://javaguide.cn/database/sql/sql-syntax-summary.html</a></p>
+<p>https://javaguide.cn/database/sql/sql-syntax-summary.html</p>
 <h1 id="sql基础知识">SQL基础知识</h1>
 <p>数据库术语</p>
 <p><strong>database</strong>：保存有组织的数据的容器</p>
@@ -397,9 +397,9 @@
 <p><strong>TCL</strong>：事务控制语言，控制数据库事务的语言。TCL语句包括COMMIT、ROLLBACK、SAVEPOINT等</p>
 <p><strong>DCL</strong>：数据控制语言，控制数据库访问权限的语言。DCL语句包括GRANT、REVOKE等</p>
 <h1 id="一些关键词">一些关键词</h1>
-<h2 id="LIKE">LIKE</h2>
+<h2 id="like">LIKE</h2>
 <p>LIKE：在where子句中使用，只有字段是文本值的时候才能使用LIKE，支持两个通配符 %和_，%表示任意长度的字符串，_表示一个字符</p>
-<h2 id="JOIN">JOIN</h2>
+<h2 id="join">JOIN</h2>
 <p><strong>JOIN</strong>: 在每个表中选择一个字段，并且对这些字段的值进行比较，值相同的两条记录合并为一条。链接表的本质就是将不同表的记录合并起来形成一张新表。此表知识临时的，仅存在于查询中。如果两张表的关联字段相同可以使用USING关键字来简化语句。<code>inner join Orders o using (OrderID)</code></p>
 <p><strong>INNER JOIN</strong>：内连接，返回两个表中匹配的记录</p>
 <p><strong>LEFT JOIN</strong>：左连接，返回左表中所有的记录和右表中匹配的记录，如果右表中没有匹配的记录，则返回NULL</p>
@@ -407,7 +407,7 @@
 <p><strong>FULL JOIN</strong>：全连接，返回两个表中所有的记录，如果没有匹配的记录，则返回NULL</p>
 <p><strong>SELF JOIN</strong>：自连接，表与表之间的连接，表与自身的连接</p>
 <p><strong>CROSS JOIN</strong>：笛卡尔积，返回两个表中所有的记录的组合</p>
-<h2 id="DELIMITER">DELIMITER</h2>
+<h2 id="delimiter">DELIMITER</h2>
 <p>当你创建存储过程时，MySql会将分号作为语句的结束符，因此在创建存储过程时需要使用DELIMITER命令来改变分隔符。使得你的过程中可以使用分号。</p>
 <h1 id="函数">函数</h1>
 <h2 id="文本处理">文本处理</h2>

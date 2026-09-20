@@ -383,9 +383,9 @@
               <div class="markdown-body">
                 
                 <p>参考资料：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41866717/article/details/127092895">https://blog.csdn.net/weixin_41866717/article/details/127092895</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html">https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://spring.io/guides/tutorials/spring-boot-oauth2">https://spring.io/guides/tutorials/spring-boot-oauth2</a></p>
+<p>https://blog.csdn.net/weixin_41866717/article/details/127092895</p>
+<p>https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html</p>
+<p>https://spring.io/guides/tutorials/spring-boot-oauth2</p>
 <h1 id="介绍">介绍</h1>
 <p>如何本地快速搭建一个极简的前后端分离的demo</p>
 <p>前端: vue.js + axios</p>
@@ -393,16 +393,16 @@
 <p>由于是极简教程，此时直接使用已经写好的spring-boot-starter-oauth2-client的github认证功能</p>
 <h1 id="基本流程">基本流程</h1>
 <p>OAuth2流程可以参考</p>
-<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html">https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html</a></p>
+<p>https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html</p>
 <p>前后端分离的OAuth2流程可以参考</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41866717/article/details/127092895">https://blog.csdn.net/weixin_41866717/article/details/127092895</a></p>
-<p>前端向后端发送第三方登录请求（以页面重定向的方式即<code>window.location.href</code>）重定向到后端对应处理的<code>entry point</code>即<code>BACKEND_BASE_URL + &quot;/oauth2/authorization/github&quot;</code>, 后端处理请求并将页面重定向至github认证页面（即第三方授权页面），完成认证以后github服务器将浏览器页面重定向回<code>redirect_url</code>（即<code>/login/oauth2/code/github</code> 端点）并且附上<code>code</code>。后端处理对于这个端点的访问，使用这个<code>code</code>获取github的<code>access_token</code>，并且使用这个<code>token</code>调用github的api获取对应的用户信息，完成身份认证。</p>
+<p>https://blog.csdn.net/weixin_41866717/article/details/127092895</p>
+<p>前端向后端发送第三方登录请求（以页面重定向的方式即<code>window.location.href</code>）重定向到后端对应处理的<code>entry point</code>即<code>BACKEND_BASE_URL + "/oauth2/authorization/github"</code>, 后端处理请求并将页面重定向至github认证页面（即第三方授权页面），完成认证以后github服务器将浏览器页面重定向回<code>redirect_url</code>（即<code>/login/oauth2/code/github</code> 端点）并且附上<code>code</code>。后端处理对于这个端点的访问，使用这个<code>code</code>获取github的<code>access_token</code>，并且使用这个<code>token</code>调用github的api获取对应的用户信息，完成身份认证。</p>
 <h1 id="搭建">搭建</h1>
 <p>大体流程可以参考Spring官方教程</p>
-<p><a target="_blank" rel="noopener" href="https://spring.io/guides/tutorials/spring-boot-oauth2">https://spring.io/guides/tutorials/spring-boot-oauth2</a></p>
+<p>https://spring.io/guides/tutorials/spring-boot-oauth2</p>
 <p>不过略有不同，官方并不是前后端分离的。但是框架类似，github OAuth2注册流程类似</p>
 <p>跨域配置主要参考</p>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/76682586/allow-cors-with-spring-security-6-1-1-with-authenticated-requests">https://stackoverflow.com/questions/76682586/allow-cors-with-spring-security-6-1-1-with-authenticated-requests</a></p>
+<p>https://stackoverflow.com/questions/76682586/allow-cors-with-spring-security-6-1-1-with-authenticated-requests</p>
 <p>和官方文档</p>
 <h2 id="github">github</h2>
 <p>注册流程略</p>
@@ -450,12 +450,8 @@
 <p>要么是春秋笔法，整个blog的字还没标题多，甚至连标题都是“Spring问题解决”这种微言大义的题目</p>
 <p>遇到了几个问题，导致很长时间没理清</p>
 <ul>
-<li>
-<p>由于我后端跑在wsl2上，没开代理，导致有时github回调后端的时候卡死</p>
-</li>
-<li>
-<p>wsl2 下idea疑似有文件不能同步的情况，导致好几次对于文件的修改没能生效（实际上跑的是原来的产物），导致跨域一直没有成功，让我怀疑是不是我的security配置有问题，浪费了不少时间</p>
-</li>
+<li><p>由于我后端跑在wsl2上，没开代理，导致有时github回调后端的时候卡死</p></li>
+<li><p>wsl2 下idea疑似有文件不能同步的情况，导致好几次对于文件的修改没能生效（实际上跑的是原来的产物），导致跨域一直没有成功，让我怀疑是不是我的security配置有问题，浪费了不少时间</p></li>
 </ul>
 
                 

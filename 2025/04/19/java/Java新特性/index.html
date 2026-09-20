@@ -382,31 +382,31 @@
               <div class="markdown-body">
                 
                 <p>参考资料：</p>
-<p><a target="_blank" rel="noopener" href="https://javaguide.cn/java/new-features/java9.html">https://javaguide.cn/java/new-features/java9.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://javaguide.cn/java/new-features/java10.html">https://javaguide.cn/java/new-features/java10.html</a></p>
+<p>https://javaguide.cn/java/new-features/java9.html</p>
+<p>https://javaguide.cn/java/new-features/java10.html</p>
 <p>以及后续文章…</p>
 <h1 id="java-9">Java 9</h1>
 <h2 id="模块化系统">模块化系统</h2>
 <p>模块化系统，任意一个jar文件，只要加上一个模块描述文件（<code>module-info.java</code>）就可以升级为一个模块</p>
 <p>jdk被重组为94个模块，通过jlink实现轻量级JRE（只使用必要的模块）</p>
 <p>使用<code>exports</code>关键词控制哪些类可以对外开放使用，哪些类只能内部使用</p>
-<h2 id="G1成为默认垃圾回收器">G1成为默认垃圾回收器</h2>
+<h2 id="g1成为默认垃圾回收器">G1成为默认垃圾回收器</h2>
 <h2 id="快速创建不可见集合">快速创建不可见集合</h2>
 <p><code>List.of</code>, <code>Set.of</code>, <code>Map.of</code>, <code>Map.ofEntries</code></p>
 <p>不能进行添加、删除、替换、 排序等操作，不然会报 <code>java.lang.UnsupportedOperationException</code> 异常。</p>
 <p>实际过程中慎用</p>
-<h2 id="String-存储结构优化">String 存储结构优化</h2>
+<h2 id="string-存储结构优化">String 存储结构优化</h2>
 <p>char[] 改为 byte[]</p>
 <h2 id="接口中允许定义私有方法">接口中允许定义私有方法</h2>
 <p>也是对于default的一种适配</p>
 <p>抽象类和interface之间的界限再次模糊了</p>
 <h2 id="try-with-resources增强">try-with-resources增强</h2>
 <p>可以在其中使用effectively-final变量</p>
-<h2 id="Stream-Optional增强">Stream&amp;Optional增强</h2>
+<h2 id="streamoptional增强">Stream&amp;Optional增强</h2>
 <p>Stream 中增加了新的方法 ofNullable()、dropWhile()、takeWhile() 以及 iterate() 方法的重载方法。</p>
-<h2 id="进程API">进程API</h2>
+<h2 id="进程api">进程API</h2>
 <p>新增<code>java.lang.ProcessHandle</code></p>
-<h2 id="Concurrent响应流">Concurrent响应流</h2>
+<h2 id="concurrent响应流">Concurrent响应流</h2>
 <h2 id="变量句柄">变量句柄</h2>
 <p>变量句柄是一个变量或一组变量的引用，包括静态域，非静态域，数组元素和堆外数据结构中的组成部分等。</p>
 <h1 id="java-10">Java 10</h1>
@@ -416,50 +416,50 @@
 <h2 id="集合增强">集合增强</h2>
 <p><code>List</code>，<code>Set</code>，<code>Map</code>等集合类增加了<code>copyOf</code>方法，创建对应的不可变集合</p>
 <p><code>java.util.stream.Collectors</code>增加了<code>toUnmodifiableList</code>、<code>toUnmodifiableSet</code>、<code>toUnmodifiableMap</code>方法，创建不可变集合</p>
-<h2 id="Optional增强">Optional增强</h2>
+<h2 id="optional增强">Optional增强</h2>
 <p>新增<code>orElseThrow()</code>方法，允许抛出异常</p>
 <p>慎用</p>
-<h2 id="扩展CDS">扩展CDS</h2>
+<h2 id="扩展cds">扩展CDS</h2>
 <p>引入了类数据共享机制简称CDS，将一组类预处理为共享归档文件，运行时减少内存映射减少Java类的启动时间，多个虚拟机共用同的归档文件，提高资源利用率</p>
-<h2 id="Graal-JIT编译器">Graal JIT编译器</h2>
+<h2 id="graal-jit编译器">Graal JIT编译器</h2>
 <p>是AOT的基础</p>
 <h1 id="java-11">Java 11</h1>
-<h2 id="HTTP-Client标准化">HTTP Client标准化</h2>
+<h2 id="http-client标准化">HTTP Client标准化</h2>
 <p>使用<code>CompleteableFuture</code>提供非阻塞请求和响应语义</p>
-<h2 id="String增强">String增强</h2>
+<h2 id="string增强">String增强</h2>
 <p>是否为空，去掉首尾空格，重复字符串，转换为<code>String</code>数组，范围由行终止符分割的字符串集合</p>
-<h2 id="Optional新增isEmpty">Optional新增isEmpty</h2>
+<h2 id="optional新增isempty">Optional新增isEmpty</h2>
 <h2 id="lambda表达式支持var">lambda表达式支持var</h2>
-<h1 id="java-12amp;13">Java 12&amp;13</h1>
-<h2 id="String">String</h2>
+<h1 id="java-1213">Java 12&amp;13</h1>
+<h2 id="string">String</h2>
 <p>新增字符串缩进方法text.indent(int n)，可以在字符串前面添加n个空格</p>
 <p><code>transform</code>方法，允许使用<code>Function</code>接口对字符串进行转换</p>
-<h2 id="Files增强">Files增强</h2>
+<h2 id="files增强">Files增强</h2>
 <p>支持比较两个文件的内容，返回第一个不匹配字符的未知，如果相同返回-1L</p>
 <h2 id="复杂的数字格式化工具">复杂的数字格式化工具</h2>
 <p>支持输出1k这样的复杂格式</p>
-<h2 id="增强Switch">增强Switch</h2>
+<h2 id="增强switch">增强Switch</h2>
 <p>可以不用写<code>break</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">switch</span> (day) &#123;<br>    <span class="hljs-keyword">case</span> MONDAY, FRIDAY, SUNDAY -&gt; System.out.println(<span class="hljs-number">6</span>);<br>    <span class="hljs-keyword">case</span> TUESDAY                -&gt; System.out.println(<span class="hljs-number">7</span>);<br>    <span class="hljs-keyword">case</span> THURSDAY, SATURDAY     -&gt; System.out.println(<span class="hljs-number">8</span>);<br>    <span class="hljs-keyword">case</span> WEDNESDAY              -&gt; System.out.println(<span class="hljs-number">9</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="instanceof增强">instanceof增强</h2>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;我是字符串&quot;</span>;<br><span class="hljs-keyword">if</span>(obj <span class="hljs-keyword">instanceof</span> String str)&#123;<br>  System.out.println(str);<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="SocketAPI重构">SocketAPI重构</h2>
-<h2 id="FileSystems">FileSystems</h2>
+<h2 id="socketapi重构">SocketAPI重构</h2>
+<h2 id="filesystems">FileSystems</h2>
 <p>新增将文件内容视为一个文件系统的API</p>
-<h2 id="动态CDS存档">动态CDS存档</h2>
+<h2 id="动态cds存档">动态CDS存档</h2>
 <h2 id="字符块">字符块</h2>
 <p>以及对应的<code>formatted</code>，<code>stripIndent</code>, <code>translateEscapes</code>方法</p>
-<h2 id="增强switch">增强switch</h2>
+<h2 id="增强switch-1">增强switch</h2>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">descLanguage</span><span class="hljs-params">(String name)</span> &#123;<br>       <span class="hljs-keyword">return</span> <span class="hljs-keyword">switch</span> (name) &#123;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Java&quot;</span>: <span class="hljs-keyword">yield</span> <span class="hljs-string">&quot;object-oriented, platform independent and secured&quot;</span>;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Ruby&quot;</span>: <span class="hljs-keyword">yield</span> <span class="hljs-string">&quot;a programmer&#x27;s best friend&quot;</span>;<br>           <span class="hljs-keyword">default</span>: <span class="hljs-keyword">yield</span> name +<span class="hljs-string">&quot; is a good language&quot;</span>;<br>       &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="java-14amp;15">java 14&amp;15</h1>
+<h1 id="java-1415">java 14&amp;15</h1>
 <h2 id="更加精准的空指针问题">更加精准的空指针问题</h2>
 <h2 id="switch增强yield转正">switch增强yield转正</h2>
 <h2 id="record关键字预览">record关键字预览</h2>
-<h2 id="文本块特性预览（加入新的转义字符）">文本块特性预览（加入新的转义字符）</h2>
-<h2 id="TreeMap增强">TreeMap增强</h2>
+<h2 id="文本块特性预览加入新的转义字符">文本块特性预览（加入新的转义字符）</h2>
+<h2 id="treemap增强">TreeMap增强</h2>
 <p>新增putIfAbsent，computeIfAbsent，computeIfPresent，compute，merge方法</p>
-<h2 id="ZGC转正">ZGC转正</h2>
-<h2 id="新增EdDSA数字签名算法">新增EdDSA数字签名算法</h2>
+<h2 id="zgc转正">ZGC转正</h2>
+<h2 id="新增eddsa数字签名算法">新增EdDSA数字签名算法</h2>
 <h2 id="文本块转正">文本块转正</h2>
 <h2 id="密封类预览">密封类预览</h2>
 <p>final字段直接把所有继承和实现都堵死了</p>
@@ -474,10 +474,10 @@
 <p>Random，ThreadLoaclRandom，SplittableRandom</p>
 <h2 id="switch的类型匹配-预览">switch的类型匹配 预览</h2>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span> String <span class="hljs-title function_">formatterPatternSwitch</span><span class="hljs-params">(Object o)</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">switch</span> (o) &#123;<br>        <span class="hljs-keyword">case</span> Integer i -&gt; String.format(<span class="hljs-string">&quot;int %d&quot;</span>, i);<br>        <span class="hljs-keyword">case</span> Long l    -&gt; String.format(<span class="hljs-string">&quot;long %d&quot;</span>, l);<br>        <span class="hljs-keyword">case</span> Double d  -&gt; String.format(<span class="hljs-string">&quot;double %f&quot;</span>, d);<br>        <span class="hljs-keyword">case</span> String s  -&gt; String.format(<span class="hljs-string">&quot;String %s&quot;</span>, s);<br>        <span class="hljs-keyword">default</span>        -&gt; o.toString();<br>    &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="移除实验性的提前AOT编译器和JIT编译器">移除实验性的提前AOT编译器和JIT编译器</h2>
+<h2 id="移除实验性的提前aot编译器和jit编译器">移除实验性的提前AOT编译器和JIT编译器</h2>
 <h1 id="java-18">Java 18</h1>
 <h1 id="java-19">Java 19</h1>
-<h2 id="外部函数和内存API">外部函数和内存API</h2>
+<h2 id="外部函数和内存api">外部函数和内存API</h2>
 <p>可以通过此API和java运行时职位的代码和数据进行互操作，通过高效调用外部函数安全的访问外部内存</p>
 <p>逐步抛弃unsafe</p>
 <h2 id="虚拟线程特性预览">虚拟线程特性预览</h2>
@@ -487,15 +487,15 @@
 <h1 id="java-21">Java 21</h1>
 <h2 id="字符串模板预览">字符串模板预览</h2>
 <p>仿python的字符串模板</p>
-<h2 id="序列化集合SequencedCollections">序列化集合SequencedCollections</h2>
-<h2 id="分代ZGC">分代ZGC</h2>
-<h2 id="Switch模式匹配增强">Switch模式匹配增强</h2>
+<h2 id="序列化集合sequencedcollections">序列化集合SequencedCollections</h2>
+<h2 id="分代zgc">分代ZGC</h2>
+<h2 id="switch模式匹配增强">Switch模式匹配增强</h2>
 <h2 id="未命名的模式匹配">未命名的模式匹配</h2>
 <h2 id="未命名类和实例main方法">未命名类和实例main方法</h2>
 <h1 id="java-22">Java 22</h1>
-<h2 id="instanceof增强，switch增强，新增对于所有类型的模式匹配">instanceof增强，switch增强，新增对于所有类型的模式匹配</h2>
+<h2 id="instanceof增强switch增强新增对于所有类型的模式匹配">instanceof增强，switch增强，新增对于所有类型的模式匹配</h2>
 <h2 id="javadoc新增markdown支持">javadoc新增markdown支持</h2>
-<h2 id="准备启用Unsafe中的内存方法">准备启用Unsafe中的内存方法</h2>
+<h2 id="准备启用unsafe中的内存方法">准备启用Unsafe中的内存方法</h2>
 <h2 id="模块导入声明预览">模块导入声明预览</h2>
 <p>直接使用<code>import module java.base</code>，一键导入常用核心包</p>
 <h2 id="灵活的构造函数体">灵活的构造函数体</h2>

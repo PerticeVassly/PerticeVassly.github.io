@@ -382,21 +382,21 @@
               <div class="markdown-body">
                 
                 <h1 id="内存替换">内存替换</h1>
-<h2 id="LRU（Least-Recently-Used）最近最少使用">LRU（Least Recently Used）最近最少使用</h2>
+<h2 id="lruleast-recently-used最近最少使用">LRU（Least Recently Used）最近最少使用</h2>
 <p>实现维护一个有序结构</p>
 <p>当访问某一个缓存项的时候，将其移动到链表的头部</p>
 <p>当缓存满了以后，淘汰链表尾的元素</p>
 <p>使用Hash表 + 链表</p>
-<h2 id="LFU（Least-Frequently-Used）最近最少使用">LFU（Least Frequently Used）最近最少使用</h2>
+<h2 id="lfuleast-frequently-used最近最少使用">LFU（Least Frequently Used）最近最少使用</h2>
 <p>维护一个计数器</p>
-<h2 id="FIFO（First-In-First-Out）先进先出">FIFO（First In First Out）先进先出</h2>
+<h2 id="fifofirst-in-first-out先进先出">FIFO（First In First Out）先进先出</h2>
 <p>维护一个队列，新数据插入队列尾部</p>
 <p>淘汰队列头部的数据</p>
-<h2 id="Random-随机淘汰">Random 随机淘汰</h2>
+<h2 id="random-随机淘汰">Random 随机淘汰</h2>
 <p>随机数淘汰</p>
-<h2 id="ARC-自适应">ARC 自适应</h2>
+<h2 id="arc-自适应">ARC 自适应</h2>
 <p>结合 LRU 和 LFU，将一个固定大小的缓存区分为LRU和LFU缓存区两个部分</p>
-<h2 id="Clock-时钟轮转">Clock 时钟轮转</h2>
+<h2 id="clock-时钟轮转">Clock 时钟轮转</h2>
 <p>时钟指针</p>
 <h1 id="内存分配">内存分配</h1>
 <p>首次适应算法：内存空闲区按照由低顺序查找，找到第一个不小于请求的空快，将其分割并且分配。缺点在于内存都集中在低地址</p>
