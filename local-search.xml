@@ -5,6 +5,56 @@
   
   <entry>
     <title>集合论</title>
+    <link href="/2026/09/24/math-logic/%E5%8F%AF%E5%88%A4%E5%AE%9A%E6%80%A7%E4%B8%8D%E5%8F%AF%E5%88%A4%E5%AE%9A%E6%80%A7/"/>
+    <url>/2026/09/24/math-logic/%E5%8F%AF%E5%88%A4%E5%AE%9A%E6%80%A7%E4%B8%8D%E5%8F%AF%E5%88%A4%E5%AE%9A%E6%80%A7/</url>
+    
+    <content type="html"><![CDATA[<h3 id="可判定性">可判定性</h3><p>我们发现一些问题的是无法解的，称之为不可判定问题</p><p>最基本的结论是 <span class="math inline"><em>x</em> ∈ <em>W</em><sub><em>x</em></sub></span> 是不可判定的。其中 <span class="math inline"><em>W</em><sub><em>x</em></sub></span> 为编号为 <span class="math inline"><em>x</em></span> 的图灵机可以被接受的输入（会停机）（输入是任意的）（这里是编号 <span class="math inline"><em>x</em></span> 我们希望研究这一基本情况）</p><p>其特征函数为 <span class="math inline"><em>f</em> = {1, <em>x</em> ∈ <em>W</em><sub><em>x</em></sub>; 0, <em>x</em> ∉ <em>W</em><sub><em>x</em></sub>}</span>, <span class="math inline"><em>f</em></span> 实际上为一个算法</p><p>假设其可判定，则其特征函数 <span class="math inline"><em>f</em></span> 可计算，即在有限步骤内得到结果</p><p>定义一个函数 <span class="math inline"><em>g</em>(<em>x</em>) = {↑,<em>x</em> ∈ <em>W</em><sub><em>x</em></sub>; 0, <em>x</em> ∉ <em>W</em><sub><em>x</em></sub>}</span>, <span class="math inline"><em>g</em>(<em>x</em>)</span> 显然也是可计算的</p><p>我们假设停机问题可以判定，于是我们可以判定 <span class="math inline"><em>m</em> ∉ <em>W</em><sub><em>m</em></sub></span> 时候 <span class="math inline"><em>g</em>(<em>x</em>)</span> 才是可以停机的，但是这不是和 <span class="math inline"><em>W</em></span> 的定义相反了吗？于是矛盾产生了。</p><p>接下来证明 <span class="math inline"><em>y</em> ∈ <em>W</em><sub><em>x</em></sub></span> 是不可判定的。<span class="math inline"><em>y</em></span> 包括 <span class="math inline"><em>x</em></span>，<span class="math inline"><em>y</em></span>显然不可判定的。</p><p>特征函数 <span class="math inline"><em>g</em>(<em>x</em>, <em>y</em>) = {1, <em>y</em> ∈ <em>W</em><sub><em>x</em></sub>; 0, <em>y</em> ∉ <em>W</em><sub><em>x</em></sub>}</span>， 若可判定，的 <span class="math inline"><em>g</em></span> 可计算，但是 <span class="math inline"><em>g</em>(<em>x</em>, <em>x</em>)</span> 不可计算。</p><p><span class="math inline"><em>ϕ</em><sub><em>x</em></sub> = 0</span> 不可判定，即一个程序的输出是否一直为0无法判定，(不存在不停机的情况)</p><p>假设存在这样一个函数，定义一个 <span class="math inline"><em>x</em> ∈ <em>W</em><sub><em>x</em></sub></span> 一直为0的函数</p><p><span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = {0, <em>x</em> ∈ <em>W</em><sub><em>x</em></sub>; ↑,<em>x</em> ∉ <em>W</em><sub><em>x</em></sub>}</span>, <span class="math inline"><em>f</em></span> 是可计算的。于是判定其是否为0就要判定 <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = <em>ϕ</em><sub><em>k</em>(<em>x</em>)</sub>(<em>y</em>)</span>, 即 <span class="math inline"><em>g</em><sub><em>x</em></sub> = 0</span> 可判定吗，即 <span class="math inline"><em>x</em> ∈ <em>W</em><sub><em>x</em></sub></span> 可判定吗。</p><p>证明 <span class="math inline"><em>ϕ</em><sub><em>x</em></sub> = <em>ϕ</em><sub><em>y</em></sub></span> 是不可判定的。显然如果后者恒等0,则不可判定。可以一步步倒退回自指不可判定问题。</p><p>于是我们有一个最终结论Rice Therom，对于任意一个具有非平凡的性质一元部分可计算函数，一个程序是否属于它是不可判定的。（例如我们无法判定一个程序是否输出一定全部为0， 因为这里的“程序”是任意的）</p><h3 id="部分可判定">部分可判定</h3><p>对于 <span class="math inline"><em>M</em>(<em>x</em>)</span> 我们称之为部分可判定的，只要如下定义</p><p><span class="math inline"><em>f</em> = {1, <em>M</em>(<em>x</em>)<em>成</em><em>立</em>; ↑,<em>M</em>(<em>x</em>)<em>不</em><em>成</em><em>立</em>}</span>, 是可计算的。停机问题是可计算的，即部分可判定的。</p><p>对于 <span class="math inline"><em>x</em> ∉ <em>W</em><sub><em>x</em></sub></span>, 根据定义 <span class="math inline"><em>f</em> = {1, <em>x</em> ∉ <em>W</em><sub><em>x</em></sub>; ↑,<em>x</em> ∈ <em>W</em><sub><em>x</em></sub>}</span> 不可计算，因为 <span class="math inline"><em>x</em> ∉ <em>W</em><sub><em>x</em></sub></span> 就无法停机，因此不是部分可判定的</p><h3 id="递归以及递归可枚举集">递归以及递归可枚举集</h3><p>对于 <span class="math inline"><em>A</em></span> 是自然数的子集，如果 <span class="math inline"><em>A</em></span> 的特征函数是可计算的则称之为 <span class="math inline"><em>A</em></span> 递归的</p><p><span class="math inline"><em>f</em>(<em>x</em>) = {1, <em>x</em> ∈ <em>A</em>; ↑,<em>x</em> ∉ <em>A</em>}</span> 也是可计算的，但是此时是部分可判定的，此时称之为 <span class="math inline"><em>A</em></span> 为递归可枚举集 r.e</p><p>停机集不是递归集但是是递归可枚举集合，停机集合的补集不是递归集，也不是递归可枚举集</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>matn-logic</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>math-logic</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>命题逻辑</title>
+    <link href="/2026/09/21/math-logic/%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%20/"/>
+    <url>/2026/09/21/math-logic/%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%20/</url>
+    
+    <content type="html"><![CDATA[<h3 id="命题">命题</h3><p>我们基于最基本的真假的概念定义了命题。通过对于形式语言进行定义和构造得到了合式公式。</p><p>通过真值指派赋予其意义构成了命题逻辑。<span class="math inline"><em>v</em> : <em>S</em> → {<em>T</em>, <em>F</em>}</span> 即对于每一个命题逻辑都有一个对应 <span class="math inline"><em>T</em>，<em>F</em></span>，<span class="math inline"><em>v̂</em> : <em>Ŝ</em> → {<em>T</em>, <em>F</em>}</span> 进行扩展以后即每个合式公式会有有一个对应的 <span class="math inline"><em>T</em>，<em>F</em></span> 。我们可以证明对于这种定义，任意一个真值指派下的 <span class="math inline"><em>v̂</em></span> 都是唯一确定。</p><p>显然一个公式为真的真值指派下第二个合式公式也一定为真，即为重言蕴涵。由此可以得到极端情况重言式</p><p>紧致性定理：对于一个合式公式的无限集合，对于其中的任意一个子集，都存在一个真值指派能够满足其中所有的合式公式。</p><p>假定一个构造序列的最后的成员是 <span class="math inline"><em>ϕ</em></span>, <span class="math inline"><em>ϕ</em></span> 不包含符号 <span class="math inline"><em>A</em><sub>4</sub></span> 假设在构造序列中删除所有的含有 <span class="math inline"><em>A</em><sub>4</sub></span> 的表达式，证明其结果仍然是一个合法的构造序列。这里需要注意的是构造序列的定义。证明为对于任意留存下来的表达式，构造其的表达式也不含有 <span class="math inline"><em>A</em><sub>4</sub></span></p><h3 id="命题的解析">命题的解析</h3><p>。。。</p><h3 id="归纳与递归">归纳与递归</h3><p>对于构造出来的 <span class="math inline"><em>C</em></span> 我们有两种定义方式</p><p>自上而下：对于U的所有归纳子集的交集。（取交集是因为可能存在额外元素例如 <span class="math inline"><em>a</em></span>）</p><p>自下而上： <span class="math inline"><em>B</em></span> 中所有的元素有限次使用 <span class="math inline"><em>f</em></span> 和 <span class="math inline"><em>g</em></span> 得到的元素的集合。这其实就是构造序列的思想</p><p>我们通常使用递归的方式进行定义一个函数, 即我们只需要定义基础元素集合B中的映射，就能依次扩展到整个S上的定义，这样的定义方式为递归的计为 <span class="math inline"><em>ĥ</em></span></p><p>我们需要指定基础元如何映射</p><p><span class="math inline"><em>x</em> ∈ <em>B</em>, <em>ĥ</em>(<em>x</em>)</span></p><p>复合元如何映射</p><p><span class="math inline"><em>ĥ</em>(<em>x</em>), <em>ĥ</em>(<em>y</em>)</span> 计算得到 <span class="math inline"><em>ĥ</em>(<em>f</em>(<em>x</em>, <em>y</em>))</span></p><p><span class="math inline"><em>ĥ</em>(<em>x</em>)</span>, 计算得到 <span class="math inline"><em>ĥ</em>(<em>g</em>(<em>x</em>))</span></p><p>但是这样的递归形式时可能出现冲突的，可能存在 <span class="math inline"><em>g</em>(<em>x</em>) = <em>f</em>(<em>x</em>, <em>y</em>)</span> 的情况，这种情况我们引入自由生成的概念</p><p><span class="math inline"><em>C</em></span> 是由 <span class="math inline"><em>B</em></span> 在 <span class="math inline"><em>g</em></span> 和 <span class="math inline"><em>f</em></span> 上是自由生成的必须满足 <span class="math inline"><em>f</em><sub><em>c</em></sub></span> 和 <span class="math inline"><em>g</em><sub><em>c</em></sub></span> 是一对一的，且二者的值域和集合 <span class="math inline"><em>B</em></span> 是两两不相交的。可以看出首先是单射，其次是两种不同的运算之间不相交互，这样就排除了上述的冲突，我们得到了一个自由生成的 <span class="math inline"><em>C</em></span></p><p>由此我们得到了递归定理，即C是自由生成的，我们只需要定义基础元素是如何映射的复合元素是如何映射的, 所得到的递归函数就一定是唯一的。</p><p>由递归定理我们可以得到唯一可读定理，我们只需要证明C是自由生成的即可。以合式公式为例子，一一对应和两两不相交都是显然的，因为合式公式是自由生成的，其递归定义也是唯一的。</p><h3 id="命题联结词">命题联结词</h3><p>对于布尔函数可以找到一个合式公式 <span class="math inline"><em>a</em></span> 使得 <span class="math inline"><em>a</em></span> 实现此函数 。这个构造方法比较简单，针对每一个为T的取值以一列举然后全部取并。但是这个定理是单项的，<span class="math inline"><em>a</em></span> 并不唯一，我们把这种形式称之为DNF，析取范式。</p><p>对于任意一个布尔函数，如果可以用连接词集合 <span class="math inline"><em>S</em></span> 表达，则称之为S是完备的</p><p>值得注意的是 <span class="math inline">{−, ∨ }, {−, ∧ }</span> 都是完备的。有德摩根定律。<span class="math inline">{|, ↓ }</span> 也是完备的，可以借用上面的已经得到完备性的结论</p><h3 id="紧致性和能行性">紧致性和能行性</h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>matn-logic</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>math-logic</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>集合论</title>
     <link href="/2026/09/20/math-logic/%E9%9B%86%E5%90%88%E8%AE%BA/"/>
     <url>/2026/09/20/math-logic/%E9%9B%86%E5%90%88%E8%AE%BA/</url>
     
