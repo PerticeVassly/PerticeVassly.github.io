@@ -19,22 +19,22 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="每个应用层协议都是为了解决一类应用问题，而问题的解决又必须通过位于不同主机中的多个应用之间的通信和协同完成的">
+    <meta name="description" content="众所周知在内网中我们都是通过NAT网关中转和外界通信的，NAT负责维护一个套接字动态映射表 因此对于公网服务器来说，只能我们主动请求，它无法主动请求我们，因为其无法得知我们在NAT表中的套接字 NAT出于资源管理的需求往往会回收NAT表中的公网套接字，这就导致如果需要有一个异步的业务，公网服务器回调的时候无法再通过NAT找到内网中的设备。 一般来说对于异步回调的场景，一种是服务端主动回调，一种是客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Application Layer">
-<meta property="og:url" content="http://example.com/2025/04/22/network/ApplicationLayer/index.html">
+<meta property="og:title" content="内网穿透">
+<meta property="og:url" content="http://example.com/2026/10/12/network/IntranetPenetration/index.html">
 <meta property="og:site_name" content="eqsun&#39;s blog">
-<meta property="og:description" content="每个应用层协议都是为了解决一类应用问题，而问题的解决又必须通过位于不同主机中的多个应用之间的通信和协同完成的">
+<meta property="og:description" content="众所周知在内网中我们都是通过NAT网关中转和外界通信的，NAT负责维护一个套接字动态映射表 因此对于公网服务器来说，只能我们主动请求，它无法主动请求我们，因为其无法得知我们在NAT表中的套接字 NAT出于资源管理的需求往往会回收NAT表中的公网套接字，这就导致如果需要有一个异步的业务，公网服务器回调的时候无法再通过NAT找到内网中的设备。 一般来说对于异步回调的场景，一种是服务端主动回调，一种是客">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-04-22T09:11:00.000Z">
-<meta property="article:modified_time" content="2026-05-19T07:44:17.899Z">
+<meta property="article:published_time" content="2026-10-12T12:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-12T14:57:00.365Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="network">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Application Layer - eqsun&#39;s blog</title>
+  <title>内网穿透 - eqsun&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Application Layer"></span>
+            <span id="subtitle" data-typed-text="内网穿透"></span>
           
         </div>
 
@@ -314,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-04-22 17:11" pubdate>
-          2025年4月22日 下午
+        <time datetime="2026-10-12 20:00" pubdate>
+          2026年10月12日 晚上
         </time>
       </span>
     
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          54 字
+          918 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          1 分钟
+          8 分钟
         
       </span>
     
@@ -376,12 +376,20 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Application Layer</h1>
+            <h1 id="seo-header">内网穿透</h1>
             
             
               <div class="markdown-body">
                 
-                <p>每个应用层协议都是为了解决一类应用问题，而问题的解决又必须通过位于不同主机中的多个应用之间的通信和协同完成的</p>
+                <p>众所周知在内网中我们都是通过NAT网关中转和外界通信的，NAT负责维护一个套接字动态映射表</p>
+<p>因此对于公网服务器来说，只能我们主动请求，它无法主动请求我们，因为其无法得知我们在NAT表中的套接字</p>
+<p>NAT出于资源管理的需求往往会回收NAT表中的公网套接字，这就导致如果需要有一个异步的业务，公网服务器回调的时候无法再通过NAT找到内网中的设备。</p>
+<p>一般来说对于异步回调的场景，一种是服务端主动回调，一种是客户端自己主动获取（类似于懒加载），前者在公网访问内网的情况下下会由于找不到内网设备而失败，而后者处理如果获取不积极会出现比较严重的不一致问题</p>
+<p>此时需要一种内网穿透的解决方案。既然NAT会动态回收资源，那么就使用heartbeat这样的方式持续地占有通信资源，保证当公网服务器发送回调的时候，内网设备总是处于“待接受状态”。同时由于NAT是动态分配的套接字，我们还需要一个独立于套接字的usr和pwd来唯一确定这个设备。这样公网服务器就通过持续不断的heartbeat知道了当前哪一个套接字对应具体的哪一个内网设备。</p>
+<p>但是此时还是存在一个问题，这个动态的“通信道路”是基于套接字的，即公网服务器只能知道内网设备主动发送消息（heartbeat）的发送端套接字，而现有业务规定中发送和接受的套接字往往是分离的，那公网服务器要如何知道接受端的这个套接字呢？</p>
+<p>答案就是在内网设备中再启动一个本地client，公网服务器将要回调的内容通过这个heartbeat构成的通信道路传输给client，client在本地再完成广播，这样就绕过了NAT网关</p>
+<p>当然heartbeat这样的设计还是无法保证内网设备始终处于“待接受状态”，因为最终的资源分配是由NAT这样的网关决定的，因此公网服务器还要维持一个消息队列的结构，方便在收到heartbeat的时候趁着内网设备“待接收”时把积压的回调请求发送回去</p>
+<p>并不是所有的服务都有内网穿透的需求（申一个公网ip，或者同一网络部署就可以），因此我们分一个公网服务器和对应的client专门做穿透的事（实际上是一个反向代理），我们直接把公网服务器的回调地址配制成这个代理服务器，代理服务器在通过client把具体回调发送给内网设备</p>
 
                 
               </div>
@@ -427,8 +435,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Application Layer</div>
-      <div>http://example.com/2025/04/22/network/ApplicationLayer/</div>
+      <div>内网穿透</div>
+      <div>http://example.com/2026/10/12/network/IntranetPenetration/</div>
     </div>
     <div class="license-meta">
       
@@ -440,7 +448,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年4月22日</div>
+          <div>2026年10月12日</div>
         </div>
       
       
@@ -472,18 +480,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/04/22/java/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" title="java并发编程">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">java并发编程</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/04/22/network/TransportLayer/" title="Transport Layer">
-                        <span class="hidden-mobile">Transport Layer</span>
+                      <a href="/2026/09/24/math-logic/%E5%8F%AF%E5%88%A4%E5%AE%9A%E6%80%A7%E4%B8%8D%E5%8F%AF%E5%88%A4%E5%AE%9A%E6%80%A7/" title="可判定性">
+                        <span class="hidden-mobile">可判定性</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

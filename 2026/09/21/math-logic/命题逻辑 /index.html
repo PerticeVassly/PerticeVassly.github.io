@@ -27,7 +27,7 @@
 <meta property="og:description" content="命题 我们基于最基本的真假的概念定义了命题。通过对于形式语言进行定义和构造得到了合式公式。 通过真值指派赋予其意义构成了命题逻辑。v : S → {T, F} 即对于每一个命题逻辑都有一个对应 T，F，v̂ : Ŝ → {T, F} 进行扩展以后即每个合式公式会有有一个对应的 T，F 。我们可以证明对于这种定义，任意一个真值指派下的 v̂ 都是唯一确定。 显然一个公式为真的真值指派下第二个合式公">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-21T03:00:00.000Z">
-<meta property="article:modified_time" content="2026-09-24T07:23:24.013Z">
+<meta property="article:modified_time" content="2026-10-09T12:39:54.770Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="math-logic">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          1.6k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          11 分钟
+          14 分钟
         
       </span>
     
@@ -408,7 +408,17 @@
 <p>对于任意一个布尔函数，如果可以用连接词集合 <span class="math inline"><em>S</em></span> 表达，则称之为S是完备的</p>
 <p>值得注意的是 <span class="math inline">{−, ∨ }, {−, ∧ }</span> 都是完备的。有德摩根定律。<span class="math inline">{|, ↓ }</span> 也是完备的，可以借用上面的已经得到完备性的结论</p>
 <h3 id="紧致性和能行性">紧致性和能行性</h3>
-<p>证明比较有意思，可以对其进行扩展，将每一个合式公式 <span class="math inline"><em>a</em></span> 依次加入，若加入以后依然有限可满足，则保持 <span class="math inline"><em>a</em></span> 不变，否则加入 <span class="math inline"> − <em>a</em></span>, 这样我们总能保证得到的合式公式是有限可满足的。显然此时 <span class="math inline">∑ ⊆ <em>Δ</em></span> 此时我们发现只要对于所有的命题 <span class="math inline"><em>A</em>，<em>A</em> = <em>T</em>，<em>i</em><em>f</em><em>f</em><em>A</em> ∈ <em>Δ</em></span>, 其中所有式子都能够满足。此时可以使用归纳证明</p>
+<p>紧致性的证明比较有意思，可以对待证明的集合 <span class="math inline">∑</span> 其进行扩展为 <span class="math inline"><em>Δ</em></span>，考察所有的合式公式 <span class="math inline"><em>a</em></span>，若加入（取并）以后依然有限可满足，则保持 <span class="math inline"><em>a</em></span> 不变加入，否则加入 <span class="math inline"> − <em>a</em></span>, 这样我们总能保证得到的合式公式是有限可满足的。显然此时 <span class="math inline">∑ ⊆ <em>Δ</em></span> 此时我们发现只要对于所有的命题 <span class="math inline"><em>A</em>，<em>A</em> = <em>T</em>，<em>i</em><em>f</em><em>f</em>，<em>A</em> ∈ <em>Δ</em></span>, 就可以使得 <span class="math inline"><em>Δ</em></span> 中所有式子都能够满足。</p>
+<p>这个真值指派 <span class="math inline"><em>ｖ</em></span> 的可行性可以使用归纳法证明。归纳即设对于 <span class="math inline"><em>a</em> ∈ <em>Δ</em></span>, <span class="math inline"><em>v</em></span> 可以满足 <span class="math inline"><em>a</em></span> 为 <span class="math inline"><em>T</em></span> 否则则为 <span class="math inline"><em>F</em></span></p>
+<p>基础情况是显而易见的。</p>
+<p>对于 <span class="math inline"> − <em>b</em></span> 这样一个合式，其要想为真当且仅当 <span class="math inline"><em>b</em></span> 为假，此时我们在构造过程中可以保证 <span class="math inline"><em>b</em></span> 一定不在 <span class="math inline"><em>Δ</em></span> 中，在此真值指派下 <span class="math inline"><em>b</em></span> 一定为假</p>
+<p>对于 <span class="math inline"><em>a</em> ∧ <em>b</em></span> 这样的合式也是一样，如果其属于 <span class="math inline"><em>Δ</em></span> 那说明其一定满足有限可满足</p>
+<p>但是我们并不知道 <span class="math inline"><em>a</em></span>，<span class="math inline"><em>b</em></span>是否在 <span class="math inline"><em>Δ</em></span> 中，对于a，b如果存在一个不在，则对应的 <span class="math inline"> − <em>a</em></span>　一定在此时所有真值指派都不能使得 <span class="math inline">{ − <em>a</em>, <em>a</em> ∧ <em>b</em>}</span> 可满足，所以此情况一定不存在。说明 <span class="math inline"><em>a</em>，<em>b</em></span> 一定都在其中，那由归纳假设可得 <span class="math inline"><em>a</em> ∧ <em>b</em></span> 在 <span class="math inline"><em>v</em></span> 上可满足</p>
+<p>其他运算同理</p>
+<h3 id="一阶语言">一阶语言</h3>
+<p><span class="math inline">¬∀<em>v</em>¬</span> 替换 <span class="math inline">$\exist v$</span></p>
+<p>项 原子公式 其他合式公式3</p>
+<p>自由变量</p>
 
                 
               </div>
@@ -499,9 +509,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/09/24/math-logic/%E5%8F%AF%E5%88%A4%E5%AE%9A%E6%80%A7%E4%B8%8D%E5%8F%AF%E5%88%A4%E5%AE%9A%E6%80%A7/" title="集合论">
+                      <a href="/2026/09/24/math-logic/%E5%8F%AF%E5%88%A4%E5%AE%9A%E6%80%A7%E4%B8%8D%E5%8F%AF%E5%88%A4%E5%AE%9A%E6%80%A7/" title="可判定性">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">集合论</span>
+                        <span class="hidden-mobile">可判定性</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
