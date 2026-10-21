@@ -27,7 +27,7 @@
 <meta property="og:description" content="命题 我们基于最基本的真假的概念定义了命题。通过对于形式语言进行定义和构造得到了合式公式。 通过真值指派赋予其意义构成了命题逻辑。v : S → {T, F} 即对于每一个命题逻辑都有一个对应 T，F，v̂ : Ŝ → {T, F} 进行扩展以后即每个合式公式会有有一个对应的 T，F 。我们可以证明对于这种定义，任意一个真值指派下的 v̂ 都是唯一确定。 显然一个公式为真的真值指派下第二个合式公">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-10-15T03:00:00.000Z">
-<meta property="article:modified_time" content="2026-10-18T05:25:16.292Z">
+<meta property="article:modified_time" content="2026-10-21T16:40:43.068Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="math-logic">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          3.7k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          21 分钟
+          32 分钟
         
       </span>
     
@@ -438,6 +438,34 @@
 <p>于是我们给出了递归的定义，一个形式化的语言如何通过这个“结构”一步一步翻译成自然语言</p>
 <p>注意，这个结构 <span class="math inline">𝔄</span> 是不包含各个变量与论域中的东西是如何对应的</p>
 <p>对于每一个句子（没有自由变量）那么每个 <span class="math inline"><em>V</em></span> 到 <span class="math inline">|𝔄|</span> 的S都能满足，要么每一个都不满足。这个也是显然的，因为没有自由变量意味着所有的变量其实都充当一个代词it的作用，我们实际上不需要任何变量到论域的映射</p>
+<h3 id="逻辑蕴涵">逻辑蕴涵</h3>
+<p>我们之前提到了重言蕴涵的定义，现在我们对其进行一个扩展，扩展到一阶语言中，定义为逻辑蕴涵</p>
+<p>逻辑蕴涵需要保证满足前者的结构和论域映射 <span class="math inline"><em>s</em></span> 也满足后者.(这里复习一下满足的定义，即通过结构 <span class="math inline">𝔄</span> 和 <span class="math inline"><em>s</em></span>, 翻译出来的内容是恒真的)</p>
+<p><span class="math inline">∀<em>v</em><sub>1</sub><em>Q</em><em>v</em><sub>1</sub> ⊨ <em>Q</em><em>v</em><sub>2</sub></span> 真</p>
+<p><span class="math inline">$Q v_1 \not\models \forall v_1 Q v_1$</span> 假，因为前者是自由变量，后者则不是</p>
+<p><span class="math inline"> ⊨ ¬¬<em>σ</em> → <em>σ</em></span> 满足前者的结构和映射，这里会有考虑到 <span class="math inline">¬</span> 的定义是什么？ <span class="math inline">¬</span> 显然是一个逻辑符号，本质是一个符号，我们以此定义了合式公式，但是这个符号在结构中映射是什么呢？ 其实这在之前就由所定义 <span class="math inline">⊨<sub>𝔄</sub>¬<em>Φ</em>[<em>s</em>]</span> 当且仅当 <span class="math inline">$\not\models_\mathfrak{A} \neg \Phi[s]$</span>, 从这里就可以看出，关于逻辑连接符的满足的定义是模型无关的。我们正在使用一些独立于论域的更加“基础”的知识————即逻辑。这样我们证明了形式语言上的双重否定（其实这是很显然的因为否定符号 <span class="math inline">¬</span> 关于满足的定义就是逻辑上的）</p>
+<p><span class="math inline">$\forall v_1 Q v_1 \models \exist v_2 Q v_2$</span> 任何结构的域都是非空的</p>
+<p><span class="math inline">$\exist x \forall y Pxy \models \forall y \exist x Pxy$</span></p>
+<p>$ y x Pxy x y Pxy $ 这里 <span class="math inline"><em>x</em></span> 可以变化</p>
+<p><span class="math inline">$\models \exist x (Qx \rightarrow \forall x Qx)$</span></p>
+<h3 id="可定义性">可定义性</h3>
+<p>一个论域内的元素之间的关系是纷繁复杂的，我们这里想知道到底哪些关系是可使用语言定义的。</p>
+<p>我们发现可以构建一个 <span class="math inline"><em>ϕ</em></span> 其中由自由变量 <span class="math inline"><em>a</em><sub>1</sub>, ..., <em>a</em><sub><em>k</em></sub></span> ，我们人物 <span class="math inline"> ⊨ <em>ϕ</em>[<em>a</em><sub>1</sub>, ..., <em>a</em><sub><em>k</em></sub>]</span> 则实际表示的关系中存在 <span class="math inline"> &lt; <em>a</em><sub>1</sub>, ..., <em>a</em><sub><em>k</em></sub>&gt;</span></p>
+<p>于是问题就变成了看能不能找到一个 <span class="math inline"><em>ϕ</em></span></p>
+<p>但是要说明一个东西是不可定义的是困难的，最直接的可以穷举然后将多个 <span class="math inline"><em>ϕ</em></span> 拼接， 因此一般证明这个关系集合是不可数的，但是仅仅有可数个可定义的的公式</p>
+<p>现在我们希望能够反过来，如果我们知道一个句子集合 <span class="math inline">∑</span> 我们希望表达到底哪些模型能够“适合”这个句子，我们将其计为 <span class="math inline"><em>M</em><em>o</em><em>d</em>∑</span>, 我们称其为语言的结构类，据此我们定义了初等类合广义初等类。</p>
+<p>注意适合即满足，因为我们研究的是句子集，因此也不存在自由变量的问题，不需要函数 <span class="math inline"><em>s</em></span> 即可验证公式的真假</p>
+<h3 id="同态">同态</h3>
+<p><span class="math inline"> &lt; <em>a</em><sub>1</sub>, ..., <em>a</em><sub><em>n</em></sub> &gt;  ∈ <em>P</em><sup>𝔄</sup></span> iff <span class="math inline"> &lt; <em>h</em>(<em>a</em><sub>1</sub>), ..., <em>h</em>(<em>a</em><sub><em>n</em></sub>) &gt;  ∈ <em>P</em><sup>𝔅</sup></span></p>
+<p><span class="math inline"><em>h</em>(<em>f</em><sup>𝔄</sup>(<em>a</em><sub>1</sub>, ...<em>a</em><sub><em>n</em></sub>)) = <em>f</em><sup>𝔅</sup>(<em>h</em>(<em>a</em><sub>1</sub>), ...<em>h</em>(<em>a</em><sub><em>n</em></sub>))</span></p>
+<p>值的注意的是上述论证并没有基于语言，感觉更像是把“同态”定理再在语言这个语境下重新表述了一下</p>
+<p>对于同态，我们有</p>
+<p>对于项 <span class="math inline"><em>t</em></span>, <span class="math inline">$h(\overline s (t)) =\overline{h o s}(t)$</span> 先翻译，再同态转化 = 直接同态转化后再翻译</p>
+<p>对于每个不包含等与符的无量词公式 <span class="math inline"><em>α</em></span></p>
+<p><span class="math inline">⊨<sub>𝔄</sub><em>α</em>[<em>s</em>]</span> iff <span class="math inline">⊨<sub>𝔅</sub><em>α</em>[<em>h</em><em>o</em><em>s</em>]</span> 这里比第一步多了一个公式，即涉及到全称量词和命题连接符</p>
+<p>如果h是一对一的，那么我们可以引入等与符号</p>
+<p>如果h只是同态，那么我们可以有量词</p>
+<p>由此等定义了初等等价，显然同构的结构是初等等价的，对于自同构，其等价也相同</p>
 
                 
               </div>
@@ -527,6 +555,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2026/10/18/jp/%E7%9F%B3%E8%86%8F/" title="ギブス">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ギブス</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
