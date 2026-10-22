@@ -27,7 +27,7 @@
 <meta property="og:description" content="命题 我们基于最基本的真假的概念定义了命题。为了避免自然语言的模糊和歧义我们定义了形式语言这样一种形式,即满足一定规则的符号的组合, 同过定义一个翻译的“规则”,我们实现了形式语言到自然语言的转换 其基本符号包括合取, 析取, 命题符号等等, 这些符号的组合,我们称之为表达式, 进一步地,我们只关注这些组合(符号串)中规则正确的部分,称之为合式公式,即通过对命题符号有限次运用构造公式 但是合式公式">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-10-22T03:00:00.000Z">
-<meta property="article:modified_time" content="2026-10-22T08:41:29.438Z">
+<meta property="article:modified_time" content="2026-10-22T08:45:21.122Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="math-logic">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.5k 字
+          4.4k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          38 分钟
+          37 分钟
         
       </span>
     
@@ -433,7 +433,7 @@
 <p>当然上述定义都是基于形式语言本身（即表达式的），倒不如说是我们根据现实事物设计了具有这样结构的语言，再验证这样的结构能够真实反映现实事物</p>
 <p><span class="math inline">¬<em>v</em><sub>3</sub></span> 不是和合式公式，因为 <span class="math inline"><em>v</em><sub>3</sub></span> 不是原子公式（是项但是没有谓词所以不是原子公式）</p>
 <p>基于上述结构我们发现存在一些合式公式中会有变量是“自由”的，其可以由递归的方式定义，显然如果一个合式公式中没有“自由变量”我们无需考虑翻译的时候变量到底选取什么(自由变量需要指定对应的论域中的元素,但是非自由的不需要,其应该为任意的, 因为此时这个变量只是一个代词it)</p>
-<p><span class="math inline">¬∀<em>v</em>¬</span> 替换 <span class="math inline">$\exist v$</span> 是常用的化简方式</p>
+<p><span class="math inline">¬∀<em>v</em>¬</span> 替换 <span class="math inline">∃<em>v</em></span> 是常用的化简方式</p>
 <h3 id="形式语言到真实世界">形式语言到真实世界</h3>
 <p>如上所述我们需要一个“结构”来指明形式语言本身与真实世界的桥梁——即一阶语言的结构 <span class="math inline">𝔄</span> (具体参考教材)</p>
 <p>注意教材中的 <span class="math inline"><em>P</em></span> 是用关系来定义的，当然其实也可以由函数定义（关系集合的有无其实也是一个值域truefalse的函数）</p>
@@ -447,10 +447,10 @@
 <p><span class="math inline">∀<em>v</em><sub>1</sub><em>Q</em><em>v</em><sub>1</sub> ⊨ <em>Q</em><em>v</em><sub>2</sub></span> 真</p>
 <p><span class="math inline">$Q v_1 \not\models \forall v_1 Q v_1$</span> 假，因为前者是自由变量，后者则不是</p>
 <p><span class="math inline"> ⊨ ¬¬<em>σ</em> → <em>σ</em></span> 满足前者的结构和映射，这里会有考虑到 <span class="math inline">¬</span> 的定义是什么？ <span class="math inline">¬</span> 显然是一个逻辑符号，本质是一个符号，我们以此定义了合式公式，但是这个符号在结构中映射是什么呢？ 其实这在之前就由所定义 <span class="math inline">⊨<sub>𝔄</sub>¬<em>Φ</em>[<em>s</em>]</span> 当且仅当 <span class="math inline">$\not\models_\mathfrak{A} \neg \Phi[s]$</span>, 从这里就可以看出，关于逻辑连接符的满足的定义是模型无关的。我们正在使用一些独立于论域的更加“基础”的知识————即逻辑。这样我们证明了形式语言上的双重否定（其实这是很显然的因为否定符号 <span class="math inline">¬</span> 关于满足的定义就是逻辑上的）</p>
-<p><span class="math inline">$\forall v_1 Q v_1 \models \exist v_2 Q v_2$</span> 任何结构的域都是非空的</p>
-<p><span class="math inline">$\exist x \forall y Pxy \models \forall y \exist x Pxy$</span></p>
+<p><span class="math inline">∀<em>v</em><sub>1</sub><em>Q</em><em>v</em><sub>1</sub> ⊨ ∃<em>v</em><sub>2</sub><em>Q</em><em>v</em><sub>2</sub></span> 任何结构的域都是非空的</p>
+<p><span class="math inline">∃<em>x</em>∀<em>y</em><em>P</em><em>x</em><em>y</em> ⊨ ∀<em>y</em>∃<em>x</em><em>P</em><em>x</em><em>y</em></span></p>
 <p>$ y x Pxy x y Pxy $ 这里 <span class="math inline"><em>x</em></span> 可以变化</p>
-<p><span class="math inline">$\models \exist x (Qx \rightarrow \forall x Qx)$</span></p>
+<p><span class="math inline"> ⊨ ∃<em>x</em>(<em>Q</em><em>x</em> → ∀<em>x</em><em>Q</em><em>x</em>)</span></p>
 <h3 id="可定义性">可定义性</h3>
 <p>一个论域内的元素之间的关系是纷繁复杂的，我们这里想知道到底哪些关系是可使用语言定义的。这里的可定义时说我们通过一个合式公式,指定 <span class="math inline"><em>n</em></span> 个自由变量, 当满足此合式公式时候,这些自由变量取值的集合即为我们想要定义的东西</p>
 <p>我们发现可以构建一个 <span class="math inline"><em>ϕ</em></span> 其中由自由变量 <span class="math inline"><em>a</em><sub>1</sub>, ..., <em>a</em><sub><em>k</em></sub></span> ，我们认为 <span class="math inline"> ⊨ <em>ϕ</em>[<em>a</em><sub>1</sub>, ..., <em>a</em><sub><em>k</em></sub>]</span> 则实际表示的关系中存在 <span class="math inline"> &lt; <em>a</em><sub>1</sub>, ..., <em>a</em><sub><em>k</em></sub>&gt;</span></p>
