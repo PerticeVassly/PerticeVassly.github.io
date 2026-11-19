@@ -27,7 +27,7 @@
 <meta property="og:description" content="命题 我们基于最基本的真假的概念定义了命题。为了避免自然语言的模糊和歧义我们定义了形式语言这样一种形式,即满足一定规则的符号的组合, 同过定义一个翻译的“规则”,我们实现了形式语言到自然语言的转换 其基本符号包括合取, 析取, 命题符号等等, 这些符号的组合,我们称之为表达式, 进一步地,我们只关注这些组合(符号串)中规则正确的部分,称之为合式公式,即通过对命题符号有限次运用构造公式 但是合式公式">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-11-12T03:00:00.000Z">
-<meta property="article:modified_time" content="2026-11-11T16:24:48.976Z">
+<meta property="article:modified_time" content="2026-11-17T04:54:25.554Z">
 <meta property="article:author" content="eqsun">
 <meta property="article:tag" content="math-logic">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.1k 字
+          7.3k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          60 分钟
+          61 分钟
         
       </span>
     
@@ -546,6 +546,15 @@
 <p>对于常数的情况,我们有常数的概化,若 <span class="math inline"><em>Γ</em> ⊢ <em>ϕ</em></span>, <span class="math inline"><em>c</em></span> 是不在 <span class="math inline"><em>Γ</em></span> 中出现的常数符号, 则对于不出现在 <span class="math inline"><em>ϕ</em></span> 中的符号 <span class="math inline"><em>y</em></span> ,有 <span class="math inline"><em>Γ</em> ⊢ ∀<em>y</em><em>ϕ</em><sub><em>y</em></sub><sup><em>c</em></sup></span>, 另外存在 <span class="math inline"><em>Γ</em></span> 到 <span class="math inline">∀<em>y</em><em>ϕ</em><sub><em>y</em></sub><sup><em>c</em></sup></span>的演绎,此演绎中不出现 <span class="math inline"><em>c</em></span></p>
 <p>若 <span class="math inline"><em>Γ</em> ⊢ <em>ϕ</em><sub><em>c</em></sub><sup><em>x</em></sup></span> 其中常数符号 <span class="math inline"><em>c</em></span> 不再 <span class="math inline"><em>Γ</em></span> 或者不在 <span class="math inline"><em>ϕ</em></span> 中出现,那么<span class="math inline"><em>Γ</em> ⊢ ∀<em>x</em><em>ϕ</em></span>, 并且存在从<span class="math inline"><em>Γ</em></span> 到 <span class="math inline">∀<em>x</em><em>ϕ</em></span> 的演绎 <span class="math inline"><em>Γ</em></span> 中不出现 <span class="math inline"><em>c</em></span></p>
 <p>EI规则,即存在规则, 如果 <span class="math inline"><em>c</em></span> 不在 <span class="math inline"><em>ϕ</em>, <em>ψ</em>, <em>Γ</em></span> 中出现, if <span class="math inline"><em>Γ</em>; <em>ϕ</em><sub><em>c</em></sub><sup><em>x</em></sup> ⊢ <em>ψ</em></span> then <span class="math inline"><em>Γ</em>; ∃<em>x</em><em>ϕ</em> ⊢ <em>ψ</em></span> 这是一个存在的说法, <span class="math inline"><em>c</em></span>不在任意三者之间是合理的,应为不能引入新的约束</p>
+<h3 id="可靠性与完备性">可靠性与完备性</h3>
+<p>首先复习一下演绎计算和逻辑蕴含的定义</p>
+<p>演绎计算是基于基础公式集合和逻辑公理(形式语言的变形规则)进行演绎计算, 演绎计算本身是“无意义”的</p>
+<p>逻辑蕴含是基于结构<span class="math inline">𝔄</span>和<span class="math inline"><em>s</em></span>, 基于逻辑知识和事实知识判断得到</p>
+<p><strong>可靠性定理</strong></p>
+<p>如果 <span class="math inline"><em>Γ</em> ⊢ <em>ϕ</em></span> 那么 <span class="math inline"><em>Γ</em> ⊨ <em>ϕ</em></span></p>
+<p>逻辑公理可以被逻辑蕴含, 演绎推理用的是假言推理, 其可以保持逻辑蕴含</p>
+<p><strong>完备</strong></p>
+<p>如果 <span class="math inline"><em>Γ</em> ⊨ <em>ϕ</em></span> 那么 <span class="math inline"><em>Γ</em> ⊢ <em>ϕ</em></span></p>
 
                 
               </div>
