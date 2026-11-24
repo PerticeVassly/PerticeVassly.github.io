@@ -27,7 +27,7 @@
 <meta property="og:description" content="命题 我们基于最基本的真假的概念定义了命题。为了避免自然语言的模糊和歧义我们定义了形式语言这样一种形式,即满足一定规则的符号的组合, 同过定义一个翻译的“规则”,我们实现了形式语言到自然语言的转换 其基本符号包括合取, 析取, 命题符号等等, 这些符号的组合,我们称之为表达式, 进一步地,我们只关注这些组合(符号串)中规则正确的部分,称之为合式公式,即通过对命题符号有限次运用构造公式 但是合式公式">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-11-12T03:00:00.000Z">
-<meta property="article:modified_time" content="2026-11-17T04:54:25.554Z">
+<meta property="article:modified_time" content="2026-11-24T18:05:09.063Z">
 <meta property="article:author" content="eqsun">
 <meta property="article:tag" content="math-logic">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.3k 字
+          8.5k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          61 分钟
+          71 分钟
         
       </span>
     
@@ -546,13 +546,48 @@
 <p>对于常数的情况,我们有常数的概化,若 <span class="math inline"><em>Γ</em> ⊢ <em>ϕ</em></span>, <span class="math inline"><em>c</em></span> 是不在 <span class="math inline"><em>Γ</em></span> 中出现的常数符号, 则对于不出现在 <span class="math inline"><em>ϕ</em></span> 中的符号 <span class="math inline"><em>y</em></span> ,有 <span class="math inline"><em>Γ</em> ⊢ ∀<em>y</em><em>ϕ</em><sub><em>y</em></sub><sup><em>c</em></sup></span>, 另外存在 <span class="math inline"><em>Γ</em></span> 到 <span class="math inline">∀<em>y</em><em>ϕ</em><sub><em>y</em></sub><sup><em>c</em></sup></span>的演绎,此演绎中不出现 <span class="math inline"><em>c</em></span></p>
 <p>若 <span class="math inline"><em>Γ</em> ⊢ <em>ϕ</em><sub><em>c</em></sub><sup><em>x</em></sup></span> 其中常数符号 <span class="math inline"><em>c</em></span> 不再 <span class="math inline"><em>Γ</em></span> 或者不在 <span class="math inline"><em>ϕ</em></span> 中出现,那么<span class="math inline"><em>Γ</em> ⊢ ∀<em>x</em><em>ϕ</em></span>, 并且存在从<span class="math inline"><em>Γ</em></span> 到 <span class="math inline">∀<em>x</em><em>ϕ</em></span> 的演绎 <span class="math inline"><em>Γ</em></span> 中不出现 <span class="math inline"><em>c</em></span></p>
 <p>EI规则,即存在规则, 如果 <span class="math inline"><em>c</em></span> 不在 <span class="math inline"><em>ϕ</em>, <em>ψ</em>, <em>Γ</em></span> 中出现, if <span class="math inline"><em>Γ</em>; <em>ϕ</em><sub><em>c</em></sub><sup><em>x</em></sup> ⊢ <em>ψ</em></span> then <span class="math inline"><em>Γ</em>; ∃<em>x</em><em>ϕ</em> ⊢ <em>ψ</em></span> 这是一个存在的说法, <span class="math inline"><em>c</em></span>不在任意三者之间是合理的,应为不能引入新的约束</p>
-<h3 id="可靠性与完备性">可靠性与完备性</h3>
+<h1 id="可靠性与完备性">可靠性与完备性</h1>
 <p>首先复习一下演绎计算和逻辑蕴含的定义</p>
 <p>演绎计算是基于基础公式集合和逻辑公理(形式语言的变形规则)进行演绎计算, 演绎计算本身是“无意义”的</p>
 <p>逻辑蕴含是基于结构<span class="math inline">𝔄</span>和<span class="math inline"><em>s</em></span>, 基于逻辑知识和事实知识判断得到</p>
-<p><strong>可靠性定理</strong></p>
-<p>如果 <span class="math inline"><em>Γ</em> ⊢ <em>ϕ</em></span> 那么 <span class="math inline"><em>Γ</em> ⊨ <em>ϕ</em></span></p>
-<p>逻辑公理可以被逻辑蕴含, 演绎推理用的是假言推理, 其可以保持逻辑蕴含</p>
+<h2 id="可靠性定理的证明">可靠性定理的证明</h2>
+<p><strong>如果 <span class="math inline"><em>Γ</em> ⊢ <em>ϕ</em></span> 那么 <span class="math inline"><em>Γ</em> ⊨ <em>ϕ</em></span></strong></p>
+<p>之前有一个二级结论已经说明了重演蕴含部分: <span class="math inline"><em>Γ</em> ⊢ <em>ϕ</em></span> 可以得到 <span class="math inline"><em>Γ</em> ∪ ∧</span> 重演蕴含了 <span class="math inline"><em>ϕ</em></span>, 可以参考其证明过程, 但是这里我们这里还需要证明为什么这个 <span class="math inline"><em>Γ</em> ∪ ∧</span> 重演蕴含 <span class="math inline"><em>ϕ</em></span> 就能得到逻辑蕴含呢?</p>
+<p>回顾逻辑蕴含的定义, 我们只需要证明对于任意的 <span class="math inline"><em>s</em></span> 和<span class="math inline">𝔄</span>, 逻辑公理部分恒满足即可</p>
+<p>对于任意恒真的公理,其概化也为真,因为任意的 <span class="math inline"><em>s</em></span> 也包含了(任意的 <span class="math inline"><em>x</em></span> 的取值)</p>
+<p>对于公理1, 本身就是重言式</p>
+<p>对于公理3, 如果存在一个解释 <span class="math inline"><em>M</em></span> 使得公理论3为假, 则<span class="math inline">∀<em>x</em>(<em>a</em> → <em>b</em>)</span> 为真 <span class="math inline"><em>a</em> → <em>b</em></span> 为真, 且 <span class="math inline">∀<em>x</em><em>a</em> → ∀<em>x</em><em>b</em></span>为假, 即 <span class="math inline">∀<em>x</em><em>a</em></span>为真, <span class="math inline">∀<em>x</em><em>b</em></span>为假, 此时我们有 <span class="math inline"><em>a</em></span> 为真, <span class="math inline"><em>a</em> → <em>b</em></span> 为真, 所以 <span class="math inline"><em>b</em></span> 一定为真, 那<span class="math inline">∀<em>x</em><em>b</em></span> 肯定也为真, 矛盾, 所以也是恒真的</p>
+<p>对于公理4, 不自由出现则前后者的 <span class="math inline"><em>s</em></span> 在自由变量上取值一定相同, 所以前者为真的时候后者一定也为真</p>
+<p>对于公理5, 显然</p>
+<p>对于公理6, 我们可以得到 当 <span class="math inline"> ⊨ <em>x</em> = <em>y</em>[<em>s</em>]</span>, 可以使用归纳的方法, 对于其中一个步骤的替换, 我们发现替换前和替换后在翻译的结果上是完全一样的</p>
+<p>对于公理2, 我们首先证明替换引理</p>
+<p>引理 对于项来说 <span class="math inline">$\overline s(u_t^x) = \overline{s(x|\overline s(t))}(u)$</span>, 把项 <span class="math inline"><em>u</em></span> 中的 <span class="math inline"><em>x</em></span> 替换成 <span class="math inline"><em>t</em></span> 然后进行计算和保留 <span class="math inline"><em>u</em></span> 但是在 <span class="math inline"><em>s</em></span> 映射的时候强制指定 <span class="math inline"><em>x</em></span> 的取值是一样的</p>
+<p>替换引理: 如果 <span class="math inline"><em>t</em></span> 可以替换合式公式 <span class="math inline"><em>ϕ</em></span> 中的变量 <span class="math inline"><em>x</em></span> ,那么 <span class="math inline">⊨<sub>𝔄</sub><em>ϕ</em><sub><em>t</em></sub><sup><em>x</em></sup>[<em>s</em>]</span> 当且仅当 <span class="math inline">$\models_\mathfrak{A} \phi[s(x|\overline s(t))]$</span></p>
+<p>这可以由归纳法得到,</p>
+<p>对于原子公式(通过 <span class="math inline"><em>P</em></span> 谓词的定义),</p>
+<p>对于 <span class="math inline">¬</span>, 省略</p>
+<p>对于 <span class="math inline">→</span> 的情况</p>
+<p><span class="math inline"> ⊨ <em>ϕ</em><sub><em>t</em></sub><sup><em>x</em></sup>[<em>s</em>]</span></p>
+<p>iff <span class="math inline"> ⊨ (<em>ψ</em> → <em>θ</em>)<sub><em>t</em></sub><sup><em>x</em></sup>[<em>s</em>]</span></p>
+<p>iff <span class="math inline"> ⊨ (<em>ψ</em><sub><em>t</em></sub><sup><em>x</em></sup> → <em>θ</em><sub><em>t</em></sub><sup><em>x</em></sup>)[<em>s</em>]</span></p>
+<p>iff <span class="math inline"> ⊨ (<em>ψ</em><sub><em>t</em></sub><sup><em>x</em></sup>[<em>s</em>] → <em>θ</em><sub><em>t</em></sub><sup><em>x</em></sup>[<em>s</em>])</span></p>
+<p>iff <span class="math inline">$\models {(\psi[s(x|\overline s(t)] \rightarrow \theta [s(x|\overline s(t))]}$</span></p>
+<p>iff <span class="math inline">$\models {(\psi_t^x \rightarrow \theta_t^x)}[s(x|\overline s(t))]$</span></p>
+<p><span class="math inline"><em>ϕ</em></span> 为 <span class="math inline">∀<em>y</em><em>ψ</em></span> 时候要分情况讨论</p>
+<p>第一种是, 若不 <span class="math inline"><em>x</em></span> 自由出现, 则 <span class="math inline"><em>ϕ</em><sub><em>t</em></sub><sup><em>x</em></sup></span> 就是 <span class="math inline"><em>ϕ</em></span>, 此时成立</p>
+<p>第二种是 <span class="math inline"><em>x</em></span> 自由出现但是 <span class="math inline"><em>y</em></span> 不在 <span class="math inline"><em>t</em></span> 中出现</p>
+<p><span class="math inline">$\overline s(t) = \overline {s(y | d)} (t)$</span></p>
+<p><span class="math inline"> ⊨ <em>ϕ</em><sub><em>t</em></sub><sup><em>x</em></sup>[<em>s</em>]</span></p>
+<p>iff <span class="math inline"> ⊨ ∀<em>y</em><em>ψ</em><sub><em>t</em></sub><sup><em>x</em></sup>[<em>s</em>]</span></p>
+<p>iff 对于任意的 <span class="math inline"><em>y</em></span> 的取值 <span class="math inline"><em>d</em></span> , <span class="math inline"> ⊨ <em>ψ</em><sub><em>t</em></sub><sup><em>x</em></sup>[<em>s</em>(<em>y</em>|<em>d</em>)]</span></p>
+<p>iff 对于任意的 <span class="math inline"><em>y</em></span> 的取值 <span class="math inline"><em>d</em></span>, <span class="math inline">$\models {\psi}[s(y | d) (x | \overline {s (y | d)}(t))]$</span></p>
+<p>iff 对于任意的 <span class="math inline"><em>y</em></span> 的取值 <span class="math inline"><em>d</em></span>, <span class="math inline">$\models {\psi}[s(y | d) (x | \overline s(t))]$</span></p>
+<p>iff <span class="math inline">$\models \forall y {\psi}[s(x | \overline s(t))]$</span></p>
+<p>得证替换公理</p>
+<p>对于公理2, 后者为真</p>
+<p>iff <span class="math inline">$\models \phi[s(x | \overline s(t))]$</span></p>
+<p>那前者满足的时候直接取 <span class="math inline"><em>x</em></span> 为<span class="math inline">$\overline s(t)$</span> 也满足就行了</p>
+<p>综上可靠性定理得证 (好复杂, 看了好久 555555)</p>
 <p><strong>完备</strong></p>
 <p>如果 <span class="math inline"><em>Γ</em> ⊨ <em>ϕ</em></span> 那么 <span class="math inline"><em>Γ</em> ⊢ <em>ϕ</em></span></p>
 
